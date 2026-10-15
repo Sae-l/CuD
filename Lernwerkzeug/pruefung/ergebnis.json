@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-15T13:35:09.560Z",
+  "date": "2026-10-15T14:41:10.796Z",
   "status": "PASS",
   "originalHashes": 8,
   "python": {
@@ -12,7 +12,8 @@
       "original_exercises": 28,
       "live_exercises": 4,
       "fft": true,
-      "original_dataset_available": false
+      "original_dataset_available": false,
+      "demo_entrypoints": 3
     }
   },
   "browser": {
@@ -22,7 +23,7 @@
     "learningQuizzes": 10,
     "progressPersistence": true,
     "originalTasks": 31,
-    "localLinks": 116,
+    "localLinks": 117,
     "externalRequests": 0
   }
 }
