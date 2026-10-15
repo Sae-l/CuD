@@ -21,7 +21,7 @@ Beschränke eine Änderung auf ihren Zweck. Wenn du eine Inhalts-ID änderst, pr
 
 ## Prüfumgebung einrichten
 
-Voraussetzungen: **Node.js ab 20**, **Python ab 3.11**, npm und Internet für die erstmalige Installation. Führe die Befehle im Repository-Ordner aus. `requirements-test.txt` und `package-lock.json` legen die Testabhängigkeiten fest; für die Webseite selbst sind sie nicht nötig.
+Voraussetzungen: **Node.js 24**, **Python 3.12**, npm und Internet für die erstmalige Installation. Führe die Befehle im Repository-Ordner aus. `.node-version`, `.python-version`, `requirements-test.txt` (einschließlich transitiver Python-Abhängigkeiten) und `package-lock.json` legen die Prüfumgebung fest; für die Webseite selbst sind sie nicht nötig.
 
 ### Windows / PowerShell
 
@@ -75,3 +75,9 @@ python scripts/manifest.py --check
 Ersetze hier `python` bei Bedarf durch `.\.venv\Scripts\python.exe` unter Windows oder `./.venv/bin/python` unter macOS/Linux. Verwende `--write` nur für geprüfte Änderungen; es bestätigt keine inhaltliche Richtigkeit und darf keine unbeabsichtigte Änderung an Originaldateien verdecken.
 
 Beschreibe beim Einreichen das behobene Problem, die sichtbare Änderung, die ausgeführten Tests und verbleibende Grenzen. Hinweise zum Projektstand stehen in [AUDIT.md](AUDIT.md), offene Lern- und Quellenfragen im [Arbeitsplan](ARBEITSPLAN_Lernwerkzeug.md) und [Lernkonzept](Lernwerkzeug/LERNKONZEPT.md).
+
+## Automatische Prüfungen und Release
+
+Die Workflows unter `.github/workflows/` prüfen Windows und Linux bei Pull Requests und Änderungen an main. Alle Actions sind auf Commit-IDs festgelegt. Laufzeit- und Paketänderungen kommen über Dependabot als prüfbare Pull Requests. Standardrechte sind lesend; nur der Release-Job darf Releases schreiben.
+
+Vor einem Release: Tests und `python -m unittest discover -s scripts -p "test_*.py"` ausführen, Nachweise und Manifest aktualisieren, Änderungen reviewen und übernehmen. `package.json`, Lockdatei und Tag müssen dieselbe Version haben. `python scripts/release.py v0.2.0` erzeugt das geprüfte ZIP und SHA256SUMS lokal; der Tag-Workflow führt diesen Schritt nach eigenen Tests aus. Prüfberichte aus CI werden als Artefakte gespeichert; das veröffentlichte ZIP enthält die geprüften Commit-Bytes. Repository-Einstellungen und verbleibende Grenzen: [REPOSITORY_SETTINGS.md](REPOSITORY_SETTINGS.md).

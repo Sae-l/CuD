@@ -1,42 +1,33 @@
-# Prüfbericht zum Lernraum
+# Prüfbericht 0.2.0
 
-Stand: 15.10.2026. Aktuelle Arbeitsfassung nach Release v0.1.0. Maßgeblich sind die Prüfzeitpunkte und Statusfelder der JSON-Dateien; der veröffentlichte Release wird durch diese Berichte nicht geändert.
+Stand: 15.10.2026. Lokaler Windows-Nachweis; maßgeblich sind Zeitpunkte und Status in [ergebnis.json](ergebnis.json) und [kompatibilitaet.json](kompatibilitaet.json). GitHub Actions liefert zusätzlich eigene Windows-/Linux-Nachweise am jeweiligen Commit.
 
-Ergebnis: **PASS**. Der vollständige Aufruf `npm test` hat Inhalts-/Python-Prüfung und Browsermatrix erfolgreich abgeschlossen. Die nachfolgende Umstellung zweier Zusatzquellen von Positionen auf stabile IDs wurde separat auf identische Kursdaten und korrektes Einfügen einer Etappe geprüft.
-
-| Prüfung | Ergebnis |
+| Prüfung | Umfang |
 | --- | --- |
-| Python-Lernbeispiele | 26 Beispiele ausgeführt, feste Ausgaben abgeglichen |
-| Ergänzende Befehle | 31 Beispiele einschließlich np.std und sns.boxplot ausgeführt; 46 Befehlsgruppen insgesamt |
-| CSV-Pipeline | Originalaufgaben 6.1–6.3 gemeinsam ausgeführt, mit unabhängiger Auswertung verglichen; vorhandene Randfälle bestehen |
-| Eigenes Transferprojekt | Synthetische CSV, unabhängige Rasterwerte und Schätzmaske geprüft; zwei getrennte Instanzen, Report vor Aufbereitung, leere Daten, lange Lücke, ungültige Zeit und fehlende Spalte geprüft |
-| Suche | 18 Fälle, jetzt auch Begriffe aus Erklärungsblöcken; Hinweise, Lösungen und Quizantworten bleiben vom Index getrennt |
-| Lernfragen | Neun Fragen mit richtiger und falscher Auswahl geprüft; die Antwort setzt keine Bearbeitungsmarke |
-| Bearbeitungsmarken | Setzen, Neuladen, Weiterlernen und Entfernen geprüft; zusätzlich ungültiges JSON, anderes Datenformat, unbekannte IDs und blockierte Speicherung in allen drei Engines |
-| Aufgabeninventar | 31 Aufgabennummern des vorhandenen Übungsblatts mit der Textfassung abgeglichen; drei Originalaufgaben geführt begleitet |
-| Ansichten und Größen | 43 Ansichten × sieben Größen × drei Engines: 903 Prüfungen ohne horizontalen Seitenüberlauf |
-| Touch und Tastatur | Navigation und Hinweise mit emuliertem Touch; Escape, Fokus, Codefelder, modifizierte Linkklicks und Verlauf geprüft |
-| Reduzierte Bewegung | Explizite CSS-Regel und synchronisierte HTML-Klasse; berechnete Animationen und Übergänge bei aktivierter Emulation abgeschaltet |
-| Lokale Verweise | 79 unterschiedliche lokale Verweise vorhanden; Original-CSV und synthetische CSV bytegleich heruntergeladen |
-| Originaldateien | Alle acht SHA-256-Werte stimmen mit Referenz_Sichtung/manifest.json überein |
-| Erweiterungsprobe | Zusätzliche fiktive Lektion: zehn Fragen und 44 Ansichten bestehen; doppelte ID scheitert; Zusatzquellen bleiben auch nach Einfügen einer Etappe richtig zugeordnet |
-
-Maschinenlesbare Nachweise: [ergebnis.json](ergebnis.json), [kompatibilitaet.json](kompatibilitaet.json) und [erweiterung.json](erweiterung.json). [pruefer-regression.json](pruefer-regression.json) dokumentiert die zwei Fehlerpfadprüfungen aus der vorherigen Auditphase. Neue Lösungen ohne registrierten eigenen Python-Prüffall werden abgewiesen; unabhängige neue Originalaufgaben geraten nicht automatisch in die bestehende CSV-Pipeline.
+| Lernbeispiele | 27 ausführbare Python-Beispiele mit vorhandenen Sollausgaben |
+| Befehlsbeispiele | 34 zusätzliche Beispiele; 49 Befehlsgruppen insgesamt |
+| Originalaufgaben | Alle 31 des vorhandenen Übungsskripts begleitet; die drei CSV-Lösungen als Pipeline, 28 weitere Lösungen/Kontrollprogramme getrennt geprüft |
+| Unabhängige Erwartungen | Typen, Fahrenheit, Temperaturgrenzen, Schleifenausgaben, Listen und Dictionaries; NumPy gegen Standard-Python-Statistik |
+| Report und Diagramme | Daten der Linien/Balken, Achsenzahl, Beschriftungen, Boxplot und Histogramm; Leerfall, fehlerhafte Zahlen und Nullgrenze geprüft |
+| Live-Übungen 003 | Vier Lösungen; Mittelwert-/NaN-/Leerfälle, Pandas-Grenze 0.5, Zeitraster, Interpolation und Report vor Aufbereitung |
+| FFT | 50-Hz-Spitze, Amplitude 1.5, keine zusätzlichen Sinusspitzen, echtes Clipping und 150-Hz-Anteil |
+| Bestehendes Transferprojekt | Eigene Mini-Daten, getrennte Instanzen, Restlücken, ungültige Zeit, fehlende Spalte und Report vor Aufbereitung |
+| Oberfläche | 76 Ansichten × sieben Größen × drei Engines = 1596 Layoutprüfungen; keine horizontalen Seitenüberläufe |
+| Bedienung | Zehn Lernfragen, Fortschrittsmarken, ungültige/gesperrte Speicherung, Touch-Emulation, Tastatur, Fokus, Verlauf und reduzierte Bewegung |
+| Suche und Verweise | 18 Suchfälle, 116 lokale Verweise, getrennte Lösungen; vorhandene CSV-Downloads bytegleich |
+| Originaldateien | Acht SHA-256-Werte unverändert |
+| Unit-Tests | Manifeständerung/-löschung und Ausschlüsse; Release-Wiederholbarkeit, ZIP-Bytes und Ablehnung falscher Version/ungeprüfter Änderung |
 
 ## Umgebung und Sichtprüfung
 
-Windows, Node.js 24.19.0, Python 3.12.14 und Playwright 1.62.1 mit den bereits vorhandenen Python-Testpaketen. Kein neues Paket oder Framework für diese Nachprüfung installiert. Geprüfte Engines: Chromium 151.0.7922.34, Firefox 153.0 und Playwright-WebKit 26.5. Größen in CSS-Pixeln: 320×740, 390×844, 768×1024, 1024×768, 844×390, 1280×800 und 1440×1000. Touch wurde zusätzlich bei 390×844 und 768×1024 emuliert.
+Vorhandene lokale Laufzeiten: Node 24.19.0, Python 3.12.14, Playwright 1.62.1. Browser: Chromium 151.0.7922.34, Firefox 153.0 und Playwright-WebKit 26.5. Größen in CSS-Pixeln: 320×740, 390×844, 768×1024, 1024×768, 844×390, 1280×800, 1440×1000. Touch bei 390×844 und 768×1024 emuliert. Die gemeinsame Matrix nutzt nur HTTP an 127.0.0.1 und sperrt externe Anfragen. Chromium wird zusätzlich im Offline-Dateibetrieb geprüft; Firefox-Dateiöffnung besteht. Windows-WebKit-Dateiöffnung bleibt unbestätigt.
 
-Der Inhaltsprüflauf verwendet Chromium per file:// und offline. Die gemeinsame Matrix verwendet ausschließlich einen HTTP-Testserver an 127.0.0.1; externe Anfragen werden blockiert. Keine JavaScript-/Konsolenfehler und keine externen Anfragen in den Hauptansichten. Firefox öffnete die lokale Startdatei. Windows-WebKit scheiterte bei direkter Dateiöffnung; nur seine HTTP-Nutzung ist bestätigt.
+Alle Aufgabenseiten des Übungsskripts PDF-S. 5–15 und die vier Live-Aufgabenseiten 003, PDF-S. 10, 18, 26, 31 wurden am gerenderten Original angesehen. Die erzeugten Vergleichs-, Report- und FFT-Grafiken sowie aktuelle Oberflächenbilder wurden als Stichprobe angesehen. Die alten Dateien erweiterung.json und pruefer-regression.json belegen ihre früheren, ausdrücklich zeitlich begrenzten Erweiterungs-/Fehlerpfadprüfungen.
 
-Screenshots der Lernfragen `lerncheck-desktop.png` und `lerncheck-mobil.png` wurden visuell angesehen. Die bestehenden Start-, Vorlesungs-, Tabellen- und Übungsscreenshots sind durch den Prüflauf aktualisiert. Die fiktive Erweiterungsprobe bleibt im ausgeschlossenen Arbeitsordner und wird nicht als Kursinhalt ausgeliefert.
+## Grenzen
 
-## Aussagegrenzen
+bb12024.csv fehlt. Drei Live-Lösungen sind mit getrennten synthetischen Daten geprüft; die gedruckten Originalkennzahlen dafür sind nicht bestätigt. CSV-Zuordnung, Sollzahlen und unterschiedliche Filtergrenzen bleiben im Abdeckungsplan erklärt. Interpolation liefert Schätzungen unter einer didaktischen Annahme, keine freigegebenen realen Prozesswerte.
 
-Der [Abdeckungsplan](../ABDECKUNG.md) trennt kompakte Erklärungen, 31 Originalaufgaben, vier Live-Übungen aus Vorlesung 003 und das eigene Transferprojekt. Nur drei Originalaufgaben sind geführt begleitet. bb12024.csv fehlt weiterhin; das Transferprojekt erzeugt keine Originalergebnisse dafür. FFT bleibt als Lehrthema offen. Der Code der Begleitdatei wurde gelesen, aber nicht ausgeführt oder zu einer fachlich abgenommenen FFT-Lösung umgebaut.
+Installationsaufgaben prüfen Kontrollprogramme, keine universelle Geräteinstallation. Technische Tests und eigene Bearbeitungsmarken belegen weder Lernerfolg noch vollständige Prüfungsvorbereitung. Echte Geräte, Safari auf Apple-Hardware, Screenreader und vollständige visuelle Folienprüfung bleiben offen. [Abdeckungsplan](../ABDECKUNG.md).
 
-Die Originalaufgaben 6.1–6.3 behalten die dokumentierten CSV-Widersprüche und die inklusive Filtergrenze als Arbeitsannahme. Der neue Projektcode begrenzt Interpolation, kennzeichnet Schätzungen und stoppt bei Restlücken. Das ist eine Miniübung, keine geprüfte Aufbereitung realer Prozessdaten.
-
-Quellen wurden gezielt als Text und an ausgewählten Originalbildern abgeglichen; keine vollständige visuelle Folienprüfung behauptet. PDF-Ziele und Seitenanker sind vorhanden, interaktive Seitensprünge bleiben vom Betrachter abhängig. Diagrammcode wurde mit Agg ausgeführt; keine umfassende visuelle Abnahme aller Diagramme.
-
-Echte Geräte, Safari auf Apple-Hardware, Screenreader, tatsächliche Python-/VS-Code-Installationen und Anfänger-Gebrauchstests bleiben offen. Bearbeitungsmarken sind lokale Selbsteinschätzungen. Technische Tests und Auswahlfragen belegen weder Lernerfolg noch vollständige Prüfungsvorbereitung.
+CI-Ergänzung: Linux-WebKit erreichte bei den schnellen Hash-Wechseln das Navigationslimit. Jede Bildschirmgröße startet nun mit einer frischen Dokumentinstanz; der Helfer wartet außerdem auf URL und Titel. Alle Ansichten, Fokus- und Verlaufstests bleiben erhalten. Ein CI-Erfolg gilt nur für den anschließenden Lauf am korrigierten Commit.

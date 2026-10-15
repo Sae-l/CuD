@@ -150,9 +150,72 @@ const vorlesungen = [
   }
 ];
 
+vorlesungen.push({
+  "id": "lektion-10",
+  "title": "FFT: Vom Zeitsignal zum Frequenzspektrum",
+  "topic": "Signalverarbeitung",
+  "origin": "Code",
+  "pages": "Begleitdatei",
+  "page": 1,
+  "sourceHref": "../Referenz/Code/002_fftpy.sec",
+  "sourceTitle": "Original-Begleitcode 002_fftpy.sec · unverändert archiviert",
+  "summary": "Erkenne einen 50-Hz-Sinus im Spektrum und untersuche echte Oberwellen durch Clipping.",
+  "goal": "Du kannst Abtastrate, Frequenzachse und ein einseitiges Spektrum an einem synthetischen Signal erklären.",
+  "blocks": [
+    [
+      "Zeit und Frequenz",
+      "Ein Signal beschreibt Werte über der Zeit. Die FFT zerlegt die endliche Folge in Frequenzanteile. Bei 1000 Messpunkten je Sekunde und 200 Punkten dauert das Beispiel 0.2 s; die Frequenzschritte sind 1000/200 = 5 Hz."
+    ],
+    [
+      "Abtastrate und Grenzen",
+      "Der reine 50-Hz-Sinus wird mit 1000 Hz abgetastet. Nyquist liegt bei 500 Hz. Höhere Anteile können aliasen. Das Beispiel enthält ganze Perioden und braucht deshalb kein Fenster; bei beliebigen Signalausschnitten sind Leakage und geeignete Fenster zusätzlich zu behandeln."
+    ],
+    [
+      "Eine passende Frequenzachse",
+      "rfft verwendet reelle Eingangswerte, rfftfreq die Schrittweite 1/Abtastrate. Die Beträge werden durch N geteilt; nur die inneren positiven Frequenzbins werden verdoppelt. Gleichanteil und Nyquist bleiben einfach. Hier ist N ausdrücklich gerade."
+    ],
+    [
+      "Originalfehler verstehen",
+      "Die archivierte Datei kommentiert Clipping auf ±0.75, verwendet tatsächlich ±10 und addiert den erzeugten Rauschvektor nicht. Dieses eigene Lehrbeispiel begrenzt tatsächlich auf ±0.75 und lässt Rauschen gezielt weg. Es ist keine unveränderte Ausführung oder fachliche Freigabe des Originals."
+    ]
+  ],
+  "code": "import numpy as np\nimport matplotlib.pyplot as plt\n\nabtastrate = 1000.0\nanzahl = 200\nzeit = np.arange(anzahl) / abtastrate\nsignal = 1.5 * np.sin(2 * np.pi * 50 * zeit)\nabgeflacht = np.clip(signal, -0.75, 0.75)\nfrequenzen = np.fft.rfftfreq(anzahl, d=1 / abtastrate)\namplitude = np.abs(np.fft.rfft(signal)) / anzahl\namplitude_flach = np.abs(np.fft.rfft(abgeflacht)) / anzahl\n# shortcut: gerade Anzahl 200, bei ungeradem N auch den letzten Bin verdoppeln.\namplitude[1:-1] *= 2\namplitude_flach[1:-1] *= 2\nprint(f\"Stärkste Frequenz: {frequenzen[np.argmax(amplitude)]:.1f} Hz\")\nprint(f\"Amplitude: {amplitude.max():.2f}\")\nfig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 6))\nax1.plot(zeit, signal, label=\"Sinus\")\nax1.plot(zeit, abgeflacht, label=\"Clipping ±0.75\")\nax1.set(xlabel=\"Zeit [s]\", ylabel=\"Amplitude\")\nax1.legend()\nax2.plot(frequenzen, amplitude, label=\"Sinus\")\nax2.plot(frequenzen, amplitude_flach, label=\"Geclippt\")\nax2.set(xlabel=\"Frequenz [Hz]\", ylabel=\"Einseitige Amplitude\", xlim=(0, 350))\nax2.legend()\nplt.tight_layout()\nplt.show()",
+  "output": "Stärkste Frequenz: 50.0 Hz\nAmplitude: 1.50\n",
+  "investigate": "Warum liegt der stärkste Bin bei 50 Hz, und weshalb entstehen durch echtes Clipping weitere Spitzen bei ungeraden Vielfachen?",
+  "modify": "Ändere 50 Hz auf 75 Hz. Prüfe, ob diese Frequenz zum 5-Hz-Raster passt. Ändere anschließend die Clippinggrenze.",
+  "make": "Erzeuge ohne Vorlage eine Summe aus 50 Hz und 100 Hz mit unterschiedlichen Amplituden und prüfe beide Spitzen.",
+  "answer": "Ein 50-Hz-Sinus besitzt in diesem passenden Zeitfenster einen Hauptanteil bei 50 Hz. Clipping verändert die Form und erzeugt zusätzliche Anteile. Für die eigene Summe müssen 50 Hz und 100 Hz an ihren Bins erscheinen; die Amplituden sollten den gesetzten Faktoren entsprechen.",
+  "quiz": {
+    "question": "Welche Frequenzschrittweite hat das Beispiel mit 1000 Hz und 200 Punkten?",
+    "options": [
+      "5 Hz",
+      "200 Hz",
+      "1000 Hz"
+    ],
+    "correct": 0,
+    "explanation": "Die Binbreite ist Abtastrate geteilt durch Punktzahl: 1000 / 200 = 5 Hz."
+  },
+  "needs": [
+    "lektion-4"
+  ],
+  "related": [
+    "aufgabe-9-3"
+  ],
+  "links": [
+    [
+      "NumPy: rfft",
+      "https://numpy.org/doc/stable/reference/generated/numpy.fft.rfft.html"
+    ],
+    [
+      "NumPy: rfftfreq",
+      "https://numpy.org/doc/stable/reference/generated/numpy.fft.rfftfreq.html"
+    ]
+  ]
+});
+
 for (const [index, lesson] of vorlesungen.entries()) {
   const sourceId = `kurs-${index + 1}`;
-  quellen[sourceId] = {title:`Vorlesung ${lesson.origin} · PDF-S. ${lesson.pages}`,href:`../Referenz/Vorlesungen/${lesson.sourceFile || `${lesson.origin}_Coding und Digitalisierung.pdf`}#page=${lesson.page}`};
+  quellen[sourceId] = {title:lesson.sourceTitle || `Vorlesung ${lesson.origin} · PDF-S. ${lesson.pages}`,href:lesson.sourceHref || `../Referenz/Vorlesungen/${lesson.sourceFile || `${lesson.origin}_Coding und Digitalisierung.pdf`}#page=${lesson.page}`};
   lesson.kind = "Vorlesung";
   lesson.explanation = lesson.goal;
   lesson.sources = [sourceId];
@@ -212,6 +275,9 @@ const befehlsKontexte = {
   repr:"Beliebiger Wert → Darstellung als str; mit print zur Diagnose vor float verwenden."
 };
 const weitereBefehle = [
+  ["np.fft.rfft()", "Reelle Messwerte in diskrete Frequenzanteile zerlegen.", 'import numpy as np\nprint(np.fft.rfft([1.0, 0.0, -1.0, 0.0]))', "Reelle Zahlenfolge; komplexe Koeffizienten. Für die Amplitude abs verwenden und die Skalierung der FFT-Lektion beachten.", "lektion-10"],
+  ["np.fft.rfftfreq()", "Die zur reellen FFT passende Frequenzachse erzeugen.", 'import numpy as np\nprint(np.fft.rfftfreq(4, d=0.25))', "N entspricht der Punktzahl; d ist der Abstand in Sekunden. Dann ist die Frequenz in Hz. Passt zu rfft.", "lektion-10"],
+  ["np.clip()", "Werte an eine untere und obere Grenze begrenzen.", 'import numpy as np\nprint(np.clip([-2.0, 0.0, 2.0], -0.75, 0.75))', "Zahlenarray; Clipping verändert die Signalform. Im Beispiel entstehen dadurch zusätzliche Frequenzanteile.", "lektion-10"],
   ["input()", "Fragt im Terminal nach einer Eingabe.", 'name = input("Dein Name? ")', "Liefert str; mit print, f-String und bei Zahlen mit float/int kombinieren.", "lektion-2"],
   ["type() / int() / str()", "Typ ansehen oder Werte ausdrücklich umwandeln.", 'print(type(3), int("4"), str(5))', "int braucht passenden Text; int(3.9) schneidet Richtung 0 ab. str erzeugt Text.", "lektion-2"],
   ["= / == / != / < / <= / > / >=", "Zuweisen und Vergleichen unterscheiden.", 'wert = 20\nprint(wert >= 10)', "= weist zu; Vergleiche liefern bool; zusammen mit if. Für Arrays entsteht eine Maske.", "lektion-2"],
@@ -248,15 +314,15 @@ const weitereBefehle = [
 // Aufgabeninventar des vorhandenen Übungsblatts; Erklärungen sind keine geführten Lösungen.
 const abdeckung = [
   {title:"1 · Einrichtung",page:5,tasks:["1.1","1.2","1.3"],lessons:["python-setup","vscode-setup","lektion-1"],gap:"Installation auf deinem Gerät selbst prüfen."},
-  {title:"2 · Variablen und Typen",page:6,tasks:["2.1","2.2","2.3"],lessons:["lektion-2"],gap:"Originalaufgaben selbst bearbeiten; keine gestuften Lösungen vorhanden."},
-  {title:"3 · Entscheidungen",page:7,tasks:["3.1","3.2","3.3"],lessons:["lektion-2","if"],gap:"Mehrere Bedingungen und ihre Grenzfälle an den Originalaufgaben üben."},
-  {title:"4 · Schleifen",page:8,tasks:["4.1","4.2","4.3"],lessons:["lektion-3","for"],gap:"while, break und continue brauchen zusätzliche eigene Ausführung an den Originalaufgaben."},
-  {title:"5 · Datenstrukturen",page:9,tasks:["5.1","5.2","5.3","5.4"],lessons:["lektion-3","liste"],gap:"Eine Liste von Dictionaries ist noch nicht als eigene geführte Aufgabe aufbereitet."},
+  {title:"2 · Variablen und Typen",page:6,tasks:["2.1","2.2","2.3"],lessons:["lektion-2"],gap:"Geführte Aufgaben 2.1–2.3 vorhanden; jeden Typ und die Umrechnung selbst testen."},
+  {title:"3 · Entscheidungen",page:7,tasks:["3.1","3.2","3.3"],lessons:["lektion-2","if"],gap:"Geführte Aufgaben 3.1–3.3 mit Grenztests vorhanden."},
+  {title:"4 · Schleifen",page:8,tasks:["4.1","4.2","4.3"],lessons:["lektion-3","for"],gap:"Geführte Aufgaben 4.1–4.3 mit geprüften Schleifenausgaben vorhanden."},
+  {title:"5 · Datenstrukturen",page:9,tasks:["5.1","5.2","5.3","5.4"],lessons:["lektion-3","liste"],gap:"Alle vier Aufgaben einschließlich Liste von Dictionaries sind geführt begleitet."},
   {title:"6 · CSV und Standard-Python",page:10,tasks:["6.1","6.2","6.3"],lessons:["aufgabe-6-1","aufgabe-6-2","aufgabe-6-3"],gap:"Geführte Lösungen vorhanden. CSV-Zuordnung, Sollzahlen und Filtergrenzen sind nicht vom Kurs bestätigt; 6.3 steht auf PDF-S. 11."},
-  {title:"7 · NumPy einführen",page:12,tasks:["7.1","7.2","7.3"],lessons:["lektion-4"],gap:"Array-Umwandlung und Vektorisierung erklärt; Originalaufgaben nicht geführt."},
-  {title:"8 · Masken und Statistik",page:13,tasks:["8.1","8.2","8.3"],lessons:["lektion-4"],gap:"Masken, Mittelwert, Median und Standardabweichung erklärt; Original-Sollausgaben sind nicht verbindlich bestätigt."},
-  {title:"9 · Matplotlib",page:14,tasks:["9.1","9.2","9.3"],lessons:["lektion-4"],gap:"Befehlsbeispiele vorhanden; Diagramme und Vorher-/Nachher-Vergleich noch selbst erstellen."},
-  {title:"10 · Seaborn und Report",page:15,tasks:["10.1","10.2","10.3"],lessons:["lektion-4"],gap:"Boxplot und Histogramm erklärt; der vollständige Originalreport hat noch keine geführte Lösung."}
+  {title:"7 · NumPy einführen",page:12,tasks:["7.1","7.2","7.3"],lessons:["lektion-4"],gap:"Geführte Aufgaben 7.1–7.3 vorhanden. Paketinstallation auf dem eigenen Gerät prüfen."},
+  {title:"8 · Masken und Statistik",page:13,tasks:["8.1","8.2","8.3"],lessons:["lektion-4"],gap:"Geführte Aufgaben 8.1–8.3 vorhanden. Die Originalmaske ist > 0 und <= 50; gedruckte Sollwerte passen nicht vollständig zur Zahlenliste."},
+  {title:"9 · Matplotlib",page:14,tasks:["9.1","9.2","9.3"],lessons:["lektion-4"],gap:"Geführte Aufgaben 9.1–9.3 und geprüfte Diagrammstruktur vorhanden; Anzeige auf deinem Gerät prüfen."},
+  {title:"10 · Seaborn und Report",page:15,tasks:["10.1","10.2","10.3"],lessons:["lektion-4"],gap:"Geführte Aufgaben 10.1–10.3 mit vollständigem Report vorhanden. CSV-Zuordnung bleibt beim Kurs zu klären."}
 ];
 
 quellen.praxis31 = {title:"Vorlesung 003 · PDF-S. 31 · Bezug für das eigene Transferprojekt",href:"../Referenz/Vorlesungen/003_Coding und Digitalisierung.pdf#page=31"};
@@ -302,4 +368,156 @@ class BeckenAnalyse:
 analyse = BeckenAnalyse("becken-mini.csv")
 analyse.aufbereiten_5min()
 analyse.zeige_report()`,explanation:"Die erste Maske erhält die Herkunft der Schätzungen. limit=1 begrenzt die Füllung je Lücke; limit_area='inside' verhindert das Verlängern an den Rändern. Bei verbleibenden Fehlwerten stoppt der Report. Für reale Prozessdaten müssen geeignete Zeitgrenzen, Qualitätsregeln und Einheiten fachlich festgelegt werden."}
+});
+
+// Original-Live-Übungen: synthetische Funktionstests sind kein Originaldatennachweis.
+Object.assign(quellen,{
+  "live-quelle-10": {
+    "title": "Vorlesung 003 · PDF-S. 10 · Live-Übung",
+    "href": "../Referenz/Vorlesungen/003_Coding und Digitalisierung.pdf#page=10"
+  },
+  "live-quelle-18": {
+    "title": "Vorlesung 003 · PDF-S. 18 · Live-Übung",
+    "href": "../Referenz/Vorlesungen/003_Coding und Digitalisierung.pdf#page=18"
+  },
+  "live-quelle-26": {
+    "title": "Vorlesung 003 · PDF-S. 26 · Live-Übung",
+    "href": "../Referenz/Vorlesungen/003_Coding und Digitalisierung.pdf#page=26"
+  },
+  "live-quelle-31": {
+    "title": "Vorlesung 003 · PDF-S. 31 · Live-Übung",
+    "href": "../Referenz/Vorlesungen/003_Coding und Digitalisierung.pdf#page=31"
+  }
+});
+inhalte.push(...[
+  {
+    "id": "live-003-10",
+    "kind": "Arbeitsablauf",
+    "topic": "Live-Übungen",
+    "title": "003 · PDF-S. 10 · Sicheren Mittelwert als Funktion",
+    "aliases": [
+      "Zwischenübung 1",
+      "Sicheren Mittelwert als Funktion"
+    ],
+    "summary": "Verarbeite Zahlentexte, warne bei Fehlertexten und behandle den Leerfall.",
+    "explanation": "Selbst verfasste Begleitung zur Original-Live-Übung aus Vorlesung 003.",
+    "needs": [
+      "lektion-5"
+    ],
+    "sources": [
+      "live-quelle-10"
+    ],
+    "steps": [
+      "Schreibe berechne_sicheren_mittelwert(roh_liste).",
+      "Wandle jeden Text mit float in einem try/except-Block um.",
+      "Ignoriere fehlerhafte Texte mit Warnung; prüfe zusätzlich NaN und Unendlich.",
+      "Gib den Mittelwert zurück; bei keiner gültigen Zahl None statt eines erfundenen Messwerts."
+    ],
+    "hints": [
+      "Fange konkret ValueError ab.",
+      "NaN und inf sind gültige float-Texte, aber keine endlichen Messungen."
+    ],
+    "checks": [
+      "Der Folienstream ergibt 4.3.",
+      "Leere Liste, nur Fehlertexte, nan und inf führen zu None."
+    ],
+    "notice": "Der Leerfall wird bewusst anders als im Folienvorschlag behandelt.",
+    "solution": {
+      "intro": "Eigene geprüfte Musterlösung; Originaldaten niemals mit synthetischen Daten gleichen Namens ersetzen.",
+      "code": "import math\n\ndef berechne_sicheren_mittelwert(roh_liste):\n    saubere_werte = []\n    for eintrag in roh_liste:\n        try:\n            wert = float(eintrag)\n        except ValueError:\n            print(f'Warnung: Ignoriere \"{eintrag}\"')\n            continue\n        if not math.isfinite(wert):\n            print(f'Warnung: Kein endlicher Messwert \"{eintrag}\"')\n            continue\n        saubere_werte.append(wert)\n    if not saubere_werte:\n        return None\n    return round(sum(saubere_werte) / len(saubere_werte), 2)\n\nif __name__ == \"__main__\":\n    stream = ['4.2', '4.5', 'Error', '4.1', 'TIMEOUT', '4.4']\n    print(\"Sicherer Mittelwert:\", berechne_sicheren_mittelwert(stream))",
+      "explanation": "Eigene abgesicherte Lösung: Anders als der Folienvorschlag liefert der Leerfall None statt 0.0, damit fehlende Messungen nicht wie gemessene Nullen aussehen."
+    }
+  },
+  {
+    "id": "live-003-18",
+    "kind": "Arbeitsablauf",
+    "topic": "Live-Übungen",
+    "title": "003 · PDF-S. 18 · Pandas: Import und kritische Messpunkte",
+    "aliases": [
+      "Zwischenübung 2",
+      "Pandas: Import und kritische Messpunkte"
+    ],
+    "summary": "Sichte eine CSV, berechne die Temperatur und zähle o2_ist unter 0.5 mg/L.",
+    "explanation": "Selbst verfasste Begleitung zur Original-Live-Übung aus Vorlesung 003.",
+    "needs": [
+      "lektion-6"
+    ],
+    "sources": [
+      "live-quelle-18"
+    ],
+    "steps": [
+      "Beschaffe die Originaldatei bb12024.csv beim Kurs. Prüfe Header und Trennzeichen.",
+      "Lade die Datei und zeige head(3) und info().",
+      "Berechne den Mittelwert von temp_c und filtere o2_ist < 0.5.",
+      "Vergleiche Ergebnisse erst, wenn der Originaldatensatz vorliegt."
+    ],
+    "hints": [
+      "0.5 ist nicht kleiner als 0.5.",
+      "mean ignoriert NaN; prüfe trotzdem, ob überhaupt ein gültiger Wert vorhanden ist."
+    ],
+    "checks": [
+      "Mit drei eigenen Zeilen um die Grenze 0.5 prüfst du den Vergleich.",
+      "Leere Daten und fehlende Spalten dürfen keine scheinbar vollständige Auswertung liefern."
+    ],
+    "notice": "Originaldatei bb12024.csv fehlt. Der folgende Code ist mit getrennten synthetischen Prüfdaten getestet; Originalergebnisse sind nicht nachgewiesen.",
+    "solution": {
+      "intro": "Eigene geprüfte Musterlösung; Originaldaten niemals mit synthetischen Daten gleichen Namens ersetzen.",
+      "code": "import pandas as pd\n\ndef auswerten(pfad):\n    df = pd.read_csv(pfad)\n    if df.empty:\n        raise ValueError(\"Keine Messzeilen.\")\n    print(df.head(3))\n    df.info()\n    mittel_temp = df[\"temp_c\"].mean()\n    if pd.isna(mittel_temp):\n        raise ValueError(\"Keine gültigen Temperaturwerte.\")\n    kritisch = df[df[\"o2_ist\"] < 0.5]\n    print(f\"Mittlere Temperatur: {mittel_temp:.2f} °C\")\n    print(f\"Anzahl kritischer Messpunkte: {len(kritisch)}\")\n    return df, kritisch, mittel_temp\n\nif __name__ == \"__main__\":\n    auswerten(\"bb12024.csv\")",
+      "explanation": "Die Funktion nimmt den Pfad als Parameter an. Die technische Prüfung verwendet eine ausdrücklich synthetische CSV; die Folienwerte 15.62 und 1420 sind ohne Originaldaten nicht bestätigt."
+    }
+  },
+  {
+    "id": "live-003-26",
+    "kind": "Arbeitsablauf",
+    "topic": "Live-Übungen",
+    "title": "003 · PDF-S. 26 · Zeitreihe auf fünf Minuten resamplen",
+    "aliases": [
+      "Zwischenübung 3",
+      "Zeitreihe auf fünf Minuten resamplen"
+    ],
+    "summary": "Baue die Pipeline aus Import, Zeitindex, Fünf-Minuten-Mittel und begrenzter Interpolation.",
+    "explanation": "Selbst verfasste Begleitung zur Original-Live-Übung aus Vorlesung 003.",
+    "needs": [
+      "lektion-7",
+      "lektion-8"
+    ],
+    "sources": [
+      "live-quelle-26"
+    ],
+    "steps": [
+      "Lade die CSV mit pd.read_csv.",
+      "Wandle zeit um, setze den Index und sortiere chronologisch.",
+      "Wähle die vier fachlichen Zahlenspalten und bilde resample(\"5min\").mean().",
+      "Fülle höchstens einen inneren Rasterwert pro Lücke. Stoppe bei Restlücken und untersuche ihre Ursache."
+    ],
+    "hints": [
+      "Ein sortierter DatetimeIndex ist die Zeitbasis.",
+      "Interpolation erzeugt Schätzungen; eine zeitbezogene Methode ist für das gleichmäßige Raster verständlich."
+    ],
+    "checks": [
+      "08:01 und 08:04 gehören zum Abschnitt 08:00.",
+      "Unlesbare Zeiten und Restlücken lösen einen sichtbaren Fehler aus."
+    ],
+    "notice": "Originaldatei bb12024.csv fehlt. Der folgende Code ist mit getrennten synthetischen Prüfdaten getestet; Originalergebnisse sind nicht nachgewiesen.",
+    "solution": {
+      "intro": "Eigene geprüfte Musterlösung; Originaldaten niemals mit synthetischen Daten gleichen Namens ersetzen.",
+      "code": "import pandas as pd\n\ndef lade_und_resample(dateipfad):\n    df = pd.read_csv(dateipfad)\n    if df.empty:\n        raise ValueError(\"Keine Messzeilen.\")\n    df[\"zeit\"] = pd.to_datetime(df[\"zeit\"])\n    daten = df.set_index(\"zeit\").sort_index()[[\"o2_ist\", \"o2_soll\", \"nh4_mg_l\", \"temp_c\"]]\n    raster = daten.resample(\"5min\").mean()\n    gefuellt = raster.interpolate(method=\"time\", limit=1, limit_area=\"inside\")\n    if gefuellt.isna().any().any():\n        raise ValueError(\"Restlücken: Daten prüfen statt beliebig weiter interpolieren.\")\n    return gefuellt\n\nif __name__ == \"__main__\":\n    print(lade_und_resample(\"bb12024.csv\").head(4).round(2))",
+      "explanation": "Eigene abgesicherte Anpassung des Folienwegs: limit=1 und limit_area=\"inside\" vermeiden unbegrenztes Füllen. Das ist eine didaktische Annahme, keine fachliche Freigabe realer Prozessdaten."
+    }
+  }
+]);
+const liveKlasse = inhalte.find(item => item.id === "praxis-zeitreihe");
+inhalte.push({
+  ...liveKlasse, id:"live-003-31",topic:"Live-Übungen",title:"003 · PDF-S. 31 · BeckenAnalyse als Klasse",
+  aliases:["Abschlussübung","Original BeckenAnalyse","bb12024.csv"],sources:["live-quelle-31"],
+  summary:"Kapsle den Originaldateipfad, die Fünf-Minuten-Aufbereitung und den Report in einer eigenen Klasse.",
+  explanation:"Selbst verfasste Begleitung zur Original-Abschlussübung auf PDF-S. 31. Die Schritte folgen dem eigenen Mini-Projekt; der Originalaufruf benötigt bb12024.csv aus dem Kurs.",
+  download:undefined,
+  notice:"bb12024.csv fehlt. Keine Originalergebnisse bestätigt. Die Klasse ist mit getrennten synthetischen Prüfdaten und Fehlerfällen geprüft. Die Interpolationsgrenze bleibt eine didaktische Annahme.",
+  steps:["Beschaffe bb12024.csv beim Kurs und prüfe zeit, o2_ist und temp_c.","Schreibe __init__: Pfad speichern und self.df = None setzen.","Implementiere Import, Zeitindex, Fünf-Minuten-Mittel und begrenzte innere Interpolation in aufbereiten_5min.","Implementiere zeige_report mit Prüfung auf fehlende Aufbereitung, leere Daten und Restlücken.","Teste zwei getrennte Instanzen. Führe das Hauptprogramm erst mit der tatsächlich vorliegenden Originaldatei aus."],
+  solution:{...liveKlasse.solution,
+    intro:"Eigene abgesicherte Musterlösung zur Originalübung. Ohne Originaldatei läuft nur der ausdrücklich getrennte synthetische Prüffall.",
+    code:liveKlasse.solution.code.split('analyse = BeckenAnalyse')[0] + 'if __name__ == "__main__":\n    analyse = BeckenAnalyse("bb12024.csv")\n    analyse.aufbereiten_5min()\n    analyse.zeige_report()',
+    explanation:"Die Klasse folgt dem Originalauftrag. Die zusätzliche Schätzmaske, limit=1 und Restlückenprüfung legen die Arbeitsannahmen offen. Die gedruckten Originalkennzahlen sind ohne bb12024.csv nicht reproduzierbar."
+  }
 });

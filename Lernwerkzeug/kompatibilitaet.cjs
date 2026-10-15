@@ -8,8 +8,10 @@ const http = require("node:http");
 const {once} = require("node:events");
 const output = path.join(__dirname,"pruefung");
 fs.mkdirSync(output,{recursive:true});
-process.env.TEMP = output;
-process.env.TMP = output;
+const temporary = path.join(__dirname,"../.upload-work/browser-temp");
+fs.mkdirSync(temporary,{recursive:true});
+process.env.TEMP = temporary;
+process.env.TMP = temporary;
 const cache = path.join(os.homedir(),"AppData/Local/ms-playwright");
 if (!process.env.PLAYWRIGHT_BROWSERS_PATH && fs.existsSync(cache)) process.env.PLAYWRIGHT_BROWSERS_PATH = cache;
 const result = {date:new Date().toISOString(),status:"RUNNING",host:process.platform,engines:[]};
@@ -60,7 +62,10 @@ async function main() {
       await page.locator(".welcome-hero").waitFor();
       const routes = await page.evaluate(() => ["start","vorlesungen","uebung","befehle","lernkonzept","abdeckung",...inhalte.map(item => item.id)]);
       async function go(id) {
+        // Auch den Abschluss der Hash-Navigation abwarten, bevor WebKit die nächste startet.
+        const navigation = page.waitForURL(`${url}#${id}`);
         await page.evaluate(id => { location.hash = id; },id);
+        await navigation;
         await page.waitForFunction(id => {
           const title = byId.get(id)?.title || {start:"Dein erster Schritt ins Programmieren.",vorlesungen:"Eine Idee nach der anderen.",uebung:"Deine Übung: Messdaten verstehen.",befehle:"Welcher Befehl passt wozu?",lernkonzept:"So lernst du hier programmieren.",abdeckung:"Was ist bereits abgedeckt?"}[id];
           return document.querySelector("#inhalt h1")?.textContent === title;
@@ -70,6 +75,8 @@ async function main() {
         });
       }
       for (const [width,height] of profiles) {
+        // Jede Größe startet frisch, damit WebKits Navigationlimit die Matrix nicht drosselt.
+        await page.reload();
         await page.setViewportSize({width,height});
         for (const id of routes) {
           await go(id);

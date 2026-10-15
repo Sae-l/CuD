@@ -49,7 +49,7 @@ Verwende den bestehenden Aufbau von `aufgabe-6-1` als Vorlage in `inhalte.js`: s
 
 Ergänze die Aufgabennummer und passende Lerntexte im Array `abdeckung`. Für ein anderes Übungsblatt kann eine Zeile `sourceFile` auf die entsprechende Datei in `Referenz/Pflicht Übungen/` setzen. Der Abdeckungsplan berechnet die Zahl geführter Aufgaben anhand der vorhandenen Übungsobjekte. Aufgabennummern aus verschiedenen Blättern sollten unterschiedliche IDs und eine eindeutige Quellenzuordnung erhalten; das aktuelle Zählen nach Nummer muss bei sich wiederholenden Nummern erweitert werden.
 
-Die Python-Prüfung führt ausschließlich die drei in `pipelineIds` benannten CSV-Übungen als zusammenhängende Pipeline aus. **Neue, unabhängige Originalübungen brauchen einen eigenen Prüffall.** Ergänze erst diesen Prüffall mit unabhängigen Erwartungen, dann die ID unter `testedSolutions`. Ein Lösungsobjekt ohne diese Zuordnung lässt die Prüfung scheitern. Die automatischen Prüfungen sind erweiterbar, aber nicht inhaltsunabhängig: Dateiformate, erwartete Resultate und Randfälle erfordern passende Tests.
+Die Python-Prüfung führt ausschließlich die drei in `pipelineIds` benannten CSV-Übungen als zusammenhängende Pipeline aus. **Neue, unabhängige Originalübungen brauchen einen eigenen Prüffall.** Ergänze zuerst einen unabhängigen Prüffall in `scripts/uebungen_pruefen.py` oder der bestehenden Python-Prüfung und dann die ID unter `testedSolutions`. Aufgaben des inventarisierten Übungsblatts werden dort aus den Originalnummern abgeleitet; die Tests verlangen weiterhin eine tatsächlich vorhandene Lösung für jede Nummer. Ein Lösungsobjekt ohne diese Zuordnung lässt die Prüfung scheitern. Die automatischen Prüfungen sind erweiterbar, aber nicht inhaltsunabhängig: Dateiformate, erwartete Resultate und Randfälle erfordern passende Tests.
 
 ## Ein eigenes Praxisprojekt ergänzen
 
@@ -63,3 +63,5 @@ Das neue `praxis-zeitreihe` zeigt die vorhandene Darstellung von Arbeitsabläufe
 - Fremde Kursrechte und echte Gerätebedienung prüfen, bevor daraus weitergehende Freigaben abgeleitet werden.
 
 Es braucht für die vorhandene Größenordnung kein neues Framework, Backend oder Konto. Wenn irgendwann mehrere Kurse unterschiedliche Nummernkreise, Lernstände oder Rollen teilen sollen, ist ein übergreifender Kurskatalog eine neue Anforderung; er wird hier nicht vorweggenommen.
+
+Für Begleitcode ohne PDF kann eine Lektion `sourceHref` und `sourceTitle` setzen; sie umgehen die sonst abgeleitete PDF-Adresse. Lektion 10 verwendet diesen Weg für die unveränderte FFT-Datei. Die vollständige Liste der Quellen und ihre Aussagegrenzen stehen im Abdeckungsplan.

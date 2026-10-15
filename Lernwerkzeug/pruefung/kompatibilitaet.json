@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-15T12:18:54.936Z",
+  "date": "2026-10-15T13:38:12.081Z",
   "status": "PASS",
   "host": "win32",
   "engines": [
@@ -11,43 +11,43 @@
         {
           "width": 320,
           "height": 740,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 390,
           "height": 844,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 768,
           "height": 1024,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 1024,
           "height": 768,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 844,
           "height": 390,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 1280,
           "height": 800,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 1440,
           "height": 1000,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         }
       ],
@@ -66,43 +66,43 @@
         {
           "width": 320,
           "height": 740,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 390,
           "height": 844,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 768,
           "height": 1024,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 1024,
           "height": 768,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 844,
           "height": 390,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 1280,
           "height": 800,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 1440,
           "height": 1000,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         }
       ],
@@ -121,43 +121,43 @@
         {
           "width": 320,
           "height": 740,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 390,
           "height": 844,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 768,
           "height": 1024,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 1024,
           "height": 768,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 844,
           "height": 390,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 1280,
           "height": 800,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         },
         {
           "width": 1440,
           "height": 1000,
-          "views": 43,
+          "views": 76,
           "status": "PASS"
         }
       ],

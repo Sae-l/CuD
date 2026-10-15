@@ -1,11 +1,19 @@
 {
   "name": "cud-1-lernwerkzeug",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Lokaler Lernraum für Coding und Digitalisierung",
   "scripts": {
     "test": "node Lernwerkzeug/pruefen.cjs && node Lernwerkzeug/kompatibilitaet.cjs"
   },
-  "engines": { "node": ">=20" },
-  "devDependencies": { "playwright": "1.62.1" }
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sae-l/CuD-1.git"
+  }
 }

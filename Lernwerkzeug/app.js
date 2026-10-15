@@ -182,7 +182,7 @@ function renderItem(item) {
     download.download = item.download[1].split("/").pop();
     article.append(download);
   }
-  if (item.kind === "Übung") {
+  if (item.kind === "Übung" && item.sources.includes("csv")) {
     const note = el("p");
     const link = el("a","CSV für deinen Übungsordner speichern");
     link.href = quellen.csv.href;
@@ -325,7 +325,7 @@ function renderLectures() {
     const li = el("li");
     const link = actionLink("",`#${lesson.id}`,"course-link");
     const text = el("div");
-    text.append(el("small",`Vorlesung ${lesson.origin} · PDF-S. ${lesson.pages}`),el("h2",lesson.title),el("p",lesson.summary));
+    text.append(el("small",lesson.sourceTitle || `Vorlesung ${lesson.origin} · PDF-S. ${lesson.pages}`),el("h2",lesson.title),el("p",lesson.summary));
     if (completed.has(lesson.id)) text.append(el("strong","Als bearbeitet markiert","completion-status"));
     link.append(el("span",String(index + 1).padStart(2,"0"),"lesson-number"),text); li.append(link); list.append(li);
   }
@@ -333,7 +333,7 @@ function renderLectures() {
   article.append(actionLink("Jetzt das eigene Mini-Projekt bearbeiten","#praxis-zeitreihe","primary-link"),el("p","Die Lerntexte sind eine Begleitung. Prüfe im Abdeckungsplan, welche Originalaufgaben noch selbst zu bearbeiten sind."),actionLink("Abdeckungsplan öffnen","#abdeckung"));
   section("Deine vollständigen Vorlesungsunterlagen");
   article.append(el("p","Die Lerntexte fassen die fachlichen Themen zusammen. Organisation, Prüfungsinformationen und die vollständigen Originalbeispiele findest du in den PDFs. Die beiden Analyse-PDFs enthalten denselben Inhalt und werden hier einmal geführt."));
-  const originals = new Map(vorlesungen.map(lesson => [quellen[lesson.sources[0]].href.split("#")[0],`Vorlesung ${lesson.origin} · vollständiges PDF`]));
+  const originals = new Map(vorlesungen.map(lesson => [quellen[lesson.sources[0]].href.split("#")[0],lesson.sourceTitle || `Vorlesung ${lesson.origin} · vollständiges PDF`]));
   originals.set(quellen.analyse.href.split("#")[0],"Analysebeispiel · vollständiges PDF");
   for (const [href,title] of originals) {
     const p = el("p"); p.append(actionLink(title,href)); article.append(p);
@@ -355,7 +355,10 @@ function renderCoverage() {
     article.append(detail);
   }
   section("Vorlesungen und weitere Referenzdateien");
-  article.append(el("p","Die Themen aus Vorlesung 001–003 sind kompakt aufbereitet. Die vier Live-Übungen aus 003 (PDF-S. 10, 18, 26 und 31) sind damit nicht vollständig als Originalaufgaben begleitet. bb12024.csv fehlt. Das eigene Transferprojekt übt das Zusammenspiel mit Mini-Daten; es bestätigt keine Ergebnisse dieses fehlenden Datensatzes."),actionLink("Eigenes Transferprojekt öffnen","#praxis-zeitreihe","primary-link"),el("p","Das Analysebeispiel (beide bytegleichen PDFs) hat Bezüge in Lektion 4. Der FFT-Code in 002_fftpy.sec wird hier noch nicht gelehrt. Organisation, Termine und Prüfungsregeln bleiben in den Originalunterlagen; die Lerntexte ersetzen sie nicht."),actionLink("Ausführlicher Abgleich und Ausbauweg","ABDECKUNG.md"));
+  article.append(el("p","Vorlesungen 001–003 und die FFT-Einführung sind als Lerntexte aufbereitet. Alle vier Live-Übungen haben Schritte, Hinweise und Musterlösungen. bb12024.csv fehlt weiterhin; drei Live-Lösungen sind deshalb nur mit getrennten synthetischen Daten getestet. Organisation, Termine und Prüfungsregeln bleiben in den Originalunterlagen."));
+  itemLinks("Live-Übungen aus Vorlesung 003",["live-003-10","live-003-18","live-003-26","live-003-31"]);
+  itemLinks("Weiter üben",["lektion-10","praxis-zeitreihe"]);
+  article.append(actionLink("Ausführlicher Abgleich und Grenzen","ABDECKUNG.md"));
 }
 
 function renderExercise() {
@@ -364,7 +367,12 @@ function renderExercise() {
   itemLinks("Deine drei Schritte",["aufgabe-6-1","aufgabe-6-2","aufgabe-6-3"]);
   itemLinks("Noch ganz am Anfang?",["python-setup","vscode-setup","lektion-1","lektion-2","lektion-3"]);
   textList("So nutzt du die Begleitung",["Lies das Ziel und öffne die benötigten Befehle.","Arbeite einen Schritt ab und führe deinen Code selbst aus.","Öffne bei Bedarf zuerst Hinweis 1, dann den nächsten Hinweis.","Prüfe das Ergebnis. Die erklärte Musterlösung kannst du getrennt öffnen.","Schließe die Lösung und schreibe den Ablauf mit eigenen Worten auf."],true);
-  article.append(el("div","Dieser Zugang führt zum vorhandenen Block 6.1–6.3. Weitere Originalaufgaben und die Zwischenübungen aus Vorlesung 003 sind noch nicht vollständig als Schritt-für-Schritt-Lösungen aufbereitet. Die fehlende bb12024.csv wird durch die Mini-Daten in den Lektionen nicht ersetzt.","notice"));
+  section("Alle Aufgaben des Übungsskripts");
+  for (const row of abdeckung) {
+    itemLinks(row.title,row.tasks.map(number => `aufgabe-${number.replace(".","-")}`));
+  }
+  itemLinks("Live-Übungen aus Vorlesung 003",["live-003-10","live-003-18","live-003-26","live-003-31"]);
+  article.append(el("div","Alle 31 Aufgaben des vorhandenen Übungsskripts sind begleitet. Die fehlende bb12024.csv bleibt für Originalergebnisse der Live-Übungen erforderlich; synthetische Prüfdaten ersetzen sie nicht.","notice"));
 }
 
 function renderCommands() {

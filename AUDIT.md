@@ -1,6 +1,6 @@
 # Review und Verbesserungen
 
-Aktueller Schwerpunkt: Lernbegleitung und Erweiterbarkeit nach v0.1.0, siehe **Nachprüfung: Lernen, Abdeckung und Erweiterbarkeit** am Ende. Die folgenden bisherigen Abschnitte dokumentieren die erste Auditphase und deren damalige Git-Übernahme.
+Aktueller Stand: Version 0.2.0 mit 31 Aufgabenbegleitungen, vier Live-Übungen, FFT und automatischer Projektprüfung; siehe **Abschlusskorrektur 0.2.0** am Ende. Die folgenden bisherigen Abschnitte dokumentieren die erste Auditphase und deren damalige Git-Übernahme.
 
 Stand: 15.10.2026. Geprüft und lokal umgesetzt im vorhandenen Lernwerkzeug. Die acht Originaldateien in `Referenz/` bleiben bytegleich. Die Auditphase erfolgte in einer Arbeitsablage ohne `.git`-Verzeichnis; Commit, Push und Pull Request sind eine nachfolgende, gesondert beauftragte Übernahme.
 
@@ -82,3 +82,19 @@ Der leere Platzhalter `Test/Test` wurde entfernt. Die tatsächlichen Prüfungen 
 Aktuelle Nachweise: [ergebnis.json](Lernwerkzeug/pruefung/ergebnis.json), [kompatibilitaet.json](Lernwerkzeug/pruefung/kompatibilitaet.json), [erweiterung.json](Lernwerkzeug/pruefung/erweiterung.json) und [Prüfbericht](Lernwerkzeug/pruefung/PRUEFBERICHT.md). Die fiktive Prüfetappe liegt ausschließlich in einer ausgeschlossenen lokalen Kopie und wird nicht als neue Vorlesung ausgeliefert. Die ursprünglichen Prüfer-Fehlerpfadnachweise dokumentieren weiterhin den vorherigen Auditstand.
 
 Erweiterbarkeit ist damit für neue Vorlesungsetappen praktisch nachgewiesen. Neue unabhängige Aufgaben benötigen weiterhin fachlich passende Prüffälle und Quellenabgleich; bei wiederholten Aufgabennummern in verschiedenen Blättern muss die Zuordnung im Abdeckungsplan erweitert werden. [Erweiterungsvertrag und Grenzen](Lernwerkzeug/ERWEITERN.md). Der veröffentlichte Release bleibt unverändert; Lernnutzen und echte Geräte-/Screenreader-Abnahme bleiben offen.
+
+## Abschlusskorrektur 0.2.0
+
+Alle 31 Aufgaben des vorhandenen Übungsskripts erhalten konkrete Schritte, gestufte Hinweise, Checks und getrennte Musterlösungen. Die 28 neuen Lösungen sind mit unabhängigen Erwartungen geprüft; bestehende CSV-Lösungen bleiben in ihrer eigenen Pipeline. Ein erneuter Ordneraufbau erhält vorhandene main.py-Inhalte. Die frühen Bedingungsaufgaben verwenden bewusst noch keine Funktionen.
+
+Vier Original-Live-Übungen sind begleitet. Die Originaldaten bb12024.csv fehlen weiterhin; die Tests verwenden getrennt benannte synthetische Dateien. Die sichere Mittelwertfunktion kennzeichnet den Leerfall mit None; Zeitreihen und Klassenreport begrenzen die Interpolation und lehnen Restlücken ab. Die zehnte Lektion erklärt FFT am eigenen deterministischen 50-Hz-Beispiel mit echtem Clipping; der widersprüchliche Originalcode bleibt unverändert.
+
+Aufgaben-PDF-S. 5–15 und Vorlesung-003-PDF-S. 10, 18, 26, 31 wurden am gerenderten Original abgeglichen. Keine vollständige visuelle Abnahme aller Folien behauptet. Alle acht Originalhashes sind unverändert. Unterschiedliche Nullgrenzen, CSV-Dateinamen und widersprüchliche Sollzahlen bleiben sichtbar dokumentiert.
+
+76 Ansichten, zehn Lernfragen und 49 Befehlsgruppen. Die Browsermatrix prüft 1596 Kombinationen aus Ansicht, Größe und Engine. Die Laufzeitversionen sind festgelegt, Testabhängigkeiten einschließlich transitiver Python-Pakete versioniert. Browserprofile wurden in den ausgeschlossenen Arbeitsordner verlegt. Der erste Firefox-Lauf in der Sandbox scheiterte am Benutzer-Registryzugriff; der anschließende vollständige Lauf nutzt normale temporäre Profile außerhalb der Sandbox. Schutzrichtlinien wurden nicht geändert.
+
+GitHub-Konfiguration: geschützter main mit Windows-/Linux-Prüfung, minimale Workflow-Rechte, offizielle SHA-gepinnte Actions, Sicherheitswarnungen und Dependabot, Branchpflege sowie reproduzierbarer privater Release. [Einstellungen und Grenzen](REPOSITORY_SETTINGS.md). Das Release-ZIP wird aus dem Manifest aufgebaut und für jeden Eintrag bytegenau geprüft; Unit-Tests prüfen Wiederholbarkeit, Cache-/Geheimnisausschluss und Ablehnung ungeprüfter Änderungen.
+
+Aktuelle Nachweise: [Prüfbericht](Lernwerkzeug/pruefung/PRUEFBERICHT.md), ergebnis.json und kompatibilitaet.json. Alte Erweiterungs- und Fehlerpfadberichte dokumentieren ihren damaligen Stand. Echte Geräte, Screenreader, Anfänger-Gebrauchstest und Originaldatenprüfung bleiben offen.
+
+Die Linux-CI-Matrix erreichte nach mehr als zwei schnell durchlaufenen Größen WebKits Navigationslimit. Die Matrix wartet nun auf den bestätigten Hash-Wechsel und lädt vor jeder Größe eine frische Dokumentinstanz. Damit bleiben sämtliche Ansichten, Größen, Fokus- und Verlaufstests erhalten; kein Browserschutz wird deaktiviert. Hintergrund: [WebKit-Navigationslimit](https://github.com/WebKit/WebKit/pull/53798). Die Browserinstallation lädt nur die verwendete Chromium-Headless-Shell sowie Firefox und WebKit. Neue Originalaufgaben werden nur akzeptiert, wenn die unabhängige Prüffallliste sie ausdrücklich abdeckt.
