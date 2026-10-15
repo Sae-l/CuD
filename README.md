@@ -6,7 +6,7 @@ Ein lokales Lernwerkzeug für Studierende im Kurs **Coding und Digitalisierung**
 
 ## In drei Schritten starten
 
-1. Lade das **gesamte Repository** über **Code → Download ZIP** herunter und entpacke es. Alternativ: `git clone https://github.com/Sae-l/CuD-1.git`.
+1. Lade im [Release v0.1.0](https://github.com/Sae-l/CuD-1/releases/tag/v0.1.0) **CuD-1-v0.1.0.zip** herunter und entpacke es. Das ZIP enthält den gesamten Projektordner; `SHA256SUMS` enthält seine Prüfsumme. Alternativ: **Code → Download ZIP** oder `git clone https://github.com/Sae-l/CuD-1.git`.
 2. Öffne [Lernwerkzeug/index.html](Lernwerkzeug/index.html) aus dem entpackten Ordner im Browser. Die GitHub-Dateiansicht zeigt nur den Quelltext.
 3. Wähle **Lernweg beginnen**, richte deine Python-Umgebung ein und beginne mit der ersten Vorlesung. **Aktuelle Übung** führt direkt zu Aufgaben 6.1–6.3.
 

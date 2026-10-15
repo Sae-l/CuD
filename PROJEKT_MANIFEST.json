@@ -186,9 +186,9 @@
     },
     {
       "path": "README.md",
-      "bytes": 4789,
-      "sha256": "8f3769aa99f7b4b56063149b0ed8161fdd08458d4d8146e17514d74d8ae090f9",
-      "git_blob_sha1": "3721d5ea5dc67bdc4376a4d119acd7266876ae2e"
+      "bytes": 4939,
+      "sha256": "69f3df444819e3ac4fead5719849358146cf3a5fec7558136ac09f49357d979e",
+      "git_blob_sha1": "13facbefe4dad48d9d687f2f18833a01299a19f7"
     },
     {
       "path": "Referenz/Code/002_fftpy.sec",
@@ -427,14 +427,14 @@
     {
       "path": "package-lock.json",
       "bytes": 1796,
-      "sha256": "d19d8ae6df768985fb7afaa6a796bfc4ac13bc5f0318a5fbdea5fa2c251972eb",
-      "git_blob_sha1": "f51f331b9380f4459408a3c3e9060388d7e62479"
+      "sha256": "ebc5b6dbdf65305840c6c723605724c078e74b7bb56aeec7c33a1d9e70356e89",
+      "git_blob_sha1": "8d822706a9c4d1fa0ad91f8edb206479ca6b852c"
     },
     {
       "path": "package.json",
       "bytes": 332,
-      "sha256": "3c334155c0e82b548a7768efa4c3002d94c5d07ef5de408953dcbd90ba82e3db",
-      "git_blob_sha1": "e66bc460f52bb869519a285f424467caf79f3401"
+      "sha256": "1880ecf491d9a634356f7a8b5333bbd392047e07c77e525c476b7e9d8af9ddbf",
+      "git_blob_sha1": "648bb2f22a4ccf0949b64e38f8a26900ae6f0995"
     },
     {
       "path": "requirements-test.txt",
