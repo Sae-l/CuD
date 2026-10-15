@@ -15,6 +15,7 @@ def pruefe(items, csv_text, output):
     scopes, outputs = {}, {}
     numbers = [f"{module}.{task}" for module, count in [(1, 3), (2, 3), (3, 3), (4, 3), (5, 4), (7, 3), (8, 3), (9, 3), (10, 3)] for task in range(1, count + 1)]
     by_id = {item['id']: item for item in items}
+    assert {item['id'] for item in items if item['kind'] == 'Übung'} == {'aufgabe-' + number.replace('.', '-') for number in numbers + ['6.1', '6.2', '6.3']}, 'Neue Originalaufgabe braucht einen eigenen Prüffall.'
     Path('messdaten.csv').write_text(csv_text, encoding='utf-8')
     for number in numbers:
         item = by_id['aufgabe-' + number.replace('.', '-')]

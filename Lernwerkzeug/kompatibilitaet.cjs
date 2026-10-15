@@ -75,6 +75,8 @@ async function main() {
         });
       }
       for (const [width,height] of profiles) {
+        // Jede Größe startet frisch, damit WebKits Navigationlimit die Matrix nicht drosselt.
+        await page.reload();
         await page.setViewportSize({width,height});
         for (const id of routes) {
           await go(id);

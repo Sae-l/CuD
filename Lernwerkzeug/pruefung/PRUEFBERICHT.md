@@ -30,4 +30,4 @@ bb12024.csv fehlt. Drei Live-Lösungen sind mit getrennten synthetischen Daten g
 
 Installationsaufgaben prüfen Kontrollprogramme, keine universelle Geräteinstallation. Technische Tests und eigene Bearbeitungsmarken belegen weder Lernerfolg noch vollständige Prüfungsvorbereitung. Echte Geräte, Safari auf Apple-Hardware, Screenreader und vollständige visuelle Folienprüfung bleiben offen. [Abdeckungsplan](../ABDECKUNG.md).
 
-CI-Ergänzung: Die erste Linux-Matrix meldete einen Navigations-Timeout in WebKit. Der Testhelfer wartet jetzt ausdrücklich auf den bestätigten Hash-URL-Wechsel und danach auf den passenden Seitentitel. Ein Erfolg gilt nur für den anschließenden Lauf am korrigierten Commit.
+CI-Ergänzung: Linux-WebKit erreichte bei den schnellen Hash-Wechseln das Navigationslimit. Jede Bildschirmgröße startet nun mit einer frischen Dokumentinstanz; der Helfer wartet außerdem auf URL und Titel. Alle Ansichten, Fokus- und Verlaufstests bleiben erhalten. Ein CI-Erfolg gilt nur für den anschließenden Lauf am korrigierten Commit.
