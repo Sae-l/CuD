@@ -24,6 +24,7 @@ Die automatisierten Browserprüfungen sind in [kompatibilitaet.json](Lernwerkzeu
 
 | Pfad | Inhalt |
 | --- | --- |
+| [index.html](index.html) | Startseite für GitHub Pages; verlinkt das Lernwerkzeug und nutzt dessen Schrift und Foto aus `Lernwerkzeug/assets/` |
 | [Lernwerkzeug/](Lernwerkzeug/) | Webseite: `index.html`, `styles.css`, `app.js`; Lerninhalte in `inhalte.js` und `kurs.js` |
 | [Referenz/](Referenz/) | Unveränderte Kursunterlagen, CSV und Code-Begleitdatei |
 | [Referenz_Sichtung/](Referenz_Sichtung/) | [Seitenindex](Referenz_Sichtung/Seitenindex.md), Textauszüge, Originalbilder und Herkunftsnachweise |
