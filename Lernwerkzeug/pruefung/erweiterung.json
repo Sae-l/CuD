@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-15T12:13:39.786Z",
+  "status": "PASS",
+  "tests": [
+    {
+      "scenario": "additional-lesson",
+      "status": "PASS",
+      "checkerStatus": "PASS",
+      "views": 44,
+      "quizzes": 10
+    },
+    {
+      "scenario": "duplicate-id",
+      "status": "PASS",
+      "checkerStatus": "FAIL"
+    }
+  ],
+  "scope": "Isolated fictional lesson and duplicate-ID probe; production course unchanged",
+  "currentDataUnchangedBySourceFix": true,
+  "sourceReferencesIndependentOfPosition": true
+}

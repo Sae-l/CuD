@@ -16,11 +16,12 @@ fs.writeFileSync(path.join(output,"ergebnis.json"),JSON.stringify({status:"RUNNI
 const context = vm.createContext({});
 vm.runInContext(fs.readFileSync(path.join(root,"inhalte.js"),"utf8"),context);
 vm.runInContext(fs.readFileSync(path.join(root,"kurs.js"),"utf8"),context);
-const {items,sources,commands} = JSON.parse(vm.runInContext("JSON.stringify({items:inhalte,sources:quellen,commands:weitereBefehle})",context));
+const {items,sources,commands,lessons,coverage} = JSON.parse(vm.runInContext("JSON.stringify({items:inhalte,sources:quellen,commands:weitereBefehle,lessons:vorlesungen,coverage:abdeckung})",context));
 const ids = new Set(items.map(item => item.id));
 assert.equal(ids.size,items.length);
 assert.equal(items.filter(item => item.kind === "Befehl & Begriff").length,15);
 for (const item of items) {
+  assert(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(item.id),`Ungültige Inhalts-ID: ${item.id}`);
   for (const id of [...item.needs || [],...item.related || [],...item.next ? [item.next] : []]) assert(ids.has(id),`${item.id}: ${id}`);
   for (const id of item.sources) assert(sources[id],`${item.id}: Quelle ${id}`);
 }
@@ -30,7 +31,30 @@ for (const source of Object.values(sources)) {
     assert(fs.existsSync(fileURLToPath(target)),href);
   }
 }
-assert.equal(items.filter(item => item.kind === "Vorlesung").length,9);
+assert(lessons.length > 0);
+assert.equal(items.filter(item => item.kind === "Vorlesung").length,lessons.length);
+for (const lesson of lessons) {
+  for (const field of ["id","title","topic","origin","pages","goal","code","investigate","modify","make","answer"]) assert(typeof lesson[field] === "string" && lesson[field].length,`${lesson.id}: ${field}`);
+  assert.equal(typeof lesson.output,"string",`${lesson.id}: output`);
+  assert(Number.isInteger(lesson.page) && lesson.page > 0);
+  assert(lesson.blocks.length && lesson.blocks.every(block => block.length === 2 && block.every(text => typeof text === "string" && text.length)));
+  assert(Array.isArray(lesson.needs));
+  const quiz = lesson.quiz;
+  assert(quiz && quiz.question && quiz.explanation,`${lesson.id}: Lernfrage fehlt`);
+  assert(Array.isArray(quiz.options) && quiz.options.length >= 2 && quiz.options.every(text => typeof text === "string" && text.length));
+  assert.equal(new Set(quiz.options).size,quiz.options.length);
+  assert(Number.isInteger(quiz.correct) && quiz.correct >= 0 && quiz.correct < quiz.options.length);
+}
+const exerciseText = fs.readFileSync(path.join(root,"../Referenz_Sichtung/Pflicht_Uebungen/md/CuD_Uebung 01.md"),"utf8").split("## PDF-Seite 5")[1];
+const originalTasks = [...exerciseText.matchAll(/^\d+\.\d+ Aufgabe (\d+\.\d+):/gm)].map(match => match[1]);
+const pipelineIds = ["aufgabe-6-1","aufgabe-6-2","aufgabe-6-3"];
+const testedSolutions = new Set([...pipelineIds,"praxis-zeitreihe"]);
+for (const item of items.filter(item => item.solution)) assert(testedSolutions.has(item.id),`${item.id}: Eigenen Python-Prüffall und Zuordnung unter testedSolutions ergänzen`);
+assert.deepEqual(coverage.filter(row => !row.sourceFile).flatMap(row => row.tasks),originalTasks);
+for (const row of coverage) {
+  assert(row.title && row.gap && Number.isInteger(row.page) && row.page > 0);
+  row.lessons.forEach(id => assert(ids.has(id),id));
+}
 for (const command of commands) {
   assert(ids.has(command[4]));
   assert(command.slice(0,4).every(field => typeof field === "string" && field.length));
@@ -66,7 +90,42 @@ with tempfile.TemporaryDirectory(prefix="lernwerkzeug-", dir=payload["temporary_
     for command in payload["commands"]:
         execute(command[2], {"input": lambda prompt="": "Test"})
         plt.close("all")
-    exercises = [i for i in items if i["kind"] == "Übung"]
+    # Eigene Transferaufgabe: unabhängig erwartete Mini-Daten, nicht bb12024.csv.
+    Path("becken-mini.csv").write_text(payload["becken"], encoding="utf-8")
+    project = next(i for i in items if i["id"] == "praxis-zeitreihe")
+    project_scope = {}
+    execute(project["solution"]["code"], project_scope)
+    analysed = project_scope["analyse"]
+    assert analysed.df["o2_ist"].tolist() == [3.0, 6.0, 9.0]
+    assert analysed.df["temp_c"].tolist() == [20.0, 24.0, 28.0]
+    assert int(analysed.geschaetzt.sum().sum()) == 2
+    untouched = project_scope["BeckenAnalyse"]("becken-mini.csv")
+    try:
+        untouched.zeige_report()
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("Report ohne Aufbereitung akzeptiert")
+    assert untouched.df is None and analysed.df is not None
+    for contents in ["zeit,o2_ist,temp_c\n", payload["becken"].replace("08:11", "08:26").replace("08:14", "08:29")]:
+        Path("luecken.csv").write_text(contents, encoding="utf-8")
+        incomplete = project_scope["BeckenAnalyse"]("luecken.csv")
+        try:
+            incomplete.aufbereiten_5min()
+            incomplete.zeige_report()
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("Leere oder unvollständige Auswertung akzeptiert")
+    for contents in [payload["becken"].replace("2024-01-01 08:01", "kaputt"), payload["becken"].replace("o2_ist", "andere_spalte")]:
+        Path("defekt.csv").write_text(contents, encoding="utf-8")
+        try:
+            project_scope["BeckenAnalyse"]("defekt.csv").aufbereiten_5min()
+        except (ValueError, KeyError):
+            pass
+        else:
+            raise AssertionError("Beschädigte Projektdaten akzeptiert")
+    exercises = [next(i for i in items if i["id"] == id) for id in payload["pipeline_ids"]]
     def run_pipeline(text):
         Path("messdaten.csv").write_text(text, encoding="utf-8")
         scope = {}
@@ -106,10 +165,10 @@ with tempfile.TemporaryDirectory(prefix="lernwerkzeug-", dir=payload["temporary_
             pass
         else:
             raise AssertionError("Beschädigte Daten wurden stillschweigend akzeptiert")
-print(json.dumps({"examples":count,"command_examples":len(payload["commands"]),"pipeline":True,"edge_cases":True}))
+print(json.dumps({"examples":count,"command_examples":len(payload["commands"]),"pipeline":True,"edge_cases":True,"transfer_project":True}))
 `;
 const python = spawnSync(process.env.LERNWERKZEUG_PYTHON || "python",["-c",pythonCode],{
-  input:JSON.stringify({items,commands,csv:path.join(root,"../Referenz/Pflicht Übungen/messdaten.csv"),mini:fs.readFileSync(path.join(root,"beispiele/mini.csv"),"utf8"),temporary_root:output}),encoding:"utf8",env:{...process.env,PYTHONOPTIMIZE:"",PYTHONIOENCODING:"utf-8",MPLBACKEND:"Agg",MPLCONFIGDIR:testCache}
+  input:JSON.stringify({items,commands,pipeline_ids:pipelineIds,csv:path.join(root,"../Referenz/Pflicht Übungen/messdaten.csv"),mini:fs.readFileSync(path.join(root,"beispiele/mini.csv"),"utf8"),becken:fs.readFileSync(path.join(root,"beispiele/becken-mini.csv"),"utf8"),temporary_root:output}),encoding:"utf8",env:{...process.env,PYTHONOPTIMIZE:"",PYTHONIOENCODING:"utf-8",MPLBACKEND:"Agg",MPLCONFIGDIR:testCache}
 });
 assert.equal(python.status,0,python.stderr || String(python.error));
 const pythonResult = JSON.parse(python.stdout);
@@ -130,7 +189,7 @@ async function browserTests() {
     page.on("console",message => {if(message.type() === "error") errors.push(message.text());});
     page.on("request",request => {if(/^https?:/.test(request.url())) externalRequests.push(request.url());});
     const url = pathToFileURL(path.join(root,"index.html")).href;
-    const overviewTitles = {vorlesungen:"Eine Idee nach der anderen.",uebung:"Deine Übung: Messdaten verstehen.",befehle:"Welcher Befehl passt wozu?",lernkonzept:"So lernst du hier programmieren."};
+    const overviewTitles = {vorlesungen:"Eine Idee nach der anderen.",uebung:"Deine Übung: Messdaten verstehen.",befehle:"Welcher Befehl passt wozu?",lernkonzept:"So lernst du hier programmieren.",abdeckung:"Was ist bereits abgedeckt?"};
     async function waitForItem(id = "") {
       const title = items.find(item => item.id === id)?.title || overviewTitles[id] || "Dein erster Schritt ins Programmieren.";
       await page.waitForFunction(expected => document.querySelector("#inhalt h1")?.textContent === expected,title);
@@ -159,7 +218,7 @@ async function browserTests() {
       await page.getByRole("heading",{name:title,exact:true}).waitFor();
       const links = await page.locator("a[href]").evaluateAll(nodes => nodes.map(node => node.href));
       links.filter(href => href.startsWith("file:")).forEach(href => localLinks.add(href));
-      if (id === "vorlesungen") assert.deepEqual(await page.locator(".course-link").evaluateAll(nodes => nodes.map(node => node.hash)),Array.from({length:9},(_,i) => `#lektion-${i + 1}`));
+      if (id === "vorlesungen") assert.deepEqual(await page.locator(".course-link").evaluateAll(nodes => nodes.map(node => node.hash)),lessons.map(lesson => `#${lesson.id}`));
       if (id === "befehle") {
         assert.equal(await page.locator("tbody tr").count(),15 + commands.length);
         await page.screenshot({path:path.join(output,"befehle-desktop.png"),fullPage:false});
@@ -195,7 +254,10 @@ async function browserTests() {
       ["len()",["len"]],
       ["<=",["lektion-2"]],
       ["==",["lektion-2"]],
-      ["**",["lektion-2"]]
+      ["**",["lektion-2"]],
+      ["Docstring",["lektion-5"]],
+      ["Quartil",["lektion-4"]],
+      ["BeckenAnalyse",["praxis-zeitreihe"]]
     ];
     for (const [query,expected] of cases) {
       await page.locator("#suche").fill(query);
@@ -234,6 +296,29 @@ async function browserTests() {
     await page.locator("#suche").fill('<img src=x onerror="alert(1)">');
     assert.equal(await page.locator("#trefferzahl img").count(),0);
     await page.locator("#reset").click();
+    // Lernfragen liefern begründete Rückmeldung; Bearbeitungsmarken sind getrennt davon.
+    for (const lesson of lessons) {
+      await navigate(lesson.id);
+      const quiz = page.locator(".lesson-quiz");
+      assert.equal(await quiz.locator('input[type="radio"]').count(),lesson.quiz.options.length);
+      await quiz.locator(`input[value="${(lesson.quiz.correct + 1) % lesson.quiz.options.length}"]`).check();
+      await quiz.getByRole("button",{name:"Antwort prüfen"}).click();
+      assert((await quiz.getByRole("status").innerText()).startsWith("Noch nicht."));
+      await quiz.locator(`input[value="${lesson.quiz.correct}"]`).check();
+      await quiz.getByRole("button",{name:"Antwort prüfen"}).click();
+      assert((await quiz.getByRole("status").innerText()).startsWith("Richtig."));
+      assert.equal(await page.locator("#lektion-bearbeitet").isChecked(),false);
+    }
+    await navigate(lessons[0].id);
+    await page.locator("#lektion-bearbeitet").check();
+    await page.reload();
+    assert.equal(await page.locator("#lektion-bearbeitet").isChecked(),true);
+    await navigate();
+    assert.equal(await page.getByRole("link",{name:"Weiterlernen",exact:true}).getAttribute("href"),`#${lessons[1].id}`);
+    await navigate(lessons[0].id);
+    await page.locator("#lektion-bearbeitet").uncheck();
+    await page.reload();
+    assert.equal(await page.locator("#lektion-bearbeitet").isChecked(),false);
     // Alle Ansichten und alle gerenderten lokalen Dateiverweise prüfen.
     for (const item of items) {
       await navigate(item.id);
@@ -263,6 +348,14 @@ async function browserTests() {
     await download.saveAs(path.join(output,"download-test.csv"));
     assert.equal(fs.readFileSync(path.join(output,"download-test.csv"),"utf8"),fs.readFileSync(path.join(root,"../Referenz/Pflicht Übungen/messdaten.csv"),"utf8"));
     fs.unlinkSync(path.join(output,"download-test.csv"));
+    await navigate("praxis-zeitreihe");
+    const [miniDownload] = await Promise.all([page.waitForEvent("download"),page.getByRole("link",{name:"Synthetische becken-mini.csv speichern",exact:true}).click()]);
+    assert.equal(miniDownload.suggestedFilename(),"becken-mini.csv");
+    await miniDownload.saveAs(path.join(output,"download-mini.csv"));
+    assert.equal(fs.readFileSync(path.join(output,"download-mini.csv"),"utf8"),fs.readFileSync(path.join(root,"beispiele/becken-mini.csv"),"utf8"));
+    fs.unlinkSync(path.join(output,"download-mini.csv"));
+    await navigate("lektion-5");
+    await page.locator(".lesson-quiz").screenshot({path:path.join(output,"lerncheck-desktop.png"),animations:"disabled"});
     // Skip-Link und alle Formularfelder müssen per Tastatur erreichbar sein.
     await navigate();
     await page.keyboard.press("Tab");
@@ -306,13 +399,15 @@ async function browserTests() {
       if (width === 390) {
         await page.locator("#inhalt").evaluate(node => node.blur());
         await page.screenshot({path:path.join(output,"mobil.png"),fullPage:true});
+        await navigate("lektion-5");
+        await page.locator(".lesson-quiz").screenshot({path:path.join(output,"lerncheck-mobil.png"),animations:"disabled"});
       }
     }
     await page.emulateMedia({reducedMotion:"reduce"});
     assert(await page.evaluate(() => matchMedia("(prefers-reduced-motion: reduce)").matches));
     assert.deepEqual(errors,[]);
     assert.deepEqual(externalRequests,[]);
-    return {searchCases:cases.length,views:items.length + Object.keys(overviewTitles).length + 1,commandRows:15 + commands.length,localLinks:localLinks.size,externalRequests:externalRequests.length};
+    return {searchCases:cases.length,views:items.length + Object.keys(overviewTitles).length + 1,commandRows:15 + commands.length,learningQuizzes:lessons.length,progressPersistence:true,originalTasks:originalTasks.length,localLinks:localLinks.size,externalRequests:externalRequests.length};
   } finally { await browser.close(); }
 }
 

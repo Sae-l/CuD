@@ -4,7 +4,7 @@ Stand: 15.10.2026. Umsetzung auf Basis des bestehenden Werkzeugs; Originalquelle
 
 ## Ziel und Gestaltung
 
-Studierende ohne Programmierkenntnisse beginnen mit einer Willkommensseite und fünf sichtbaren Zugängen: Vorlesungen, aktuelle Übung, Befehlsübersicht, Python-Einrichtung und VS-Code-Einrichtung. Die erste kleine Vorhersageaufgabe gibt direkt Rückmeldung. Der aktuelle Übungszugang bezeichnet den aufbereiteten Block 6.1–6.3; es gibt keine Anbindung an einen Stundenplan.
+Studierende ohne Programmierkenntnisse beginnen mit einer Willkommensseite und Zugängen zu Vorlesungen, aktueller Übung, Befehlen, Einrichtung, eigenem Transferprojekt und Abdeckungsplan. Die erste kleine Vorhersageaufgabe gibt direkt Rückmeldung. Der aktuelle Übungszugang bezeichnet den aufbereiteten Block 6.1–6.3; es gibt keine Anbindung an einen Stundenplan.
 
 Palette: Schrift #203e4a, Nebeninformationen #526c77, Aktionen #14665f, Hintergrund #ffffff, Navigationsfläche #f1f7f8, Hinweise #fff5dc. Lokale Segoe UI/Calibri und eine Monospace-Schrift für Code vermeiden externe Schriftanfragen. Links ausgerichtete Texte, kurze Absätze und ein breiter Inhaltsbereich für Übersichten; die Tabelle scrollt innerhalb ihres eigenen Bereichs. Keine dekorativen Animationen und keine zusätzlichen Web-Abhängigkeiten.
 
@@ -13,6 +13,8 @@ Palette: Schrift #203e4a, Nebeninformationen #526c77, Aktionen #14665f, Hintergr
 Die Lektionen folgen **PRIMM**: Vorhersagen, Ausführen, Untersuchen, Verändern, Selbst schreiben. Das führt vom Lesen eines funktionierenden Beispiels zum eigenen Programm. Grundlage: [Raspberry Pi Foundation, PRIMM](https://www.raspberrypi.org/blog/using-primm-to-teach-programming-a-new-short-course-for-educators/) und [Computing pedagogy](https://www.raspberrypi.org/teach/pedagogy).
 
 Jede Lektion nennt ein Lernziel, erklärt wenige zusammenhängende Begriffe, zeigt ein eigenständig ausführbares Mini-Beispiel und endet mit Änderungs- und Transferaufgaben. Beispielausgabe und Selbstkontrolle bleiben zunächst geschlossen. Die bestehenden Originalaufgaben behalten ihre gestuften Hinweise und getrennten Lösungen. Die Lernenden wiederholen die eigene Aufgabe am nächsten Tag und nach einer Woche ohne Vorlage; es gibt keine automatische Erinnerung oder behauptete Kompetenzmessung.
+
+Nachträglich ergänzt: Eine Verständnisfrage je Lektion behandelt einen typischen Denkfehler und begründet jede Rückmeldung. Bearbeitungsmarken bleiben freiwillige lokale Selbsteinschätzungen. Das eigene Transferprojekt verbindet CSV, Zeitraster, begrenzte Interpolation und Klassen mit vier synthetischen Datenzeilen. Herkunft der Schätzungen bleibt als Maske sichtbar; Restlücken verhindern den Report. [Abdeckung und Ausbauweg](ABDECKUNG.md) begrenzen die Aussage über den gesamten Kurs.
 
 Das Konzept ist eine begründete Auswahl. Technische Prüfungen belegen Funktion und ausführbare Beispiele, keinen Lernerfolg. Ein Gebrauchstest mit tatsächlichen Anfängern bleibt notwendig.
 
@@ -37,10 +39,10 @@ Seaborn, input, f-Strings und Diagnosehinweise ergänzen die Vorlesungsübersich
 
 ## Technischer Umfang
 
-Betroffen sind `index.html` (Navigation), `app.js` (Ansichten und Suche), `styles.css` (Layout), `kurs.js` (Lektionen, Einrichtung und Befehlsdaten), `inhalte.js` (Standhinweise), das bestehende `pruefen.cjs`, Dokumentation und Integritätsmanifest. Alle bisherigen Inhalts-IDs und Originalaufgaben bleiben erreichbar. Die Tabelle verbindet die 15 vorhandenen Bausteine mit 29 zusätzlichen Befehlsgruppen; Kontext bedeutet geeignete Datentypen und Voraussetzungen, keine pauschale Kompatibilitätsgarantie.
+Betroffen sind `index.html` (Navigation), `app.js` (Ansichten und Suche), `styles.css` (Layout), `kurs.js` (Lektionen, Einrichtung, Abdeckungsplan und Befehlsdaten), das bestehende `pruefen.cjs`, Dokumentation und Integritätsmanifest. Alle bisherigen Inhalts-IDs und Originalaufgaben bleiben erreichbar. Die Tabelle verbindet die 15 vorhandenen Bausteine mit nun 31 zusätzlichen Befehlsgruppen; Kontext bedeutet geeignete Datentypen und Voraussetzungen, keine pauschale Kompatibilitätsgarantie. Die Suche erfasst jetzt auch die offen lesbaren Erklärungsblöcke; Hinweise, Lösungen und Quizantworten bleiben außerhalb des Suchindex.
 
 ## Einrichtung und Grenzen
 
 Downloads und Hinweise wurden mit [Python für Windows](https://docs.python.org/3/using/windows.html), [Python in VS Code](https://code.visualstudio.com/docs/python/python-tutorial), [VS Code Web](https://code.visualstudio.com/docs/remote/vscode-web), [Colab FAQ](https://research.google.com/colaboratory/faq.html), [NumPy](https://numpy.org/doc/stable/user/absolute_beginners.html) und [Pandas](https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html) abgeglichen. iPad/Android erhalten einen ausdrücklich externen Browserweg mit Colab; Windows-Tablets folgen der PC-Anleitung. Der Webeditor allein stellt keine normale lokale Python-Installation bereit. Die tatsächliche Installation auf den Geräten wurde nicht durchgeführt.
 
-Keine Anmeldung, Cloud-Speicherung, Fortschrittsspeicherung oder Python-Laufzeit in der Lernseite ergänzt. Python wird im eigenen Editor oder dem bewusst gewählten externen Notebook ausgeführt. Veröffentlichung und GitHub-Upload sind nicht Bestandteil dieser Änderung.
+Keine Anmeldung, Cloud-Speicherung oder Python-Laufzeit in der Lernseite ergänzt. Bearbeitungsmarken liegen nur im lokalen Browser; gesperrte Speicherung führt zum Sitzungsbetrieb. Python wird im eigenen Editor oder dem bewusst gewählten externen Notebook ausgeführt. Die hier beschriebenen nachträglichen Verbesserungen sind noch nicht Teil des veröffentlichten v0.1.0-Release.

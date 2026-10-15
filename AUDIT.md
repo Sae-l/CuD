@@ -1,5 +1,7 @@
 # Review und Verbesserungen
 
+Aktueller Schwerpunkt: Lernbegleitung und Erweiterbarkeit nach v0.1.0, siehe **Nachprüfung: Lernen, Abdeckung und Erweiterbarkeit** am Ende. Die folgenden bisherigen Abschnitte dokumentieren die erste Auditphase und deren damalige Git-Übernahme.
+
 Stand: 15.10.2026. Geprüft und lokal umgesetzt im vorhandenen Lernwerkzeug. Die acht Originaldateien in `Referenz/` bleiben bytegleich. Die Auditphase erfolgte in einer Arbeitsablage ohne `.git`-Verzeichnis; Commit, Push und Pull Request sind eine nachfolgende, gesondert beauftragte Übernahme.
 
 ## Behobene Befunde
@@ -58,3 +60,25 @@ Firefox konnte in der Codex-Sandbox seinen normalen Benutzer-Registry-Schlüssel
 Ein versehentlicher Aufruf des Systembefehls `python` während des unabhängigen Reviews startete den Windows-Python-Manager. Dieser meldete ein automatisches Manager-Update auf 26.3; die anschließende Interpreter-Installation wurde nach einer fehlgeschlagenen Signaturprüfung nicht bestätigt. Weitere Tests verwendeten ausschließlich den absoluten Pfad des vorhandenen gebündelten Interpreters. Der Zustand des System-Managers wurde nicht weiter geändert oder vollständig nachgeprüft.
 
 Offene Entscheidungen/Prüfungen: Eigentümer bestätigt die Zuordnung der CSV und die Rechte vor einer möglichen Veröffentlichung; Kursbetreuung klärt die abweichenden Sollausgaben und Filtergrenzen; reale Lernende führen den [Gebrauchstest](Lernwerkzeug/GEBRAUCHSTEST.md) aus. Diese Punkte blockieren weder lokale Layoutkorrekturen noch die dokumentierten Softwaretests. Sie erlauben jedoch keine Aussage über vollständige Kursabdeckung, Lernnutzen oder Freigabe zur Veröffentlichung.
+
+## Nachprüfung: Lernen, Abdeckung und Erweiterbarkeit
+
+Stand: 15.10.2026, Arbeitsfassung nach dem veröffentlichten v0.1.0. Die acht Originaldateien bleiben unverändert. Das Werkzeug erklärt die Hauptthemen aus Vorlesungen 001–003, reicht jedoch noch nicht als alleiniger vollständiger Kurs mit Begleitung aller Originalaufgaben. Das vorhandene Übungsblatt enthält 31 Aufgaben; nur 6.1–6.3 sind geführt begleitet. Vier Live-Übungen aus 003, fehlende bb12024.csv und FFT bleiben gesonderte Lücken. [Genauer Quellenabgleich](Lernwerkzeug/ABDECKUNG.md).
+
+| Befund / Verbesserung | Umsetzung | Nachweis |
+| --- | --- | --- |
+| P2: Suche ignorierte die eigentlichen Erklärungsblöcke | Sichtbare Blöcke in den Index aufgenommen; Hinweise, Lösungen und Quizantworten bleiben ausgeschlossen | Suchfälle Docstring, Quartil und BeckenAnalyse zusätzlich zu den bisherigen Fällen |
+| P2: Feste Neun-Lektionen-Annahmen erschwerten den Ausbau | Kurszahl, PDF-Liste, Reihenfolge, Voraussetzungen und Prüfzählung aus den Daten abgeleitet | Isolierte zusätzliche fiktive Lektion besteht mit zehn Fragen und 44 Ansichten; doppelte ID scheitert |
+| P2: Neue unabhängige Übungen wären in die bestehende CSV-Prüfpipeline geraten | Pipeline auf drei benannte IDs begrenzt; unbekannte Lösungsobjekte ohne Testzuordnung lassen die Prüfung scheitern | Neuer Transfer-Prüffall läuft getrennt und prüft unabhängige Ergebnisse |
+| P2: WebKit behielt im erweiterten Prüffall Animationen trotz aktivem Reduce-Mediazustand | Explizite CSS-Regel und synchronisierte HTML-Klasse schalten bei reduzierter Bewegung Animationen und Übergänge aus | WebKit-Probe und abschließende Browsermatrix prüfen berechnete Eigenschaften |
+| Lernstand war schwer wiederzufinden | Freiwillige lokale Bearbeitungsmarken und Einstieg Weiterlernen | Setzen, Neuladen, Entfernen, ungültige Speicherstände und gesperrte Speicherung geprüft |
+| Lektionen hatten keine interaktive Verständnisprüfung | Neun eigene Auswahlfragen mit begründeter Rückmeldung | Richtige und falsche Antworten geprüft; keine automatische Kompetenzmarke |
+| Der Übergang von Einzelbegriffen zum Gesamtprogramm fehlte | Eigenes CSV-/Pandas-/OOP-Projekt mit synthetischen Mini-Daten | Korrekte Rasterwerte und Schätzmaske; leere Daten, Restlücken, ungültige Zeit und fehlende Spalte geprüft |
+| Standardabweichung und Boxplot fehlten im Nachschlagewerk | Zwei Befehlsbeispiele und Erläuterung in Lektion 4 | Ausführung und Abgleich mit offiziellen API-Dokumentationen |
+| Besucher konnten Abdeckung und Ausbau nur schwer einschätzen | Sichtbarer Abdeckungsplan, ERWEITERN.md, aktualisierte README und Beitragsanleitung | Aufgabeninventar gegen Textabschnitte abgeglichen; lokale Verweise geprüft |
+
+Der leere Platzhalter `Test/Test` wurde entfernt. Die tatsächlichen Prüfungen bleiben nachvollziehbar unter `Lernwerkzeug/` und `scripts/`. Kein neues Framework, Backend, Konto oder Testpaket installiert. Die neuen Browsermarken speichern ausschließlich Inhalts-IDs lokal; sie werden nicht übertragen und sind keine Kompetenzmessung.
+
+Aktuelle Nachweise: [ergebnis.json](Lernwerkzeug/pruefung/ergebnis.json), [kompatibilitaet.json](Lernwerkzeug/pruefung/kompatibilitaet.json), [erweiterung.json](Lernwerkzeug/pruefung/erweiterung.json) und [Prüfbericht](Lernwerkzeug/pruefung/PRUEFBERICHT.md). Die fiktive Prüfetappe liegt ausschließlich in einer ausgeschlossenen lokalen Kopie und wird nicht als neue Vorlesung ausgeliefert. Die ursprünglichen Prüfer-Fehlerpfadnachweise dokumentieren weiterhin den vorherigen Auditstand.
+
+Erweiterbarkeit ist damit für neue Vorlesungsetappen praktisch nachgewiesen. Neue unabhängige Aufgaben benötigen weiterhin fachlich passende Prüffälle und Quellenabgleich; bei wiederholten Aufgabennummern in verschiedenen Blättern muss die Zuordnung im Abdeckungsplan erweitert werden. [Erweiterungsvertrag und Grenzen](Lernwerkzeug/ERWEITERN.md). Der veröffentlichte Release bleibt unverändert; Lernnutzen und echte Geräte-/Screenreader-Abnahme bleiben offen.

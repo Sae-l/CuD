@@ -15,6 +15,8 @@ Das Lernwerkzeug ist eine statische Webseite ohne Buildschritt. Für Text- und L
 | Browser- und Ansichtsgrößenprüfung | `Lernwerkzeug/kompatibilitaet.cjs` |
 | Integritätsmanifest prüfen/erneuern | `scripts/manifest.py` |
 
+Neue Inhalte: [ERWEITERN.md](Lernwerkzeug/ERWEITERN.md) beschreibt den Datenvertrag, Quellendateien, Quizfelder und getrennte Python-Prüffälle für neue Originalübungen. [ABDECKUNG.md](Lernwerkzeug/ABDECKUNG.md) trennt Erklärungen von geführten Originalaufgaben. Lektionenanzahl und Kursnavigation werden aus den Daten abgeleitet.
+
 Beschränke eine Änderung auf ihren Zweck. Wenn du eine Inhalts-ID änderst, prüfe auch Navigation, Querverweise, Suchfälle und Tests. Hinweise, Musterlösungen und Zahlenantworten gehören nicht in den Suchindex oder in Vorschauen. Eigene Beispiele müssen als solche erkennbar bleiben; belege Kursaufgaben mit Quelle und Seite.
 
 ## Prüfumgebung einrichten

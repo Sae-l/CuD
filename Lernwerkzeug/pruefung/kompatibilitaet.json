@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-15T11:30:49.120Z",
+  "date": "2026-10-15T12:18:54.936Z",
   "status": "PASS",
   "host": "win32",
   "engines": [
@@ -11,43 +11,43 @@
         {
           "width": 320,
           "height": 740,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 390,
           "height": 844,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 768,
           "height": 1024,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 1024,
           "height": 768,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 844,
           "height": 390,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 1280,
           "height": 800,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 1440,
           "height": 1000,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         }
       ],
@@ -55,6 +55,7 @@
       "externalRequests": [],
       "localFile": "PASS",
       "touchProfiles": "390×844, 768×1024: navigation and hints PASS (emulation)",
+      "learning": "quiz, persistent progress, malformed data and blocked-storage session fallback PASS",
       "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route"
     },
     {
@@ -65,43 +66,43 @@
         {
           "width": 320,
           "height": 740,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 390,
           "height": 844,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 768,
           "height": 1024,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 1024,
           "height": 768,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 844,
           "height": 390,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 1280,
           "height": 800,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 1440,
           "height": 1000,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         }
       ],
@@ -109,6 +110,7 @@
       "externalRequests": [],
       "localFile": "PASS",
       "touchProfiles": "390×844, 768×1024: navigation and hints PASS (emulation)",
+      "learning": "quiz, persistent progress, malformed data and blocked-storage session fallback PASS",
       "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route"
     },
     {
@@ -119,43 +121,43 @@
         {
           "width": 320,
           "height": 740,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 390,
           "height": 844,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 768,
           "height": 1024,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 1024,
           "height": 768,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 844,
           "height": 390,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 1280,
           "height": 800,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         },
         {
           "width": 1440,
           "height": 1000,
-          "views": 41,
+          "views": 43,
           "status": "PASS"
         }
       ],
@@ -163,6 +165,7 @@
       "externalRequests": [],
       "localFile": "UNVERIFIED: Windows WebKit file:// internal error; HTTP tested",
       "touchProfiles": "390×844, 768×1024: navigation and hints PASS (emulation)",
+      "learning": "quiz, persistent progress, malformed data and blocked-storage session fallback PASS",
       "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route"
     }
   ]

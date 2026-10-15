@@ -58,11 +58,11 @@ async function main() {
       }
       await page.goto(url);
       await page.locator(".welcome-hero").waitFor();
-      const routes = await page.evaluate(() => ["start","vorlesungen","uebung","befehle","lernkonzept",...inhalte.map(item => item.id)]);
+      const routes = await page.evaluate(() => ["start","vorlesungen","uebung","befehle","lernkonzept","abdeckung",...inhalte.map(item => item.id)]);
       async function go(id) {
         await page.evaluate(id => { location.hash = id; },id);
         await page.waitForFunction(id => {
-          const title = byId.get(id)?.title || {start:"Dein erster Schritt ins Programmieren.",vorlesungen:"Eine Idee nach der anderen.",uebung:"Deine Übung: Messdaten verstehen.",befehle:"Welcher Befehl passt wozu?",lernkonzept:"So lernst du hier programmieren."}[id];
+          const title = byId.get(id)?.title || {start:"Dein erster Schritt ins Programmieren.",vorlesungen:"Eine Idee nach der anderen.",uebung:"Deine Übung: Messdaten verstehen.",befehle:"Welcher Befehl passt wozu?",lernkonzept:"So lernst du hier programmieren.",abdeckung:"Was ist bereits abgedeckt?"}[id];
           return document.querySelector("#inhalt h1")?.textContent === title;
         },id,{polling:50}).catch(async error => {
           const current = await page.evaluate(() => ({hash:location.hash,title:document.querySelector("#inhalt h1")?.textContent}));
@@ -112,10 +112,13 @@ async function main() {
       await page.getByText("Beispielausgabe zeigen",{exact:true}).click();
       assert.equal(await page.locator("details pre").getAttribute("tabindex"),"0");
       await page.emulateMedia({reducedMotion:"reduce"});
-      assert(await page.evaluate(() => [...document.querySelectorAll("#inhalt,#inhalt *")].every(node => {
+      await page.waitForFunction(() => matchMedia("(prefers-reduced-motion: reduce)").matches && [...document.querySelectorAll("#inhalt,#inhalt *")].every(node => {
         const style = getComputedStyle(node);
         return style.animationName === "none" && style.transitionDuration.split(",").every(value => parseFloat(value) === 0);
-      })),"Bewegung trotz reduzierter Bewegung");
+      }),undefined,{polling:50,timeout:3000}).catch(async () => {
+        const moving = await page.evaluate(() => ({reduced:matchMedia("(prefers-reduced-motion: reduce)").matches,nodes:[...document.querySelectorAll("#inhalt,#inhalt *")].map(node => ({tag:node.tagName,class:node.className,type:node.type,animation:getComputedStyle(node).animationName,transition:getComputedStyle(node).transitionDuration})).filter(style => style.animation !== "none" || style.transition.split(",").some(value => parseFloat(value) !== 0))}));
+        throw new Error(`Reduzierte Bewegung: ${JSON.stringify(moving)}`);
+      });
       await page.emulateMedia({reducedMotion:"no-preference"});
       await page.setViewportSize({width:1440,height:1000});
       await go("aufgabe-6-2");
@@ -130,10 +133,11 @@ async function main() {
       await page.locator('nav a[href="#aufgabe-6-2"]').click();
       assert.equal(await page.locator("#inhalt details[open]").count(),0);
       await go("befehle");
+      const commandCount = await page.locator("tbody tr").count();
       for (const symbol of ["<=","==","**"]) {
         await page.locator("#befehl-suche").fill(symbol);
         const count = await page.locator("tbody tr").count();
-        assert(count > 0 && count < 44,`Operatorsuche ${symbol}`);
+        assert(count > 0 && count < commandCount,`Operatorsuche ${symbol}`);
       }
       await go("lektion-8");
       await page.evaluate(() => scrollTo(0,document.documentElement.scrollHeight));
@@ -160,6 +164,43 @@ async function main() {
         await touch.close();
       }
       report.touchProfiles = "390×844, 768×1024: navigation and hints PASS (emulation)";
+      await go("lektion-1");
+      const quiz = page.locator(".lesson-quiz");
+      await quiz.locator('input[value="0"]').check();
+      await quiz.getByRole("button",{name:"Antwort prüfen"}).click();
+      assert((await quiz.getByRole("status").innerText()).startsWith("Richtig."));
+      await page.locator("#lektion-bearbeitet").check();
+      await page.reload();
+      assert.equal(await page.locator("#lektion-bearbeitet").isChecked(),true);
+      await page.locator("#lektion-bearbeitet").uncheck();
+      const blocked = await browser.newContext();
+      await blocked.addInitScript(() => {
+        Object.defineProperty(Storage.prototype,"getItem",{value() { throw new DOMException("blocked","SecurityError"); }});
+        Object.defineProperty(Storage.prototype,"setItem",{value() { throw new DOMException("blocked","SecurityError"); }});
+      });
+      await blocked.route("**/*",route => route.request().url().startsWith(`${origin}/`) ? route.continue() : route.abort());
+      const session = await blocked.newPage();
+      await session.goto(`${url}#lektion-1`);
+      await session.locator("#lektion-bearbeitet").check();
+      assert((await session.locator(".completion + .example-note").innerText()).includes("nur für diese Sitzung"));
+      await session.evaluate(() => { location.hash = "lektion-2"; });
+      await session.waitForFunction(() => document.querySelector("#inhalt h1")?.textContent === byId.get("lektion-2").title,undefined,{polling:50});
+      await session.evaluate(() => { location.hash = "lektion-1"; });
+      await session.waitForFunction(() => document.querySelector("#inhalt h1")?.textContent === byId.get("lektion-1").title,undefined,{polling:50});
+      assert.equal(await session.locator("#lektion-bearbeitet").isChecked(),true);
+      await blocked.close();
+      for (const [raw,expected] of [["kein JSON",false],['{"anderes_format":true}',false],['["lektion-1","unbekannt",5,null]',true]]) {
+        const malformed = await browser.newContext();
+        await malformed.addInitScript(raw => { Object.defineProperty(Storage.prototype,"getItem",{value() { return raw; }}); },raw);
+        await malformed.route("**/*",route => route.request().url().startsWith(`${origin}/`) ? route.continue() : route.abort());
+        const probe = await malformed.newPage();
+        probe.on("pageerror",error => report.errors.push(error.message));
+        await probe.goto(`${url}#lektion-1`);
+        await probe.locator("#lektion-bearbeitet").waitFor();
+        assert.equal(await probe.locator("#lektion-bearbeitet").isChecked(),expected);
+        await malformed.close();
+      }
+      report.learning = "quiz, persistent progress, malformed data and blocked-storage session fallback PASS";
       await page.evaluate(() => { location.hash = "unbekannt"; });
       await page.getByRole("heading",{name:"Inhalt nicht gefunden",exact:true}).waitFor();
       await go("start");

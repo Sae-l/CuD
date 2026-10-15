@@ -5,6 +5,7 @@ const vorlesungen = [
     id:"lektion-1", title:"Python verstehen und das erste Programm starten", topic:"Python-Grundlagen", origin:"001", pages:"4–7, 16–20", page:4,
     summary:"Was ein Programm ist, wo du Code schreibst und wie Python ihn ausführt.",
     goal:"Du kannst eine Python-Datei speichern, starten und ihre Ausgabe erklären.",
+    quiz:{question:"Welche Datei startest du mit Python?",options:["main.py","styles.css","referenz.pdf"],correct:0,explanation:"Python führt den Quelltext in main.py aus. Speichere die Datei und starte sie im ausgewählten Interpreter."},
     blocks:[
       ["Ein Programm ist eine genaue Anleitung", "Du beschreibst dem Computer einzelne Schritte. Python ist die Sprache dieser Anleitung. Der Interpreter ist das Programm, das deinen Python-Code ausführt. VS Code ist dein Schreibwerkzeug. Das Terminal ist ein Fenster für Startbefehle und Ausgaben."],
       ["Vom Text zur Ausführung", "Du speicherst Quelltext in einer Datei mit der Endung .py. Die verbreitete Python-Implementierung CPython übersetzt ihn intern in Bytecode und führt ihn aus. Du musst dafür weder Bytecode noch eine virtuelle Maschine selbst einrichten."],
@@ -21,6 +22,7 @@ const vorlesungen = [
     id:"lektion-2", title:"Variablen, Datentypen und Entscheidungen", topic:"Python-Grundlagen", origin:"001", pages:"8–10, 15", page:8,
     summary:"Werte benennen, mit Zahlen rechnen und mit if auf Bedingungen reagieren.",
     goal:"Du unterscheidest Text und Zahlen und kannst eine einfache Entscheidung schreiben.",
+    quiz:{question:"input() liefert die Eingabe 12. Welchen Typ erhältst du zunächst?",options:["int","str","float"],correct:1,explanation:"input() liefert Text. Für eine Rechnung musst du den passenden Text erst mit int oder float umwandeln."},
     blocks:[
       ["Ein Name für einen Wert", "temperatur = 23.5 verbindet einen Namen mit einem Wert. = weist zu; == vergleicht zwei Werte. int steht für Ganzzahlen, float für Kommazahlen, str für Text und bool für True oder False. type(wert) zeigt den Typ. input() fragt im Terminal nach Text und liefert immer str."],
       ["Mit Werten rechnen", "+, -, * und / rechnen mit Zahlen. // ist die abgerundete Division, % liefert den Rest und ** eine Potenz. float(\"23.5\") wandelt passenden Text in eine Zahl um. Ein f-String wie f\"Wert: {temperatur}\" setzt Werte in Text ein."],
@@ -36,6 +38,7 @@ const vorlesungen = [
     id:"lektion-3", title:"Schleifen, Listen und Dictionaries", topic:"Datenstrukturen", origin:"001", pages:"11–14; 002: 3", page:11,
     summary:"Mehrere Werte sammeln, wiederholt verarbeiten und über Namen oder Positionen abrufen.",
     goal:"Du kannst eine Liste durchlaufen und den Unterschied zwischen Liste, Tupel und Dictionary erklären.",
+    quiz:{question:"Welche Werte durchläuft for n in range(3)?",options:["1, 2, 3","0, 1, 2, 3","0, 1, 2"],correct:2,explanation:"range beginnt ohne Startangabe bei 0. Die obere Grenze 3 zählt nicht mit."},
     blocks:[
       ["Sammlungen auswählen", "Eine Liste [20, 25] ist geordnet und veränderbar. Der erste Wert hat Index 0. append hängt an, remove entfernt den ersten passenden Wert und sort sortiert die vorhandene Liste. Ein Tupel (20, 25) lässt sich nachträglich nicht verändern. Ein Dictionary speichert Schlüssel und Werte: sensor = {\"ort\": \"Labor\", \"wert\": 22.4}; sensor[\"wert\"] liefert 22.4."],
       ["Wiederholen statt kopieren", "for wert in werte verarbeitet jedes Element. range(3) liefert 0, 1 und 2; die obere Grenze zählt nicht mit. while wiederholt, solange eine Bedingung wahr ist: Sorge dafür, dass sie irgendwann falsch wird. break beendet eine Schleife, continue überspringt den Rest eines Durchlaufs."],
@@ -51,8 +54,10 @@ const vorlesungen = [
     id:"lektion-4", title:"Von Messdaten zu NumPy und Diagrammen", topic:"NumPy & Diagramme", origin:"002", pages:"3–6; Analysebeispiel: 1–3", page:3,
     summary:"Die klassische Analyse verstehen und anschließend mit Arrays und Diagrammen vergleichen.",
     goal:"Du kannst Listen und Arrays unterscheiden, eine Maske lesen und ein Diagramm beschriften.",
+    quiz:{question:"Was ergibt np.array([2, 3]) * 2?",options:["[2, 3, 2, 3]","Ein Array mit 4 und 6","Eine Liste mit einer 2"],correct:1,explanation:"Ein NumPy-Array rechnet elementweise. Eine Python-Liste würde mit * 2 dagegen ihre Elemente wiederholen."},
     blocks:[
       ["Zuerst den Weg mit Standard-Python verstehen", "Die Aufgaben 6.1–6.3 begleiten CSV-Import, Filterung und Kennzahlen. Der Mittelwert ist Summe durch Anzahl. Der Median ist der mittlere Wert der sortierten Daten; bei gerader Anzahl der Mittelwert der beiden mittleren Werte. Prüfe vor beiden Berechnungen, ob Werte vorhanden sind."],
+      ["Streuung und Boxplot verstehen", "np.std(werte) beschreibt die Streuung um den Mittelwert und verwendet standardmäßig ddof=0. Ein Boxplot mit sns.boxplot(y=werte) zeigt den Median und die mittleren 50 Prozent zwischen erstem und drittem Quartil. Die üblichen Whisker reichen bis zu Werten innerhalb von 1,5 Quartilsabständen. Einzelne Punkte außerhalb sind statistisch auffällig; ob sie Messfehler sind, entscheidet die Aufgabenregel. Die Befehlsübersicht zeigt ausführbare Beispiele."],
       ["Arrays rechnen elementweise", "[2, 3] * 2 ergibt [2, 3, 2, 3]. np.array([2, 3]) * 2 ergibt dagegen ein Array mit 4 und 6. Ein Array hat einen gemeinsamen Datentyp. daten <= 50 erzeugt eine boolesche Maske, daten[maske] wählt passende Werte. Für mehrere Array-Bedingungen verwende (daten >= 0) & (daten <= 50), mit Klammern."],
       ["Ein Diagramm soll eine Frage beantworten", "Mit import matplotlib.pyplot as plt und fig, ax = plt.subplots() entsteht eine Zeichenfläche. ax.plot zeigt einen Verlauf, ax.bar vergleicht Balken. Beschrifte Titel und Achsen mit set_title, set_xlabel und set_ylabel. plt.subplots(1, 2) erzeugt zwei Diagramme nebeneinander, tight_layout passt Abstände an, show zeigt sie. Seaborn baut darauf auf und bietet statistische Darstellungen wie sns.histplot(daten); importiere es als sns."],
       ["Unterschiedliche Filter im Kurs beachten", "Das Analysebeispiel entfernt Werte über 50. Im CSV-Piloten gilt dagegen die ausdrücklich dokumentierte Arbeitsannahme 0 bis 50 einschließlich. Übernimm eine Filterregel nur, wenn sie zum konkreten Auftrag passt."]
@@ -67,6 +72,7 @@ const vorlesungen = [
     id:"lektion-5", title:"Funktionen und verständliche Fehlerbehandlung", topic:"Funktionen", origin:"003", pages:"3–10", page:3,
     summary:"Wiederverwendbare Schritte mit def schreiben und Umwandlungsfehler gezielt behandeln.",
     goal:"Du kannst Parameter, Rückgabewert und lokale Variablen erklären und ValueError abfangen.",
+    quiz:{question:"Welche Eingabe wird von except ValueError bei float(...) nicht abgefangen?",options:["Error","TIMEOUT","NaN"],correct:2,explanation:"float('NaN') ist eine erlaubte Umwandlung. Prüfe zusätzlich mit math.isfinite, wenn nur endliche Messwerte zulässig sind."},
     blocks:[
       ["Einmal schreiben, mehrfach verwenden", "def definiert eine Funktion; erst der Aufruf führt sie aus. Parameter sind Eingaben, return liefert ein Ergebnis an den Aufrufer. print zeigt nur etwas an. Ohne return liefert eine Funktion None. Ein Docstring direkt am Anfang erklärt ihren Zweck. Das DRY-Prinzip bedeutet: dieselbe Berechnung an einer Stelle pflegen."],
       ["Standardwerte und Gültigkeit", "def ist_warm(wert, grenze=30) legt einen Standard fest. ist_warm(25, grenze=20) überschreibt ihn. Pflichtparameter stehen vor Parametern mit Standardwert. return minimum, maximum liefert ein Tupel. Eine innerhalb der Funktion angelegte Variable ist lokal: Das Hauptprogramm erhält sie über return, nicht durch direkten Zugriff."],
@@ -82,6 +88,7 @@ const vorlesungen = [
     id:"lektion-6", title:"Pandas: Tabellen laden und untersuchen", topic:"Pandas", origin:"003", pages:"11–18", page:11,
     summary:"Spalten benennen, Datentypen prüfen und Daten gezielt auswählen.",
     goal:"Du kannst einen DataFrame untersuchen und eine Spalte mit einer Bedingung filtern.",
+    quiz:{question:"Was liefert df['temp_c'] im Unterschied zu df[['temp_c']]?",options:["Eine Series statt eines DataFrame","Immer einen einzelnen float","Eine Datei auf der Festplatte"],correct:0,explanation:"Ein einzelner Spaltenname wählt eine Series. Eine Liste von Spaltennamen erhält die Tabellenform, auch bei nur einer Spalte."},
     blocks:[
       ["Eine Tabelle im Programm", "Ein DataFrame hat Zeilenindex und benannte Spalten. Eine einzelne Spalte ist eine Series. import pandas as pd macht Pandas verfügbar. pd.DataFrame erstellt eine Tabelle aus gleich langen Listen in einem Dictionary. pd.read_csv lädt eine CSV. Prüfe sep und decimal am Dateiinhalt, statt ihre Werte zu raten."],
       ["Erst ansehen, dann auswerten", "df.head(3) zeigt die ersten drei Zeilen, tail die letzten. df.info() zeigt Struktur und nicht fehlende Einträge. df.shape ist ein Attribut ohne Klammern und liefert Zeilen- und Spaltenzahl. df.describe() fasst Zahlenspalten zusammen. Eine Textspalte muss vor numerischer Auswertung bewusst umgewandelt werden."],
@@ -97,6 +104,7 @@ const vorlesungen = [
     id:"lektion-7", title:"Fehlwerte und unplausible Daten behandeln", topic:"Pandas", origin:"003", pages:"19–22", page:19,
     summary:"Lücken erkennen und zwischen Löschen, Füllen und Schätzen bewusst entscheiden.",
     goal:"Du kannst Fehlwerte zählen und eine begründete Bereinigung vornehmen.",
+    quiz:{question:"Warum kann fillna(0) einen Mittelwert verändern?",options:["Weil fehlende Werte immer echte Nullen sind","Weil Ersatzwerte in die Berechnung eingehen","Weil mean dann keine Zahlen mehr verarbeitet"],correct:1,explanation:"Null ist eine konkrete Zahl. Ihr Einsatz verändert die Datenbasis und braucht eine fachliche Begründung; eine Lücke ist keine gemessene Null."},
     blocks:[
       ["Fehlt ein Wert oder ist er ungültig?", "NaN bezeichnet hier einen fehlenden Zahlenwert. df.isna().sum() zählt Lücken je Spalte. Ein negativer Messwert ist nicht automatisch fehlend: Ob er unplausibel ist, hängt von Messgröße und Auftrag ab. Eine negative Temperatur kann gültig sein."],
       ["Die Entscheidung bleibt deine", "dropna(subset=[\"wert\"]) entfernt Zeilen mit fehlendem wert. fillna(0) ersetzt Lücken durch null; das kann Mittelwerte verfälschen. ffill schreibt den letzten Wert fort. interpolate schätzt Zwischenwerte. Nutze solche Schätzungen nur mit einer begründeten Grenze für die Lückenlänge und kennzeichne sie als Schätzung."],
@@ -112,6 +120,7 @@ const vorlesungen = [
     id:"lektion-8", title:"Zeitreihen auf ein gemeinsames Raster bringen", topic:"Zeitreihen", origin:"003", pages:"23–26", page:23,
     summary:"Zeitstempel umwandeln, einen Zeitindex setzen und Fünf-Minuten-Mittelwerte bilden.",
     goal:"Du kannst erklären, welche Messwerte in denselben Zeitabschnitt eingehen.",
+    quiz:{question:"Wohin gehören 08:01 und 08:04 beim hier verwendeten 5-Minuten-Raster?",options:["In zwei getrennte Abschnitte","Beide in den Abschnitt ab 08:05","Beide in den Abschnitt ab 08:00"],correct:2,explanation:"Mit den hier verwendeten Standardgrenzen umfasst der Abschnitt ab 08:00 die Zeiten vor 08:05. resample mittelt die Werte innerhalb dieses Abschnitts."},
     blocks:[
       ["Text wird zur Zeitachse", "pd.to_datetime wandelt Datumstext in Zeitstempel um. Ungültige Texte lösen standardmäßig einen Fehler aus. Mit errors=\"coerce\" werden sie NaT; diese fehlenden Zeitpunkte musst du anschließend ausdrücklich prüfen. set_index(\"zeit\") verwendet die Zeitspalte als Zeilenindex. sort_index ordnet ihn zeitlich."],
       ["Fünf-Minuten-Körbe", "resample(\"5min\").mean() bildet bei der hier verwendeten Einstellung Mittelwerte je Fünf-Minuten-Abschnitt. 08:01 und 08:04 gehören zum Abschnitt ab 08:00; 08:07 gehört zu 08:05. Wähle vorher nur Zahlenspalten aus. Alternativ kann resample die Zeitspalte über on=\"zeit\" verwenden."],
@@ -127,6 +136,7 @@ const vorlesungen = [
     id:"lektion-9", title:"Klassen, Objekte und ein eigenes Analyseprojekt", topic:"Objektorientierung", origin:"003", pages:"27–32", page:27,
     summary:"Daten und passende Funktionen in einem verständlichen Bauplan zusammenführen.",
     goal:"Du kannst zwei unabhängige Objekte anlegen und eine Methode erklären.",
+    quiz:{question:"Wo legst du die unabhängige Messwertliste eines Sensors an?",options:["In __init__ mit self.werte = []","Einmal außerhalb der Klasse für alle Sensoren","Als gemeinsame Liste direkt im Klassenkörper"],correct:0,explanation:"__init__ erzeugt bei jedem neuen Objekt eine eigene Liste. Eine veränderbare Klassenvariable würde von den Instanzen gemeinsam verwendet."},
     blocks:[
       ["Bauplan und Exemplar", "class Sensor definiert einen Bauplan. Sensor(\"Labor\") erzeugt ein konkretes Objekt. __init__ initialisiert es; self verweist in einer Instanzmethode auf dieses Objekt. self.ort ist ein Attribut, also ein zum Objekt gehörender Wert. Eine Methode ist eine im Bauplan definierte Funktion."],
       ["Jedes Objekt hat eigene Daten", "Lege self.werte = [] in __init__ an, damit jeder Sensor seine eigene Liste erhält. Eine gemeinsame Liste auf Klassenebene würde Werte zwischen Sensoren vermischen. Methoden können float-Umwandlung, gezielte Fehlerbehandlung und die Berechnung eines Mittelwerts verbinden."],
@@ -142,17 +152,18 @@ const vorlesungen = [
 
 for (const [index, lesson] of vorlesungen.entries()) {
   const sourceId = `kurs-${index + 1}`;
-  quellen[sourceId] = {title:`Vorlesung ${lesson.origin} · PDF-S. ${lesson.pages}`,href:`../Referenz/Vorlesungen/${lesson.origin}_Coding und Digitalisierung.pdf#page=${lesson.page}`};
+  quellen[sourceId] = {title:`Vorlesung ${lesson.origin} · PDF-S. ${lesson.pages}`,href:`../Referenz/Vorlesungen/${lesson.sourceFile || `${lesson.origin}_Coding und Digitalisierung.pdf`}#page=${lesson.page}`};
   lesson.kind = "Vorlesung";
   lesson.explanation = lesson.goal;
   lesson.sources = [sourceId];
+  lesson.needs ||= index ? [vorlesungen[index - 1].id] : ["python-setup","vscode-setup"];
   lesson.next = vorlesungen[index + 1]?.id;
   inhalte.push(lesson);
 }
 quellen.analyse = {title:"002_Beispiel Datenstrukturen - Analyse · PDF-S. 1–3",href:"../Referenz/Vorlesungen/002_Beispiel Datenstrukturen - Analyse.pdf#page=1"};
 quellen.strukturen = {title:"Vorlesung 002 · PDF-S. 3 · Datenstrukturen",href:"../Referenz/Vorlesungen/002_Coding und Digitalisierung.pdf#page=3"};
-vorlesungen[2].sources.push("strukturen");
-vorlesungen[3].sources.push("analyse");
+vorlesungen.find(lesson => lesson.id === "lektion-3").sources.push("strukturen");
+vorlesungen.find(lesson => lesson.id === "lektion-4").sources.push("analyse");
 
 const anleitungen = [
   {
@@ -218,9 +229,11 @@ const weitereBefehle = [
   ["np.array() / Array * Zahl", "Eine Zahlenliste in ein Array umwandeln und elementweise rechnen.", 'import numpy as np\na = np.array([2, 3])\nprint((a * 2).tolist())', "NumPy erforderlich; gemeinsamer Datentyp; passt zu Masken, Statistik und Matplotlib.", "lektion-4"],
   ["Boolesche Maske / & / |", "Mehrere Array-Bedingungen elementweise verbinden.", 'import numpy as np\na = np.array([-1, 20, 60])\nprint(a[(a >= 0) & (a <= 50)].tolist())', "NumPy-Arrays und Pandas-Series; jede Bedingung einklammern; nicht and/or verwenden.", "lektion-4"],
   ["np.mean() / np.median()", "Mittelwert oder Median eines Zahlenarrays berechnen.", 'import numpy as np\nprint(float(np.mean([10, 20, 90])), float(np.median([10, 20, 90])))', "Vorher bereinigen; leere Arrays und NaN bewusst behandeln; Median ist kein Mittelwert.", "lektion-4"],
+  ["np.std() / ddof", "Die Streuung um den Mittelwert beschreiben.", 'import numpy as np\nwerte = np.array([2.0, 4.0])\nprint(float(np.std(werte)))', "NumPy; ddof=0 ist die Voreinstellung. ddof=1 nutzt einen anderen Nenner und braucht mehr als einen Wert. Nicht mit dem Mittelwert verwechseln.", "lektion-4"],
   ["plt.subplots() / ax.plot() / ax.bar()", "Ein oder mehrere Linien- und Balkendiagramme anlegen.", 'import matplotlib.pyplot as plt\nfig, ax = plt.subplots()\nax.plot([20, 24, 30])\nax.bar([0, 1, 2], [10, 12, 15])', "Matplotlib; Listen und NumPy-Arrays; x und y müssen zusammenpassen; plt.show zeigt die Grafik.", "lektion-4"],
   ["set_title / set_xlabel / set_ylabel / tight_layout / show", "Diagramme beschriften und anzeigen.", 'import matplotlib.pyplot as plt\nfig, ax = plt.subplots()\nax.plot([20, 24])\nax.set_title("Temperatur")\nax.set_xlabel("Messpunkt")\nax.set_ylabel("°C")\nplt.tight_layout()\nplt.show()', "Matplotlib-Achsenobjekt ax; erst zeichnen und beschriften, dann anzeigen.", "lektion-4"],
   ["sns.histplot()", "Die Verteilung von Werten als Histogramm ansehen.", 'import seaborn as sns\nimport matplotlib.pyplot as plt\nsns.histplot([20, 21, 21, 24])\nplt.show()', "Seaborn und Matplotlib; Zahlenliste, Array oder benannte DataFrame-Spalte.", "lektion-4"],
+  ["sns.boxplot()", "Median, Quartile und statistisch auffällige Werte zeigen.", 'import seaborn as sns\nimport matplotlib.pyplot as plt\nsns.boxplot(y=[20, 21, 22, 23, 100])\nplt.show()', "Seaborn; die Box reicht vom ersten zum dritten Quartil. Punkte außerhalb der Whisker sind statistisch auffällig und nicht automatisch Messfehler.", "lektion-4"],
   ["pd.DataFrame() / pd.read_csv()", "Eine Tabelle aus Daten oder einer CSV erzeugen.", 'import pandas as pd\ndf = pd.DataFrame({"wert": [10, 20]})\n# Alternative mit eigener Datei:\n# df = pd.read_csv("messdaten.csv", sep=",", decimal=".")\nprint(df.shape)', "Pandas; bei CSV Pfad, Header, Trennzeichen und Dezimalzeichen prüfen; danach head/info.", "lektion-6"],
   ["head() / tail() / info() / shape / columns", "Tabelleninhalt und Struktur ansehen.", 'import pandas as pd\ndf = pd.DataFrame({"wert": [10, 20]})\nprint(df.head(1))\nprint(df.tail(1))\ndf.info()\nprint(df.shape, list(df.columns))', "DataFrame; shape und columns ohne Klammern; info schreibt selbst und liefert None.", "lektion-6"],
   ["describe() / Series.mean()", "Tabellenstatistik oder Spaltenmittelwert bilden.", 'import pandas as pd\ndf = pd.DataFrame({"wert": [10, 20, 30]})\nprint(df.describe())\nprint(df["wert"].mean())', "Numerische Spalten; mean ignoriert NaN standardmäßig; keine Zahlentexte blind mitteln.", "lektion-6"],
@@ -231,3 +244,62 @@ const weitereBefehle = [
   ["resample('5min').mean()", "Mittelwerte in Fünf-Minuten-Abschnitten bilden.", 'import pandas as pd\ns = pd.Series([2.0, 4.0], index=pd.to_datetime(["2024-01-01 08:01", "2024-01-01 08:04"]))\nprint(s.resample("5min").mean().tolist())', "Zeitindex oder on=Zeitspalte; vorher Zahlenspalten wählen; leere Abschnitte bleiben NaN.", "lektion-8"],
   ["class / __init__ / self / Methode", "Zusammengehörige Daten und Funktionen bündeln.", 'class Sensor:\n    def __init__(self, ort):\n        self.ort = ort\n    def beschreibung(self):\n        return self.ort\nprint(Sensor("Labor").beschreibung())', "Instanzmethoden erhalten self automatisch; eigene veränderbare Daten in __init__ anlegen.", "lektion-9"]
 ];
+
+// Aufgabeninventar des vorhandenen Übungsblatts; Erklärungen sind keine geführten Lösungen.
+const abdeckung = [
+  {title:"1 · Einrichtung",page:5,tasks:["1.1","1.2","1.3"],lessons:["python-setup","vscode-setup","lektion-1"],gap:"Installation auf deinem Gerät selbst prüfen."},
+  {title:"2 · Variablen und Typen",page:6,tasks:["2.1","2.2","2.3"],lessons:["lektion-2"],gap:"Originalaufgaben selbst bearbeiten; keine gestuften Lösungen vorhanden."},
+  {title:"3 · Entscheidungen",page:7,tasks:["3.1","3.2","3.3"],lessons:["lektion-2","if"],gap:"Mehrere Bedingungen und ihre Grenzfälle an den Originalaufgaben üben."},
+  {title:"4 · Schleifen",page:8,tasks:["4.1","4.2","4.3"],lessons:["lektion-3","for"],gap:"while, break und continue brauchen zusätzliche eigene Ausführung an den Originalaufgaben."},
+  {title:"5 · Datenstrukturen",page:9,tasks:["5.1","5.2","5.3","5.4"],lessons:["lektion-3","liste"],gap:"Eine Liste von Dictionaries ist noch nicht als eigene geführte Aufgabe aufbereitet."},
+  {title:"6 · CSV und Standard-Python",page:10,tasks:["6.1","6.2","6.3"],lessons:["aufgabe-6-1","aufgabe-6-2","aufgabe-6-3"],gap:"Geführte Lösungen vorhanden. CSV-Zuordnung, Sollzahlen und Filtergrenzen sind nicht vom Kurs bestätigt; 6.3 steht auf PDF-S. 11."},
+  {title:"7 · NumPy einführen",page:12,tasks:["7.1","7.2","7.3"],lessons:["lektion-4"],gap:"Array-Umwandlung und Vektorisierung erklärt; Originalaufgaben nicht geführt."},
+  {title:"8 · Masken und Statistik",page:13,tasks:["8.1","8.2","8.3"],lessons:["lektion-4"],gap:"Masken, Mittelwert, Median und Standardabweichung erklärt; Original-Sollausgaben sind nicht verbindlich bestätigt."},
+  {title:"9 · Matplotlib",page:14,tasks:["9.1","9.2","9.3"],lessons:["lektion-4"],gap:"Befehlsbeispiele vorhanden; Diagramme und Vorher-/Nachher-Vergleich noch selbst erstellen."},
+  {title:"10 · Seaborn und Report",page:15,tasks:["10.1","10.2","10.3"],lessons:["lektion-4"],gap:"Boxplot und Histogramm erklärt; der vollständige Originalreport hat noch keine geführte Lösung."}
+];
+
+quellen.praxis31 = {title:"Vorlesung 003 · PDF-S. 31 · Bezug für das eigene Transferprojekt",href:"../Referenz/Vorlesungen/003_Coding und Digitalisierung.pdf#page=31"};
+inhalte.push({
+  id:"praxis-zeitreihe",kind:"Arbeitsablauf",topic:"Praxisprojekt",title:"Mini-Projekt: Von der CSV zum Beckenbericht",
+  aliases:["Transferprojekt","BeckenAnalyse","Pandas OOP üben","becken-mini.csv"],
+  summary:"Verbinde CSV-Import, Zeitraster, begrenzte Interpolation und eine Klasse mit eigenen Mini-Daten.",
+  explanation:"Selbst erstellte Transferaufgabe nach den Ideen aus Vorlesung 003, PDF-S. 31. Sie ist ein kleiner Übungsweg zum Zusammenspiel der Lektionen 5–9. Die vier Zeilen in becken-mini.csv sind synthetisch und ersetzen weder bb12024.csv noch die Auswertung des Originaldatensatzes.",
+  needs:["lektion-5","lektion-6","lektion-7","lektion-8","lektion-9"],sources:["praxis31"],
+  download:["Synthetische becken-mini.csv speichern","beispiele/becken-mini.csv"],
+  notice:"Arbeite in einem eigenen Ordner mit main.py und becken-mini.csv. Pandas muss im ausgewählten Python installiert sein. Auf dieser Lernseite wird kein Python-Code ausgeführt. Interpolation erzeugt Schätzungen, keine Messungen.",
+  steps:["Sichere die synthetische CSV im Übungsordner. Öffne sie zuerst als Text und prüfe Spalten, Trennzeichen und Zeitangaben.","Schreibe eine Klasse BeckenAnalyse. __init__ speichert den Pfad und setzt df zunächst auf None.","Lade die CSV mit pd.read_csv. Wandle zeit um, setze den Zeitindex und sortiere ihn. Wähle nur o2_ist und temp_c für die Auswertung.","Bilde das 5-Minuten-Mittel. Untersuche das leere Rasterintervall, bevor du etwas füllst.","Interpoliere zeitbezogen höchstens einen Rasterwert pro Lücke, nur im Inneren. Merke dir mit einer Maske, welche Zellen du geschätzt hast.","Ergänze eine Report-Methode. Verweigere den Report vor der Aufbereitung und gib danach Rasterzeilen, geschätzte Zellen und beide Mittelwerte aus.","Führe dein Programm aus. Verändere danach einen Messwert und begründe, welche Abschnitte und Kennzahlen sich verändern müssen."],
+  hints:["Das Zeitraster entsteht durch df.set_index('zeit').sort_index() und anschließend resample('5min').mean(). Vergleiche zuerst die beiden vorhandenen Messgruppen.","raster.isna() & aufbereitet.notna() markiert Zellen, die nach dem Füllen nicht mehr fehlen. Bewahre diese Information getrennt von den Werten auf.","Prüfe vor dem Report: if self.df is None. Eine leere oder noch nicht berechnete Auswertung ist kein Bericht mit gemessenen Nullen."],
+  checks:["Die Quelldatei bleibt unverändert. Dein Programm liest nur.","Der Zeitindex ist sortiert; pro Fünf-Minuten-Abschnitt gibt es höchstens eine Ergebniszeile.","Der mittlere Abschnitt enthält Schätzungen. Kennzeichne sie und erkläre die verwendete Annahme.","Mit noch längeren Lücken darf limit=1 nur einen Teil auffüllen. Restliche Fehlwerte dürfen nicht unbemerkt als vollständige Daten gelten.","Starte die Report-Methode vor der Aufbereitung: Sie muss einen verständlichen Fehler auslösen. Teste zwei Instanzen mit getrennten Daten."],
+  solution:{intro:"Eigene Musterlösung ausschließlich für becken-mini.csv. Lies zunächst die Schritte, schreibe selbst und öffne diese Lösung erst zum Vergleichen. Die Interpolationsgrenze ist eine Übungsannahme.",code:`import pandas as pd
+
+class BeckenAnalyse:
+    def __init__(self, pfad):
+        self.pfad = pfad
+        self.df = None
+        self.geschaetzt = None
+
+    def aufbereiten_5min(self):
+        self.df = None
+        self.geschaetzt = None
+        roh = pd.read_csv(self.pfad)
+        roh["zeit"] = pd.to_datetime(roh["zeit"])
+        daten = roh.set_index("zeit").sort_index()[["o2_ist", "temp_c"]]
+        raster = daten.resample("5min").mean()
+        self.df = raster.interpolate(method="time", limit=1, limit_area="inside")
+        self.geschaetzt = raster.isna() & self.df.notna()
+
+    def zeige_report(self):
+        if self.df is None:
+            raise ValueError("Zuerst aufbereiten_5min ausführen.")
+        if self.df.empty or self.df.isna().any().any():
+            raise ValueError("Es fehlen noch Werte. Lücken zuerst prüfen.")
+        print("Rasterzeilen:", len(self.df))
+        print("Geschätzte Zellen:", int(self.geschaetzt.sum().sum()))
+        print(f"O2-Mittel: {self.df['o2_ist'].mean():.1f} mg/L")
+        print(f"Temperaturmittel: {self.df['temp_c'].mean():.1f} °C")
+
+analyse = BeckenAnalyse("becken-mini.csv")
+analyse.aufbereiten_5min()
+analyse.zeige_report()`,explanation:"Die erste Maske erhält die Herkunft der Schätzungen. limit=1 begrenzt die Füllung je Lücke; limit_area='inside' verhindert das Verlängern an den Rändern. Bei verbleibenden Fehlwerten stoppt der Report. Für reale Prozessdaten müssen geeignete Zeitgrenzen, Qualitätsregeln und Einheiten fachlich festgelegt werden."}
+});
