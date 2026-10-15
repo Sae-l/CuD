@@ -1,6 +1,6 @@
 # Quellenabdeckung und verbleibende Grenzen
 
-Stand: 15.10.2026, Version 0.2.0. **Alle 31 Aufgaben des vorhandenen Übungsskripts sind mit Arbeitsschritten, gestuften Hinweisen, Selbstkontrollen und getrennten eigenen Musterlösungen begleitet.** Das bestätigt die Aufgabenbegleitung, keinen Lernerfolg und keine vollständige Abdeckung zukünftiger Kursunterlagen.
+Stand: 15.10.2026, Version 0.2.1. **Alle 31 Aufgaben des vorhandenen Übungsskripts sind mit Arbeitsschritten, gestuften Hinweisen, Selbstkontrollen und getrennten eigenen Musterlösungen begleitet.** Das bestätigt die Aufgabenbegleitung, keinen Lernerfolg und keine vollständige Abdeckung zukünftiger Kursunterlagen.
 
 ## Übungsskript
 
@@ -30,7 +30,7 @@ Vorlesungen 001–003 sind in neun Etappen zusammengefasst. Eine zehnte Etappe e
 | PDF-S. 26 · Zeitraster | Sortierter Zeitindex, 5-Minuten-Mittel, begrenzte innere Interpolation und Fehlerfälle | Limit ist eine didaktische Annahme; kein Originaldatennachweis |
 | PDF-S. 31 · Klasse | Konstruktor, Aufbereitung und geschützter Report; zwei getrennte Instanzen | bb12024.csv fehlt; Originalreport unbestätigt |
 
-Das eigene Projekt mit becken-mini.csv bleibt getrennt. Keine synthetische Datei wird als bb12024.csv ausgegeben. Sobald die Originaldatei vorliegt, müssen Header, Einheiten, Zeitraum, Fehlwerte und Originalresultate zusätzlich geprüft werden.
+Für die drei betroffenen Live-Übungen liegt jetzt die selbst erstellte live-mini.csv mit fünf Spalten als Download vor. Die unveränderten Kopierprogramme sind mit ihren Hauptaufrufen und unabhängig erwarteten Demoergebnissen geprüft. Pandas: 24.00 °C, zwei kritische Messpunkte. Zeitraster: Temperatur 22, 25, 28. Klasse: drei Rasterzeilen, zwei geschätzte Zellen, 25.0 °C. Das eigene Projekt mit becken-mini.csv bleibt getrennt. Keine synthetische Datei wird als bb12024.csv ausgegeben. Sobald die Originaldatei vorliegt, müssen Header, Einheiten, Zeitraum, Fehlwerte und Originalresultate zusätzlich geprüft werden.
 
 ## Quellenabgleich
 

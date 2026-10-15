@@ -1,6 +1,6 @@
 # Review und Verbesserungen
 
-Aktueller Stand: Version 0.2.0 mit 31 Aufgabenbegleitungen, vier Live-Übungen, FFT und automatischer Projektprüfung; siehe **Abschlusskorrektur 0.2.0** am Ende. Die folgenden bisherigen Abschnitte dokumentieren die erste Auditphase und deren damalige Git-Übernahme.
+Aktueller Stand: Version 0.2.1 mit 31 Aufgabenbegleitungen, vier Live-Übungen, FFT und automatischer Projektprüfung; siehe **Release-Korrektur 0.2.1** am Ende. Die folgenden bisherigen Abschnitte dokumentieren die erste Auditphase und deren damalige Git-Übernahme.
 
 Stand: 15.10.2026. Geprüft und lokal umgesetzt im vorhandenen Lernwerkzeug. Die acht Originaldateien in `Referenz/` bleiben bytegleich. Die Auditphase erfolgte in einer Arbeitsablage ohne `.git`-Verzeichnis; Commit, Push und Pull Request sind eine nachfolgende, gesondert beauftragte Übernahme.
 
@@ -98,3 +98,15 @@ GitHub-Konfiguration: geschützter main mit Windows-/Linux-Prüfung, minimale Wo
 Aktuelle Nachweise: [Prüfbericht](Lernwerkzeug/pruefung/PRUEFBERICHT.md), ergebnis.json und kompatibilitaet.json. Alte Erweiterungs- und Fehlerpfadberichte dokumentieren ihren damaligen Stand. Echte Geräte, Screenreader, Anfänger-Gebrauchstest und Originaldatenprüfung bleiben offen.
 
 Die Linux-CI-Matrix erreichte nach mehr als zwei schnell durchlaufenen Größen WebKits Navigationslimit. Die Matrix wartet nun auf den bestätigten Hash-Wechsel und lädt vor jeder Größe eine frische Dokumentinstanz. Damit bleiben sämtliche Ansichten, Größen, Fokus- und Verlaufstests erhalten; kein Browserschutz wird deaktiviert. Hintergrund: [WebKit-Navigationslimit](https://github.com/WebKit/WebKit/pull/53798). Die Browserinstallation lädt nur die verwendete Chromium-Headless-Shell sowie Firefox und WebKit. Neue Originalaufgaben werden nur akzeptiert, wenn die unabhängige Prüffallliste sie ausdrücklich abdeckt.
+
+## Release-Korrektur 0.2.1
+
+Die drei Live-Kopierprogramme verwiesen bisher beim Start auf die fehlende bb12024.csv. Die veröffentlichten Funktionstests verwendeten eine eigene Testdatei, die Lernenden nicht zum Download vorlag. Jetzt erhalten die drei Seiten die synthetische live-mini.csv als Download, passende Hauptaufrufe und unabhängige Sollwerte. Die Tests führen exakt diese ausgelieferten Hauptprogramme aus und vergleichen jeden Browserdownload bytegenau. Originaldaten und ihre Ergebnisse bleiben unbestätigt; die acht Originaldateien werden nicht verändert.
+
+Die Quellenübersicht enthielt noch den alten Pilotstand von drei Aufgaben. Sie beschreibt jetzt alle 31 begleiteten Aufgaben, vier Live-Übungen und die aktuellen Grenzen. Keine neue Laufzeit, kein Backend und keine Browser-Python-Ausführung ergänzt.
+
+Die drei Dependabot-PRs für Playwright 1.64.0, Pandas 3.0.6 und NumPy 2.5.4 scheiterten an nicht aktualisierten Manifesteinträgen. Ihre begrenzten Paketänderungen wurden gemeinsam übernommen; das Manifest wird erst nach Diff-Prüfung und Tests erneuert. Kein automatisches Umschreiben des Manifests in CI. Technische Freigabe und Quellenvollständigkeit werden getrennt ausgewiesen.
+
+Nach ausdrücklicher Abstimmung mit dem Nutzer wurde die abgeschlossene Gestaltung aus dem Chat „Apply GPT taste skill“ übernommen: Startseite, lokale Outfit-/GSAP-/Bilddateien, Herkunft und Lizenzhinweise, responsive Gestaltung und Designprüfungen. Die gemeinsame Fassung wird mit den aktualisierten Testabhängigkeiten geprüft; die älteren Designberichte gelten nur für ihren jeweiligen Lauf.
+
+Gemeinsame Nachprüfung: Firefox 157 drosselte die schnelle Hash-Navigation; ein neuer Tab je Größe löst dies unter Erhalt aller Fälle. Die lokale WebKit-27.2-Prüfung ist durch Code Integrity (3077/3033, zwei DLLs) blockiert. Die Dreiermatrix muss deshalb auf GitHub Windows/Linux vollständig bestehen; keine lokale Schutzregel wird abgeschaltet. Der Prüfbericht trennt lokale Vorprüfung und CI-Nachweise.

@@ -38,9 +38,19 @@ Die Originalaufgabe nennt `sensor_messdaten_projekt.csv`, vorhanden ist `messdat
 
 Die einfachen CSV-Beispiele verwenden `split(",")` und sind auf die einfache Quelldatei begrenzt. Für zitierte Kommas ist das Standardmodul `csv` nötig. Leere Zeilen werden übersprungen; andere beschädigte Daten lösen in den Musterlösungen einen sichtbaren Fehler aus.
 
+## Live-Übungen ohne Originaldatensatz bearbeiten
+
+Die Seiten 003 · PDF-S. 18, 26 und 31 bieten **Synthetische live-mini.csv speichern** an. Speichere diese Datei neben dein Python-Programm und starte das Terminal in diesem Ordner. Die Musterlösungen verwenden diesen Dateinamen bereits. Installiere Pandas wie in der Python-Einrichtung beschrieben, falls es in deiner Umgebung fehlt.
+
+Die Datei enthält drei selbst erstellte Messzeilen mit fünf Spalten. In der Pandas-Übung erhältst du 24.00 °C und zwei kritische Messpunkte. Nach dem Resampling entstehen die Temperaturwerte 22, 25, 28; die mittlere Rasterzeile ist geschätzt. Der Klassenreport meldet drei Rasterzeilen, zwei geschätzte Zellen und 25.0 °C.
+
+Das sind Demoergebnisse. Sobald bb12024.csv vorliegt, prüfe Header, Trennzeichen, Einheiten, Zeitformat und Lücken. Ändere danach nur den Dateipfad im Aufruf auf die Originaldatei; die Originalkennzahlen müssen dann zusätzlich geprüft werden. Benenne die Demo niemals in bb12024.csv um. Das separate Transferprojekt verwendet weiterhin becken-mini.csv.
+
 ## Bedienung und Quellen
 
-Auf schmalen Bildschirmen öffnest du die Bereiche mit **Lernnavigation öffnen**. Nach der Auswahl schließt sich das Menü; mit `Escape` kannst du es ebenfalls schließen. Mit `Tab` erreichst du Links und Eingabefelder; der erste Link springt zum Lerninhalt. Hinweise und Lösungen lassen sich mit der Tastatur öffnen. Breite Tabellen und Codefelder können seitlich gescrollt werden. Die kurzen Animationen berücksichtigen die Einstellung für reduzierte Bewegung.
+Auf schmalen Bildschirmen öffnest du die Bereiche mit **Lernnavigation öffnen**. Nach der Auswahl schließt sich das Menü; mit `Escape` kannst du es ebenfalls schließen. Mit `Tab` erreichst du Links und Eingabefelder; der erste Link springt zum Lerninhalt. Hinweise und Lösungen lassen sich mit der Tastatur öffnen. Breite Tabellen und Codefelder können seitlich gescrollt werden. Die Animationen berücksichtigen die Einstellung für reduzierte Bewegung.
+
+Die Startseite bietet fünf direkte Lernzugänge, das kleine Python-Vorhersagebeispiel, manuell wechselbare Lerntipps und aufklappbare Hilfen. Schrift, Foto und Animationen werden aus `assets/` geladen; dieser Ordner gehört zum Offline-Paket. [Herkunft und Lizenzen](assets/README.md).
 
 PDF-Verweise enthalten `#page=N`; ob der Betrachter direkt dorthin springt, hängt vom Browser ab. Verwendete Originalseiten sind zusätzlich als Bilder verlinkt. Manche Browser laden Markdown-Berichte herunter; du kannst sie im Editor lesen.
 

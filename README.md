@@ -2,13 +2,13 @@
 
 Ein lokales Lernwerkzeug für Studierende im Kurs **Coding und Digitalisierung**, auch ohne Programmierkenntnisse: verständliche Vorlesungsetappen, eine Befehlsübersicht, Einrichtungsanleitungen und Begleitung zu allen 31 Aufgaben des vorhandenen Übungsskripts.
 
-Version **0.2.0** begleitet alle 31 Aufgaben des vorhandenen Übungsskripts, vier Live-Übungen und zehn Lernetappen einschließlich FFT. Lernkontrollen, lokale Bearbeitungsmarken und ein eigenes Transferprojekt helfen beim Üben.
+Version **0.2.1** begleitet alle 31 Aufgaben des vorhandenen Übungsskripts, vier Live-Übungen und zehn Lernetappen einschließlich FFT. Lernkontrollen, lokale Bearbeitungsmarken und ein eigenes Transferprojekt helfen beim Üben.
 
 **Aufgabe → benötigtes Wissen → passender Befehl → selbst ausprobieren → Ergebnis prüfen**
 
 ## In drei Schritten starten
 
-1. Lade den **gesamten Projektordner** über **Code → Download ZIP** herunter und entpacke ihn. Alternativ: `git clone https://github.com/Sae-l/CuD-1.git`. Der fest versionierte [Release v0.2.0](https://github.com/Sae-l/CuD-1/releases/tag/v0.2.0) enthält ein vollständiges ZIP und `SHA256SUMS`.
+1. Lade den **gesamten Projektordner** über **Code → Download ZIP** herunter und entpacke ihn. Alternativ: `git clone https://github.com/Sae-l/CuD-1.git`. Der fest versionierte [Release v0.2.1](https://github.com/Sae-l/CuD-1/releases/tag/v0.2.1) enthält ein vollständiges ZIP und `SHA256SUMS`.
 2. Öffne [Lernwerkzeug/index.html](Lernwerkzeug/index.html) aus dem entpackten Ordner im Browser. Die GitHub-Dateiansicht zeigt nur den Quelltext.
 3. Wähle **Lernweg beginnen**, richte deine Python-Umgebung ein und beginne mit der ersten Vorlesung. **Übungen & Begleitung** führt zu allen Aufgaben; der Block 6.1–6.3 bleibt hervorgehoben.
 
@@ -42,7 +42,7 @@ Für Lernende: [Bedienung](Lernwerkzeug/README.md), [Lernkonzept und Quellenabde
 
 Hinweise und Musterlösungen öffnest du einzeln. Lösungstexte und Zahlenantworten erscheinen nicht in Suchvorschauen. Lerntexte, Miniübungen und Musterlösungen sind selbst erstellt und von Originalaufgaben unterschieden.
 
-**Alle 31 Aufgaben des vorhandenen Übungsskripts sind geführt begleitet.** Vorlesungen 001–003 werden kompakt erklärt; eine zusätzliche FFT-Lektion behandelt den Begleitcode anhand eines eigenen geprüften Beispiels. Die vier Live-Übungen haben eigene Musterlösungen. **bb12024.csv fehlt weiterhin**: Drei Live-Lösungen sind mit getrennten synthetischen Daten geprüft, ihre Originalergebnisse bleiben unbestätigt. Der [Abdeckungsplan](Lernwerkzeug/ABDECKUNG.md) zeigt Quellen und Grenzen.
+**Alle 31 Aufgaben des vorhandenen Übungsskripts sind geführt begleitet.** Vorlesungen 001–003 werden kompakt erklärt; eine zusätzliche FFT-Lektion behandelt den Begleitcode anhand eines eigenen geprüften Beispiels. Die vier Live-Übungen haben eigene Musterlösungen. **bb12024.csv fehlt weiterhin**: Drei Live-Lösungen laufen direkt mit der herunterladbaren, selbst erstellten live-mini.csv; ihre Originalergebnisse bleiben unbestätigt. Der [Abdeckungsplan](Lernwerkzeug/ABDECKUNG.md) zeigt Quellen und Grenzen.
 
 Jede der zehn Lektionen enthält eine Verständnisfrage mit begründeter Rückmeldung. Nach selbst geschriebener und geprüfter Miniübung kannst du eine Bearbeitungsmarke setzen. Sie wird nur im selben Browser gespeichert; bei blockierter Speicherung gilt sie für die Sitzung. Keine Anmeldung, Übertragung oder Synchronisation. Eine Marke ist deine Selbsteinschätzung, kein Kompetenznachweis.
 

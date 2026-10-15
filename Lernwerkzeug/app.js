@@ -267,15 +267,59 @@ function renderItem(item) {
 
 function renderStart() {
   const hero = el("div",undefined,"welcome-hero");
-  const intro = el("div");
-  intro.append(el("p","Willkommen in deinem Lernraum","kind"),el("h1","Dein erster Schritt ins Programmieren."),el("p","Du musst noch nichts können. Entdecke Python, verstehe deine Vorlesung und schreibe Schritt für Schritt deinen eigenen Code.","intro"));
+  const image = el("img",undefined,"hero-image");
+  image.src = "assets/lernraum.jpg"; image.alt = ""; image.width = 1600; image.height = 900;
+  const intro = el("div",undefined,"hero-copy");
+  const title = el("h1");
+  title.append(document.createTextNode("Dein erster Schritt "),el("span","ins Programmieren."));
+  intro.append(el("p","Willkommen in deinem Lernraum","kind"),title,el("p","Du musst noch nichts können. Entdecke Python, verstehe deine Vorlesung und schreibe Schritt für Schritt deinen eigenen Code.","intro"));
   const actions = el("div",undefined,"hero-actions");
   actions.append(actionLink("Lernweg beginnen","#python-setup","primary-link"),actionLink("Zur aktuellen Übung","#uebung","secondary-link"));
+  intro.append(actions);
+  hero.append(image,intro,el("p","Coding und Digitalisierung · Vom ersten Gedanken zum eigenen Programm.","hero-caption"));
+  article.replaceChildren(hero);
   if (completed.size) {
     const next = vorlesungen.find(lesson => !completed.has(lesson.id));
-    actions.append(actionLink(next ? "Weiterlernen" : "Lektionen wiederholen",next ? `#${next.id}` : "#vorlesungen","secondary-link"));
+    const resume = el("div",undefined,"resume-learning");
+    resume.append(el("p","Schön, dass du wieder da bist. Dein Lernweg wartet."),actionLink(next ? "Weiterlernen" : "Lektionen wiederholen",next ? `#${next.id}` : "#vorlesungen","secondary-link"));
+    article.append(resume);
   }
-  intro.append(actions,el("p","Für Studierende im Kurs Coding und Digitalisierung. In deinem Tempo, mit verständlichen Beispielen.","example-note"));
+  const entries = el("section",undefined,"home-section");
+  const entryTitle = el("h2");
+  const inline = el("span",undefined,"inline-image"); inline.setAttribute("aria-hidden","true");
+  entryTitle.append(document.createTextNode("Dein Studium. "),inline,document.createTextNode(" Dein Einstieg."));
+  entries.append(entryTitle,el("p","Eine Frage nachschlagen oder ganz von vorne beginnen. Hier findest du deinen nächsten Schritt.","section-intro"));
+  const cards = el("div",undefined,"entry-grid");
+  for (const [title,description,href,visual] of [
+    ["Vorlesungen verstehen",`${vorlesungen.length} übersichtliche Etappen in der Reihenfolge deiner Unterlagen.`,"#vorlesungen","Python → NumPy → Pandas"],
+    ["Aktuelle Übung bearbeiten","CSV einlesen, Daten filtern und auswerten – mit Erklärungen und gestuften Lösungen.","#uebung","Datei. Daten. Durchblick."],
+    ["Befehle nachschlagen","Beschreibung, Beispiel und passende Datentypen auf einen Blick.","#befehle","print(\"Jetzt verstehe ich’s.\")"],
+    ["Python einrichten","Die passende Anleitung für deinen PC oder dein Tablet.","#python-setup",".py"],
+    ["VS Code einrichten","Editor installieren, Python auswählen und die erste Datei starten.","#vscode-setup","{ }" ]
+  ]) {
+    const link = actionLink("",href,"entry-card");
+    const arrow = el("span","↗","card-arrow"); arrow.setAttribute("aria-hidden","true");
+    const art = el("span",visual,"card-visual"); art.setAttribute("aria-hidden","true");
+    link.append(art,el("h3",title),el("p",description),arrow); cards.append(link);
+  }
+  entries.append(cards); article.append(entries);
+  const tryout = el("section",undefined,"home-section tryout");
+  const invitation = el("div",undefined,"tryout-copy");
+  invitation.append(el("p","Lernen beginnt mit Neugier.","kind"),el("h2","Du kannst mehr, als du gerade denkst."),el("p","Du brauchst kein Vorwissen für deinen ersten Versuch. Lies diese zwei Zeilen und entscheide: Was gibt das Programm aus?"));
+  const rhythm = el("div",undefined,"learning-rhythm");
+  rhythm.append(el("h3","Kleine Schritte. Echtes Verstehen."));
+  const tip = el("p"); tip.setAttribute("role","status"); tip.setAttribute("aria-live","polite");
+  const tips = ["Vorhersagen: Formuliere zuerst deine eigene Vermutung. Eine falsche Idee ist ein guter Anfang.","Ausprobieren: Starte das Beispiel in deinem Editor. Vergleiche das Ergebnis mit deiner Vermutung.","Verändern: Ändere einen Wert. Erkläre, warum sich die Ausgabe verändert, und schreibe dann selbst Code."];
+  let tipIndex = 0;
+  tip.textContent = tips[0];
+  const controls = el("div",undefined,"rhythm-controls");
+  const counter = el("span","1 / 3");
+  for (const [label,direction,symbol] of [["Vorheriger Lerntipp",-1,"←"],["Nächster Lerntipp",1,"→"]]) {
+    const button = el("button",symbol); button.type = "button"; button.setAttribute("aria-label",label);
+    button.addEventListener("click",() => { tipIndex = (tipIndex + direction + tips.length) % tips.length; tip.textContent = tips[tipIndex]; counter.textContent = `${tipIndex + 1} / ${tips.length}`; });
+    controls.append(button);
+  }
+  controls.prepend(counter); rhythm.append(tip,controls); invitation.append(rhythm);
   const demo = el("div",undefined,"first-code");
   demo.append(el("p","Ein kleines Programm. Dein Anfang."));
   const pre = el("pre");
@@ -291,25 +335,51 @@ function renderStart() {
     demo.append(button);
   }
   demo.append(feedback);
-  hero.append(intro,demo);
-  article.replaceChildren(hero);
-  section("Was möchtest du heute lernen?");
-  const cards = el("div",undefined,"entry-grid");
-  for (const [title,description,href] of [
-    ["Vorlesungen verstehen",`${vorlesungen.length} übersichtliche Etappen in der Reihenfolge deiner Unterlagen.`,"#vorlesungen"],
-    ["Aktuelle Übung bearbeiten","CSV einlesen, Daten filtern und auswerten – mit Erklärungen und gestuften Lösungen.","#uebung"],
-    ["Befehle nachschlagen","Beschreibung, Beispiel und passende Datentypen auf einen Blick.","#befehle"],
-    ["Python einrichten","Die passende Anleitung für deinen PC oder dein Tablet.","#python-setup"],
-    ["VS Code einrichten","Editor installieren, Python auswählen und die erste Datei starten.","#vscode-setup"],
-    ["Wissen zusammen anwenden","Eigenes Mini-Projekt: CSV, Zeitraster und Klassen verbinden.","#praxis-zeitreihe"],
-    ["Was ist bereits abgedeckt?","Originalaufgaben, passende Lerntexte und verbleibende Lücken.","#abdeckung"]
-  ]) {
-    const link = actionLink("",href,"entry-card");
-    link.append(el("h3",title),el("p",description)); cards.append(link);
+  tryout.append(invitation,demo); article.append(tryout);
+  const practice = el("section",undefined,"home-section practice");
+  const practiceIntro = el("div");
+  practiceIntro.append(el("h2","Vom Verstehen zum Selbermachen."),el("p","Du übernimmst mit jeder Etappe ein bisschen mehr. Die Lerntexte, deine eigenen Versuche und gezielte Hilfe gehören zusammen."),actionLink("Unser Lernkonzept ansehen","#lernkonzept","text-link"));
+  const stack = el("div",undefined,"practice-stack");
+  for (const [index,[title,text,href,label]] of [
+    ["Eine Idee verstehen","Beginne mit einem überschaubaren Beispiel. Erkläre mit eigenen Worten, was jede Zeile bewirkt.","#vorlesungen","Vorlesungen entdecken"],
+    ["Aus Fehlern weiterlernen","Erst selbst versuchen, dann einen Hinweis öffnen. Die vollständige Lösung bleibt deine bewusste Entscheidung.","#uebung","Übung ausprobieren"],
+    ["Wissen zusammen anwenden","Verbinde CSV, Zeitraster und Klassen in einem eigenen Mini-Projekt mit kleinen, selbst erstellten Daten.","#praxis-zeitreihe","Zum Mini-Projekt"]
+  ].entries()) {
+    const step = el("div",undefined,"practice-step"); step.style.setProperty("--step",index);
+    step.append(el("h3",title),el("p",text),actionLink(label,href,index === 2 ? "entry-card text-link" : "text-link")); stack.append(step);
   }
-  article.append(cards);
-  section("Vom Verstehen zum Selbermachen");
-  article.append(el("p","Erst eine Vermutung, dann ein Versuch. In jeder Lektion liest du ein kleines Beispiel, führst es selbst aus, erklärst die Schritte und veränderst den Code. Zum Schluss löst du eine eigene Aufgabe."),actionLink("Unser Lernkonzept ansehen","#lernkonzept","text-link"));
+  practice.append(practiceIntro,stack); article.append(practice);
+  const help = el("section",undefined,"home-section");
+  help.append(el("h2","Du musst nicht alles auf einmal können."));
+  const accordion = el("div",undefined,"help-accordion");
+  for (const [title,text,href,label] of [
+    ["Ich fange bei null an.","Richte zuerst Python ein. Die erste Lektion erklärt dir anschließend, wie ein Programm überhaupt funktioniert.","#python-setup","Mit der Einrichtung starten"],
+    ["Ich hänge gerade fest.","Suche oben nach deinem Befehl oder deiner Fehlermeldung. In der aktuellen Übung helfen dir einzelne Hinweise weiter.","#uebung","Zur Aufgabenbegleitung"],
+    ["Ich möchte weitergehen.","Der Abdeckungsplan zeigt dir, welche Aufgaben begleitet sind und welche Themen du noch selbst vertiefen musst.","#abdeckung","Was ist bereits abgedeckt?"]
+  ]) {
+    const detail = el("details");
+    detail.append(el("summary",title),el("p",text),actionLink(label,href,href === "#abdeckung" ? "entry-card text-link" : "text-link"));
+    detail.addEventListener("toggle",() => { if (detail.open) [...accordion.children].filter(other => other !== detail).forEach(other => {other.open = false;}); });
+    accordion.append(detail);
+  }
+  help.append(accordion); article.append(help);
+  const finish = el("section",undefined,"home-finish");
+  finish.append(el("h2","Dein nächster Schritt? Eine Zeile Code."),el("p","Fang klein an. Bleib neugierig. Der Rest wächst mit jedem Versuch."),actionLink("Mit Python loslegen","#python-setup","primary-link")); article.append(finish);
+}
+
+let startMotion;
+function animateStart() {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  startMotion = gsap.matchMedia();
+  startMotion.add("(prefers-reduced-motion: no-preference)",() => {
+    gsap.from(".hero-copy > *",{y:24,opacity:0,duration:.65,stagger:.09,ease:"power2.out"});
+    gsap.fromTo(".hero-image",{scale:.8},{scale:1,ease:"none",scrollTrigger:{trigger:".welcome-hero",start:"top bottom",end:"top top",scrub:true}});
+    gsap.to(".hero-image",{opacity:.2,ease:"none",scrollTrigger:{trigger:".welcome-hero",start:"bottom 55%",end:"bottom top",scrub:true}});
+  });
+  startMotion.add("(min-width: 1051px) and (prefers-reduced-motion: no-preference)",() => {
+    gsap.utils.toArray(".practice-step").forEach(card => gsap.from(card,{y:60,scale:.94,ease:"none",scrollTrigger:{trigger:card,start:"top 90%",end:"top 40%",scrub:true}}));
+  });
 }
 
 function actionLink(title,href,className) {
@@ -355,7 +425,7 @@ function renderCoverage() {
     article.append(detail);
   }
   section("Vorlesungen und weitere Referenzdateien");
-  article.append(el("p","Vorlesungen 001–003 und die FFT-Einführung sind als Lerntexte aufbereitet. Alle vier Live-Übungen haben Schritte, Hinweise und Musterlösungen. bb12024.csv fehlt weiterhin; drei Live-Lösungen sind deshalb nur mit getrennten synthetischen Daten getestet. Organisation, Termine und Prüfungsregeln bleiben in den Originalunterlagen."));
+  article.append(el("p","Vorlesungen 001–003 und die FFT-Einführung sind als Lerntexte aufbereitet. Alle vier Live-Übungen haben Schritte, Hinweise und Musterlösungen. bb12024.csv fehlt weiterhin; die drei betroffenen Live-Lösungen lassen sich mit der verlinkten synthetischen live-mini.csv direkt ausprobieren. Organisation, Termine und Prüfungsregeln bleiben in den Originalunterlagen."));
   itemLinks("Live-Übungen aus Vorlesung 003",["live-003-10","live-003-18","live-003-26","live-003-31"]);
   itemLinks("Weiter üben",["lektion-10","praxis-zeitreihe"]);
   article.append(actionLink("Ausführlicher Abgleich und Grenzen","ABDECKUNG.md"));
@@ -372,7 +442,7 @@ function renderExercise() {
     itemLinks(row.title,row.tasks.map(number => `aufgabe-${number.replace(".","-")}`));
   }
   itemLinks("Live-Übungen aus Vorlesung 003",["live-003-10","live-003-18","live-003-26","live-003-31"]);
-  article.append(el("div","Alle 31 Aufgaben des vorhandenen Übungsskripts sind begleitet. Die fehlende bb12024.csv bleibt für Originalergebnisse der Live-Übungen erforderlich; synthetische Prüfdaten ersetzen sie nicht.","notice"));
+  article.append(el("div","Alle 31 Aufgaben des vorhandenen Übungsskripts sind begleitet. Drei Live-Übungen kannst du mit der herunterladbaren live-mini.csv bearbeiten. Für Originalergebnisse bleibt bb12024.csv erforderlich.","notice"));
 }
 
 function renderCommands() {
@@ -437,8 +507,11 @@ function renderResults() {
 }
 
 function route(focus = false) {
+  startMotion?.revert();
+  startMotion = undefined;
   const id = selectedId();
   const item = byId.get(id);
+  article.classList.toggle("home",!id || id === "start");
   if (item) renderItem(item);
   else if (!id || id === "start") renderStart();
   else if (id === "vorlesungen") renderLectures();
@@ -459,6 +532,7 @@ function route(focus = false) {
     article.focus({preventScroll:true});
     article.scrollIntoView({block:"start"});
   }
+  if (!id || id === "start") animateStart();
 }
 
 function setNavigation(open) {

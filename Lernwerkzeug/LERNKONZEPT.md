@@ -6,7 +6,9 @@ Stand: 15.10.2026. Umsetzung auf Basis des bestehenden Werkzeugs; Originalquelle
 
 Studierende ohne Programmierkenntnisse beginnen mit einer Willkommensseite und Zugängen zu Vorlesungen, aktueller Übung, Befehlen, Einrichtung, eigenem Transferprojekt und Abdeckungsplan. Die erste kleine Vorhersageaufgabe gibt direkt Rückmeldung. Der aktuelle Übungszugang bezeichnet den aufbereiteten Block 6.1–6.3; es gibt keine Anbindung an einen Stundenplan.
 
-Palette: Schrift #203e4a, Nebeninformationen #526c77, Aktionen #14665f, Hintergrund #ffffff, Navigationsfläche #f1f7f8, Hinweise #fff5dc. Lokale Segoe UI/Calibri und eine Monospace-Schrift für Code vermeiden externe Schriftanfragen. Links ausgerichtete Texte, kurze Absätze und ein breiter Inhaltsbereich für Übersichten; die Tabelle scrollt innerhalb ihres eigenen Bereichs. Keine dekorativen Animationen und keine zusätzlichen Web-Abhängigkeiten.
+Gestaltung nach gpt-taste: Schrift #20271f, Nebeninformationen #596052, Aktionen #365337, Hintergrund #f7f8f2 und Akzent #d5f58b. Die lokal mitgelieferte Outfit-Schrift ergänzt die Monospace-Schrift für Code. Die Startseite verwendet einen breiten, zentrierten Einstieg mit zwei Aktionen, fünf lückenlos angeordneten Lernzugängen und dem bestehenden Python-Vorhersagebeispiel. Lerntexte bleiben links ausgerichtet; breite Tabellen scrollen innerhalb ihres eigenen Bereichs.
+
+Das manuell bedienbare Lerntipp-Karussell erklärt Vorhersagen, Ausprobieren und Verändern. Ein mit Tastatur bedienbares Akkordeon bietet Einstiege für drei Lernsituationen. GSAP und ScrollTrigger skalieren das dekorative Bild beim Scrollen und unterstützen die Kartenstaffelung auf breiten Bildschirmen. Seitenwechsel räumen alle zugehörigen Animationen auf. Bei reduzierter Bewegung entfallen Animationen und angeheftete Karten; Inhalte und Bedienung bleiben vollständig vorhanden. Es gibt keinen automatischen Karussellwechsel. Schrift, Bild und Bibliotheken liegen lokal; [Herkunft und Lizenzen](assets/README.md) sind dokumentiert. Kein Framework oder Buildschritt ist hinzugekommen.
 
 ## Lernkonzept
 
