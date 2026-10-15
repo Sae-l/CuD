@@ -1,0 +1,42 @@
+{
+  "gsap_version": "3.15.0",
+  "font_commit": "8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5",
+  "files": [
+    {
+      "file": "gsap.min.js",
+      "url": "https://registry.npmjs.org/gsap/-/gsap-3.15.0.tgz#package/dist/gsap.min.js",
+      "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+      "bytes": 72927
+    },
+    {
+      "file": "ScrollTrigger.min.js",
+      "url": "https://registry.npmjs.org/gsap/-/gsap-3.15.0.tgz#package/dist/ScrollTrigger.min.js",
+      "sha256": "b0b14d67b55b0c43c756ac0b106cfcb09d0879945f6ead64451065b0672916a2",
+      "bytes": 44575
+    },
+    {
+      "file": "GSAP-README.md",
+      "url": "https://registry.npmjs.org/gsap/-/gsap-3.15.0.tgz#package/README.md",
+      "sha256": "66a79667b0538b19634b5a000a9a3debe588c98d390424e73e5d4de847270828",
+      "bytes": 6199
+    },
+    {
+      "file": "Outfit.ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5/ofl/outfit/Outfit%5Bwght%5D.ttf",
+      "sha256": "fc7287273e66929776e2ba54f144fe699080bec29f61bf649d70d871468aeade",
+      "bytes": 110884
+    },
+    {
+      "file": "OFL-Outfit.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5/ofl/outfit/OFL.txt",
+      "sha256": "c676351bf8576b9aba743cd5eaa8c0e7ee0d51f805d720447b4df4ddb6a2e416",
+      "bytes": 4389
+    },
+    {
+      "file": "lernraum.jpg",
+      "url": "https://fastly.picsum.photos/id/0/1600/900.jpg?hmac=uXopZGTod6p_33ksnitZltaZVRAZ8qapxKVpG7JkFek",
+      "sha256": "54cd969a3d1210d0f0908f7ceb3d6fd623670063f4f2218d636fb2b9f6ffb8e2",
+      "bytes": 106037
+    }
+  ]
+}
