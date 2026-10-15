@@ -62,7 +62,10 @@ async function main() {
       await page.locator(".welcome-hero").waitFor();
       const routes = await page.evaluate(() => ["start","vorlesungen","uebung","befehle","lernkonzept","abdeckung",...inhalte.map(item => item.id)]);
       async function go(id) {
+        // Auch den Abschluss der Hash-Navigation abwarten, bevor WebKit die nächste startet.
+        const navigation = page.waitForURL(`${url}#${id}`);
         await page.evaluate(id => { location.hash = id; },id);
+        await navigation;
         await page.waitForFunction(id => {
           const title = byId.get(id)?.title || {start:"Dein erster Schritt ins Programmieren.",vorlesungen:"Eine Idee nach der anderen.",uebung:"Deine Übung: Messdaten verstehen.",befehle:"Welcher Befehl passt wozu?",lernkonzept:"So lernst du hier programmieren.",abdeckung:"Was ist bereits abgedeckt?"}[id];
           return document.querySelector("#inhalt h1")?.textContent === title;

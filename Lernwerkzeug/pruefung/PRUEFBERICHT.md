@@ -29,3 +29,5 @@ Alle Aufgabenseiten des Übungsskripts PDF-S. 5–15 und die vier Live-Aufgabens
 bb12024.csv fehlt. Drei Live-Lösungen sind mit getrennten synthetischen Daten geprüft; die gedruckten Originalkennzahlen dafür sind nicht bestätigt. CSV-Zuordnung, Sollzahlen und unterschiedliche Filtergrenzen bleiben im Abdeckungsplan erklärt. Interpolation liefert Schätzungen unter einer didaktischen Annahme, keine freigegebenen realen Prozesswerte.
 
 Installationsaufgaben prüfen Kontrollprogramme, keine universelle Geräteinstallation. Technische Tests und eigene Bearbeitungsmarken belegen weder Lernerfolg noch vollständige Prüfungsvorbereitung. Echte Geräte, Safari auf Apple-Hardware, Screenreader und vollständige visuelle Folienprüfung bleiben offen. [Abdeckungsplan](../ABDECKUNG.md).
+
+CI-Ergänzung: Die erste Linux-Matrix meldete einen Navigations-Timeout in WebKit. Der Testhelfer wartet jetzt ausdrücklich auf den bestätigten Hash-URL-Wechsel und danach auf den passenden Seitentitel. Ein Erfolg gilt nur für den anschließenden Lauf am korrigierten Commit.

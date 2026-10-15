@@ -26,7 +26,7 @@ jobs:
           python-version-file: .python-version
       - run: npm ci --ignore-scripts
       - run: python -m pip install -r requirements-test.txt
-      - run: npx --no-install playwright install --with-deps chromium firefox webkit
+      - run: npx --no-install playwright install --with-deps --only-shell chromium firefox webkit
       - run: python scripts/manifest.py --check
       - run: python -m unittest discover -s scripts -p "test_*.py"
       - run: npm test
