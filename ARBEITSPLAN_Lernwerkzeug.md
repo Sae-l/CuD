@@ -1,6 +1,12 @@
 # Arbeitsplan: Lernwerkzeug für Coding und Digitalisierung
 
-Stand: 15.10.2026. Status: Erster lokaler Pilot für Aufgaben 6.1–6.3 umgesetzt und technisch geprüft; Gebrauchstest und vollständige Modulabdeckung offen.
+Stand: 15.10.2026. Status: Bestehender Pilot zum Anfänger-Lernraum erweitert; Gebrauchstest und vollständige Begleitung aller Originalaufgaben offen.
+
+## Aktuelle Designvorgabe und Erweiterung
+
+Die neue Nutzervorgabe ersetzt den früheren suchezentrierten Einstieg: attraktive Willkommensseite, Vorlesungen in Quellenreihenfolge, separater Zugang zur aktuellen Übung, Befehlsübersicht mit Beispielen und Kontext sowie getrennte Python- und VS-Code-Anleitungen. Umgesetzt sind neun Vorlesungsetappen mit PRIMM-Miniübungen, zwei Einrichtungsanleitungen und 44 Befehlsgruppen. Aktuelle Übung bezeichnet den vorhandenen Block 6.1–6.3, keinen automatisch ermittelten Kurstermin.
+
+Maßgebliche Beschreibung: [Lernkonzept und Abdeckung](Lernwerkzeug/LERNKONZEPT.md). Aktuelle Nachweise: [Prüfbericht](Lernwerkzeug/pruefung/PRUEFBERICHT.md). Die nachstehenden Abschnitte dokumentieren auch die Ausgangsplanung des Piloten; ihre früheren Erweiterungsziele sind teilweise umgesetzt.
 
 ## Umgesetzter Pilot
 
@@ -36,7 +42,7 @@ Der zentrale Zusammenhang lautet: **Aufgabe → benötigtes Wissen → passender
 | Arbeitsabläufe | „Wie gehe ich von einer Datei zum Diagramm?“ | Zusammenhängende Schritte mit Verweisen auf Befehle und Übungen |
 | Fehlerhilfe | „Warum bekomme ich einen `ValueError`?“ | Fehlermeldung, typische Ursache, gezielte Prüfschritte und kleines Gegenbeispiel |
 
-Die Startansicht zeigt zuerst die Suche und den Einstieg in die Übungen. Die Kapitel dienen zusätzlich zur Orientierung. Eine lange Einführung oder eine dekorative Startseite ist nicht nötig.
+Die Startansicht zeigt den Willkommenstext, eine kleine Vorhersageaufgabe und die fünf Hauptzugänge. Die gemeinsame Suche bleibt von jeder Ansicht aus verfügbar. Vorlesungen führen Anfänger von der Einrichtung bis zu einem eigenen Analyseprojekt.
 
 Desktop: links Themen und Übungen, in der Mitte Suchtreffer bzw. Lerninhalt, direkt beim Inhalt die zugehörigen Aufgaben und Quellen. Auf schmalen Bildschirmen stehen diese Bereiche untereinander. Navigation und Suche sind mit Tastatur bedienbar, Fokus und Beschriftungen sichtbar.
 

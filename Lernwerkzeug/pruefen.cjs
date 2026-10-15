@@ -9,11 +9,14 @@ const {spawnSync} = require("node:child_process");
 const {pathToFileURL,fileURLToPath} = require("node:url");
 const root = __dirname;
 const output = path.join(root,"pruefung");
+const testCache = path.join(root,"../.upload-work/matplotlib");
+async function main() {
 fs.mkdirSync(output,{recursive:true});
 fs.writeFileSync(path.join(output,"ergebnis.json"),JSON.stringify({status:"RUNNING",date:new Date().toISOString()},null,2) + "\n");
 const context = vm.createContext({});
 vm.runInContext(fs.readFileSync(path.join(root,"inhalte.js"),"utf8"),context);
-const {items,sources} = JSON.parse(vm.runInContext("JSON.stringify({items:inhalte,sources:quellen})",context));
+vm.runInContext(fs.readFileSync(path.join(root,"kurs.js"),"utf8"),context);
+const {items,sources,commands} = JSON.parse(vm.runInContext("JSON.stringify({items:inhalte,sources:quellen,commands:weitereBefehle})",context));
 const ids = new Set(items.map(item => item.id));
 assert.equal(ids.size,items.length);
 assert.equal(items.filter(item => item.kind === "Befehl & Begriff").length,15);
@@ -26,6 +29,11 @@ for (const source of Object.values(sources)) {
     const target = new URL(href,pathToFileURL(path.join(root,"index.html")));
     assert(fs.existsSync(fileURLToPath(target)),href);
   }
+}
+assert.equal(items.filter(item => item.kind === "Vorlesung").length,9);
+for (const command of commands) {
+  assert(ids.has(command[4]));
+  assert(command.slice(0,4).every(field => typeof field === "string" && field.length));
 }
 const originalManifest = JSON.parse(fs.readFileSync(path.join(root,"../Referenz_Sichtung/manifest.json"),"utf8"));
 for (const [relative,hash] of Object.entries(originalManifest.source_sha256)) {
@@ -54,6 +62,10 @@ with tempfile.TemporaryDirectory(prefix="lernwerkzeug-", dir=payload["temporary_
             if "output" in item:
                 assert actual == item["output"], item["id"]
             count += 1
+    import matplotlib.pyplot as plt
+    for command in payload["commands"]:
+        execute(command[2], {"input": lambda prompt="": "Test"})
+        plt.close("all")
     exercises = [i for i in items if i["kind"] == "Übung"]
     def run_pipeline(text):
         Path("messdaten.csv").write_text(text, encoding="utf-8")
@@ -94,10 +106,10 @@ with tempfile.TemporaryDirectory(prefix="lernwerkzeug-", dir=payload["temporary_
             pass
         else:
             raise AssertionError("Beschädigte Daten wurden stillschweigend akzeptiert")
-print(json.dumps({"examples":count,"pipeline":True,"edge_cases":True}))
+print(json.dumps({"examples":count,"command_examples":len(payload["commands"]),"pipeline":True,"edge_cases":True}))
 `;
 const python = spawnSync(process.env.LERNWERKZEUG_PYTHON || "python",["-c",pythonCode],{
-  input:JSON.stringify({items,csv:path.join(root,"../Referenz/Pflicht Übungen/messdaten.csv"),mini:fs.readFileSync(path.join(root,"beispiele/mini.csv"),"utf8"),temporary_root:output}),encoding:"utf8",env:{...process.env,PYTHONIOENCODING:"utf-8"}
+  input:JSON.stringify({items,commands,csv:path.join(root,"../Referenz/Pflicht Übungen/messdaten.csv"),mini:fs.readFileSync(path.join(root,"beispiele/mini.csv"),"utf8"),temporary_root:output}),encoding:"utf8",env:{...process.env,PYTHONOPTIMIZE:"",PYTHONIOENCODING:"utf-8",MPLBACKEND:"Agg",MPLCONFIGDIR:testCache}
 });
 assert.equal(python.status,0,python.stderr || String(python.error));
 const pythonResult = JSON.parse(python.stdout);
@@ -118,8 +130,9 @@ async function browserTests() {
     page.on("console",message => {if(message.type() === "error") errors.push(message.text());});
     page.on("request",request => {if(/^https?:/.test(request.url())) externalRequests.push(request.url());});
     const url = pathToFileURL(path.join(root,"index.html")).href;
+    const overviewTitles = {vorlesungen:"Eine Idee nach der anderen.",uebung:"Deine Übung: Messdaten verstehen.",befehle:"Welcher Befehl passt wozu?",lernkonzept:"So lernst du hier programmieren."};
     async function waitForItem(id = "") {
-      const title = items.find(item => item.id === id)?.title || "Von einer Datei zu einer Antwort.";
+      const title = items.find(item => item.id === id)?.title || overviewTitles[id] || "Dein erster Schritt ins Programmieren.";
       await page.waitForFunction(expected => document.querySelector("#inhalt h1")?.textContent === expected,title);
     }
     async function navigate(id = "") {
@@ -128,8 +141,44 @@ async function browserTests() {
     }
     await navigate();
     await page.waitForLoadState("networkidle");
+    assert.equal(await page.locator("#nav-toggle").isVisible(),false);
+    assert.equal(await page.locator("#lernnavigation").isVisible(),true);
     assert.equal(await page.locator("#treffer .result").count(),items.length);
     await page.screenshot({path:path.join(output,"desktop.png"),fullPage:true});
+    // Hauptzugänge, Lernreihenfolge, interaktive Vermutung und Befehlszusammenspiel.
+    for (const id of ["vorlesungen","uebung","befehle","python-setup","vscode-setup"]) {
+      assert.equal(await page.locator(`.entry-card[href="#${id}"]`).count(),1);
+    }
+    await page.getByRole("button",{name:"{name} kannst Python lernen!",exact:true}).click();
+    assert((await page.locator(".quiz-feedback").innerText()).includes("Fast!"));
+    await page.getByRole("button",{name:"Du kannst Python lernen!",exact:true}).click();
+    assert((await page.locator(".quiz-feedback").innerText()).includes("Richtig!"));
+    const localLinks = new Set();
+    for (const [id,title] of Object.entries(overviewTitles)) {
+      await page.goto(`${url}#${id}`);
+      await page.getByRole("heading",{name:title,exact:true}).waitFor();
+      const links = await page.locator("a[href]").evaluateAll(nodes => nodes.map(node => node.href));
+      links.filter(href => href.startsWith("file:")).forEach(href => localLinks.add(href));
+      if (id === "vorlesungen") assert.deepEqual(await page.locator(".course-link").evaluateAll(nodes => nodes.map(node => node.hash)),Array.from({length:9},(_,i) => `#lektion-${i + 1}`));
+      if (id === "befehle") {
+        assert.equal(await page.locator("tbody tr").count(),15 + commands.length);
+        await page.screenshot({path:path.join(output,"befehle-desktop.png"),fullPage:false});
+        await page.locator("#befehl-suche").fill("Zeitindex");
+        assert(await page.locator("tbody tr").count() > 0);
+        assert((await page.locator("tbody").innerText()).includes("resample"));
+        for (const query of ["<=","==","**"]) {
+          await page.locator("#befehl-suche").fill(query);
+          const count = await page.locator("tbody tr").count();
+          assert(count > 0 && count < 15 + commands.length,`Operatorsuche: ${query}`);
+          const command = commands.find(command => command[0].includes(query));
+          assert.equal(await page.locator("tbody").getByRole("link",{name:command[0],exact:true}).count(),1);
+        }
+        await page.locator("#befehl-suche").fill("xyzkeininhalt");
+        assert.equal(await page.locator("tbody tr").count(),0);
+      }
+      if (id === "vorlesungen") await page.screenshot({path:path.join(output,"vorlesungen-desktop.png"),fullPage:true});
+    }
+    await navigate();
     // Reale Eingabefälle einschließlich gepflegter Synonyme und Normalisierung.
     const cases = [
       ["Wie öffne ich die CSV",["open","aufgabe-6-1"]],
@@ -143,12 +192,16 @@ async function browserTests() {
       ["Ausreisser",["if","aufgabe-6-2"]],
       ["Ausreißer",["if","aufgabe-6-2"]],
       ["DATEI OEFFNEN",["open","aufgabe-6-1"]],
-      ["len()",["len"]]
+      ["len()",["len"]],
+      ["<=",["lektion-2"]],
+      ["==",["lektion-2"]],
+      ["**",["lektion-2"]]
     ];
     for (const [query,expected] of cases) {
       await page.locator("#suche").fill(query);
       const matches = await page.locator("#treffer a").evaluateAll(links => links.map(link => link.hash.slice(1)));
       for (const id of expected) assert(matches.includes(id),`${query}: ${id}`);
+      if (["<=","==","**"].includes(query)) assert(matches.length < items.length,`Operatorsuche: ${query}`);
       if (query === "6.2" || query === "len()") assert.equal(matches[0],expected[0]);
       assert(!await page.locator("#treffer").innerText().then(text => text.includes("Musterlösung")));
     }
@@ -182,7 +235,6 @@ async function browserTests() {
     assert.equal(await page.locator("#trefferzahl img").count(),0);
     await page.locator("#reset").click();
     // Alle Ansichten und alle gerenderten lokalen Dateiverweise prüfen.
-    const localLinks = new Set();
     for (const item of items) {
       await navigate(item.id);
       assert.equal(await page.locator("#inhalt h1").innerText(),item.title);
@@ -217,20 +269,40 @@ async function browserTests() {
     assert.equal(await page.locator(":focus").getAttribute("class"),"skip");
     await page.keyboard.press("Enter");
     assert.equal(await page.locator(":focus").getAttribute("id"),"inhalt");
-    assert((await page.locator("#inhalt h1").innerText()).includes("Datei"));
+    assert((await page.locator("#inhalt h1").innerText()).includes("Programmieren"));
     await navigate("aufgabe-6-2");
     await page.locator("#inhalt").evaluate(node => node.blur());
     await page.screenshot({path:path.join(output,"aufgabe-desktop.png"),fullPage:true});
     for (const width of [390,320]) {
       await page.setViewportSize({width,height:844});
+      for (const id of ["start","vorlesungen","befehle","python-setup","vscode-setup","lektion-8"]) {
+        await page.goto(`${url}#${id}`);
+        await waitForItem(id);
+        assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),`${id}: Überlauf bei ${width}`);
+        if (width === 390 && id === "start") {
+          await page.locator("#inhalt").evaluate(node => node.blur());
+          await page.screenshot({path:path.join(output,"start-mobil.png"),fullPage:true});
+        }
+      }
+      await navigate("aufgabe-6-2");
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),`Überlauf bei ${width}`);
       await page.locator("#suche").fill("6.3");
       await page.locator('#treffer a[href="#aufgabe-6-3"]').click();
       await waitForItem("aufgabe-6-3");
       assert.equal(await page.locator("#inhalt .solution pre").isVisible(),false);
       await page.locator("#reset").click();
+      const navToggle = page.locator("#nav-toggle");
+      assert.equal(await navToggle.isVisible(),true);
+      assert.equal(await navToggle.getAttribute("aria-controls"),"lernnavigation");
+      assert.equal(await navToggle.getAttribute("aria-expanded"),"false");
+      assert.equal(await page.locator("#lernnavigation").isVisible(),false);
+      await navToggle.click();
+      assert.equal(await navToggle.getAttribute("aria-expanded"),"true");
+      assert.equal(await page.locator("#lernnavigation").isVisible(),true);
       await page.locator('nav a[href="#aufgabe-6-2"]').click();
       await waitForItem("aufgabe-6-2");
+      assert.equal(await navToggle.getAttribute("aria-expanded"),"false");
+      assert.equal(await page.locator("#lernnavigation").isVisible(),false);
       if (width === 390) {
         await page.locator("#inhalt").evaluate(node => node.blur());
         await page.screenshot({path:path.join(output,"mobil.png"),fullPage:true});
@@ -240,15 +312,17 @@ async function browserTests() {
     assert(await page.evaluate(() => matchMedia("(prefers-reduced-motion: reduce)").matches));
     assert.deepEqual(errors,[]);
     assert.deepEqual(externalRequests,[]);
-    return {searchCases:cases.length,views:items.length,localLinks:localLinks.size,externalRequests:externalRequests.length};
+    return {searchCases:cases.length,views:items.length + Object.keys(overviewTitles).length + 1,commandRows:15 + commands.length,localLinks:localLinks.size,externalRequests:externalRequests.length};
   } finally { await browser.close(); }
 }
 
-browserTests().then(browserResult => {
+const browserResult = await browserTests();
   const result = {date:new Date().toISOString(),status:"PASS",originalHashes:Object.keys(originalManifest.source_sha256).length,python:pythonResult,browser:browserResult};
   fs.writeFileSync(path.join(output,"ergebnis.json"),JSON.stringify(result,null,2) + "\n");
   console.log(JSON.stringify(result,null,2));
-}).catch(error => {
+}
+
+main().catch(error => {
   fs.writeFileSync(path.join(output,"ergebnis.json"),JSON.stringify({date:new Date().toISOString(),status:"FAIL",error:error.message},null,2) + "\n");
   console.error(error);
   process.exitCode = 1;

@@ -1,34 +1,51 @@
-# Lokales Lernwerkzeug
+# Das Lernwerkzeug benutzen
 
-Öffne **index.html** direkt im Browser. Internet, Server, Konto, Installation und Paketmanager sind für die Webseite nicht nötig. Der gesamte Projektordner muss zusammenbleiben, damit die relativen Links nach `Referenz/` und `Referenz_Sichtung/` funktionieren.
+Die Startseite bietet **Vorlesungen**, **Aktuelle Übung**, **Befehle nachschlagen**, **Python einrichten** und **VS Code einrichten**. Beginne mit der Einrichtung, bearbeite die erste Lektion und probiere die Beispiele selbst aus. Suche und Filter helfen dir, später einen bestimmten Befehl oder Fehler wiederzufinden.
 
-Die erste Version begleitet **Aufgaben 6.1–6.3**: CSV lesen, Temperaturen filtern, Mittelwert / Minimum / Maximum bestimmen. Die gemeinsame Suche verbindet 15 Lernbausteine, 3 Übungen, 5 Fehlerhilfen, einen Arbeitsablauf und den Quellenstand. Suche und Navigation greifen auf `inhalte.js` zu. Keine dauerhafte Speicherung und keine externen Anfragen.
+## Auf deinem Gerät öffnen
 
-## Selbst ausprobieren
+### Windows und macOS
 
-1. Öffne 6.1 und speichere die verlinkte `messdaten.csv` als Kopie in einem eigenen Übungsordner. Lege daneben `main.py` an. Die Originaldatei bleibt erhalten.
-2. Öffne diesen Ordner im Editor und starte dein Terminal darin. Schreibe den Python-Code selbst; die Webseite führt ihn nicht aus.
-3. Bearbeite die Aufgaben nacheinander. Die Variablen bauen aufeinander auf: `zeilen`, `gute_daten`, Kennzahlen. Du kannst den Code aller drei Aufgaben in derselben `main.py` ausführen.
-4. Nutze Hinweise einzeln. Eine Musterlösung öffnet sich nur auf Wunsch. Ein Seitenwechsel schließt die Hinweise und Lösungen wieder.
+Entpacke das gesamte Repository und öffne [index.html](index.html) im Browser. Die Webseite benötigt weder Node.js noch Python und funktioniert nach dem Download offline. Python brauchst du erst, um selbst Programme auszuführen; dafür gibt es die Einrichtungsanleitungen in der Webseite. Alle Dateien und die benachbarten Ordner `Referenz/` und `Referenz_Sichtung/` müssen zusammenbleiben.
 
-Die Originalaufgabe nennt `sensor_messdaten_projekt.csv`, vorhanden ist `messdaten.csv`. Der Pilot arbeitet ausdrücklich mit dieser vorhandenen Datei. Die Zuordnung ist nicht vom Kurs bestätigt. Die gedruckten Sollzahlen stimmen mit ihr nicht überein. Das Intervall **0 ≤ Temperatur ≤ 50** ist eine dokumentierte Arbeitsannahme. Es kommt kein Aktivitätsfilter hinzu.
+### Handy und Tablet
 
-Die einfachen CSV-Beispiele verwenden `split(",")`. Sie sind auf diese einfache Quelldatei begrenzt; bei zitierten Kommas ist das Standardmodul `csv` nötig. Leere Zeilen werden übersprungen. Andere beschädigte Daten lösen in den Musterlösungen einen sichtbaren Fehler aus. Es gibt keine stillschweigende Reparatur.
+Die Seite passt sich an schmale und breite Bildschirme an. Falls dein Dateimanager `index.html` nur als Vorschau anzeigt oder die benachbarten Dateien nicht lädt, nutze einen statischen HTTP-Server mit dem **gesamten Repository als Wurzel**. Diese Möglichkeit benötigt einen Rechner mit Python, auf dem das Repository liegt:
 
-PDF-Verweise enthalten `#page=N`. Ob der PDF-Betrachter direkt auf die Seite springt, hängt vom Browser ab. Deshalb ist jede verwendete Originalseite zusätzlich als Bild verlinkt. Markdown-Berichte lassen sich im Editor lesen; einige Browser laden sie herunter.
-
-## Prüfungen wiederholen
-
-`pruefen.cjs` nutzt Node.js, Python mit Standardbibliothek und das bereits lokal installierte Playwright. Die Webseite selbst benötigt diese Werkzeuge nicht. Auf diesem Rechner:
-
-```powershell
-$env:NODE_PATH = 'C:\Users\salha\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules'
-$env:LERNWERKZEUG_PYTHON = 'C:\Users\salha\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
-& 'C:\Users\salha\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' .\Lernwerkzeug\pruefen.cjs
+```sh
+python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Alternativ `node Lernwerkzeug/pruefen.cjs`, sofern Python und Playwright bereits erreichbar sind. Es wird nichts installiert. Testergebnisse und Screenshots landen in `pruefung/`. Der Bericht enthält bewusst keine Zahlenlösungen zur Original-CSV. Ein fehlgeschlagener Test beendet das Skript mit Fehlerstatus.
+Führe den Befehl im Repository-Ordner aus; unter macOS gegebenenfalls `python3`, unter Windows `py -3` statt `python`. Öffne auf demselben Rechner `http://127.0.0.1:8000/Lernwerkzeug/`. Mit `Strg+C` beendest du den Server.
 
-## Noch offen
+Für den Zugriff vom Handy oder Tablet im selben vertrauenswürdigen lokalen Netz starte den Server mit `--bind 0.0.0.0` und öffne `http://<lokale-IP-des-Rechners>:8000/Lernwerkzeug/`. Dabei wird der gesamte Repository-Ordner einschließlich der Kursunterlagen im lokalen Netz erreichbar; verwende keine öffentliche Portfreigabe. Der Zugriff hängt zusätzlich von Netzwerk und Firewall ab.
 
-Gebrauchstest: Bearbeite die drei Aufgaben mit der Seite. Prüfe insbesondere die fünf Suchfälle aus dem Arbeitsplan und halte fest, ob du den passenden Einstieg in etwa 30 Sekunden findest. Technische Tests messen diesen Lernnutzen nicht. Die vollständige Erschließung der restlichen Quellseiten und die Erweiterung auf weitere Modulthemen bleiben nächste Arbeitspakete.
+Auf iPad und Android ist die Desktop-Version von VS Code nicht auf dieselbe Weise installierbar. Die Python-Anleitung beschreibt Colab als externen Browserweg. Dafür brauchst du Internet und eine Google-Anmeldung; Code und hochgeladene Daten werden beim externen Dienst verarbeitet. Die Lernwebseite selbst führt keinen Python-Code aus und sendet keine automatischen externen Anfragen.
+
+### Was wurde geprüft?
+
+[Browserergebnisse](pruefung/kompatibilitaet.json) und [Prüfbericht](pruefung/PRUEFBERICHT.md) dokumentieren die automatisierten Prüfungen mit Chromium, Firefox und WebKit auf dem Prüfrechner sowie emulierten Handy- und Tabletgrößen. Das ist kein Nachweis für echte iOS-/Android-Geräte oder Safari auf macOS/iPadOS. Screenreader und tatsächliche Installationen bleiben offen. Ein gespeicherter Bericht gilt nur für den darin dokumentierten Stand.
+
+## Eine Übung bearbeiten
+
+1. Öffne **Aktuelle Übung**, dann Aufgabe **6.1**, und speichere die verlinkte `messdaten.csv` in einem eigenen Übungsordner. Lege daneben `main.py` an.
+2. Öffne den Übungsordner im Editor und starte dein Terminal darin. Schreibe und starte den Python-Code selbst.
+3. Bearbeite 6.1–6.3 nacheinander. Die Variablen bauen aufeinander auf: `zeilen`, `gute_daten`, Kennzahlen. Du kannst den Code in derselben `main.py` ergänzen.
+4. Öffne bei Bedarf zunächst einzelne Hinweise und erst danach die Musterlösung. Ein Seitenwechsel schließt Hinweise und Lösungen wieder.
+5. Schließe die Lösung und schreibe den Ablauf mit eigenen Worten auf. [Lernkonzept](LERNKONZEPT.md) und [Gebrauchstest](GEBRAUCHSTEST.md) helfen beim nächsten Schritt.
+
+Die Originalaufgabe nennt `sensor_messdaten_projekt.csv`, vorhanden ist `messdaten.csv`. Die Zuordnung ist nicht vom Kurs bestätigt; die gedruckten Sollzahlen stimmen mit dieser Datei nicht überein. Das Intervall **0 ≤ Temperatur ≤ 50** ist eine dokumentierte Arbeitsannahme. Ein Aktivitätsfilter kommt nicht hinzu.
+
+Die einfachen CSV-Beispiele verwenden `split(",")` und sind auf die einfache Quelldatei begrenzt. Für zitierte Kommas ist das Standardmodul `csv` nötig. Leere Zeilen werden übersprungen; andere beschädigte Daten lösen in den Musterlösungen einen sichtbaren Fehler aus.
+
+## Bedienung und Quellen
+
+Auf schmalen Bildschirmen öffnest du die Bereiche mit **Lernnavigation öffnen**. Nach der Auswahl schließt sich das Menü; mit `Escape` kannst du es ebenfalls schließen. Mit `Tab` erreichst du Links und Eingabefelder; der erste Link springt zum Lerninhalt. Hinweise und Lösungen lassen sich mit der Tastatur öffnen. Breite Tabellen und Codefelder können seitlich gescrollt werden. Die kurzen Animationen berücksichtigen die Einstellung für reduzierte Bewegung.
+
+PDF-Verweise enthalten `#page=N`; ob der Betrachter direkt dorthin springt, hängt vom Browser ab. Verwendete Originalseiten sind zusätzlich als Bilder verlinkt. Manche Browser laden Markdown-Berichte herunter; du kannst sie im Editor lesen.
+
+Die Webseite speichert keinen Lernfortschritt dauerhaft. Technische Tests messen keinen Lernnutzen. Weitere Originalaufgaben, vollständige visuelle Quellenprüfung und Gebrauchstests bleiben offen.
+
+## Entwicklung und Tests
+
+Für das bloße Benutzen ist keine Entwicklungsumgebung nötig. Die reproduzierbare Einrichtung und alle Prüfaufrufe stehen in [CONTRIBUTING.md](../CONTRIBUTING.md). Ergebnisse liegen in [ergebnis.json](pruefung/ergebnis.json), [kompatibilitaet.json](pruefung/kompatibilitaet.json) und [PRUEFBERICHT.md](pruefung/PRUEFBERICHT.md).

@@ -1,40 +1,49 @@
-# Prüfbericht zum Lernwerkzeug
+# Prüfbericht zum Lernraum
 
-Stand: 15.10.2026. Umfang: lokaler Pilot für Aufgaben 6.1–6.3.
+Stand: 15.10.2026. Umfang: vorhandener CSV-Pilot und neuer Lernraum für Anfänger.
 
-Ergebnis: **PASS**, automatisiert am 15.10.2026 geprüft. Die Prüfung läuft mit `../pruefen.cjs`. Der maschinenlesbare Ausgang steht in `ergebnis.json`; maßgeblich ist dessen aktueller Status. Ein neuer Lauf setzt ihn zuerst auf RUNNING, damit ein abgebrochener Lauf keinen alten PASS stehen lässt.
-
-## Technische Ergebnisse
+Ergebnis: **PASS**, mit `../pruefen.cjs` geprüft. Der maschinenlesbare Ausgang steht in `ergebnis.json`; maßgeblich ist dessen aktueller Status. Jeder Lauf setzt ihn zunächst auf RUNNING.
 
 | Prüfung | Ergebnis |
 | --- | --- |
-| 17 selbst erstellte Python-Beispiele | Ausgeführt; feste Ausgaben abgeglichen, Arbeitsordner-Diagnose ausgeführt |
-| Musterlösungen 6.1 → 6.2 → 6.3 | Zusammenhängend auf der vorhandenen CSV ausgeführt; Filterergebnisse und Mittelwert unabhängig mit `csv.DictReader` und `statistics.mean` verglichen |
-| Randfälle | Leere Datei, Header ohne Daten, ausschließlich Ausreißer, ein gültiger Wert, Leerzeilen, Grenzen -1/0/50/51 und defekte Zahlen/Spalten geprüft |
-| Gemeinsame Suche | 12 Eingaben einschließlich aller fünf fachlichen Suchzugänge, Synonyme, Großschreibung, Umlautschreibweise und Syntax; Aufgabennummer und `len()` an erster Stelle |
-| Inhaltsansichten | Alle 25 Ansichten geöffnet; Verknüpfungen und eindeutige IDs geprüft |
-| Hinweise und Lösungen | Anfangs geschlossen; Hinweis per Enter, Musterlösung per Klick geöffnet; bei Navigation und Zurück wieder geschlossen |
-| Quellen und Dateien | 36 verschiedene lokale Links auf vorhandene Ziele geprüft; PDF-Seitenanker geprüft, Originalbild tatsächlich im Browser geöffnet; CSV-Download bytegleich |
-| Tastatur | Skip-Link führt zum Inhalt, Hinweis lässt sich mit Enter öffnen; sichtbare Fokusmarkierung vorhanden |
-| Schmale Bildschirme | 390 und 320 CSS-Pixel ohne horizontalen Seitenüberlauf; Suche und Aufgabenauswahl ausgeführt |
-| Offlinebetrieb | Chromium per `file://` im Offline-Modus; keine externen HTTP-Anfragen und keine JavaScript-/Konsolenfehler |
-| Quellen unverändert | Alle 8 SHA-256-Werte stimmen mit dem vorher bestehenden Sichtungsmanifest überein |
+| Python-Lernbeispiele | 26 Beispiele einschließlich neun neuer Vorlesungsbeispiele ausgeführt; feste Ausgaben abgeglichen |
+| Zusätzliche Befehlsbeispiele | Alle 29 Beispiele ausgeführt; input mit synthetischer Eingabe, Diagramme mit Agg-Backend ohne Fenster |
+| CSV-Lösungen 6.1 → 6.2 → 6.3 | Zusammenhängend auf vorhandener CSV ausgeführt und unabhängig mit csv.DictReader und statistics.mean verglichen |
+| CSV-Randfälle | Leere Datei, Header ohne Daten, nur Ausreißer, Einzelwert, Leerzeilen, -1/0/50/51, defekte Spalten und Zahlentexte geprüft |
+| Suche | 15 Suchfälle einschließlich Synonyme, Umlautschreibung, Aufgabennummer, Syntax und Python-Operatoren bestanden |
+| Ansichten | 36 Inhaltsansichten, vier Bereichsübersichten und Startseite: insgesamt 41; IDs, Verknüpfungen und Quellen geprüft |
+| Hauptzugänge | Alle fünf Startseitenzugänge vorhanden; Kursreihenfolge 1–9 geprüft |
+| Vorhersageaufgabe | Richtige und falsche Auswahl erzeugen passende Rückmeldung |
+| Befehlsübersicht | 44 Zeilen, Filter nach Kontext und leere Suche geprüft; passende Verknüpfungen vorhanden |
+| Lösungen | Anfangs geschlossen, Hinweise per Enter und Musterlösung per Klick geöffnet; Navigation schließt sie wieder |
+| Lokale Verweise | 65 unterschiedliche lokale Verweise vorhanden; CSV-Download bytegleich; Originalseitenbild erfolgreich geöffnet |
+| Tastatur | Skip-Link fokussiert Inhalt; Hinweis mit Enter bedienbar; sichtbarer Fokus |
+| Schmale Bildschirme | 320 und 390 CSS-Pixel: Startseite, Vorlesungen, Tabelle, Einrichtung und Zeitreihenlektion ohne horizontalen Seitenüberlauf; Übungssuche bedienbar |
+| Offlinebetrieb | Chromium per file://, offline; keine automatischen HTTP-Anfragen und keine JavaScript-/Konsolenfehler |
+| Originaldateien | Alle acht SHA-256-Werte stimmen mit Referenz_Sichtung/manifest.json überein |
 
-Desktop-Startansicht und Aufgabe 6.2 sowie die mobile Aufgabe 6.2 wurden als Screenshots gespeichert und tatsächlich angesehen. Die auf 320 Pixeln überlaufende Themenauswahl wurde korrigiert und erneut geprüft. Die Prüfung verwendet das vorhandene JavaScript-Playwright; nichts wurde installiert.
+## Ergänzung: Audit und Kompatibilitätsprüfung
 
-Der PDF-Betrachter steht im getesteten Headless-Chromium nicht zur Verfügung. Deshalb wurde **kein erfolgreicher Seitenwechsel im PDF-Betrachter behauptet**: Dateiziel und `#page=10` wurden geprüft, das Öffnen und Laden der entsprechenden Originalseite über den zusätzlichen Bildlink wurde tatsächlich ausgeführt. Das Verhalten des PDF-Betrachters im interaktiven Browser bleibt offen.
+Das [Audit](../../AUDIT.md) dokumentiert Befunde, Zuständigkeiten und die lokal integrierten Änderungen. [kompatibilitaet.json](kompatibilitaet.json) enthält die aktuelle Browsermatrix: Chromium 151.0.7922.34, Firefox 153.0 und Playwright-WebKit 26.5 unter Windows. Je Engine wurden 41 Ansichten in sieben Größen geprüft: 320×740, 390×844, 768×1024, 1024×768, 844×390, 1280×800 und 1440×1000. Insgesamt 861 Ansichtsprüfungen ohne horizontalen Seitenüberlauf. Touch-Bedienung von Navigation und Hinweisen wurde zusätzlich bei 390×844 und 768×1024 emuliert.
 
-## Quellenabgleich
+Regressionen für mobile Menüöffnung/-schließung, Escape, Fokus, gleiche Route, Ctrl-/Cmd-/Shift-/Alt-Klick, Zurück/Vorwärts, unbekannte Route, Operatorsuche und fokussierbare Codefelder bestehen. Bei reduzierter Bewegung sind die berechneten Animationen und Übergänge abgeschaltet. Die Anfragen der Hauptansichten erzeugten keine externen HTTP-Zugriffe oder JavaScript-/Konsolenfehler.
 
-- CuD_Uebung 01, PDF-S. 10: Aufgaben 6.1 und 6.2 als Text gelesen und vorhandenes Originalbild angesehen. Einrückung des with-Blocks abgeglichen.
-- CuD_Uebung 01, PDF-S. 11: Aufgabe 6.3 als Text gelesen, Originalseite gezielt gerendert und angesehen (`quelle-s11.png`). Mittelwert, Minimum und Maximum bestätigt; kein Median verlangt.
-- Erläuterungen, Hinweise, Diagnosehilfen und Musterlösungen sind selbst erstellt. Die Quellenangaben bezeichnen ihren Aufgabenbezug, keine wörtliche Übernahme.
-- Die 8 Originaldateien werden gegen die SHA-256-Werte aus dem vorhandenen `Referenz_Sichtung/manifest.json` geprüft.
+Die gemeinsame Matrix läuft über HTTP an 127.0.0.1 und blockiert andere Ziele. Der separate Inhaltsprüflauf nutzt Chromium per Datei und offline; dort werden weiterhin Quellenlinks, Bilder und Downloads geprüft. Firefox konnte die lokale Startdatei öffnen. Der Windows-Port von WebKit scheiterte beim file://-Aufruf mit einem internen Fehler; für ihn ist nur die HTTP-Nutzung bestätigt. Touch- und Fensteremulation sind keine realen Geräte- oder Safari-Prüfungen.
 
-## Offene fachliche Fragen
+[pruefer-regression.json](pruefer-regression.json) belegt die beiden isolierten Fehlerpfade: fehlender Pythonpfad und absichtlich falsche Sollausgabe trotz PYTHONOPTIMIZE=1. Beide erzeugen Exit 1 und Status FAIL. Das Integritätswerkzeug besitzt einen bestandenen Selbsttest für Bytes, Hashes und Ausschlüsse. `npm ci --ignore-scripts` und der vollständige `npm test`-Aufruf wurden mit der enthaltenen Lockdatei ausgeführt.
 
-Die Aufgabenquelle nennt einen anderen CSV-Dateinamen. Die Sollanzahlen auf PDF-S. 10 passen nicht zur vorhandenen Datei. Das inklusive Intervall 0 bis 50 ist eine Arbeitsannahme; die vorhandenen Daten enthalten keinen dieser Grenzwerte. Die Python-Referenzrechnung belegt die Verarbeitung der vorhandenen CSV, nicht deren vom Kurs bestätigte Zuordnung. Zahlenantworten zur Originaldatei werden in diesem Bericht nicht ausgegeben.
+Zusätzliche visuell geprüfte Screenshots: `audit-390.png`, `audit-768.png` und `audit-1440.png`. Die maschinenlesbaren Berichte nennen ihren jeweiligen Prüfzeitpunkt in UTC.
 
-## Prüfgrenzen
+Screenshots: `desktop.png`, `vorlesungen-desktop.png`, `befehle-desktop.png`, `start-mobil.png`, `aufgabe-desktop.png` und `mobil.png`. Neue Startseite, Vorlesungsübersicht, Befehlsübersicht und mobile Startseite wurden visuell angesehen.
 
-Ein technischer Test ist kein Gebrauchstest und kein Nachweis des Lernerfolgs. Weitere Browser, Screenreader und reale Lernzeiten sind nicht geprüft. Die restlichen Quellseiten und Modulthemen sind nicht vollständig erschlossen. Die bekannten Quellwidersprüche bleiben sichtbar offen.
+Die Prüfung nutzt das vorhandene JavaScript-Playwright und die gebündelten Node-/Python-Laufzeiten. NumPy/Pandas waren vorhanden. Matplotlib 3.11.2, Seaborn 0.13.2 und benötigte Hilfspakete wurden von PyPI ausschließlich in `.test-packages/` ergänzt. Das fehlgeschlagene Anlegen einer Test-venv veränderte keine globale Laufzeit; `.test-env/` wurde anschließend entfernt. Für temporäre Daten wird der Projektordner verwendet. Weder Sicherheitsrichtlinien noch globale Python-Pakete wurden verändert.
+
+## Quellen und fachliche Grenzen
+
+Die CSV-Aufgaben wurden zuvor an Originalseiten 10–11 einschließlich Originalbildern abgeglichen. Die neuen Vorlesungslektionen sind eigene Zusammenfassungen anhand der vorhandenen Textauszüge; jede hat genaue PDF-Verweise. Zusätzliche Miniübungen und Bibliotheksdaten sind selbst erstellt. Die Lesung von Textauszügen ist keine vollständige visuelle Folienprüfung. Ausführung eines Beispiels bestätigt weder alle Aussagen der Vorlesung noch alle späteren Transferaufgaben.
+
+Die Originalquelle nennt einen anderen CSV-Dateinamen, und gedruckte Sollanzahlen passen nicht zur vorhandenen Datei. 0 bis 50 einschließlich bleibt eine dokumentierte Arbeitsannahme. `bb12024.csv` fehlt weiterhin; keine Originalergebnisse dazu behauptet. Die weiteren Originalübungen sind nicht vollständig als Schritt-für-Schritt-Lösungen aufbereitet.
+
+Der Headless-Browser hat hier keinen interaktiven PDF-Betrachter: Dateiziele und Seitenanker sind geprüft, tatsächliche Seitensprünge im interaktiven Betrachter bleiben offen. Diagrammcode wurde ausgeführt, dessen fachliche Gestaltung nicht visuell beurteilt.
+
+Die offiziellen Einrichtungsanleitungen wurden zuvor online abgeglichen. Tatsächliche Installation auf Windows/macOS/Linux, reale Handy-/Tablet-Bedienung, Safari auf Apple-Hardware, Screenreader, Gebrauchstest und Lernerfolg sind nicht geprüft. Die Lernseite führt selbst keinen Python-Code aus.

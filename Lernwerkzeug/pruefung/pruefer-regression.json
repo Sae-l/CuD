@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-15T11:29:45.660Z",
+  "status": "PASS",
+  "tests": [
+    {
+      "scenario": "missing-python",
+      "status": "PASS",
+      "exit": 1,
+      "resultStatus": "FAIL",
+      "proof": "Missing executable recorded as ENOENT and FAIL",
+      "proofMatched": true
+    },
+    {
+      "scenario": "optimize-wrong-output",
+      "status": "PASS",
+      "exit": 1,
+      "resultStatus": "FAIL",
+      "proof": "Inherited PYTHONOPTIMIZE=1; changed output rejected by actual Python AssertionError: lektion-1",
+      "proofMatched": true
+    }
+  ],
+  "originalReportUnchanged": true
+}

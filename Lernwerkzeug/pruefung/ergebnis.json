@@ -1,16 +1,18 @@
 {
-  "date": "2026-10-15T09:58:07.573Z",
+  "date": "2026-10-15T11:30:49.028Z",
   "status": "PASS",
   "originalHashes": 8,
   "python": {
-    "examples": 17,
+    "examples": 26,
+    "command_examples": 29,
     "pipeline": true,
     "edge_cases": true
   },
   "browser": {
-    "searchCases": 12,
-    "views": 25,
-    "localLinks": 36,
+    "searchCases": 15,
+    "views": 41,
+    "commandRows": 44,
+    "localLinks": 65,
     "externalRequests": 0
   }
 }

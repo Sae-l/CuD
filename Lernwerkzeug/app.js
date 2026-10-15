@@ -6,9 +6,14 @@ const topicInput = document.querySelector("#thema");
 const article = document.querySelector("#inhalt");
 const results = document.querySelector("#treffer");
 const stopwords = new Set(["wie","ich","die","der","das","den","dem","ein","eine","einen","einer","mit","von","zu","zum","zur","und","ist","kann","man","was","mache"]);
+for (const topic of [...new Set(inhalte.map(item => item.topic))]) topicInput.append(el("option",topic));
+for (const command of weitereBefehle) {
+  const lesson = byId.get(command[4]);
+  (lesson.aliases ||= []).push(command[0],command[1]);
+}
 
 function normalize(text) {
-  return text.toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").replace(/[^a-z0-9.]+/g," ").trim();
+  return text.toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").replace(/[^a-z0-9.<>=!+*/%\-]+/g," ").trim();
 }
 
 function findItems(query, kind = "", topic = "") {
@@ -70,7 +75,7 @@ function codeBlock(code, parent = article) {
 function sourceLinks(item) {
   const box = el("div",undefined,"source");
   box.append(el("p", "Quellen und Einordnung"));
-  box.append(el("p",item.kind === "Übung" ? "Auftrag am Original abgeglichen; Begleitung und Lösung selbst erstellt." : "Selbst erstellte Ergänzung mit Bezug zu den verlinkten Aufgaben."));
+  box.append(el("p",item.kind === "Übung" ? "Auftrag am Original abgeglichen; Begleitung und Lösung selbst erstellt." : item.kind === "Vorlesung" ? "Selbst verfasste Zusammenfassung anhand der vorhandenen Vorlesungstexte. Die verlinkten PDF-Seiten enthalten die Originalinhalte. Miniübungen sind eigene Ergänzungen." : item.kind === "Einrichtung" ? "Selbst erstellte Anleitung; offizielle Dokumentation am 15.10.2026 geprüft. Installation und Gerätebedienung noch nicht praktisch getestet." : "Selbst erstellte Ergänzung mit Bezug zu den verlinkten Aufgaben."));
   item.sources.forEach(id => {
     const source = quellen[id];
     const p = el("p");
@@ -104,6 +109,16 @@ function sourceLinks(item) {
 
 function renderItem(item) {
   article.replaceChildren(el("p",`${item.kind} / ${item.topic}`,"kind"),el("h1",item.title),el("p",item.summary,"intro"),el("p",item.explanation));
+  if (item.kind === "Vorlesung" || item.kind === "Einrichtung") {
+    if (item.kind === "Vorlesung") {
+      const back = el("a","Alle Vorlesungen ansehen");
+      back.href = "#vorlesungen";
+      article.append(back);
+      section("Das kannst du danach");
+      article.append(el("p",item.goal,"learning-goal"));
+    }
+    for (const [title,text] of item.blocks) { section(title); article.append(el("p",text)); }
+  }
   if (item.notice) article.append(el("div",item.notice,"notice"));
   if (item.kind === "Übung") {
     const note = el("p");
@@ -116,11 +131,13 @@ function renderItem(item) {
   itemLinks("Das brauchst du",item.needs);
   textList(item.kind === "Fehlerhilfe" ? "So grenzt du den Fehler ein" : "Deine Arbeitsschritte",item.steps,true);
   if (item.code) {
-    section("Ein kleines Beispiel");
+    section(item.kind === "Vorlesung" ? "Erst vorhersagen: Was wird ausgegeben?" : "Ein kleines Beispiel");
     codeBlock(item.code);
     if (item.output !== undefined) {
       const detail = el("details");
-      detail.append(el("summary","Beispielausgabe zeigen"),el("pre",item.output.trimEnd()));
+      const output = el("pre",item.output.trimEnd());
+      output.tabIndex = 0;
+      detail.append(el("summary","Beispielausgabe zeigen"),output);
       article.append(detail);
     }
     const note = "Selbst erstelltes Beispiel; Ausführung siehe Prüfbericht." + (item.code.includes("mini.csv") ? " Für mini.csv werden die synthetischen Zeilen Temperatur, 10.0 und 20.0 verwendet." : "");
@@ -130,6 +147,27 @@ function renderItem(item) {
       download.href = "beispiele/mini.csv";
       download.download = "mini.csv";
       article.append(download);
+    }
+  }
+  if (item.kind === "Vorlesung") {
+    textList("Jetzt bist du dran",[
+      "Vorhersagen: Lies das Beispiel und notiere die erwartete Ausgabe, bevor du sie öffnest.",
+      "Ausführen: Schreibe den Code in deine Python-Datei und vergleiche die Ausgabe mit deiner Vermutung.",
+      `Untersuchen: ${item.investigate}`,
+      `Verändern: ${item.modify}`,
+      `Selbst schreiben: ${item.make}`
+    ],true);
+    const answer = el("details");
+    answer.append(el("summary","Selbstkontrolle zur Miniübung öffnen"),el("p",item.answer));
+    article.append(answer,el("p","Wiederholung: Erkläre morgen ohne Vorlage die wichtigste Idee und löse die kleine Aufgabe noch einmal.","learning-goal"));
+  }
+  if (item.links) {
+    section("Offizielle Anleitungen und Downloads");
+    for (const [title,href] of item.links) {
+      const p = el("p");
+      const link = el("a",title);
+      link.href = href; link.target = "_blank"; link.rel = "noopener noreferrer";
+      p.append(link); article.append(p);
     }
   }
   if (item.pitfall) {
@@ -164,17 +202,120 @@ function renderItem(item) {
 }
 
 function renderStart() {
-  article.replaceChildren(el("p","Übungsblock 6 / Standard-Python","kind"),el("h1","Von einer Datei zu einer Antwort."),el("p","Öffnen, verstehen, ausprobieren. Finde den nächsten Schritt für deine Python-Übung.","intro"));
-  const path = el("ol",undefined,"step-path");
-  ["6.1 Einlesen","6.2 Filtern","6.3 Auswerten"].forEach(text => path.append(el("li",text)));
-  article.append(path);
-  section("Starte mit deiner Aufgabe");
-  article.append(el("p","Jede Aufgabe verbindet das nötige Wissen mit kleinen Beispielen, einzeln aufklappbaren Hinweisen und einer Selbstkontrolle. Die Musterlösung öffnest du erst, wenn du sie brauchst."));
-  itemLinks("Die drei Übungen",["aufgabe-6-1","aufgabe-6-2","aufgabe-6-3"]);
-  section("So probierst du es selbst aus");
-  article.append(el("p","Speichere eine Kopie der CSV mit main.py in deinem eigenen Übungsordner. Starte Python dort im Editor. Diese Seite erklärt die Schritte; sie führt keinen Python-Code aus."));
-  article.append(el("div","Die Quelle enthält abweichende Dateinamen und Sollausgaben. Du findest die Hinweise direkt bei den betroffenen Aufgaben. Dieser erste Stand deckt nur Aufgaben 6.1–6.3 ab.","notice"));
-  itemLinks("Orientierung",["ablauf","quellen"]);
+  const hero = el("div",undefined,"welcome-hero");
+  const intro = el("div");
+  intro.append(el("p","Willkommen in deinem Lernraum","kind"),el("h1","Dein erster Schritt ins Programmieren."),el("p","Du musst noch nichts können. Entdecke Python, verstehe deine Vorlesung und schreibe Schritt für Schritt deinen eigenen Code.","intro"));
+  const actions = el("div",undefined,"hero-actions");
+  actions.append(actionLink("Lernweg beginnen","#python-setup","primary-link"),actionLink("Zur aktuellen Übung","#uebung","secondary-link"));
+  intro.append(actions,el("p","Für Studierende im Kurs Coding und Digitalisierung. In deinem Tempo, mit verständlichen Beispielen.","example-note"));
+  const demo = el("div",undefined,"first-code");
+  demo.append(el("p","Ein kleines Programm. Dein Anfang."));
+  const pre = el("pre");
+  pre.tabIndex = 0;
+  pre.append(el("code",'name = "Du"\nprint(f"{name} kannst Python lernen!")'));
+  demo.append(pre,el("p","Was erscheint in der Ausgabe?"));
+  const feedback = el("p","Wähle deine Vermutung.","quiz-feedback");
+  feedback.setAttribute("role","status");
+  for (const [label,correct] of [["Du kannst Python lernen!",true],["{name} kannst Python lernen!",false]]) {
+    const button = el("button",label,"prediction");
+    button.type = "button";
+    button.addEventListener("click",() => { feedback.textContent = correct ? "Richtig! Der f-String setzt den Wert von name ein: Du." : "Fast! Das f vor dem Text ersetzt {name} durch den gespeicherten Wert. Versuche es noch einmal."; });
+    demo.append(button);
+  }
+  demo.append(feedback);
+  hero.append(intro,demo);
+  article.replaceChildren(hero);
+  section("Was möchtest du heute lernen?");
+  const cards = el("div",undefined,"entry-grid");
+  for (const [title,description,href] of [
+    ["Vorlesungen verstehen","Neun übersichtliche Etappen in der Reihenfolge deiner Unterlagen.","#vorlesungen"],
+    ["Aktuelle Übung bearbeiten","CSV einlesen, Daten filtern und auswerten – mit Erklärungen und gestuften Lösungen.","#uebung"],
+    ["Befehle nachschlagen","Beschreibung, Beispiel und passende Datentypen auf einen Blick.","#befehle"],
+    ["Python einrichten","Die passende Anleitung für deinen PC oder dein Tablet.","#python-setup"],
+    ["VS Code einrichten","Editor installieren, Python auswählen und die erste Datei starten.","#vscode-setup"]
+  ]) {
+    const link = actionLink("",href,"entry-card");
+    link.append(el("h3",title),el("p",description)); cards.append(link);
+  }
+  article.append(cards);
+  section("Vom Verstehen zum Selbermachen");
+  article.append(el("p","Erst eine Vermutung, dann ein Versuch. In jeder Lektion liest du ein kleines Beispiel, führst es selbst aus, erklärst die Schritte und veränderst den Code. Zum Schluss löst du eine eigene Aufgabe."),actionLink("Unser Lernkonzept ansehen","#lernkonzept","text-link"));
+}
+
+function actionLink(title,href,className) {
+  const link = el("a",title,className); link.href = href; return link;
+}
+
+function renderLectures() {
+  article.replaceChildren(el("p","Dein Kursweg","kind"),el("h1","Eine Idee nach der anderen."),el("p","Beginne oben. Jede Etappe erklärt die Begriffe, zeigt ein kleines Beispiel und endet mit einer eigenen Aufgabe.","intro"));
+  article.append(actionLink("Zuerst Python und VS Code einrichten","#python-setup","secondary-link"));
+  const list = el("ol",undefined,"course-list");
+  for (const [index,lesson] of vorlesungen.entries()) {
+    const li = el("li");
+    const link = actionLink("",`#${lesson.id}`,"course-link");
+    const text = el("div");
+    text.append(el("small",`Vorlesung ${lesson.origin} · PDF-S. ${lesson.pages}`),el("h2",lesson.title),el("p",lesson.summary));
+    link.append(el("span",String(index + 1).padStart(2,"0"),"lesson-number"),text); li.append(link); list.append(li);
+  }
+  article.append(list);
+  section("Deine vollständigen Vorlesungsunterlagen");
+  article.append(el("p","Die Lerntexte fassen die fachlichen Themen zusammen. Organisation, Prüfungsinformationen und die vollständigen Originalbeispiele findest du in den PDFs. Die beiden Analyse-PDFs enthalten denselben Inhalt und werden hier einmal geführt."));
+  for (const [title,href] of [["001 · Grundlagen, Organisation und Einrichtung","../Referenz/Vorlesungen/001_Coding und Digitalisierung.pdf"],["002 · Datenstrukturen und NumPy","../Referenz/Vorlesungen/002_Coding und Digitalisierung.pdf"],["002 · Analysebeispiel und Diagramme","../Referenz/Vorlesungen/002_Beispiel Datenstrukturen - Analyse.pdf"],["003 · Funktionen, Pandas, Zeitreihen und OOP","../Referenz/Vorlesungen/003_Coding und Digitalisierung.pdf"]]) {
+    const p = el("p"); p.append(actionLink(title,href)); article.append(p);
+  }
+}
+
+function renderExercise() {
+  article.replaceChildren(el("p","Aktuell aufbereiteter Übungsblock","kind"),el("h1","Deine Übung: Messdaten verstehen."),el("p","Du liest eine CSV-Datei, trennst gültige Messwerte von Ausreißern und berechnest Kennzahlen. Bearbeite die drei Teile nacheinander.","intro"));
+  article.append(actionLink("Mit Aufgabe 6.1 beginnen","#aufgabe-6-1","primary-link"));
+  itemLinks("Deine drei Schritte",["aufgabe-6-1","aufgabe-6-2","aufgabe-6-3"]);
+  itemLinks("Noch ganz am Anfang?",["python-setup","vscode-setup","lektion-1","lektion-2","lektion-3"]);
+  textList("So nutzt du die Begleitung",["Lies das Ziel und öffne die benötigten Befehle.","Arbeite einen Schritt ab und führe deinen Code selbst aus.","Öffne bei Bedarf zuerst Hinweis 1, dann den nächsten Hinweis.","Prüfe das Ergebnis. Die erklärte Musterlösung kannst du getrennt öffnen.","Schließe die Lösung und schreibe den Ablauf mit eigenen Worten auf."],true);
+  article.append(el("div","Dieser Zugang führt zum vorhandenen Block 6.1–6.3. Weitere Originalaufgaben und die Zwischenübungen aus Vorlesung 003 sind noch nicht vollständig als Schritt-für-Schritt-Lösungen aufbereitet. Die fehlende bb12024.csv wird durch die Mini-Daten in den Lektionen nicht ersetzt.","notice"));
+}
+
+function renderCommands() {
+  article.replaceChildren(el("p","Dein Nachschlagewerk","kind"),el("h1","Welcher Befehl passt wozu?"),el("p","Alle Befehlsbausteine und die ergänzten Werkzeuge der Lektionen: mit Beschreibung, Python-Beispiel und Hinweisen zum Zusammenspiel.","intro"));
+  const label = el("label","Befehl, Beschreibung oder Kontext suchen","table-label");
+  label.htmlFor = "befehl-suche";
+  const input = el("input"); input.id = "befehl-suche"; input.type = "search"; input.placeholder = "Zum Beispiel: Liste, mean, Zeitindex …";
+  const count = el("p",undefined,"example-note"); count.setAttribute("role","status");
+  const wrap = el("div",undefined,"table-scroll"); wrap.tabIndex = 0; wrap.setAttribute("role","region"); wrap.setAttribute("aria-label","Befehlsübersicht, bei Bedarf seitlich scrollen");
+  const table = el("table"); table.append(el("caption","Python-Befehle, Methoden und Sprachbausteine"));
+  const head = el("thead"); const tr = el("tr");
+  for (const text of ["Befehl / Baustein","Beschreibung","Beispiel","Passt zu / Voraussetzungen"]) { const th = el("th",text); th.scope = "col"; tr.append(th); }
+  head.append(tr); const body = el("tbody"); table.append(head,body); wrap.append(table);
+  const rows = [
+    ...inhalte.filter(item => item.kind === "Befehl & Begriff").map(item => [item.title,item.summary,item.code,befehlsKontexte[item.id],item.id]),
+    ...weitereBefehle
+  ];
+  function filter() {
+    const tokens = normalize(input.value).split(/\s+/).filter(Boolean);
+    const matches = rows.filter(row => tokens.every(token => normalize(row.slice(0,4).join(" ")).includes(token)));
+    count.textContent = `${matches.length} von ${rows.length} Einträgen${matches.length ? "" : ". Versuche Liste, CSV oder Pandas."}`;
+    body.replaceChildren();
+    for (const [title,description,code,context,id] of matches) {
+      const row = el("tr");
+      const cell = el("td"); cell.append(actionLink(title,`#${id}`));
+      const example = el("td"); const pre = el("pre"); pre.append(el("code",code)); example.append(pre);
+      row.append(cell,el("td",description),example,el("td",context)); body.append(row);
+    }
+  }
+  input.addEventListener("input",filter); filter();
+  article.append(label,input,count,wrap,el("p","Beispiele stehen für sich. Zusatzpakete sind dort ausdrücklich importiert. Die Webseite zeigt Code; du führst ihn in Python aus.","example-note"));
+}
+
+function renderConcept() {
+  article.replaceChildren(el("h1","So lernst du hier programmieren."),el("p","Du baust Verständnis auf und übernimmst Schritt für Schritt mehr selbst.","intro"));
+  textList("Fünf Schritte in jeder Lektion",["Vorhersagen: Lies einen kurzen Code und notiere die erwartete Ausgabe.","Ausführen: Starte ihn in deiner Python-Umgebung und vergleiche.","Untersuchen: Erkläre Variablen und einzelne Schritte mit eigenen Worten.","Verändern: Passe einen Wert oder eine Bedingung an und prüfe deine neue Vermutung.","Selbst schreiben: Löse eine kleine Aufgabe ohne Vorlage."],true);
+  section("Weniger auf einmal, mehr selbst tun");
+  article.append(el("p","Jede Etappe hat ein klares Lernziel. Kleine Beispiele kommen vor großen Datensätzen. Hinweise und Lösungen öffnest du einzeln. Fehler sind Anlass zum Prüfen: Lies die Meldung, finde die betroffene Zeile und teste mit wenigen Werten."));
+  section("Mit Abstand wiederholen");
+  article.append(el("p","Erkläre am nächsten Tag ohne Vorlage, was du gelernt hast. Schreibe die Miniübung erneut. Prüfe nach einer Woche, ob du die Idee auch bei anderen Daten anwenden kannst. Nur eine Lösung gelesen zu haben ist noch kein Nachweis, dass du sie selbst schreiben kannst."));
+  section("Warum dieser Aufbau?");
+  const p = el("p","Die fünf Schritte folgen PRIMM: Predict, Run, Investigate, Modify, Make. Für dieses Werkzeug kombinieren wir sie mit kleinen Lernetappen, gestuften Hilfen und Wiederholung. ");
+  p.append(actionLink("PRIMM bei der Raspberry Pi Foundation","https://www.raspberrypi.org/blog/using-primm-to-teach-programming-a-new-short-course-for-educators/"));
+  article.append(p,el("p","Die Auswahl ist ein begründetes Lernkonzept. Ein Gebrauchstest mit Studienanfängern und der Nachweis des Lernnutzens stehen noch aus.","example-note"),actionLink("Mit der ersten Lektion anfangen","#lektion-1","primary-link"));
 }
 
 function selectedId() { return location.hash.slice(1); }
@@ -190,7 +331,8 @@ function renderResults() {
     link.append(el("small",`${item.kind} / ${item.topic}`),el("strong",item.title),el("p",item.summary));
     results.append(link);
   });
-  if (!matches.length) results.append(el("p","Kein Treffer in diesem Übungsblock. Versuche CSV, Mittelwert, 6.2 oder ValueError. Setze auch die Filter zurück. Weitere Modulthemen sind noch nicht enthalten.","empty"));
+  if (!matches.length) results.append(el("p","Kein Treffer. Versuche CSV, Mittelwert, 6.2, Pandas oder ValueError. Setze auch die Filter zurück.","empty"));
+  document.querySelector(".learning-area").classList.toggle("searching",Boolean(searchInput.value || typeInput.value || topicInput.value));
 }
 
 function route(focus = false) {
@@ -198,15 +340,41 @@ function route(focus = false) {
   const item = byId.get(id);
   if (item) renderItem(item);
   else if (!id || id === "start") renderStart();
+  else if (id === "vorlesungen") renderLectures();
+  else if (id === "uebung") renderExercise();
+  else if (id === "befehle") renderCommands();
+  else if (id === "lernkonzept") renderConcept();
   else article.replaceChildren(el("h1","Inhalt nicht gefunden"),el("p","Wähle eine Übung oder suche oben nach einem Befehl."));
-  document.title = `${item ? item.title : "Coding"} · Lernwerkzeug`;
+  document.querySelector(".learning-area").classList.toggle("overview",!item || item.kind === "Vorlesung" || item.kind === "Einrichtung");
+  document.title = `${article.querySelector("h1").textContent} · Lernwerkzeug`;
   document.querySelectorAll("nav a").forEach(link => {
     if (link.hash === location.hash || ((!id || id === "start") && link.hash === "#start")) link.setAttribute("aria-current","page");
     else link.removeAttribute("aria-current");
   });
   renderResults();
-  if (focus) article.focus({preventScroll:true});
+  if (focus) {
+    setNavigation(false);
+    article.focus({preventScroll:true});
+    article.scrollIntoView({block:"start"});
+  }
 }
+
+function setNavigation(open) {
+  document.querySelector(".sidebar").classList.toggle("nav-open",open);
+  const button = document.querySelector("#nav-toggle");
+  button.setAttribute("aria-expanded",String(open));
+  button.textContent = open ? "Lernnavigation schließen" : "Lernnavigation öffnen";
+}
+
+document.querySelector("#nav-toggle").addEventListener("click",() => {
+  setNavigation(document.querySelector("#nav-toggle").getAttribute("aria-expanded") !== "true");
+});
+document.querySelector(".sidebar").addEventListener("keydown",event => {
+  if (event.key === "Escape" && document.querySelector("#nav-toggle").getAttribute("aria-expanded") === "true") {
+    setNavigation(false);
+    document.querySelector("#nav-toggle").focus();
+  }
+});
 
 function resetSearch() {
   searchInput.value = "";
@@ -220,13 +388,13 @@ topicInput.addEventListener("change",renderResults);
 document.querySelector("#reset").addEventListener("click",() => {resetSearch(); searchInput.focus();});
 document.querySelectorAll("[data-query]").forEach(button => button.addEventListener("click",() => {resetSearch(); searchInput.value = button.dataset.query; renderResults(); searchInput.focus();}));
 document.addEventListener("click",event => {
+  if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
   const link = event.target.closest('a[href^="#"]');
   if (!link) return;
   if (link.classList.contains("skip")) { event.preventDefault(); article.focus(); return; }
   if (link.hash === "#start") resetSearch();
   // Native same-hash links do not trigger hashchange; still reset closed hints and focus.
   if (link.hash === location.hash) route(true);
-  article.scrollIntoView({block:"start"});
 });
 window.addEventListener("hashchange",() => route(true));
 route();
