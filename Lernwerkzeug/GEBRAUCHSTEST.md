@@ -1,6 +1,8 @@
-# Gebrauchstest: Aufgaben 6.1–6.3
+# Gebrauchstest: Lernraum und Aufgaben 6.1–6.3
 
 Status: **noch nicht durchgeführt**. Die technischen Prüfungen sind kein Ersatz für deine Nutzung.
+
+Beginne ohne Programmierkenntnisse auf der Willkommensseite. Finde die passende Geräteanleitung und führe den ersten Python-Test aus. Bearbeite Lektion 1: Ausgabe vorhersagen, selbst ausführen, verändern, eigene Miniübung lösen. Suche danach einen Befehl in der Tabelle und erkläre, zu welchen Datentypen er passt. Halte dabei unverständliche Wörter und fehlende Schritte fest. Wiederhole die Miniübung am nächsten Tag ohne Vorlage. Die tatsächliche Einrichtung auf PC/Tablet und diese Lernschritte sind noch nicht mit Anfängern geprüft.
 
 Öffne `index.html` im Browser und bearbeite Aufgaben 6.1–6.3 mit einer eigenen `main.py` und einer Kopie der CSV. Nutze zuerst die Aufgabenbegleitung, dann bei Bedarf einzelne Hinweise. Die Musterlösung bleibt bis zu deiner bewussten Auswahl geschlossen.
 
@@ -14,4 +16,4 @@ Ziel: jeweils in etwa 30 Sekunden den passenden Einstieg finden. Miss die Zeit s
 | „ValueError“, dann „float geht nicht“ suchen | Ursache eingrenzen und einen Prüfschritt selbst anwenden | offen | offen |
 | Vom Baustein zur Originalquelle wechseln | Richtige PDF-Seite oder das zugehörige Originalbild öffnen | offen | offen |
 
-Halte nach jeder Aufgabe fest: Was konntest du selbst erklären? Welcher Begriff oder Zwischenschritt hat gefehlt? Hast du die Lösung benötigt? Die nächste Überarbeitung richtet sich nach diesen Beobachtungen. Die restlichen Modulthemen folgen auf derselben Grundlage.
+Halte nach jeder Aufgabe fest: Was konntest du selbst erklären? Welcher Begriff oder Zwischenschritt hat gefehlt? Hast du die Lösung benötigt? Die nächste Überarbeitung richtet sich nach diesen Beobachtungen. Weitere Originalaufgaben werden auf derselben Grundlage ergänzt.

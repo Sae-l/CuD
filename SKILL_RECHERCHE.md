@@ -1,5 +1,13 @@
 # Skill-Recherche für die GitHub-Ablage
 
+## Ergänzung: Anfänger-Lernraum und Design
+
+Am 15.10.2026 erneut mit dem ausdrücklich gewünschten `find-skills` recherchiert. Die [Skills-Bestenliste](https://skills.sh/) und die [Skill-Seite frontend-design](https://skills.sh/anthropics/skills/frontend-design) wurden geprüft: rund 989.000 Installationen. Das offizielle [Anthropic-Repository](https://github.com/anthropics/skills) wurde gegengeprüft: rund 181.000 Sterne. Zahlen sind Momentaufnahmen und keine Qualitätsgarantie.
+
+Die vorhandenen lokalen Skills `frontend-design` und `webapp-testing` wurden gelesen und für Gestaltung bzw. Browserprüfung verwendet. Keine neue Skill-Installation nötig. `webapp-testing` bevorzugt Python-Playwright; hier wurde die bereits vorhandene JavaScript-Prüfung erweitert. Optionaler Installationsbefehl für andere Rechner: `npx skills add https://github.com/anthropics/skills --skill frontend-design`.
+
+Das fachliche Lernkonzept wird mit PRIMM begründet. Umsetzung und Quellen: [LERNKONZEPT.md](Lernwerkzeug/LERNKONZEPT.md). Die nachfolgenden Abschnitte dokumentieren die frühere GitHub-Ablage.
+
 Stand: 15.10.2026. Auslöser: ausdrücklich angeforderter Skill `find-skills` beim Upload nach `Sae-l/CuD-1`.
 
 ## Vorgehen und Fund

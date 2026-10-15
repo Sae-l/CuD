@@ -4,9 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
+  <meta name="description" content="Dein lokaler Lernraum für Coding und Digitalisierung: Python verstehen, Befehle nachschlagen und CSV-Aufgaben selbst lösen.">
   <title>Coding · Lernwerkzeug</title>
   <link rel="stylesheet" href="styles.css">
   <script src="inhalte.js" defer></script>
+  <script src="kurs.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -17,8 +19,20 @@
   </header>
   <div class="workspace">
     <aside class="sidebar" aria-label="Lernnavigation">
+      <button id="nav-toggle" type="button" aria-controls="lernnavigation" aria-expanded="false">Lernnavigation öffnen</button>
+      <div id="lernnavigation">
       <p class="module-label">Coding und Digitalisierung</p>
-      <h2>Dein Arbeitsweg</h2>
+      <h2>Dein Lernraum</h2>
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <a href="#start">Willkommen</a>
+        <a href="#vorlesungen">Vorlesungen</a>
+        <a href="#uebung">Aktuelle Übung</a>
+        <a href="#befehle">Befehle nachschlagen</a>
+        <a href="#python-setup">Python einrichten</a>
+        <a href="#vscode-setup">VS Code einrichten</a>
+      </nav>
+      <hr>
+      <p class="module-label">Übungsblock 6</p>
       <nav aria-label="Übungen">
         <a class="task-link" href="#aufgabe-6-1"><span>6.1</span> CSV einlesen</a>
         <a class="task-link" href="#aufgabe-6-2"><span>6.2</span> Daten filtern</a>
@@ -26,17 +40,17 @@
       </nav>
       <hr>
       <nav class="secondary" aria-label="Bereiche">
-        <a href="#start">Alle Inhalte</a>
         <a href="#ablauf">Der ganze Arbeitsablauf</a>
         <a href="#quellen">Quellen & Prüfstand</a>
       </nav>
-      <div class="scope-note"><strong>Erster Übungsblock</strong><p>Standard-Python: von der CSV zu geprüften Kennzahlen.</p><p>Weitere Modulthemen sind noch nicht aufbereitet.</p></div>
+      <div class="scope-note"><strong>Du brauchst kein Vorwissen.</strong><p>Beginne mit der Einrichtung. Lerne anschließend in kleinen Schritten und probiere jeden Schritt selbst aus.</p><a href="#lernkonzept">So lernst du hier</a></div>
+      </div>
     </aside>
     <main id="hauptbereich">
       <section class="search-area" aria-label="Inhalte suchen">
         <label for="suche">Wobei brauchst du Hilfe?</label>
         <div class="search-row"><input id="suche" type="search" placeholder="CSV einlesen, Durchschnitt, 6.2 …" autocomplete="off" spellcheck="false"><button id="reset" type="button">Zurücksetzen</button></div>
-        <div class="filters"><label>Inhaltsart<select id="art"><option value="">Alle Inhaltsarten</option><option>Übung</option><option>Befehl & Begriff</option><option>Arbeitsablauf</option><option>Fehlerhilfe</option><option>Quellen</option></select></label><label>Thema<select id="thema"><option value="">Alle Themen</option><option>Dateien</option><option>Python-Grundlagen</option><option>Bereinigung</option><option>Auswertung</option></select></label></div>
+        <div class="filters"><label>Inhaltsart<select id="art"><option value="">Alle Inhaltsarten</option><option>Vorlesung</option><option>Einrichtung</option><option>Übung</option><option>Befehl & Begriff</option><option>Arbeitsablauf</option><option>Fehlerhilfe</option><option>Quellen</option></select></label><label>Thema<select id="thema"><option value="">Alle Themen</option></select></label></div>
         <p class="search-tip">Zum Beispiel: <button type="button" data-query="CSV einlesen">CSV einlesen</button><button type="button" data-query="Durchschnitt">Durchschnitt</button><button type="button" data-query="ValueError">ValueError</button></p>
       </section>
       <div class="learning-area">
@@ -46,6 +60,6 @@
       <noscript>Bitte JavaScript aktivieren. Es läuft ausschließlich lokal. Die Originalaufgaben stehen in ../Referenz/Pflicht Übungen/CuD_Uebung 01.pdf, PDF-Seiten 10–11.</noscript>
     </main>
   </div>
-  <footer>Ohne Konto, ohne externe Dienste. Deinen Python-Code führst du selbst im Editor aus.</footer>
+  <footer>Die Lernseite funktioniert lokal und offline. Deinen Python-Code führst du im Editor aus. Verlinkte Downloads und Browser-Notebooks benötigen Internet.</footer>
 </body>
 </html>
