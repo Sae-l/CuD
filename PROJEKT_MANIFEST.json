@@ -18,9 +18,9 @@
     },
     {
       "path": "ARBEITSPLAN_Lernwerkzeug.md",
-      "bytes": 16417,
-      "sha256": "cd9747c0bc4521143ed216a8f22d9a29ecdf4f2af8fe47ed446357ba171f9ffc",
-      "git_blob_sha1": "015c4d02175a21004b0fba6f2941304107ed418b"
+      "bytes": 16798,
+      "sha256": "27509e2100bb62e4857e0193c11bf537ef27e7c48beb1235bce74dd0865fda9c",
+      "git_blob_sha1": "a2ce8106b7b8fcec85dd079d54f9b7ff336248ce"
     },
     {
       "path": "AUDIT.md",
@@ -90,9 +90,9 @@
     },
     {
       "path": "Lernwerkzeug/inhalte.js",
-      "bytes": 27303,
-      "sha256": "c18c537d1c8be627bdff73e9e35ce90cb6b8377ab82391f276fefb2fd6ea0365",
-      "git_blob_sha1": "99b5d1b497568dab109b044bc4bd2507ce7db12e"
+      "bytes": 27297,
+      "sha256": "f0201f15e5b240c2347d235dca56eb7a246163267acab7cb93f2a61d4ecfcb20",
+      "git_blob_sha1": "1b019c14fb028c504752edaef2562673c2c940e3"
     },
     {
       "path": "Lernwerkzeug/kompatibilitaet.cjs",

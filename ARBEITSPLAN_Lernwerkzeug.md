@@ -1,5 +1,7 @@
 # Arbeitsplan: Lernwerkzeug für Coding und Digitalisierung
 
+Dieser Plan dokumentiert den Ausgangspiloten und den Ausbau bis v0.1.0. Die nachfolgende Lernprüfung mit Verständnisfragen, Bearbeitungsmarken und Transferprojekt steht in [ABDECKUNG.md](Lernwerkzeug/ABDECKUNG.md), [ERWEITERN.md](Lernwerkzeug/ERWEITERN.md) und im [aktuellen Prüfbericht](Lernwerkzeug/pruefung/PRUEFBERICHT.md). Für aktuelle Zählungen gelten diese Nachweise.
+
 Stand: 15.10.2026. Status: Bestehender Pilot zum Anfänger-Lernraum erweitert; Gebrauchstest und vollständige Begleitung aller Originalaufgaben offen.
 
 ## Aktuelle Designvorgabe und Erweiterung
