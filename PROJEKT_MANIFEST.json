@@ -330,9 +330,9 @@
     },
     {
       "path": "README.md",
-      "bytes": 6744,
-      "sha256": "1dcb7f50a1efad6c6768b0eda80f6ef30250e1860a56950f90a049433d9ab6f5",
-      "git_blob_sha1": "990f64df3e2882f521128c22bd73d1fde972677f"
+      "bytes": 6751,
+      "sha256": "a2be3eddf9e717fc27d31d89fa98126b7bfdff732a5eec076df2ce1ff255ca40",
+      "git_blob_sha1": "df2acbf22e28f296da667de3c3d29d1ed9d51dd8"
     },
     {
       "path": "RELEASE_NOTES.md",
