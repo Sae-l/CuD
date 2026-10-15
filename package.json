@@ -10,7 +10,7 @@
     "node": ">=24"
   },
   "devDependencies": {
-    "playwright": "1.62.1"
+    "playwright": "1.64.0"
   },
   "repository": {
     "type": "git",
