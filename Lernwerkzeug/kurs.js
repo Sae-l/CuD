@@ -446,24 +446,25 @@ inhalte.push(...[
       "live-quelle-18"
     ],
     "steps": [
-      "Beschaffe die Originaldatei bb12024.csv beim Kurs. Prüfe Header und Trennzeichen.",
+      "Speichere die synthetische live-mini.csv über den Download in denselben Ordner wie dein Python-Programm. Prüfe Header und Trennzeichen.",
       "Lade die Datei und zeige head(3) und info().",
       "Berechne den Mittelwert von temp_c und filtere o2_ist < 0.5.",
-      "Vergleiche Ergebnisse erst, wenn der Originaldatensatz vorliegt."
+      "Demo-Kontrolle: drei Zeilen, mittlere Temperatur 24.00 °C und zwei kritische Messpunkte. Für Kursdaten später nur den Dateipfad ändern und das Format prüfen."
     ],
     "hints": [
       "0.5 ist nicht kleiner als 0.5.",
       "mean ignoriert NaN; prüfe trotzdem, ob überhaupt ein gültiger Wert vorhanden ist."
     ],
     "checks": [
-      "Mit drei eigenen Zeilen um die Grenze 0.5 prüfst du den Vergleich.",
+      "Mit live-mini.csv: drei Zeilen, 24.00 °C und zwei Werte unter 0.5; 0.5 selbst zählt nicht dazu.",
       "Leere Daten und fehlende Spalten dürfen keine scheinbar vollständige Auswertung liefern."
     ],
-    "notice": "Originaldatei bb12024.csv fehlt. Der folgende Code ist mit getrennten synthetischen Prüfdaten getestet; Originalergebnisse sind nicht nachgewiesen.",
+    "download": ["Synthetische live-mini.csv speichern", "beispiele/live-mini.csv"],
+    "notice": "Du kannst jetzt mit der selbst erstellten live-mini.csv üben. Sie enthält drei erfundene Messzeilen und ist kein Kursdatensatz. bb12024.csv fehlt weiterhin; die gedruckten Originalergebnisse sind unbestätigt.",
     "solution": {
       "intro": "Eigene geprüfte Musterlösung; Originaldaten niemals mit synthetischen Daten gleichen Namens ersetzen.",
-      "code": "import pandas as pd\n\ndef auswerten(pfad):\n    df = pd.read_csv(pfad)\n    if df.empty:\n        raise ValueError(\"Keine Messzeilen.\")\n    print(df.head(3))\n    df.info()\n    mittel_temp = df[\"temp_c\"].mean()\n    if pd.isna(mittel_temp):\n        raise ValueError(\"Keine gültigen Temperaturwerte.\")\n    kritisch = df[df[\"o2_ist\"] < 0.5]\n    print(f\"Mittlere Temperatur: {mittel_temp:.2f} °C\")\n    print(f\"Anzahl kritischer Messpunkte: {len(kritisch)}\")\n    return df, kritisch, mittel_temp\n\nif __name__ == \"__main__\":\n    auswerten(\"bb12024.csv\")",
-      "explanation": "Die Funktion nimmt den Pfad als Parameter an. Die technische Prüfung verwendet eine ausdrücklich synthetische CSV; die Folienwerte 15.62 und 1420 sind ohne Originaldaten nicht bestätigt."
+      "code": "import pandas as pd\n\ndef auswerten(pfad):\n    df = pd.read_csv(pfad)\n    if df.empty:\n        raise ValueError(\"Keine Messzeilen.\")\n    print(df.head(3))\n    df.info()\n    mittel_temp = df[\"temp_c\"].mean()\n    if pd.isna(mittel_temp):\n        raise ValueError(\"Keine gültigen Temperaturwerte.\")\n    kritisch = df[df[\"o2_ist\"] < 0.5]\n    print(f\"Mittlere Temperatur: {mittel_temp:.2f} °C\")\n    print(f\"Anzahl kritischer Messpunkte: {len(kritisch)}\")\n    return df, kritisch, mittel_temp\n\nif __name__ == \"__main__\":\n    auswerten(\"live-mini.csv\")",
+      "explanation": "Der kopierte Code läuft mit der herunterladbaren live-mini.csv: 24.00 °C und zwei kritische Messpunkte. Für Originaldaten später den Aufruf auf bb12024.csv umstellen und Format sowie Einheiten prüfen. Die Folienwerte 15.62 und 1420 sind ohne Originaldaten nicht bestätigt."
     }
   },
   {
@@ -485,7 +486,7 @@ inhalte.push(...[
       "live-quelle-26"
     ],
     "steps": [
-      "Lade die CSV mit pd.read_csv.",
+      "Speichere die synthetische live-mini.csv über den Download neben dein Programm und lade sie mit pd.read_csv.",
       "Wandle zeit um, setze den Index und sortiere chronologisch.",
       "Wähle die vier fachlichen Zahlenspalten und bilde resample(\"5min\").mean().",
       "Fülle höchstens einen inneren Rasterwert pro Lücke. Stoppe bei Restlücken und untersuche ihre Ursache."
@@ -495,14 +496,15 @@ inhalte.push(...[
       "Interpolation erzeugt Schätzungen; eine zeitbezogene Methode ist für das gleichmäßige Raster verständlich."
     ],
     "checks": [
-      "08:01 und 08:04 gehören zum Abschnitt 08:00.",
+      "Demo: Raster 08:00, 08:05, 08:10; temp_c ergibt 22, 25, 28. Die mittlere Rasterzeile ist interpoliert.",
       "Unlesbare Zeiten und Restlücken lösen einen sichtbaren Fehler aus."
     ],
-    "notice": "Originaldatei bb12024.csv fehlt. Der folgende Code ist mit getrennten synthetischen Prüfdaten getestet; Originalergebnisse sind nicht nachgewiesen.",
+    "download": ["Synthetische live-mini.csv speichern", "beispiele/live-mini.csv"],
+    "notice": "Du kannst jetzt mit der selbst erstellten live-mini.csv üben. Sie enthält drei erfundene Messzeilen und ist kein Kursdatensatz. bb12024.csv fehlt weiterhin; die gedruckten Originalergebnisse sind unbestätigt.",
     "solution": {
       "intro": "Eigene geprüfte Musterlösung; Originaldaten niemals mit synthetischen Daten gleichen Namens ersetzen.",
-      "code": "import pandas as pd\n\ndef lade_und_resample(dateipfad):\n    df = pd.read_csv(dateipfad)\n    if df.empty:\n        raise ValueError(\"Keine Messzeilen.\")\n    df[\"zeit\"] = pd.to_datetime(df[\"zeit\"])\n    daten = df.set_index(\"zeit\").sort_index()[[\"o2_ist\", \"o2_soll\", \"nh4_mg_l\", \"temp_c\"]]\n    raster = daten.resample(\"5min\").mean()\n    gefuellt = raster.interpolate(method=\"time\", limit=1, limit_area=\"inside\")\n    if gefuellt.isna().any().any():\n        raise ValueError(\"Restlücken: Daten prüfen statt beliebig weiter interpolieren.\")\n    return gefuellt\n\nif __name__ == \"__main__\":\n    print(lade_und_resample(\"bb12024.csv\").head(4).round(2))",
-      "explanation": "Eigene abgesicherte Anpassung des Folienwegs: limit=1 und limit_area=\"inside\" vermeiden unbegrenztes Füllen. Das ist eine didaktische Annahme, keine fachliche Freigabe realer Prozessdaten."
+      "code": "import pandas as pd\n\ndef lade_und_resample(dateipfad):\n    df = pd.read_csv(dateipfad)\n    if df.empty:\n        raise ValueError(\"Keine Messzeilen.\")\n    df[\"zeit\"] = pd.to_datetime(df[\"zeit\"])\n    daten = df.set_index(\"zeit\").sort_index()[[\"o2_ist\", \"o2_soll\", \"nh4_mg_l\", \"temp_c\"]]\n    raster = daten.resample(\"5min\").mean()\n    gefuellt = raster.interpolate(method=\"time\", limit=1, limit_area=\"inside\")\n    if gefuellt.isna().any().any():\n        raise ValueError(\"Restlücken: Daten prüfen statt beliebig weiter interpolieren.\")\n    return gefuellt\n\nif __name__ == \"__main__\":\n    print(lade_und_resample(\"live-mini.csv\").head(4).round(2))",
+      "explanation": "Mit der herunterladbaren live-mini.csv läuft der Code direkt. Für bb12024.csv später den Aufruf umstellen und das Format prüfen. Eigene abgesicherte Anpassung des Folienwegs: limit=1 und limit_area=\"inside\" vermeiden unbegrenztes Füllen. Das ist eine didaktische Annahme, keine fachliche Freigabe realer Prozessdaten."
     }
   }
 ]);
@@ -511,13 +513,13 @@ inhalte.push({
   ...liveKlasse, id:"live-003-31",topic:"Live-Übungen",title:"003 · PDF-S. 31 · BeckenAnalyse als Klasse",
   aliases:["Abschlussübung","Original BeckenAnalyse","bb12024.csv"],sources:["live-quelle-31"],
   summary:"Kapsle den Originaldateipfad, die Fünf-Minuten-Aufbereitung und den Report in einer eigenen Klasse.",
-  explanation:"Selbst verfasste Begleitung zur Original-Abschlussübung auf PDF-S. 31. Die Schritte folgen dem eigenen Mini-Projekt; der Originalaufruf benötigt bb12024.csv aus dem Kurs.",
-  download:undefined,
-  notice:"bb12024.csv fehlt. Keine Originalergebnisse bestätigt. Die Klasse ist mit getrennten synthetischen Prüfdaten und Fehlerfällen geprüft. Die Interpolationsgrenze bleibt eine didaktische Annahme.",
-  steps:["Beschaffe bb12024.csv beim Kurs und prüfe zeit, o2_ist und temp_c.","Schreibe __init__: Pfad speichern und self.df = None setzen.","Implementiere Import, Zeitindex, Fünf-Minuten-Mittel und begrenzte innere Interpolation in aufbereiten_5min.","Implementiere zeige_report mit Prüfung auf fehlende Aufbereitung, leere Daten und Restlücken.","Teste zwei getrennte Instanzen. Führe das Hauptprogramm erst mit der tatsächlich vorliegenden Originaldatei aus."],
+  explanation:"Selbst verfasste Begleitung zur Original-Abschlussübung auf PDF-S. 31. Die Schritte folgen dem eigenen Mini-Projekt; der Demoaufruf nutzt live-mini.csv. Der Originalaufruf benötigt später bb12024.csv aus dem Kurs.",
+  download:["Synthetische live-mini.csv speichern","beispiele/live-mini.csv"],
+  notice:"Mit der selbst erstellten live-mini.csv kannst du die Klasse sofort ausprobieren. bb12024.csv fehlt weiterhin; keine Originalergebnisse bestätigt. Die Interpolationsgrenze bleibt eine didaktische Annahme.",
+  steps:["Speichere live-mini.csv über den Download neben dein Python-Programm; prüfe zeit, o2_ist und temp_c.","Schreibe __init__: Pfad speichern und self.df = None setzen.","Implementiere Import, Zeitindex, Fünf-Minuten-Mittel und begrenzte innere Interpolation in aufbereiten_5min.","Implementiere zeige_report mit Prüfung auf fehlende Aufbereitung, leere Daten und Restlücken.","Starte mit live-mini.csv: drei Rasterzeilen, zwei geschätzte Zellen und Temperaturmittel 25.0 °C. Für die Originalübung später nur den Pfad auf bb12024.csv umstellen und Datenformat sowie Einheiten prüfen."],
   solution:{...liveKlasse.solution,
-    intro:"Eigene abgesicherte Musterlösung zur Originalübung. Ohne Originaldatei läuft nur der ausdrücklich getrennte synthetische Prüffall.",
-    code:liveKlasse.solution.code.split('analyse = BeckenAnalyse')[0] + 'if __name__ == "__main__":\n    analyse = BeckenAnalyse("bb12024.csv")\n    analyse.aufbereiten_5min()\n    analyse.zeige_report()',
+    intro:"Eigene abgesicherte Musterlösung zur Originalübung. Das Hauptprogramm läuft mit der herunterladbaren synthetischen live-mini.csv.",
+    code:liveKlasse.solution.code.split('analyse = BeckenAnalyse')[0] + 'if __name__ == "__main__":\n    analyse = BeckenAnalyse("live-mini.csv")\n    analyse.aufbereiten_5min()\n    analyse.zeige_report()',
     explanation:"Die Klasse folgt dem Originalauftrag. Die zusätzliche Schätzmaske, limit=1 und Restlückenprüfung legen die Arbeitsannahmen offen. Die gedruckten Originalkennzahlen sind ohne bb12024.csv nicht reproduzierbar."
   }
 });
