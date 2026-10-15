@@ -4,6 +4,8 @@ Die drei Live-Übungen aus Vorlesung 003 (PDF-S. 18, 26, 31) lassen sich jetzt o
 
 Die fertige Gestaltung aus dem Design-Chat ist integriert: neue Startseite, lokal mitgelieferte Outfit-Schrift, Lernkarten, manuell bedienbare Lerntipps, Akkordeon und Scrollanimationen. Reduzierte Bewegung erhält alle Inhalte ohne Scroll-Effekte. Schrift, Foto und Bibliotheken liegen samt Herkunft und Lizenzhinweisen im Offline-Paket.
 
+Neu seit dem Design-Chat: Eine eigene Startseite (index.html im Projektordner) begrüßt auf GitHub Pages unter sae-l.github.io/CuD und führt direkt ins Lernwerkzeug. Das Lernwerkzeug hat ein ruhigeres, plastischeres Erscheinungsbild mit schwebender Kopfzeile, gerahmten Karten und runden Schaltflächen. Inhalte, Bedienung und Tests bleiben unverändert; die Startseite nutzt dieselbe Schrift und dasselbe Foto aus Lernwerkzeug/assets/.
+
 ## Starten
 
 1. CuD-1-v0.2.1.zip vollständig entpacken.

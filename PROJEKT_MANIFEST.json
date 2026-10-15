@@ -336,9 +336,9 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1800,
-      "sha256": "6d133776cf779335b6f8c9e0f97d859999f3744378d103161bff1dce8b0deda4",
-      "git_blob_sha1": "674c6eb058a743fd9f22dede8a11ac9d31d5cdbb"
+      "bytes": 2240,
+      "sha256": "5e20818d58233bcbd78814c0f1f10fe1371cdd7f0e58b34ef9009b037b2831f4",
+      "git_blob_sha1": "b4eb83bd53e202c65520cc9df5ff19ee80163200"
     },
     {
       "path": "REPOSITORY_SETTINGS.md",
