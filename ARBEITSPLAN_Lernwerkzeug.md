@@ -2,11 +2,11 @@
 
 Dieser Plan dokumentiert den Ausgangspiloten und den Ausbau bis v0.1.0. Die nachfolgende Lernprüfung mit Verständnisfragen, Bearbeitungsmarken und Transferprojekt steht in [ABDECKUNG.md](Lernwerkzeug/ABDECKUNG.md), [ERWEITERN.md](Lernwerkzeug/ERWEITERN.md) und im [aktuellen Prüfbericht](Lernwerkzeug/pruefung/PRUEFBERICHT.md). Für aktuelle Zählungen gelten diese Nachweise.
 
-Stand: 15.10.2026. Status: Bestehender Pilot zum Anfänger-Lernraum erweitert; Gebrauchstest und vollständige Begleitung aller Originalaufgaben offen.
+Stand: 15.10.2026. Status: Version 0.2.0 begleitet alle 31 Aufgaben des vorhandenen Übungsskripts und vier Live-Übungen; FFT ist ergänzt. Originaldatensatz bb12024.csv, Gebrauchstest und vollständige visuelle Folienprüfung bleiben offen.
 
 ## Aktuelle Designvorgabe und Erweiterung
 
-Die neue Nutzervorgabe ersetzt den früheren suchezentrierten Einstieg: attraktive Willkommensseite, Vorlesungen in Quellenreihenfolge, separater Zugang zur aktuellen Übung, Befehlsübersicht mit Beispielen und Kontext sowie getrennte Python- und VS-Code-Anleitungen. Umgesetzt sind neun Vorlesungsetappen mit PRIMM-Miniübungen, zwei Einrichtungsanleitungen und 44 Befehlsgruppen. Aktuelle Übung bezeichnet den vorhandenen Block 6.1–6.3, keinen automatisch ermittelten Kurstermin.
+Die neue Nutzervorgabe ersetzt den früheren suchezentrierten Einstieg: attraktive Willkommensseite, Vorlesungen in Quellenreihenfolge, separater Zugang zur aktuellen Übung, Befehlsübersicht mit Beispielen und Kontext sowie getrennte Python- und VS-Code-Anleitungen. Umgesetzt sind zehn Vorlesungsetappen mit PRIMM-Miniübungen, zwei Einrichtungsanleitungen und 49 Befehlsgruppen. Übungen & Begleitung führt zu allen 31 Aufgaben und vier Live-Übungen; der CSV-Block 6.1–6.3 bleibt der hervorgehobene Einstieg. Es gibt keinen automatisch ermittelten Kurstermin.
 
 Maßgebliche Beschreibung: [Lernkonzept und Abdeckung](Lernwerkzeug/LERNKONZEPT.md). Aktuelle Nachweise: [Prüfbericht](Lernwerkzeug/pruefung/PRUEFBERICHT.md). Die nachstehenden Abschnitte dokumentieren auch die Ausgangsplanung des Piloten; ihre früheren Erweiterungsziele sind teilweise umgesetzt.
 

@@ -1,0 +1,17 @@
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+
+[*.py]
+indent_size = 4
+
+# Originalunterlagen und historische Nachweise bleiben bytegleich.
+[{Referenz,Referenz_Sichtung}/**]
+charset = unset
+indent_style = unset
+indent_size = unset
+insert_final_newline = unset

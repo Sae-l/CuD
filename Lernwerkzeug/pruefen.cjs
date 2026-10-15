@@ -48,8 +48,9 @@ for (const lesson of lessons) {
 const exerciseText = fs.readFileSync(path.join(root,"../Referenz_Sichtung/Pflicht_Uebungen/md/CuD_Uebung 01.md"),"utf8").split("## PDF-Seite 5")[1];
 const originalTasks = [...exerciseText.matchAll(/^\d+\.\d+ Aufgabe (\d+\.\d+):/gm)].map(match => match[1]);
 const pipelineIds = ["aufgabe-6-1","aufgabe-6-2","aufgabe-6-3"];
-const testedSolutions = new Set([...pipelineIds,"praxis-zeitreihe"]);
+const testedSolutions = new Set([...originalTasks.map(number => `aufgabe-${number.replace(".","-")}`),"praxis-zeitreihe","live-003-10","live-003-18","live-003-26","live-003-31"]);
 for (const item of items.filter(item => item.solution)) assert(testedSolutions.has(item.id),`${item.id}: Eigenen Python-Prüffall und Zuordnung unter testedSolutions ergänzen`);
+for (const id of testedSolutions) assert(items.find(item => item.id === id)?.solution,`${id}: Musterlösung fehlt`);
 assert.deepEqual(coverage.filter(row => !row.sourceFile).flatMap(row => row.tasks),originalTasks);
 for (const row of coverage) {
   assert(row.title && row.gap && Number.isInteger(row.page) && row.page > 0);
@@ -67,7 +68,7 @@ for (const [relative,hash] of Object.entries(originalManifest.source_sha256)) {
 
 // Die Webseite hat keinen Server; file:// und Offline-Modus sind Teil der Abnahme.
 const pythonCode = String.raw`
-import contextlib, csv, io, json, math, os, statistics, sys, tempfile
+import contextlib, csv, io, json, math, os, runpy, statistics, sys, tempfile
 from pathlib import Path
 payload = json.load(sys.stdin)
 items = payload["items"]
@@ -90,6 +91,7 @@ with tempfile.TemporaryDirectory(prefix="lernwerkzeug-", dir=payload["temporary_
     for command in payload["commands"]:
         execute(command[2], {"input": lambda prompt="": "Test"})
         plt.close("all")
+    extended = runpy.run_path(payload["exercise_checker"])["pruefe"](items, source, payload["figure_output"])
     # Eigene Transferaufgabe: unabhängig erwartete Mini-Daten, nicht bb12024.csv.
     Path("becken-mini.csv").write_text(payload["becken"], encoding="utf-8")
     project = next(i for i in items if i["id"] == "praxis-zeitreihe")
@@ -165,17 +167,19 @@ with tempfile.TemporaryDirectory(prefix="lernwerkzeug-", dir=payload["temporary_
             pass
         else:
             raise AssertionError("Beschädigte Daten wurden stillschweigend akzeptiert")
-print(json.dumps({"examples":count,"command_examples":len(payload["commands"]),"pipeline":True,"edge_cases":True,"transfer_project":True}))
+print(json.dumps({"examples":count,"command_examples":len(payload["commands"]),"pipeline":True,"edge_cases":True,"transfer_project":True,"extended":extended}))
 `;
 const python = spawnSync(process.env.LERNWERKZEUG_PYTHON || "python",["-c",pythonCode],{
-  input:JSON.stringify({items,commands,pipeline_ids:pipelineIds,csv:path.join(root,"../Referenz/Pflicht Übungen/messdaten.csv"),mini:fs.readFileSync(path.join(root,"beispiele/mini.csv"),"utf8"),becken:fs.readFileSync(path.join(root,"beispiele/becken-mini.csv"),"utf8"),temporary_root:output}),encoding:"utf8",env:{...process.env,PYTHONOPTIMIZE:"",PYTHONIOENCODING:"utf-8",MPLBACKEND:"Agg",MPLCONFIGDIR:testCache}
+  input:JSON.stringify({items,commands,pipeline_ids:pipelineIds,csv:path.join(root,"../Referenz/Pflicht Übungen/messdaten.csv"),mini:fs.readFileSync(path.join(root,"beispiele/mini.csv"),"utf8"),becken:fs.readFileSync(path.join(root,"beispiele/becken-mini.csv"),"utf8"),temporary_root:output,exercise_checker:path.join(root,"../scripts/uebungen_pruefen.py"),figure_output:output}),encoding:"utf8",timeout:120000,env:{...process.env,PYTHONOPTIMIZE:"",PYTHONIOENCODING:"utf-8",MPLBACKEND:"Agg",MPLCONFIGDIR:testCache}
 });
 assert.equal(python.status,0,python.stderr || String(python.error));
 const pythonResult = JSON.parse(python.stdout);
 
 async function browserTests() {
-  process.env.TEMP = output;
-  process.env.TMP = output;
+  const temporary = path.join(root,"../.upload-work/browser-temp");
+  fs.mkdirSync(temporary,{recursive:true});
+  process.env.TEMP = temporary;
+  process.env.TMP = temporary;
   const localCache = path.join(os.homedir(),"AppData/Local/ms-playwright");
   if (!process.env.PLAYWRIGHT_BROWSERS_PATH && fs.existsSync(localCache)) process.env.PLAYWRIGHT_BROWSERS_PATH = localCache;
   const {chromium} = require("playwright");

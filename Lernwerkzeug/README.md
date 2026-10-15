@@ -1,6 +1,6 @@
 # Das Lernwerkzeug benutzen
 
-Die Startseite bietet **Vorlesungen**, **Aktuelle Übung**, **Befehle nachschlagen**, **Python einrichten** und **VS Code einrichten**. Beginne mit der Einrichtung, bearbeite die erste Lektion und probiere die Beispiele selbst aus. Suche und Filter helfen dir, später einen bestimmten Befehl oder Fehler wiederzufinden.
+Die Startseite bietet **Vorlesungen**, **Übungen & Begleitung**, **Befehle nachschlagen**, **Python einrichten** und **VS Code einrichten**. Beginne mit der Einrichtung, bearbeite die erste Lektion und probiere die Beispiele selbst aus. Suche und Filter helfen dir, später einen bestimmten Befehl oder Fehler wiederzufinden.
 
 ## Auf deinem Gerät öffnen
 
@@ -28,7 +28,7 @@ Auf iPad und Android ist die Desktop-Version von VS Code nicht auf dieselbe Weis
 
 ## Eine Übung bearbeiten
 
-1. Öffne **Aktuelle Übung**, dann Aufgabe **6.1**, und speichere die verlinkte `messdaten.csv` in einem eigenen Übungsordner. Lege daneben `main.py` an.
+1. Öffne **Übungen & Begleitung**. Dort findest du alle Module. Für den CSV-Block wähle Aufgabe **6.1**, und speichere die verlinkte `messdaten.csv` in einem eigenen Übungsordner. Lege daneben `main.py` an.
 2. Öffne den Übungsordner im Editor und starte dein Terminal darin. Schreibe und starte den Python-Code selbst.
 3. Bearbeite 6.1–6.3 nacheinander. Die Variablen bauen aufeinander auf: `zeilen`, `gute_daten`, Kennzahlen. Du kannst den Code in derselben `main.py` ergänzen.
 4. Öffne bei Bedarf zunächst einzelne Hinweise und erst danach die Musterlösung. Ein Seitenwechsel schließt Hinweise und Lösungen wieder.
@@ -48,7 +48,7 @@ Jede Lektion enthält eine eigene Verständnisfrage. Wähle eine Antwort und dr�
 
 Die Bearbeitungsmarken werden nur im selben Browser unter `cud-lernfortschritt-v1` gespeichert. Sie werden nicht gesendet oder zwischen Geräten synchronisiert. Bei blockierter Speicherung bleibt die Bedienung erhalten und die Seite weist auf die Sitzung als Grenze hin. Im direkten Dateibetrieb kann das Speicherverhalten vom Browser und Dateipfad abhängen. Ein gelöstes Häkchen entfernt die jeweilige Marke. Die Marken sind deine Selbsteinschätzung und kein Nachweis des Lernnutzens.
 
-**Abdeckung & nächste Schritte** zeigt alle 31 Aufgaben aus dem vorhandenen Übungsblatt; nur 6.1–6.3 sind mit gestuften Hinweisen und Lösung begleitet. **Eigenes Mini-Projekt** verbindet CSV, Pandas und OOP mit einer herunterladbaren synthetischen `becken-mini.csv`. Diese Datei ersetzt keine fehlenden Originaldaten. Die genaue Einordnung steht in [ABDECKUNG.md](ABDECKUNG.md). Weitere Originalaufgaben, vollständige visuelle Quellenprüfung und Gebrauchstests bleiben offen.
+**Abdeckung & nächste Schritte** zeigt alle 31 Aufgaben aus dem vorhandenen Übungsblatt; alle 31 sind mit gestuften Hinweisen und Lösung begleitet. Vier Live-Übungen und die FFT-Lektion sind zusätzlich erreichbar. **Eigenes Mini-Projekt** verbindet CSV, Pandas und OOP mit einer herunterladbaren synthetischen `becken-mini.csv`. Diese Datei ersetzt keine fehlenden Originaldaten. Die genaue Einordnung steht in [ABDECKUNG.md](ABDECKUNG.md). Originalergebnisse für bb12024.csv, vollständige visuelle Quellenprüfung und Gebrauchstests bleiben offen.
 
 ## Entwicklung und Tests
 

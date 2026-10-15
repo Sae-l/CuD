@@ -1,22 +1,28 @@
 {
-  "date": "2026-10-15T12:18:54.849Z",
+  "date": "2026-10-15T13:19:57.764Z",
   "status": "PASS",
   "originalHashes": 8,
   "python": {
-    "examples": 26,
-    "command_examples": 31,
+    "examples": 27,
+    "command_examples": 34,
     "pipeline": true,
     "edge_cases": true,
-    "transfer_project": true
+    "transfer_project": true,
+    "extended": {
+      "original_exercises": 28,
+      "live_exercises": 4,
+      "fft": true,
+      "original_dataset_available": false
+    }
   },
   "browser": {
     "searchCases": 18,
-    "views": 43,
-    "commandRows": 46,
-    "learningQuizzes": 9,
+    "views": 76,
+    "commandRows": 49,
+    "learningQuizzes": 10,
     "progressPersistence": true,
     "originalTasks": 31,
-    "localLinks": 79,
+    "localLinks": 116,
     "externalRequests": 0
   }
 }
