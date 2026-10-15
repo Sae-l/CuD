@@ -1,5 +1,13 @@
 # Skill-Recherche für die GitHub-Ablage
 
+## Ergänzung: Lernwirksamkeit, Abdeckung und Erweiterbarkeit
+
+Am 15.10.2026 mit dem erneut angeforderten `find-skills` zuerst die [Skills-Bestenliste](https://skills.sh/) geprüft. Für diese Arbeit passt der bereits vorhandene [webapp-testing-Skill von anthropics/skills](https://skills.sh/anthropics/skills/webapp-testing): rund 177.900 Installationen. Das offizielle [Quellrepository](https://github.com/anthropics/skills) zeigte rund 181.300 Sterne. Das sind zeitgebundene Momentaufnahmen, kein Qualitätsnachweis für das Lernwerkzeug.
+
+Die lokale Skill-Anleitung wurde gelesen und ihre Browserprüfstrategie angewendet. Die vorhandene JavaScript-Playwright-Prüfung wird weiterverwendet; keine zusätzliche Python-Playwright-Installation und kein neues Framework nötig. Optional für andere Umgebungen: `npx skills add anthropics/skills --skill webapp-testing`. Keine neue Skill-Installation durchgeführt.
+
+Für den Quellenabgleich zusätzlich den bereits vorhandenen `pdf-seitenweise-sichten` verwendet: vorhandene Seitenindizes und Textabschnitte gelesen, Vorlesung 003, PDF-S. 31, und Übungsblatt, PDF-S. 13, im Originalbild geprüft. [ABDECKUNG.md](Lernwerkzeug/ABDECKUNG.md) dokumentiert das Ergebnis, [ERWEITERN.md](Lernwerkzeug/ERWEITERN.md) den Ausbauvertrag.
+
 ## Ergänzung: Anfänger-Lernraum und Design
 
 Am 15.10.2026 erneut mit dem ausdrücklich gewünschten `find-skills` recherchiert. Die [Skills-Bestenliste](https://skills.sh/) und die [Skill-Seite frontend-design](https://skills.sh/anthropics/skills/frontend-design) wurden geprüft: rund 989.000 Installationen. Das offizielle [Anthropic-Repository](https://github.com/anthropics/skills) wurde gegengeprüft: rund 181.000 Sterne. Zahlen sind Momentaufnahmen und keine Qualitätsgarantie.

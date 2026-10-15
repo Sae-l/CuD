@@ -2,11 +2,13 @@
 
 Ein lokales Lernwerkzeug für Studierende im Kurs **Coding und Digitalisierung**, auch ohne Programmierkenntnisse: verständliche Vorlesungsetappen, eine Befehlsübersicht, Einrichtungsanleitungen und Begleitung zu den CSV-Aufgaben 6.1–6.3.
 
+Diese Arbeitsfassung erweitert v0.1.0 um Verständnisfragen, lokale Bearbeitungsmarken, einen Abdeckungsplan und ein eigenes Transferprojekt. Der veröffentlichte Release v0.1.0 bleibt unverändert.
+
 **Aufgabe → benötigtes Wissen → passender Befehl → selbst ausprobieren → Ergebnis prüfen**
 
 ## In drei Schritten starten
 
-1. Lade im [Release v0.1.0](https://github.com/Sae-l/CuD-1/releases/tag/v0.1.0) **CuD-1-v0.1.0.zip** herunter und entpacke es. Das ZIP enthält den gesamten Projektordner; `SHA256SUMS` enthält seine Prüfsumme. Alternativ: **Code → Download ZIP** oder `git clone https://github.com/Sae-l/CuD-1.git`.
+1. Lade den **gesamten Projektordner** über **Code → Download ZIP** herunter und entpacke ihn. Alternativ: `git clone https://github.com/Sae-l/CuD-1.git`. Für den früheren, fest versionierten Stand gibt es [Release v0.1.0](https://github.com/Sae-l/CuD-1/releases/tag/v0.1.0) mit ZIP und `SHA256SUMS`.
 2. Öffne [Lernwerkzeug/index.html](Lernwerkzeug/index.html) aus dem entpackten Ordner im Browser. Die GitHub-Dateiansicht zeigt nur den Quelltext.
 3. Wähle **Lernweg beginnen**, richte deine Python-Umgebung ein und beginne mit der ersten Vorlesung. **Aktuelle Übung** führt direkt zu Aufgaben 6.1–6.3.
 
@@ -27,6 +29,8 @@ Die automatisierten Browserprüfungen sind in [kompatibilitaet.json](Lernwerkzeu
 | [Referenz_Sichtung/](Referenz_Sichtung/) | [Seitenindex](Referenz_Sichtung/Seitenindex.md), Textauszüge, Originalbilder und Herkunftsnachweise |
 | [Lernwerkzeug/pruefung/](Lernwerkzeug/pruefung/) | Browser- und Python-Ergebnisse, Prüfbericht und Screenshots |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Entwicklung einrichten, Änderungen prüfen und beitragen |
+| [Abdeckungsplan](Lernwerkzeug/ABDECKUNG.md) | Alle 31 Originalaufgaben, passende Lerntexte und verbleibende Lücken |
+| [Erweiterungsanleitung](Lernwerkzeug/ERWEITERN.md) | Neue Vorlesungen, Übungen, eigene Daten und ihre Prüfungen ergänzen |
 | [AUDIT.md](AUDIT.md) | Audit, behobene Probleme und verbleibende Grenzen |
 | [PROJEKT_MANIFEST.json](PROJEKT_MANIFEST.json) | Dateiintegrität; Prüfung mit `python scripts/manifest.py --check` |
 
@@ -35,6 +39,10 @@ Für Lernende: [Bedienung](Lernwerkzeug/README.md), [Lernkonzept und Quellenabde
 ## Inhaltliche Grenzen
 
 Hinweise und Musterlösungen öffnest du einzeln. Lösungstexte und Zahlenantworten erscheinen nicht in Suchvorschauen. Lerntexte, Miniübungen und Musterlösungen sind selbst erstellt und von Originalaufgaben unterschieden.
+
+**Reicht das für alle Vorlesungen und Aufgaben? Noch nicht vollständig.** Drei von 31 Originalaufgaben sind geführt begleitet. Die Vorlesungen 001–003 werden kompakt erklärt; die übrigen Aufgaben brauchen eigene Bearbeitung. bb12024.csv fehlt, und FFT ist noch nicht als Lektion aufbereitet. Der [Abdeckungsplan](Lernwerkzeug/ABDECKUNG.md) zeigt die genaue Zuordnung.
+
+Jede der neun Lektionen enthält eine Verständnisfrage mit begründeter Rückmeldung. Nach selbst geschriebener und geprüfter Miniübung kannst du eine Bearbeitungsmarke setzen. Sie wird nur im selben Browser gespeichert; bei blockierter Speicherung gilt sie für die Sitzung. Keine Anmeldung, Übertragung oder Synchronisation. Eine Marke ist deine Selbsteinschätzung, kein Kompetenznachweis.
 
 Die Originalaufgabe nennt `sensor_messdaten_projekt.csv`; vorhanden ist `messdaten.csv`. Das Werkzeug verwendet diese vorhandene Datei. Ihre Zuordnung ist nicht vom Kurs bestätigt; die gedruckten Sollausgaben weichen ab. Die inklusive Filtergrenze **0 bis 50** ist eine dokumentierte Arbeitsannahme.
 

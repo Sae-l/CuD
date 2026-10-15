@@ -2,6 +2,8 @@
 
 Status: **noch nicht durchgeführt**. Die technischen Prüfungen sind kein Ersatz für deine Nutzung.
 
+Zusätzliche Fälle für die Arbeitsfassung nach v0.1.0: Beantworte eine Lernfrage und erkläre die Rückmeldung mit eigenen Worten. Schreibe die Miniübung, setze erst danach die Marke und prüfe nach erneutem Öffnen den Einstieg **Weiterlernen**. Finde im Abdeckungsplan eine noch nicht geführte Originalaufgabe. Bearbeite das eigene Transferprojekt mit becken-mini.csv und erkläre, welche Rasterwerte geschätzt wurden. Alle diese Gebrauchsfälle sind weiterhin offen; automatisierte Klicks ersetzen ihre Beobachtung nicht.
+
 Beginne ohne Programmierkenntnisse auf der Willkommensseite. Finde die passende Geräteanleitung und führe den ersten Python-Test aus. Bearbeite Lektion 1: Ausgabe vorhersagen, selbst ausführen, verändern, eigene Miniübung lösen. Suche danach einen Befehl in der Tabelle und erkläre, zu welchen Datentypen er passt. Halte dabei unverständliche Wörter und fehlende Schritte fest. Wiederhole die Miniübung am nächsten Tag ohne Vorlage. Die tatsächliche Einrichtung auf PC/Tablet und diese Lernschritte sind noch nicht mit Anfängern geprüft.
 
 Öffne `index.html` im Browser und bearbeite Aufgaben 6.1–6.3 mit einer eigenen `main.py` und einer Kopie der CSV. Nutze zuerst die Aufgabenbegleitung, dann bei Bedarf einzelne Hinweise. Die Musterlösung bleibt bis zu deiner bewussten Auswahl geschlossen.

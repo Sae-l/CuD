@@ -5,6 +5,22 @@ const typeInput = document.querySelector("#art");
 const topicInput = document.querySelector("#thema");
 const article = document.querySelector("#inhalt");
 const results = document.querySelector("#treffer");
+// Windows-WebKit aktualisiert Media-CSS beim Wechsel hier nicht zuverlässig.
+const motionQuery = matchMedia("(prefers-reduced-motion: reduce)");
+function syncMotion() { document.documentElement.classList.toggle("reduce-motion",motionQuery.matches); }
+motionQuery.addEventListener("change",syncMotion);
+syncMotion();
+const progressKey = "cud-lernfortschritt-v1";
+let progressPersistent = true;
+const completed = (() => {
+  try {
+    const saved = JSON.parse(localStorage.getItem(progressKey) || "[]");
+    return new Set(Array.isArray(saved) ? saved.filter(id => typeof id === "string" && byId.get(id)?.kind === "Vorlesung") : []);
+  } catch {
+    progressPersistent = false;
+    return new Set();
+  }
+})();
 const stopwords = new Set(["wie","ich","die","der","das","den","dem","ein","eine","einen","einer","mit","von","zu","zum","zur","und","ist","kann","man","was","mache"]);
 for (const topic of [...new Set(inhalte.map(item => item.topic))]) topicInput.append(el("option",topic));
 for (const command of weitereBefehle) {
@@ -23,7 +39,7 @@ function findItems(query, kind = "", topic = "") {
     const title = normalize(item.title);
     const aliases = (item.aliases || []).map(normalize);
     // Hinweise, Musterlösungen und Zahlenausgaben gehören nicht in den Suchindex.
-    const context = normalize([item.summary,item.explanation,item.topic].join(" "));
+    const context = normalize([item.summary,item.explanation,item.topic,...(item.blocks || []).flat()].join(" "));
     const fields = [title,...aliases,context];
     if (!tokens.every(token => fields.some(field => field.includes(token)))) return null;
     const score = (item.number === normalized ? 1000 : 0) + (aliases.includes(normalized) ? 100 : 0) + (title === normalized ? 100 : 0) + tokens.reduce((total,token) => total + (title.includes(token) ? 20 : 0) + (aliases.some(alias => alias.includes(token)) ? 10 : 0),0);
@@ -70,6 +86,47 @@ function codeBlock(code, parent = article) {
   pre.tabIndex = 0;
   pre.append(el("code",code));
   parent.append(pre);
+}
+
+function renderQuiz(item) {
+  const quiz = item.quiz;
+  if (!quiz) return;
+  section("Verstanden? Prüfe deine Idee");
+  const form = el("form",undefined,"lesson-quiz");
+  const fieldset = el("fieldset");
+  fieldset.append(el("legend",quiz.question));
+  quiz.options.forEach((option,index) => {
+    const label = el("label");
+    const radio = el("input");
+    radio.type = "radio"; radio.name = `quiz-${item.id}`; radio.value = String(index); radio.required = true;
+    label.append(radio,document.createTextNode(option)); fieldset.append(label);
+  });
+  const button = el("button","Antwort prüfen","secondary-link"); button.type = "submit";
+  const feedback = el("p",undefined,"quiz-feedback"); feedback.setAttribute("role","status");
+  form.append(fieldset,button,feedback);
+  form.addEventListener("submit",event => {
+    event.preventDefault();
+    const correct = Number(new FormData(form).get(`quiz-${item.id}`)) === quiz.correct;
+    feedback.textContent = `${correct ? "Richtig." : "Noch nicht."} ${quiz.explanation}`;
+  });
+  article.append(form);
+}
+
+function renderProgress(item) {
+  section("Deine Bearbeitungsmarke");
+  const label = el("label",undefined,"completion");
+  const checkbox = el("input"); checkbox.type = "checkbox"; checkbox.id = "lektion-bearbeitet";
+  checkbox.checked = completed.has(item.id);
+  label.append(checkbox,document.createTextNode("Ich habe die Miniübung selbst geschrieben und geprüft."));
+  const note = el("p",undefined,"example-note"); note.setAttribute("role","status");
+  const update = () => { note.textContent = progressPersistent ? "Deine Selbsteinschätzung wird nur in diesem Browser gespeichert. Kein Testnachweis und keine Synchronisation. Zum Entfernen das Häkchen lösen." : "Speicherung ist hier nicht verfügbar. Deine Marken gelten nur für diese Sitzung. Sie sind eine Selbsteinschätzung, kein Testnachweis."; };
+  checkbox.addEventListener("change",() => {
+    if (checkbox.checked) completed.add(item.id); else completed.delete(item.id);
+    try { localStorage.setItem(progressKey,JSON.stringify([...completed])); progressPersistent = true; }
+    catch { progressPersistent = false; }
+    update();
+  });
+  update(); article.append(label,note);
 }
 
 function sourceLinks(item) {
@@ -120,6 +177,11 @@ function renderItem(item) {
     for (const [title,text] of item.blocks) { section(title); article.append(el("p",text)); }
   }
   if (item.notice) article.append(el("div",item.notice,"notice"));
+  if (item.download) {
+    const download = actionLink(item.download[0],item.download[1]);
+    download.download = item.download[1].split("/").pop();
+    article.append(download);
+  }
   if (item.kind === "Übung") {
     const note = el("p");
     const link = el("a","CSV für deinen Übungsordner speichern");
@@ -160,6 +222,8 @@ function renderItem(item) {
     const answer = el("details");
     answer.append(el("summary","Selbstkontrolle zur Miniübung öffnen"),el("p",item.answer));
     article.append(answer,el("p","Wiederholung: Erkläre morgen ohne Vorlage die wichtigste Idee und löse die kleine Aufgabe noch einmal.","learning-goal"));
+    renderQuiz(item);
+    renderProgress(item);
   }
   if (item.links) {
     section("Offizielle Anleitungen und Downloads");
@@ -207,6 +271,10 @@ function renderStart() {
   intro.append(el("p","Willkommen in deinem Lernraum","kind"),el("h1","Dein erster Schritt ins Programmieren."),el("p","Du musst noch nichts können. Entdecke Python, verstehe deine Vorlesung und schreibe Schritt für Schritt deinen eigenen Code.","intro"));
   const actions = el("div",undefined,"hero-actions");
   actions.append(actionLink("Lernweg beginnen","#python-setup","primary-link"),actionLink("Zur aktuellen Übung","#uebung","secondary-link"));
+  if (completed.size) {
+    const next = vorlesungen.find(lesson => !completed.has(lesson.id));
+    actions.append(actionLink(next ? "Weiterlernen" : "Lektionen wiederholen",next ? `#${next.id}` : "#vorlesungen","secondary-link"));
+  }
   intro.append(actions,el("p","Für Studierende im Kurs Coding und Digitalisierung. In deinem Tempo, mit verständlichen Beispielen.","example-note"));
   const demo = el("div",undefined,"first-code");
   demo.append(el("p","Ein kleines Programm. Dein Anfang."));
@@ -228,11 +296,13 @@ function renderStart() {
   section("Was möchtest du heute lernen?");
   const cards = el("div",undefined,"entry-grid");
   for (const [title,description,href] of [
-    ["Vorlesungen verstehen","Neun übersichtliche Etappen in der Reihenfolge deiner Unterlagen.","#vorlesungen"],
+    ["Vorlesungen verstehen",`${vorlesungen.length} übersichtliche Etappen in der Reihenfolge deiner Unterlagen.`,"#vorlesungen"],
     ["Aktuelle Übung bearbeiten","CSV einlesen, Daten filtern und auswerten – mit Erklärungen und gestuften Lösungen.","#uebung"],
     ["Befehle nachschlagen","Beschreibung, Beispiel und passende Datentypen auf einen Blick.","#befehle"],
     ["Python einrichten","Die passende Anleitung für deinen PC oder dein Tablet.","#python-setup"],
-    ["VS Code einrichten","Editor installieren, Python auswählen und die erste Datei starten.","#vscode-setup"]
+    ["VS Code einrichten","Editor installieren, Python auswählen und die erste Datei starten.","#vscode-setup"],
+    ["Wissen zusammen anwenden","Eigenes Mini-Projekt: CSV, Zeitraster und Klassen verbinden.","#praxis-zeitreihe"],
+    ["Was ist bereits abgedeckt?","Originalaufgaben, passende Lerntexte und verbleibende Lücken.","#abdeckung"]
   ]) {
     const link = actionLink("",href,"entry-card");
     link.append(el("h3",title),el("p",description)); cards.append(link);
@@ -249,20 +319,43 @@ function actionLink(title,href,className) {
 function renderLectures() {
   article.replaceChildren(el("p","Dein Kursweg","kind"),el("h1","Eine Idee nach der anderen."),el("p","Beginne oben. Jede Etappe erklärt die Begriffe, zeigt ein kleines Beispiel und endet mit einer eigenen Aufgabe.","intro"));
   article.append(actionLink("Zuerst Python und VS Code einrichten","#python-setup","secondary-link"));
+  article.append(el("p",`${completed.size} von ${vorlesungen.length} Etappen als selbst bearbeitet markiert. Die Marken sind deine Selbsteinschätzung.`,"learning-goal"));
   const list = el("ol",undefined,"course-list");
   for (const [index,lesson] of vorlesungen.entries()) {
     const li = el("li");
     const link = actionLink("",`#${lesson.id}`,"course-link");
     const text = el("div");
     text.append(el("small",`Vorlesung ${lesson.origin} · PDF-S. ${lesson.pages}`),el("h2",lesson.title),el("p",lesson.summary));
+    if (completed.has(lesson.id)) text.append(el("strong","Als bearbeitet markiert","completion-status"));
     link.append(el("span",String(index + 1).padStart(2,"0"),"lesson-number"),text); li.append(link); list.append(li);
   }
   article.append(list);
+  article.append(actionLink("Jetzt das eigene Mini-Projekt bearbeiten","#praxis-zeitreihe","primary-link"),el("p","Die Lerntexte sind eine Begleitung. Prüfe im Abdeckungsplan, welche Originalaufgaben noch selbst zu bearbeiten sind."),actionLink("Abdeckungsplan öffnen","#abdeckung"));
   section("Deine vollständigen Vorlesungsunterlagen");
   article.append(el("p","Die Lerntexte fassen die fachlichen Themen zusammen. Organisation, Prüfungsinformationen und die vollständigen Originalbeispiele findest du in den PDFs. Die beiden Analyse-PDFs enthalten denselben Inhalt und werden hier einmal geführt."));
-  for (const [title,href] of [["001 · Grundlagen, Organisation und Einrichtung","../Referenz/Vorlesungen/001_Coding und Digitalisierung.pdf"],["002 · Datenstrukturen und NumPy","../Referenz/Vorlesungen/002_Coding und Digitalisierung.pdf"],["002 · Analysebeispiel und Diagramme","../Referenz/Vorlesungen/002_Beispiel Datenstrukturen - Analyse.pdf"],["003 · Funktionen, Pandas, Zeitreihen und OOP","../Referenz/Vorlesungen/003_Coding und Digitalisierung.pdf"]]) {
+  const originals = new Map(vorlesungen.map(lesson => [quellen[lesson.sources[0]].href.split("#")[0],`Vorlesung ${lesson.origin} · vollständiges PDF`]));
+  originals.set(quellen.analyse.href.split("#")[0],"Analysebeispiel · vollständiges PDF");
+  for (const [href,title] of originals) {
     const p = el("p"); p.append(actionLink(title,href)); article.append(p);
   }
+}
+
+function renderCoverage() {
+  const total = abdeckung.reduce((sum,row) => sum + row.tasks.length,0);
+  const guided = inhalte.filter(item => item.kind === "Übung" && abdeckung.some(row => row.tasks.includes(item.number))).length;
+  article.replaceChildren(el("p","Lerntexte und Originalaufgaben unterscheiden","kind"),el("h1","Was ist bereits abgedeckt?"),el("p",`${guided} von ${total} Originalaufgaben im Übungsskript sind mit gestuften Hinweisen und Musterlösung begleitet. Erklärte Begriffe und kleine Beispiele sind noch kein Nachweis, dass du alle Originalaufgaben selbst lösen kannst.`,"intro"));
+  article.append(el("p","Lies den passenden Lerntext, löse danach die Originalaufgabe ohne Vorlage und prüfe deinen Code. Die Bearbeitungsmarken messen keine Kompetenz. Das eigene Mini-Projekt ist eine Ergänzung mit synthetischen Daten."));
+  for (const row of abdeckung) {
+    const detail = el("details");
+    const count = inhalte.filter(item => item.kind === "Übung" && row.tasks.includes(item.number)).length;
+    detail.append(el("summary",`${row.title} · ${count}/${row.tasks.length} Aufgaben geführt`),el("p",`Originalaufgaben: ${row.tasks.join(", ")}. ${row.gap}`));
+    const links = el("ul",undefined,"links");
+    row.lessons.forEach(id => { const li = el("li"); li.append(actionLink(byId.get(id).title,`#${id}`)); links.append(li); });
+    detail.append(links,actionLink(`Original öffnen · PDF-S. ${row.page}`,`../Referenz/Pflicht Übungen/${row.sourceFile || "CuD_Uebung 01.pdf"}#page=${row.page}`));
+    article.append(detail);
+  }
+  section("Vorlesungen und weitere Referenzdateien");
+  article.append(el("p","Die Themen aus Vorlesung 001–003 sind kompakt aufbereitet. Die vier Live-Übungen aus 003 (PDF-S. 10, 18, 26 und 31) sind damit nicht vollständig als Originalaufgaben begleitet. bb12024.csv fehlt. Das eigene Transferprojekt übt das Zusammenspiel mit Mini-Daten; es bestätigt keine Ergebnisse dieses fehlenden Datensatzes."),actionLink("Eigenes Transferprojekt öffnen","#praxis-zeitreihe","primary-link"),el("p","Das Analysebeispiel (beide bytegleichen PDFs) hat Bezüge in Lektion 4. Der FFT-Code in 002_fftpy.sec wird hier noch nicht gelehrt. Organisation, Termine und Prüfungsregeln bleiben in den Originalunterlagen; die Lerntexte ersetzen sie nicht."),actionLink("Ausführlicher Abgleich und Ausbauweg","ABDECKUNG.md"));
 }
 
 function renderExercise() {
@@ -344,6 +437,7 @@ function route(focus = false) {
   else if (id === "uebung") renderExercise();
   else if (id === "befehle") renderCommands();
   else if (id === "lernkonzept") renderConcept();
+  else if (id === "abdeckung") renderCoverage();
   else article.replaceChildren(el("h1","Inhalt nicht gefunden"),el("p","Wähle eine Übung oder suche oben nach einem Befehl."));
   document.querySelector(".learning-area").classList.toggle("overview",!item || item.kind === "Vorlesung" || item.kind === "Einrichtung");
   document.title = `${article.querySelector("h1").textContent} · Lernwerkzeug`;
