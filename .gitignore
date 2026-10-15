@@ -1,0 +1,9 @@
+/debug.log
+/.upload-work/
+__pycache__/
+*.py[cod]
+node_modules/
+.venv/
+.env
+.env.*
+!.env.example

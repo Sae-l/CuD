@@ -1,0 +1,736 @@
+[
+  {
+    "pdf": "001_Coding und Digitalisierung.pdf",
+    "pages": 21,
+    "markdown": "md\\001_Coding und Digitalisierung.md",
+    "answer_start_page": null,
+    "page_index": [
+      {
+        "page": 1,
+        "characters": 37,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/001_Coding und Digitalisierung-S001.png",
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 2,
+        "characters": 585,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": true,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 3,
+        "characters": 215,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 4,
+        "characters": 455,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 5,
+        "characters": 664,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 6,
+        "characters": 676,
+        "flags": [
+          "Zeichen prüfen"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 7,
+        "characters": 536,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 8,
+        "characters": 499,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 9,
+        "characters": 444,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 10,
+        "characters": 387,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 11,
+        "characters": 498,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 12,
+        "characters": 508,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 13,
+        "characters": 531,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 14,
+        "characters": 437,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 15,
+        "characters": 445,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 16,
+        "characters": 407,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 17,
+        "characters": 323,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 18,
+        "characters": 455,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 19,
+        "characters": 49,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/001_Coding und Digitalisierung-S019.png",
+        "text_read": true,
+        "original_image_viewed": true,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 20,
+        "characters": 358,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 21,
+        "characters": 11,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/001_Coding und Digitalisierung-S021.png",
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      }
+    ],
+    "group": "Vorlesungen"
+  },
+  {
+    "pdf": "002_Beispiel Datenstrukturen - Analyse.pdf",
+    "pages": 3,
+    "markdown": "md\\002_Beispiel Datenstrukturen - Analyse.md",
+    "answer_start_page": null,
+    "page_index": [
+      {
+        "page": 1,
+        "characters": 1501,
+        "flags": [
+          "Zeichen prüfen"
+        ],
+        "image": "bilder/002_Beispiel Datenstrukturen - Analyse-S001.png",
+        "text_read": true,
+        "original_image_viewed": true,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 2,
+        "characters": 1953,
+        "flags": [
+          "Zeichen prüfen"
+        ],
+        "image": "bilder/002_Beispiel Datenstrukturen - Analyse-S002.png",
+        "text_read": true,
+        "original_image_viewed": true,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 3,
+        "characters": 89,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/002_Beispiel Datenstrukturen - Analyse-S003.png",
+        "text_read": true,
+        "original_image_viewed": true,
+        "subject_review": "nicht vollständig geprüft"
+      }
+    ],
+    "group": "Vorlesungen"
+  },
+  {
+    "pdf": "002_Coding und Digitalisierung.pdf",
+    "pages": 7,
+    "markdown": "md\\002_Coding und Digitalisierung.md",
+    "answer_start_page": null,
+    "page_index": [
+      {
+        "page": 1,
+        "characters": 44,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/002_Coding und Digitalisierung-S001.png",
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 2,
+        "characters": 242,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 3,
+        "characters": 244,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 4,
+        "characters": 745,
+        "flags": [],
+        "image": null,
+        "text_read": true,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 5,
+        "characters": 178,
+        "flags": [
+          "Zeichen prüfen"
+        ],
+        "image": "bilder/002_Coding und Digitalisierung-S005.png",
+        "text_read": true,
+        "original_image_viewed": true,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 6,
+        "characters": 92,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 7,
+        "characters": 11,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/002_Coding und Digitalisierung-S007.png",
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      }
+    ],
+    "group": "Vorlesungen"
+  },
+  {
+    "pdf": "003_Coding und Digitalisierung.pdf",
+    "pages": 33,
+    "markdown": "md\\003_Coding und Digitalisierung.md",
+    "answer_start_page": null,
+    "page_index": [
+      {
+        "page": 1,
+        "characters": 95,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 2,
+        "characters": 1525,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 3,
+        "characters": 718,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 4,
+        "characters": 1386,
+        "flags": [
+          "Zeichen prüfen"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 5,
+        "characters": 1244,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 6,
+        "characters": 1483,
+        "flags": [
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 7,
+        "characters": 1450,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 8,
+        "characters": 1443,
+        "flags": [
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 9,
+        "characters": 1495,
+        "flags": [
+          "Zeichen prüfen",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 10,
+        "characters": 1557,
+        "flags": [
+          "Zeichen prüfen",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": true,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 11,
+        "characters": 728,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 12,
+        "characters": 1613,
+        "flags": [
+          "Zeichen prüfen"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 13,
+        "characters": 1234,
+        "flags": [
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 14,
+        "characters": 1515,
+        "flags": [
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": true,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 15,
+        "characters": 1435,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 16,
+        "characters": 1373,
+        "flags": [
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 17,
+        "characters": 1302,
+        "flags": [
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 18,
+        "characters": 1597,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 19,
+        "characters": 775,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 20,
+        "characters": 1334,
+        "flags": [
+          "Zeichen prüfen",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 21,
+        "characters": 1365,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 22,
+        "characters": 1432,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": "bilder/003_Coding und Digitalisierung-S022.png",
+        "text_read": true,
+        "original_image_viewed": true,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 23,
+        "characters": 1465,
+        "flags": [
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 24,
+        "characters": 1507,
+        "flags": [
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 25,
+        "characters": 1635,
+        "flags": [
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": "bilder/003_Coding und Digitalisierung-S025.png",
+        "text_read": true,
+        "original_image_viewed": true,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 26,
+        "characters": 1723,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 27,
+        "characters": 785,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 28,
+        "characters": 1451,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 29,
+        "characters": 1625,
+        "flags": [
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 30,
+        "characters": 1616,
+        "flags": [
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 31,
+        "characters": 1719,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Zeichen prüfen",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": "bilder/003_Coding und Digitalisierung-S031.png",
+        "text_read": true,
+        "original_image_viewed": true,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 32,
+        "characters": 1639,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 33,
+        "characters": 7,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/003_Coding und Digitalisierung-S033.png",
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      }
+    ],
+    "group": "Vorlesungen"
+  },
+  {
+    "pdf": "code 002_Beispiel Datenstrukturen - Analyse.pdf",
+    "pages": 3,
+    "markdown": "md\\code 002_Beispiel Datenstrukturen - Analyse.md",
+    "answer_start_page": null,
+    "page_index": [
+      {
+        "page": 1,
+        "characters": 1501,
+        "flags": [
+          "Zeichen prüfen"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 2,
+        "characters": 1953,
+        "flags": [
+          "Zeichen prüfen"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 3,
+        "characters": 89,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/code 002_Beispiel Datenstrukturen - Analyse-S003.png",
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      }
+    ],
+    "group": "Vorlesungen"
+  }
+]

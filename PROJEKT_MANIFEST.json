@@ -1,0 +1,350 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "repository": "Sae-l/CuD-1",
+  "scope": "All project files; excludes this manifest itself, local debug.log and .upload-work/",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 88,
+      "sha256": "9b49e3ec384a02ee392db0638da1e3495a481b3e8aa42ad3d5dfeee857bd18d5",
+      "git_blob_sha1": "c002906ed11d895e85f47cccb27b6f873e59e39e"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 96,
+      "sha256": "1283e30defad123c8c6da6bd3f0e6ebaa7c957d6357b90f1655a380e27fc572f",
+      "git_blob_sha1": "0deacc8f1fc7dbf9a813a0a73b4329c85db47fd9"
+    },
+    {
+      "path": "ARBEITSPLAN_Lernwerkzeug.md",
+      "bytes": 15538,
+      "sha256": "ebd1c7cbb80ceefb54bcae4b55826e7d9650a0694b5513e6033d03969b7e2914",
+      "git_blob_sha1": "84aecc3378786fb5ff56524eb88bd0076691215b"
+    },
+    {
+      "path": "Lernwerkzeug/app.js",
+      "bytes": 10644,
+      "sha256": "ed49640338a0018c51f49eacb50c890f69e343429a5d061c64d5543e79a84ec8",
+      "git_blob_sha1": "832182baba45a42eff7d634623b72beb6babcf97"
+    },
+    {
+      "path": "Lernwerkzeug/beispiele/mini.csv",
+      "bytes": 21,
+      "sha256": "47cbd7f8d737c6eff339fbfa84a1a955b8aadc83b3ee7991ddac8347e7ba8db9",
+      "git_blob_sha1": "2ae613fd44b3e33f530d1ea98595a3b0676f66d7"
+    },
+    {
+      "path": "Lernwerkzeug/GEBRAUCHSTEST.md",
+      "bytes": 1474,
+      "sha256": "26988ddb52fcf4e119baa0dad258bdff6fc66ef86c12ef7632de0a055822bd34",
+      "git_blob_sha1": "7dd4cf59f4266cbcf49ffebccf968a7bcc524f5e"
+    },
+    {
+      "path": "Lernwerkzeug/index.html",
+      "bytes": 3299,
+      "sha256": "0446f4bbadef6d2b13141c5b8de18ba5e7f6ebfcc495715ec536acc34a0c49da",
+      "git_blob_sha1": "4430fd2bc008bec4b32192eb275b48d65f66be6d"
+    },
+    {
+      "path": "Lernwerkzeug/inhalte.js",
+      "bytes": 27007,
+      "sha256": "5c58d360eaf00582c9e4a63e2a77b1183b5a0ce84d0ec1237156ffed7fd2088f",
+      "git_blob_sha1": "fb3e993471b7f08a864e8fdf7a2bff74e51bf911"
+    },
+    {
+      "path": "Lernwerkzeug/pruefen.cjs",
+      "bytes": 13994,
+      "sha256": "c55bed714bebcb4860c1d3004e51e3bea4436c5a73773be113335558bcd07ec5",
+      "git_blob_sha1": "1d4b92580afa0cdca43d6b2d9ad8471f3f79e464"
+    },
+    {
+      "path": "Lernwerkzeug/pruefung/aufgabe-desktop.png",
+      "bytes": 186904,
+      "sha256": "96c02976250d1e727d0479319de463134741d86ffc74cd213545400174abc903",
+      "git_blob_sha1": "79f85309187a91c632705acc1409b7ed1cb24d77"
+    },
+    {
+      "path": "Lernwerkzeug/pruefung/desktop.png",
+      "bytes": 128328,
+      "sha256": "a0fddf152b696ae670aaa031717e3c67ac93f4ef949d8092c307c2af30a6ba87",
+      "git_blob_sha1": "b08db2338e49a6f6f36287dc5007ed94a8bcea9b"
+    },
+    {
+      "path": "Lernwerkzeug/pruefung/ergebnis.json",
+      "bytes": 276,
+      "sha256": "66606ec92e48bce7a0af963a88ee3ca2abc692afd03ca42bda1119cb2d85a616",
+      "git_blob_sha1": "a1d5b7a11a0eee2bda9922ef70e29037542a88b7"
+    },
+    {
+      "path": "Lernwerkzeug/pruefung/mobil.png",
+      "bytes": 145990,
+      "sha256": "71f47cabd983bb3d9edcfff2e9455eded37ae6dbdff7f5ef46e9dcc0ea7a6171",
+      "git_blob_sha1": "601260d6994d09cf018bbcc1d4abac3ad85f8dee"
+    },
+    {
+      "path": "Lernwerkzeug/pruefung/PRUEFBERICHT.md",
+      "bytes": 4147,
+      "sha256": "06a9c0ecd4d5e6cd3ec46b619318dfab9af404e28e9da8b61bf30c0331ab68bc",
+      "git_blob_sha1": "06bde4feeb43d306661d2fba4e3e99ffa9b2c917"
+    },
+    {
+      "path": "Lernwerkzeug/pruefung/quelle-s11.png",
+      "bytes": 75448,
+      "sha256": "4d536eff9e60cb3dd0f8deba9f90eaa1ce5b5836460b8cf6de0821b474b5d744",
+      "git_blob_sha1": "cc787aada285b67e0bb7a7343e8a7a4cacb7b274"
+    },
+    {
+      "path": "Lernwerkzeug/README.md",
+      "bytes": 3532,
+      "sha256": "2de883cd9d5de0f2fd23c862ecffdb853d2404ba167e18ca311df189ce6270f8",
+      "git_blob_sha1": "552fe3314e16e7510a42910a9832ba5c38e58b38"
+    },
+    {
+      "path": "Lernwerkzeug/styles.css",
+      "bytes": 7791,
+      "sha256": "562dbf3933a5efddace80795feb43e9100d77376f3dae3f8c7d74f7e014a1d3d",
+      "git_blob_sha1": "c57b6255531ae891e2b5121357c6fee92db4ed8d"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4579,
+      "sha256": "2da583ebd7b97b8e1a50d86bcb3482b0bad246235c3431dac9de23a0bbb2e431",
+      "git_blob_sha1": "ddd7334adf993f11d5c34c7a15c243e83b47e219"
+    },
+    {
+      "path": "Referenz/Code/002_fftpy.sec",
+      "bytes": 2490,
+      "sha256": "cb0ac3ab1a41ca6005e94645e5ada672de2c224d15bbd9451df1a72af22c8e4d",
+      "git_blob_sha1": "8473978dbbd7ab22d7a25eb51e152df8a7cd42c0"
+    },
+    {
+      "path": "Referenz/Pflicht Übungen/CuD_Uebung 01.pdf",
+      "bytes": 123609,
+      "sha256": "42a606fe1cc2c37fa2f063ddfe5809d166e79c45406a1de735930b3b3c7f9c1d",
+      "git_blob_sha1": "0ea178a73d331aa768feeb35d6628362963a168e"
+    },
+    {
+      "path": "Referenz/Pflicht Übungen/messdaten.csv",
+      "bytes": 472,
+      "sha256": "4609e2b97efb916b84cb1b4db257833f42ff7b13ce4f43e2dda1410f193e9808",
+      "git_blob_sha1": "89f8ea3705e7ec22c5d7293d36a12bf7edf8389c"
+    },
+    {
+      "path": "Referenz/Vorlesungen/001_Coding und Digitalisierung.pdf",
+      "bytes": 1804155,
+      "sha256": "61716558d3486abd47299a4c1a3112f75b868616569f06ae787ddc3d3a235740",
+      "git_blob_sha1": "563d5f67d45e8483e6708214bbc4c3a72618ff45"
+    },
+    {
+      "path": "Referenz/Vorlesungen/002_Beispiel Datenstrukturen - Analyse.pdf",
+      "bytes": 94011,
+      "sha256": "755b7918d50aa8af56f95dfee2054505bd0d589135d8979c835f8af87e84be42",
+      "git_blob_sha1": "ed7cef5a57bbe4afdf31cbc81447ab144dffb0c1"
+    },
+    {
+      "path": "Referenz/Vorlesungen/002_Coding und Digitalisierung.pdf",
+      "bytes": 1132520,
+      "sha256": "8952c6bfb3498e249a2ccd5d65bae5eb09afbfa6b8ca3cbb9ec718640776e1ad",
+      "git_blob_sha1": "0c1f66506b328d8cdf892c481be0a8ce113c8583"
+    },
+    {
+      "path": "Referenz/Vorlesungen/003_Coding und Digitalisierung.pdf",
+      "bytes": 1456116,
+      "sha256": "460cd6d4c8bb434f42f72d22f5177510ca64e38d2530c1f8e8b0b76cf6e524d7",
+      "git_blob_sha1": "c692f3da889885ad63b4491be8a4130efc0f3e6e"
+    },
+    {
+      "path": "Referenz/Vorlesungen/code 002_Beispiel Datenstrukturen - Analyse.pdf",
+      "bytes": 94011,
+      "sha256": "755b7918d50aa8af56f95dfee2054505bd0d589135d8979c835f8af87e84be42",
+      "git_blob_sha1": "ed7cef5a57bbe4afdf31cbc81447ab144dffb0c1"
+    },
+    {
+      "path": "Referenz_Sichtung/manifest.json",
+      "bytes": 28951,
+      "sha256": "272d6418634e28edc06013f8063a3bbb12ba75e38550809a077ab154542cd36d",
+      "git_blob_sha1": "f0ff06d171928e7a5851d9c9b6f9c2ff9d68b718"
+    },
+    {
+      "path": "Referenz_Sichtung/Pflicht_Uebungen/bilder/CuD_Uebung 01-S010.png",
+      "bytes": 229343,
+      "sha256": "4ca790a467c35853385b34dd4f618bf485a0b109feffc8edb803bdbb87849b69",
+      "git_blob_sha1": "cbfd1c77a9d0de57f5a1879de17c9a4594aae061"
+    },
+    {
+      "path": "Referenz_Sichtung/Pflicht_Uebungen/bilder/CuD_Uebung 01-S013.png",
+      "bytes": 221804,
+      "sha256": "c748a6e115f53592e1845a30f4ec87c12c48b10a91dc4ee7d28cf13d82a96293",
+      "git_blob_sha1": "3dd2cf9b59d35452faee5dc9321449dd6184b570"
+    },
+    {
+      "path": "Referenz_Sichtung/Pflicht_Uebungen/manifest.json",
+      "bytes": 5474,
+      "sha256": "2fbadbc3d0310e642e48e29b36c19cc9db520df472a223a51e58447a4dd02352",
+      "git_blob_sha1": "cdd749607c536ca91c9add0b38cd48809b495c5f"
+    },
+    {
+      "path": "Referenz_Sichtung/Pflicht_Uebungen/md/CuD_Uebung 01.md",
+      "bytes": 30720,
+      "sha256": "61623068934163a570e490466afb5ed9e66a0d6fa0b26066f94e285f0b1166b4",
+      "git_blob_sha1": "046a61dd65e7b50eac707930c55f2283c5725b90"
+    },
+    {
+      "path": "Referenz_Sichtung/Pflicht_Uebungen/Seitenindex.md",
+      "bytes": 2774,
+      "sha256": "fc9c4388fe16aee1c85ce3c0700b25036957b030df1b99219b13e2120ab34e92",
+      "git_blob_sha1": "cd5d50911925e3e8a1482307c69cdbc8520c4aee"
+    },
+    {
+      "path": "Referenz_Sichtung/Seitenindex.md",
+      "bytes": 21837,
+      "sha256": "2667e77ffcfa2c4fb2b34fa29cda6700bff2309725947c8cdfaddb60efd03449",
+      "git_blob_sha1": "2c4fa8b6517c05f2aead5b8031e601ae1ebb195e"
+    },
+    {
+      "path": "Referenz_Sichtung/Sichtungsbericht.md",
+      "bytes": 3820,
+      "sha256": "3a0b4a1cdf480346d25588feec2944fcd431dbbeeb99177f85de71bfc464f006",
+      "git_blob_sha1": "f4d25e990332ad46be644f8a79bee93525cee05f"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/bilder/001_Coding und Digitalisierung-S001.png",
+      "bytes": 506445,
+      "sha256": "d1f9efdfbc1bffe102d5d166292c0499f8aa325efb2d19dbf0e1d1c29a900b4d",
+      "git_blob_sha1": "f9426448a90f72a655fc936ddb70b656bd31d0b9"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/bilder/001_Coding und Digitalisierung-S019.png",
+      "bytes": 128768,
+      "sha256": "697518045dfad755e0e88e17ad3c0b4ac6374f19a2cb5c70fe11e3131beebbea",
+      "git_blob_sha1": "9d4962c4e72b9e5b0e06052105e8a050935f2e84"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/bilder/001_Coding und Digitalisierung-S021.png",
+      "bytes": 498711,
+      "sha256": "afaffb130276d626711d761a554ad85c01726001078b5096bbe84f374a57ebc8",
+      "git_blob_sha1": "07ed7094e86eefab6fb72823538c2009b2c94bc7"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/bilder/002_Beispiel Datenstrukturen - Analyse-S001.png",
+      "bytes": 96702,
+      "sha256": "ab1f9a5a075694b60be0b3263fe98d3262dfecd46c23ca91aeebdb2efef13c8b",
+      "git_blob_sha1": "c605c0e3e5412356a4f96aa69237bc0545ca32ef"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/bilder/002_Beispiel Datenstrukturen - Analyse-S002.png",
+      "bytes": 113943,
+      "sha256": "1147fa2db6eebd1e5dcc03dca4efcb5e1b55710a5034776d1c8edac6ee15a259",
+      "git_blob_sha1": "083a39586cef9801c725d118c1aebed16c8945ca"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/bilder/002_Beispiel Datenstrukturen - Analyse-S003.png",
+      "bytes": 13270,
+      "sha256": "17b1fae6b2a3309476d48fca38f6e8aade4cee04f901273fc981a98e1da5c623",
+      "git_blob_sha1": "9c8d0e559a2ad82cb00c5ca16c121976094e7a32"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/bilder/002_Coding und Digitalisierung-S001.png",
+      "bytes": 507339,
+      "sha256": "e6eb19fab660aa3305e7225b95d0586e42e774ebb20ff50ec2427376a888cff2",
+      "git_blob_sha1": "578f795abce04fad33eb10ccc7719dfd804e080a"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/bilder/002_Coding und Digitalisierung-S005.png",
+      "bytes": 141705,
+      "sha256": "60bcfe295fe48644e410c83e189ec829050afdcb38c422f31af0f44c0644c3f4",
+      "git_blob_sha1": "394c4e22cc4948b6eeb5d5a58d683534e4da430d"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/bilder/002_Coding und Digitalisierung-S007.png",
+      "bytes": 498711,
+      "sha256": "afaffb130276d626711d761a554ad85c01726001078b5096bbe84f374a57ebc8",
+      "git_blob_sha1": "07ed7094e86eefab6fb72823538c2009b2c94bc7"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/bilder/003_Coding und Digitalisierung-S022.png",
+      "bytes": 192819,
+      "sha256": "8523fe9f43f7602c86ea314a59a875339f508d48dd2cfadc620518500fa58aa9",
+      "git_blob_sha1": "68d18a2fe310513ebdd409d95a5f27486aaf6558"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/bilder/003_Coding und Digitalisierung-S025.png",
+      "bytes": 217126,
+      "sha256": "312a9b9e10320edb7523e5590ad1f86610e466e03db5a85bc7418b1dc9ddddbd",
+      "git_blob_sha1": "ac4dd58b5ad2f45f8d5179488231166d9e7dc2ad"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/bilder/003_Coding und Digitalisierung-S031.png",
+      "bytes": 213356,
+      "sha256": "667f62ca7f5397cf1ddd7b1c9ebca7d5ec139ed1baaf48026db8645376174e43",
+      "git_blob_sha1": "65bdf80057ed4da6ce49e319feae5eb577a1b72a"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/bilder/003_Coding und Digitalisierung-S033.png",
+      "bytes": 498014,
+      "sha256": "f4e623da44dcbe871403e9ff310aced0fa8143ac2bcaf1b3a6cd8a76056e72d4",
+      "git_blob_sha1": "6fc9ce2c758728ce60bee996bf162ad44aff6ae5"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/bilder/code 002_Beispiel Datenstrukturen - Analyse-S003.png",
+      "bytes": 13270,
+      "sha256": "17b1fae6b2a3309476d48fca38f6e8aade4cee04f901273fc981a98e1da5c623",
+      "git_blob_sha1": "9c8d0e559a2ad82cb00c5ca16c121976094e7a32"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/manifest.json",
+      "bytes": 19966,
+      "sha256": "a8f4979e6c512c14205bd2a948afae512bd2915f73deed7583e13e92853dcd1d",
+      "git_blob_sha1": "de510e3fb6f7a05f3d90c9d8b90c40cfeb0ab463"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/md/001_Coding und Digitalisierung.md",
+      "bytes": 9836,
+      "sha256": "a9b218a5c342438b6ecb2ef2b757aac821691869ca57ebdbb708d95cdcceeb89",
+      "git_blob_sha1": "43e5c0a9f4c3462c4d307ab1e4a1813c71a91568"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/md/002_Beispiel Datenstrukturen - Analyse.md",
+      "bytes": 3954,
+      "sha256": "32cc599f675abfa9426a4a5dd2260592eef1908e8b6ad9baf4e2b179bd88b342",
+      "git_blob_sha1": "3d6569e8dc41e639a361aad6fc55e7f28f077219"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/md/002_Coding und Digitalisierung.md",
+      "bytes": 2046,
+      "sha256": "c590bb3342cc58db571fb75b272e5824c026836b00144f35cbaf8555087cbc03",
+      "git_blob_sha1": "3e8793690ab678a974039338b5dd5d974c4384c6"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/md/003_Coding und Digitalisierung.md",
+      "bytes": 46618,
+      "sha256": "f43090cf72442b7af7f08689dd8816ca1954ba45529b9eca62c1593ffc63e8d1",
+      "git_blob_sha1": "38bb0fb01d07672cccaab32b140102de1961da9f"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/md/code 002_Beispiel Datenstrukturen - Analyse.md",
+      "bytes": 3964,
+      "sha256": "d6d917771a71cba2a63b28f8e0b71e75d179adead7728f5f243d3478883de385",
+      "git_blob_sha1": "b8ba407b7407ba104eb212b63136c346d566f105"
+    },
+    {
+      "path": "Referenz_Sichtung/Vorlesungen/Seitenindex.md",
+      "bytes": 7047,
+      "sha256": "fe56208df7cd7e565ca389d3ca51f8fe4b80232a72015137f6db0d7e7080a110",
+      "git_blob_sha1": "14f453c62112a16540ffe1d2fd6e14e5f4dedb88"
+    },
+    {
+      "path": "SKILL_RECHERCHE.md",
+      "bytes": 1958,
+      "sha256": "ac2286ba78f677cff67178cf87baa5146be011cb131a44d754f10757d9e587cd",
+      "git_blob_sha1": "1009a555edfc9b05d3a43b769f7dd1961570f6f3"
+    },
+    {
+      "path": "Test/Test",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    }
+  ]
+}

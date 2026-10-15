@@ -1,0 +1,206 @@
+[
+  {
+    "pdf": "CuD_Uebung 01.pdf",
+    "pages": 16,
+    "markdown": "md\\CuD_Uebung 01.md",
+    "answer_start_page": null,
+    "page_index": [
+      {
+        "page": 1,
+        "characters": 2729,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 2,
+        "characters": 2204,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 3,
+        "characters": 1701,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Zeichen prüfen"
+        ],
+        "image": null,
+        "text_read": true,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 4,
+        "characters": 925,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": true,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 5,
+        "characters": 2116,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Zeichen prüfen",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 6,
+        "characters": 1777,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Zeichen prüfen",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 7,
+        "characters": 2242,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Zeichen prüfen",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 8,
+        "characters": 1995,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 9,
+        "characters": 2345,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Zeichen prüfen",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 10,
+        "characters": 2295,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Zeichen prüfen",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": "bilder/CuD_Uebung 01-S010.png",
+        "text_read": true,
+        "original_image_viewed": true,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 11,
+        "characters": 652,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Zeichen prüfen"
+        ],
+        "image": null,
+        "text_read": true,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 12,
+        "characters": 1786,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Zeichen prüfen",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 13,
+        "characters": 2005,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Zeichen prüfen",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": "bilder/CuD_Uebung 01-S013.png",
+        "text_read": true,
+        "original_image_viewed": true,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 14,
+        "characters": 1894,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Zeichen prüfen",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": true,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 15,
+        "characters": 2365,
+        "flags": [
+          "Aufgabe/Beispiel",
+          "Zeichen prüfen",
+          "Lösung/Sollausgabe enthalten"
+        ],
+        "image": null,
+        "text_read": true,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      },
+      {
+        "page": 16,
+        "characters": 164,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "nicht vollständig geprüft"
+      }
+    ],
+    "group": "Pflicht_Uebungen"
+  }
+]

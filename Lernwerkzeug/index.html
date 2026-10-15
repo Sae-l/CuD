@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Coding · Lernwerkzeug</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="inhalte.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#inhalt">Zum Lerninhalt</a>
+  <header class="topbar">
+    <a class="brand" href="#start"><span class="brand-icon" aria-hidden="true">{ }</span><span>Coding <span class="brand-sub">Lernwerkzeug</span></span></a>
+    <span class="local"><span aria-hidden="true">●</span> Lokal & offline</span>
+  </header>
+  <div class="workspace">
+    <aside class="sidebar" aria-label="Lernnavigation">
+      <p class="module-label">Coding und Digitalisierung</p>
+      <h2>Dein Arbeitsweg</h2>
+      <nav aria-label="Übungen">
+        <a class="task-link" href="#aufgabe-6-1"><span>6.1</span> CSV einlesen</a>
+        <a class="task-link" href="#aufgabe-6-2"><span>6.2</span> Daten filtern</a>
+        <a class="task-link" href="#aufgabe-6-3"><span>6.3</span> Daten auswerten</a>
+      </nav>
+      <hr>
+      <nav class="secondary" aria-label="Bereiche">
+        <a href="#start">Alle Inhalte</a>
+        <a href="#ablauf">Der ganze Arbeitsablauf</a>
+        <a href="#quellen">Quellen & Prüfstand</a>
+      </nav>
+      <div class="scope-note"><strong>Erster Übungsblock</strong><p>Standard-Python: von der CSV zu geprüften Kennzahlen.</p><p>Weitere Modulthemen sind noch nicht aufbereitet.</p></div>
+    </aside>
+    <main id="hauptbereich">
+      <section class="search-area" aria-label="Inhalte suchen">
+        <label for="suche">Wobei brauchst du Hilfe?</label>
+        <div class="search-row"><input id="suche" type="search" placeholder="CSV einlesen, Durchschnitt, 6.2 …" autocomplete="off" spellcheck="false"><button id="reset" type="button">Zurücksetzen</button></div>
+        <div class="filters"><label>Inhaltsart<select id="art"><option value="">Alle Inhaltsarten</option><option>Übung</option><option>Befehl & Begriff</option><option>Arbeitsablauf</option><option>Fehlerhilfe</option><option>Quellen</option></select></label><label>Thema<select id="thema"><option value="">Alle Themen</option><option>Dateien</option><option>Python-Grundlagen</option><option>Bereinigung</option><option>Auswertung</option></select></label></div>
+        <p class="search-tip">Zum Beispiel: <button type="button" data-query="CSV einlesen">CSV einlesen</button><button type="button" data-query="Durchschnitt">Durchschnitt</button><button type="button" data-query="ValueError">ValueError</button></p>
+      </section>
+      <div class="learning-area">
+        <section class="results" aria-label="Suchtreffer"><p id="trefferzahl" role="status" aria-live="polite"></p><div id="treffer"></div></section>
+        <article id="inhalt" tabindex="-1" aria-label="Lerninhalt"></article>
+      </div>
+      <noscript>Bitte JavaScript aktivieren. Es läuft ausschließlich lokal. Die Originalaufgaben stehen in ../Referenz/Pflicht Übungen/CuD_Uebung 01.pdf, PDF-Seiten 10–11.</noscript>
+    </main>
+  </div>
+  <footer>Ohne Konto, ohne externe Dienste. Deinen Python-Code führst du selbst im Editor aus.</footer>
+</body>
+</html>
