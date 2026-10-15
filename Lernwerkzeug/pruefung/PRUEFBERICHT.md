@@ -1,33 +1,27 @@
-# Prüfbericht 0.2.0
+# Prüfbericht 0.2.1
 
-Stand: 15.10.2026. Lokaler Windows-Nachweis; maßgeblich sind Zeitpunkte und Status in [ergebnis.json](ergebnis.json) und [kompatibilitaet.json](kompatibilitaet.json). GitHub Actions liefert zusätzlich eigene Windows-/Linux-Nachweise am jeweiligen Commit.
+Stand: 15.10.2026. Gemeinsame Fassung aus Datenkorrektur, fertiger Gestaltung und aktualisierten Testabhängigkeiten. Ergebnisse gelten jeweils für die im Bericht dokumentierte Umgebung und den zugehörigen Quellstand. GitHub Actions liefert eigene Windows-/Linux-Nachweise am PR- und Release-Commit.
 
-| Prüfung | Umfang |
-| --- | --- |
-| Lernbeispiele | 27 ausführbare Python-Beispiele mit vorhandenen Sollausgaben |
-| Befehlsbeispiele | 34 zusätzliche Beispiele; 49 Befehlsgruppen insgesamt |
-| Originalaufgaben | Alle 31 des vorhandenen Übungsskripts begleitet; die drei CSV-Lösungen als Pipeline, 28 weitere Lösungen/Kontrollprogramme getrennt geprüft |
-| Unabhängige Erwartungen | Typen, Fahrenheit, Temperaturgrenzen, Schleifenausgaben, Listen und Dictionaries; NumPy gegen Standard-Python-Statistik |
-| Report und Diagramme | Daten der Linien/Balken, Achsenzahl, Beschriftungen, Boxplot und Histogramm; Leerfall, fehlerhafte Zahlen und Nullgrenze geprüft |
-| Live-Übungen 003 | Vier Lösungen; Mittelwert-/NaN-/Leerfälle, Pandas-Grenze 0.5, Zeitraster, Interpolation und Report vor Aufbereitung |
-| FFT | 50-Hz-Spitze, Amplitude 1.5, keine zusätzlichen Sinusspitzen, echtes Clipping und 150-Hz-Anteil |
-| Bestehendes Transferprojekt | Eigene Mini-Daten, getrennte Instanzen, Restlücken, ungültige Zeit, fehlende Spalte und Report vor Aufbereitung |
-| Oberfläche | 76 Ansichten × sieben Größen × drei Engines = 1596 Layoutprüfungen; keine horizontalen Seitenüberläufe |
-| Bedienung | Zehn Lernfragen, Fortschrittsmarken, ungültige/gesperrte Speicherung, Touch-Emulation, Tastatur, Fokus, Verlauf und reduzierte Bewegung |
-| Suche und Verweise | 18 Suchfälle, 116 lokale Verweise, getrennte Lösungen; vorhandene CSV-Downloads bytegleich |
-| Originaldateien | Acht SHA-256-Werte unverändert |
-| Unit-Tests | Manifeständerung/-löschung und Ausschlüsse; Release-Wiederholbarkeit, ZIP-Bytes und Ablehnung falscher Version/ungeprüfter Änderung |
+## Lokale Vorprüfung
 
-## Umgebung und Sichtprüfung
+- PASS: 27 Python-Lernbeispiele, 34 zusätzliche Befehlsbeispiele, alle 31 Aufgabenlösungen/Kontrollprogramme, vier Live-Lösungen und FFT. Drei unveränderte Demo-Hauptprogramme werden mit der tatsächlich ausgelieferten live-mini.csv ausgeführt; ihre Ergebnisse werden unabhängig erwartet.
+- PASS: Zehn Lernfragen, 18 Suchfälle, 76 Ansichten, 49 Befehlsgruppen, Fortschritts- und Fehlerfälle sowie 117 lokale Verweise. Original- und Demo-CSV-Downloads werden bytegenau verglichen. Null externe Browseranfragen; acht Originalhashes unverändert.
+- PASS: Zwei Unit-Tests zu Manifeständerungen/-ausschlüssen und reproduzierbaren ZIP-Bytes einschließlich Ablehnung ungeprüfter Änderungen und falscher Version.
+- PASS: Chromium 156.0.8078.4 und Firefox 157.0, jeweils 76 Ansichten in sieben Größen, einschließlich Touch-Emulation, Tastatur, Fokus, Verlauf, Modifikatortasten, Speicherung und reduzierter Bewegung.
+- Lokal blockiert: Playwright-WebKit 27.2. Windows-Code-Integrity-Ereignisse 3077/3033 bestätigen die Sperre der mitgelieferten libwebp.dll und libpng16.dll. Keine Schutzrichtlinie wurde geändert. Dieser lokale Lauf ist kein bestandener WebKit-Nachweis; die endgültige Dreiermatrix muss auf GitHub Windows und Linux bestehen.
 
-Vorhandene lokale Laufzeiten: Node 24.19.0, Python 3.12.14, Playwright 1.62.1. Browser: Chromium 151.0.7922.34, Firefox 153.0 und Playwright-WebKit 26.5. Größen in CSS-Pixeln: 320×740, 390×844, 768×1024, 1024×768, 844×390, 1280×800, 1440×1000. Touch bei 390×844 und 768×1024 emuliert. Die gemeinsame Matrix nutzt nur HTTP an 127.0.0.1 und sperrt externe Anfragen. Chromium wird zusätzlich im Offline-Dateibetrieb geprüft; Firefox-Dateiöffnung besteht. Windows-WebKit-Dateiöffnung bleibt unbestätigt.
+Die ursprüngliche Design-Prüfung bestand zuvor auf Playwright 1.62.1 in drei Engines. Sie ersetzt nicht die gemeinsame Prüfung mit Playwright 1.64.0. Aktuelle Testpakete: NumPy 2.5.4, Pandas 3.0.6 und die weiteren festen Versionen in requirements-test.txt; Node 24 und Python 3.12.
 
-Alle Aufgabenseiten des Übungsskripts PDF-S. 5–15 und die vier Live-Aufgabenseiten 003, PDF-S. 10, 18, 26, 31 wurden am gerenderten Original angesehen. Die erzeugten Vergleichs-, Report- und FFT-Grafiken sowie aktuelle Oberflächenbilder wurden als Stichprobe angesehen. Die alten Dateien erweiterung.json und pruefer-regression.json belegen ihre früheren, ausdrücklich zeitlich begrenzten Erweiterungs-/Fehlerpfadprüfungen.
+## Gestaltung und Browsermatrix
 
-## Grenzen
+Outfit, Foto, GSAP und ScrollTrigger liegen lokal samt Herkunft und Lizenzhinweisen. Sechs Gestaltungsdateien wurden gegen die SHA-256-Werte in assets/sources.json geprüft. Die Matrix prüft geladene Schrift, aktive lokale Bibliotheken, höchstens dreizeilige Hauptüberschrift, Lerntippwechsel einschließlich Rückwärtssprung, gegenseitiges Schließen der Hilfefelder und Aufräumen der ScrollTrigger bei Seitenwechseln. Reduzierte Bewegung erhält sichtbare Inhalte ohne ScrollTrigger, Bildtransformation oder angeheftete Karten.
 
-bb12024.csv fehlt. Drei Live-Lösungen sind mit getrennten synthetischen Daten geprüft; die gedruckten Originalkennzahlen dafür sind nicht bestätigt. CSV-Zuordnung, Sollzahlen und unterschiedliche Filtergrenzen bleiben im Abdeckungsplan erklärt. Interpolation liefert Schätzungen unter einer didaktischen Annahme, keine freigegebenen realen Prozesswerte.
+Größen in CSS-Pixeln: 320×740, 390×844, 768×1024, 1024×768, 844×390, 1280×800, 1440×1000. Die vollständige Matrix umfasst 76 × 7 × 3 = 1596 Layoutprüfungen. Sie nutzt HTTP an 127.0.0.1 und sperrt externe Anfragen. Chromium prüft zusätzlich den Offline-Dateibetrieb. Windows-WebKit-Dateiöffnung bleibt unbestätigt; die Windows-WebKit-Matrix verwendet HTTP.
 
-Installationsaufgaben prüfen Kontrollprogramme, keine universelle Geräteinstallation. Technische Tests und eigene Bearbeitungsmarken belegen weder Lernerfolg noch vollständige Prüfungsvorbereitung. Echte Geräte, Safari auf Apple-Hardware, Screenreader und vollständige visuelle Folienprüfung bleiben offen. [Abdeckungsplan](../ABDECKUNG.md).
+Die neue Firefox-Version meldete bei der schnellen Gesamtmatrix ausdrücklich „Too many attempts to navigate or modify history within a short timeframe.“ Ein Neuladen derselben Seite setzte den Zähler nicht zuverlässig zurück. Jede Größe beginnt jetzt in einem neuen Tab desselben Kontexts; sämtliche Ansichten, Größen und Interaktionstests bleiben enthalten. Die Zustandsdiagnose nennt Engine, Ziel, aktuellen Hash und Titel. [Mozilla-Quellmeldung](https://github.com/mozilla-l10n/firefox-l10n-source/blob/main/dom/chrome/dom/dom.properties). Screenshots warten auf das Ende der Einblendung, damit sichtbare Textinhalte statt Zwischenstände dokumentiert werden.
 
-CI-Ergänzung: Linux-WebKit erreichte bei den schnellen Hash-Wechseln das Navigationslimit. Jede Bildschirmgröße startet nun mit einer frischen Dokumentinstanz; der Helfer wartet außerdem auf URL und Titel. Alle Ansichten, Fokus- und Verlaufstests bleiben erhalten. Ein CI-Erfolg gilt nur für den anschließenden Lauf am korrigierten Commit.
+## Fachlicher Umfang und Grenzen
+
+Alle Aufgabenseiten des vorhandenen Übungsskripts PDF-S. 5–15 und vier Live-Aufgabenseiten aus Vorlesung 003, PDF-S. 10, 18, 26, 31 wurden im Vorgängerstand am gerenderten Original abgeglichen. Die unveränderten Originalhashes sichern ihre Übernahme. Das bestätigt keine vollständige visuelle Abnahme aller 80 unterschiedlichen PDF-Seiten.
+
+bb12024.csv fehlt. Die drei betroffenen Live-Übungen sind mit einem ausdrücklich synthetischen Download bearbeitbar; ihre gedruckten Originalkennzahlen bleiben unbestätigt. CSV-Zuordnung, Sollzahlen und Filtergrenzen stehen im Abdeckungsplan. Interpolation liefert Schätzungen unter einer didaktischen Annahme. Technischer Release und fachliche Kursfreigabe sind getrennt: Echte Geräte, Safari auf Apple-Hardware, Screenreader, tatsächliche Geräteinstallation und Lernerfolg mit Anfängern bleiben ungeprüft. [Abdeckungsplan](../ABDECKUNG.md).

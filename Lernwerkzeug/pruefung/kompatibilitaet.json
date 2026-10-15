@@ -1,11 +1,11 @@
 {
-  "date": "2026-10-15T13:38:12.081Z",
-  "status": "PASS",
+  "date": "2026-10-15T14:41:10.881Z",
+  "status": "FAIL",
   "host": "win32",
   "engines": [
     {
       "name": "chromium",
-      "version": "151.0.7922.34",
+      "version": "156.0.8078.4",
       "transport": "HTTP loopback",
       "profiles": [
         {
@@ -56,11 +56,11 @@
       "localFile": "PASS",
       "touchProfiles": "390×844, 768×1024: navigation and hints PASS (emulation)",
       "learning": "quiz, persistent progress, malformed data and blocked-storage session fallback PASS",
-      "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route"
+      "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route, local font and GSAP, hero line count, learning carousel wrap, exclusive accordion, ScrollTrigger cleanup"
     },
     {
       "name": "firefox",
-      "version": "153.0",
+      "version": "157.0",
       "transport": "HTTP loopback",
       "profiles": [
         {
@@ -111,62 +111,8 @@
       "localFile": "PASS",
       "touchProfiles": "390×844, 768×1024: navigation and hints PASS (emulation)",
       "learning": "quiz, persistent progress, malformed data and blocked-storage session fallback PASS",
-      "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route"
-    },
-    {
-      "name": "webkit",
-      "version": "26.5",
-      "transport": "HTTP loopback",
-      "profiles": [
-        {
-          "width": 320,
-          "height": 740,
-          "views": 76,
-          "status": "PASS"
-        },
-        {
-          "width": 390,
-          "height": 844,
-          "views": 76,
-          "status": "PASS"
-        },
-        {
-          "width": 768,
-          "height": 1024,
-          "views": 76,
-          "status": "PASS"
-        },
-        {
-          "width": 1024,
-          "height": 768,
-          "views": 76,
-          "status": "PASS"
-        },
-        {
-          "width": 844,
-          "height": 390,
-          "views": 76,
-          "status": "PASS"
-        },
-        {
-          "width": 1280,
-          "height": 800,
-          "views": 76,
-          "status": "PASS"
-        },
-        {
-          "width": 1440,
-          "height": 1000,
-          "views": 76,
-          "status": "PASS"
-        }
-      ],
-      "errors": [],
-      "externalRequests": [],
-      "localFile": "UNVERIFIED: Windows WebKit file:// internal error; HTTP tested",
-      "touchProfiles": "390×844, 768×1024: navigation and hints PASS (emulation)",
-      "learning": "quiz, persistent progress, malformed data and blocked-storage session fallback PASS",
-      "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route"
+      "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route, local font and GSAP, hero line count, learning carousel wrap, exclusive accordion, ScrollTrigger cleanup"
     }
-  ]
+  ],
+  "error": "browserType.launch: Host system is missing dependencies!\n\nFull list of missing libraries:\n    libwebp.dll\n    libpng16.dll\n"
 }

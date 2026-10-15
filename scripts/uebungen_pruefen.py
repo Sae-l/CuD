@@ -7,7 +7,7 @@ import statistics
 from pathlib import Path
 
 
-def pruefe(items, csv_text, output):
+def pruefe(items, csv_text, output, live_csv):
     import matplotlib.pyplot as plt
     import numpy as np
     import pandas as pd
@@ -121,8 +121,23 @@ def pruefe(items, csv_text, output):
     with contextlib.redirect_stdout(io.StringIO()):
         assert mean(['4.2', '4.5', 'Error', '4.1', 'TIMEOUT', '4.4']) == 4.3
         assert mean([]) is None and mean(['Error', 'nan', 'inf']) is None
-    fixture = 'zeit,o2_ist,o2_soll,nh4_mg_l,temp_c\n2024-01-01 08:01,0.4,2,1,20\n2024-01-01 08:04,0.5,2,3,24\n2024-01-01 08:11,0.3,2,5,28\n'
+    fixture = live_csv
     Path('live-mini.csv').write_text(fixture, encoding='utf-8')
+    # Genau die ausgelieferten Daten und unveränderten Kopierprogramme ausführen.
+    demo_outputs = {}
+    for id in ['live-003-18', 'live-003-26', 'live-003-31']:
+        item = by_id[id]
+        assert item['download'][1] == 'beispiele/live-mini.csv'
+        stream = io.StringIO()
+        with contextlib.redirect_stdout(stream):
+            exec(item['solution']['code'], {'__name__': '__main__'})
+        demo_outputs[id] = stream.getvalue()
+    assert 'Mittlere Temperatur: 24.00 °C' in demo_outputs['live-003-18']
+    assert 'Anzahl kritischer Messpunkte: 2' in demo_outputs['live-003-18']
+    assert 'Rasterzeilen: 3' in demo_outputs['live-003-31']
+    assert 'Geschätzte Zellen: 2' in demo_outputs['live-003-31']
+    assert 'Temperaturmittel: 25.0 °C' in demo_outputs['live-003-31']
+    assert Path('live-mini.csv').read_text(encoding='utf-8') == live_csv
     with contextlib.redirect_stdout(io.StringIO()):
         frame, critical, average = live['live-003-18']['auswerten']('live-mini.csv')
     assert len(frame) == 3 and len(critical) == 2 and average == 24
@@ -161,4 +176,4 @@ def pruefe(items, csv_text, output):
     assert fft['amplitude_flach'][30] > .1  # 150 Hz entsteht erst durch echtes Clipping.
     fft['fig'].savefig(Path(output) / 'fft-einfuehrung.png', dpi=100)
     plt.close('all')
-    return {'original_exercises': len(numbers), 'live_exercises': len(live), 'fft': True, 'original_dataset_available': False}
+    return {'original_exercises': len(numbers), 'live_exercises': len(live), 'fft': True, 'original_dataset_available': False, 'demo_entrypoints': len(demo_outputs)}

@@ -20,8 +20,9 @@ save();
 
 async function main() {
   const {chromium,firefox,webkit} = require("playwright");
-  const files = new Map(["index.html","styles.css","inhalte.js","kurs.js","app.js"].map(name => [
-    `/${name}`,{bytes:fs.readFileSync(path.join(__dirname,name)),type:name.endsWith(".html") ? "text/html" : name.endsWith(".css") ? "text/css" : "text/javascript"}
+  const types = {".html":"text/html",".css":"text/css",".js":"text/javascript",".ttf":"font/ttf",".jpg":"image/jpeg"};
+  const files = new Map(["index.html","styles.css","inhalte.js","kurs.js","app.js","assets/gsap.min.js","assets/ScrollTrigger.min.js","assets/Outfit.ttf","assets/lernraum.jpg"].map(name => [
+    `/${name}`,{bytes:fs.readFileSync(path.join(__dirname,name)),type:types[path.extname(name)]}
   ]));
   const server = http.createServer((request,response) => {
     const file = files.get(request.url);
@@ -45,11 +46,13 @@ async function main() {
         const target = route.request().url();
         return target.startsWith(`${origin}/`) || target.startsWith("file:") ? route.continue() : route.abort();
       });
-      const page = await context.newPage();
-      page.on("pageerror",error => report.errors.push(error.message));
-      page.on("console",message => { if (message.type() === "error") report.errors.push(message.text()); });
-      page.on("request",request => { if (/^https?:/.test(request.url()) && !request.url().startsWith(`${origin}/`)) report.externalRequests.push(request.url()); });
-      page.setDefaultTimeout(10000);
+      context.setDefaultTimeout(10000);
+      context.on("page",page => {
+        page.on("pageerror",error => report.errors.push(error.message));
+        page.on("console",message => { if (message.type() === "error") report.errors.push(message.text()); });
+        page.on("request",request => { if (/^https?:/.test(request.url()) && !request.url().startsWith(`${origin}/`)) report.externalRequests.push(request.url()); });
+      });
+      let page = await context.newPage();
       if (engine.name() !== "webkit" || process.platform !== "win32") {
         await page.goto(pathToFileURL(path.join(__dirname,"index.html")).href);
         await page.locator(".welcome-hero").waitFor();
@@ -60,12 +63,31 @@ async function main() {
       }
       await page.goto(url);
       await page.locator(".welcome-hero").waitFor();
+      await page.evaluate(() => document.fonts.ready);
+      assert.equal(await page.evaluate(() => document.fonts.check('16px Outfit')),true);
+      assert(await page.evaluate(() => window.gsap && window.ScrollTrigger && ScrollTrigger.getAll().length > 0));
+      const tip = page.locator(".learning-rhythm > p");
+      assert((await tip.innerText()).startsWith("Vorhersagen:"));
+      await page.getByRole("button",{name:"Nächster Lerntipp",exact:true}).click();
+      assert((await tip.innerText()).startsWith("Ausprobieren:"));
+      await page.getByRole("button",{name:"Vorheriger Lerntipp",exact:true}).click();
+      await page.getByRole("button",{name:"Vorheriger Lerntipp",exact:true}).click();
+      assert((await tip.innerText()).startsWith("Verändern:"));
+      const help = page.locator(".help-accordion details");
+      await help.nth(0).locator("summary").click();
+      await help.nth(1).locator("summary").click();
+      await page.waitForFunction(() => !document.querySelector(".help-accordion details").open);
+      assert.equal(await page.locator(".help-accordion details[open]").count(),1);
+      await help.nth(1).locator("summary").click();
       const routes = await page.evaluate(() => ["start","vorlesungen","uebung","befehle","lernkonzept","abdeckung",...inhalte.map(item => item.id)]);
       async function go(id) {
         // Auch den Abschluss der Hash-Navigation abwarten, bevor WebKit die nächste startet.
         const navigation = page.waitForURL(`${url}#${id}`);
         await page.evaluate(id => { location.hash = id; },id);
-        await navigation;
+        await navigation.catch(async error => {
+          const current = await page.evaluate(() => ({hash:location.hash,title:document.querySelector("#inhalt h1")?.textContent}));
+          throw new Error(`${engine.name()} #${id}: ${error.message}; ${JSON.stringify(current)}`);
+        });
         await page.waitForFunction(id => {
           const title = byId.get(id)?.title || {start:"Dein erster Schritt ins Programmieren.",vorlesungen:"Eine Idee nach der anderen.",uebung:"Deine Übung: Messdaten verstehen.",befehle:"Welcher Befehl passt wozu?",lernkonzept:"So lernst du hier programmieren.",abdeckung:"Was ist bereits abgedeckt?"}[id];
           return document.querySelector("#inhalt h1")?.textContent === title;
@@ -75,14 +97,23 @@ async function main() {
         });
       }
       for (const [width,height] of profiles) {
-        // Jede Größe startet frisch, damit WebKits Navigationlimit die Matrix nicht drosselt.
-        await page.reload();
+        // Ein neuer Tab je Größe setzt auch Firefox' Navigationszähler zurück.
+        await page.close();
+        page = await context.newPage();
         await page.setViewportSize({width,height});
+        await page.goto(url);
+        await page.evaluate(() => document.fonts.ready);
         for (const id of routes) {
           await go(id);
           assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),`${engine.name()} ${width}×${height} #${id}: Seitenüberlauf`);
           assert.equal(await page.locator("#inhalt h1").count(),1);
           assert.equal(await page.locator("#inhalt details[open]").count(),0);
+          if (id === "start") {
+            const hero = await page.locator(".welcome-hero h1").evaluate(node => ({height:node.getBoundingClientRect().height,lineHeight:parseFloat(getComputedStyle(node).lineHeight)}));
+            assert(hero.height / hero.lineHeight <= 3.1,`${width}px: Hero mit mehr als drei Zeilen`);
+          } else {
+            assert.equal(await page.evaluate(() => ScrollTrigger.getAll().length),0,"ScrollTrigger beim Seitenwechsel aufräumen");
+          }
         }
         await go("start");
         if (width <= 760) {
@@ -108,6 +139,7 @@ async function main() {
         if (engine.name() === "chromium" && [390,768,1440].includes(width)) {
           await go("start");
           await page.evaluate(() => scrollTo(0,0));
+          await page.waitForFunction(() => [...document.querySelectorAll(".hero-copy > *")].every(node => Number(getComputedStyle(node).opacity) === 1));
           await page.screenshot({path:path.join(output,`audit-${width}.png`),fullPage:false,animations:"disabled"});
         }
       }
@@ -119,6 +151,10 @@ async function main() {
       await page.getByText("Beispielausgabe zeigen",{exact:true}).click();
       assert.equal(await page.locator("details pre").getAttribute("tabindex"),"0");
       await page.emulateMedia({reducedMotion:"reduce"});
+      await go("start");
+      await page.waitForFunction(() => ScrollTrigger.getAll().length === 0);
+      assert.equal(await page.locator(".hero-image").evaluate(node => getComputedStyle(node).transform),"none");
+      assert.equal(await page.locator(".practice-step").first().evaluate(node => getComputedStyle(node).position),"static");
       await page.waitForFunction(() => matchMedia("(prefers-reduced-motion: reduce)").matches && [...document.querySelectorAll("#inhalt,#inhalt *")].every(node => {
         const style = getComputedStyle(node);
         return style.animationName === "none" && style.transitionDuration.split(",").every(value => parseFloat(value) === 0);
@@ -213,7 +249,7 @@ async function main() {
       await go("start");
       assert.deepEqual(report.errors,[]);
       assert.deepEqual(report.externalRequests,[]);
-      report.regressions = "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route";
+      report.regressions = "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route, local font and GSAP, hero line count, learning carousel wrap, exclusive accordion, ScrollTrigger cleanup";
     } finally {
       await browser.close();
       save();

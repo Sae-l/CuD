@@ -1,6 +1,6 @@
 {
   "name": "cud-1-lernwerkzeug",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "description": "Lokaler Lernraum für Coding und Digitalisierung",
   "scripts": {
@@ -10,7 +10,7 @@
     "node": ">=24"
   },
   "devDependencies": {
-    "playwright": "1.62.1"
+    "playwright": "1.64.0"
   },
   "repository": {
     "type": "git",

@@ -2,7 +2,7 @@
 
 Dieser Plan dokumentiert den Ausgangspiloten und den Ausbau bis v0.1.0. Die nachfolgende Lernprüfung mit Verständnisfragen, Bearbeitungsmarken und Transferprojekt steht in [ABDECKUNG.md](Lernwerkzeug/ABDECKUNG.md), [ERWEITERN.md](Lernwerkzeug/ERWEITERN.md) und im [aktuellen Prüfbericht](Lernwerkzeug/pruefung/PRUEFBERICHT.md). Für aktuelle Zählungen gelten diese Nachweise.
 
-Stand: 15.10.2026. Status: Version 0.2.0 begleitet alle 31 Aufgaben des vorhandenen Übungsskripts und vier Live-Übungen; FFT ist ergänzt. Originaldatensatz bb12024.csv, Gebrauchstest und vollständige visuelle Folienprüfung bleiben offen.
+Stand: 15.10.2026. Status: Version 0.2.1 begleitet alle 31 Aufgaben des vorhandenen Übungsskripts und vier Live-Übungen; FFT ist ergänzt. Drei Live-Übungen sind mit herunterladbaren Demo-Daten direkt bearbeitbar. Originaldatensatz bb12024.csv, Gebrauchstest und vollständige visuelle Folienprüfung bleiben offen.
 
 ## Aktuelle Designvorgabe und Erweiterung
 
