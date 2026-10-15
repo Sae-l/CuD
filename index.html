@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Programmieren lernen ohne Vorwissen: ein lokaler Lernraum für Coding und Digitalisierung mit Vorlesungsetappen, Übungsbegleitung und Befehlsübersicht.">
+  <title>CuD · Programmieren lernen</title>
+  <style>
+    @font-face { font-family:Outfit; src:url("Lernwerkzeug/assets/Outfit.ttf") format("truetype"); font-weight:100 900; font-display:swap; }
+    :root {
+      --paper:#f6f5ef; --card:#fffefa; --ink:#1c2219; --muted:#5d6457; --accent:#2f4a30; --lime:#d5f58b; --forest:#1f2a1d;
+      --hair:rgba(28,34,25,.08); --shell:rgba(28,34,25,.035);
+      --shadow:0 1px 1px rgba(28,34,25,.03),0 12px 32px -8px rgba(28,34,25,.08),0 40px 80px -24px rgba(28,34,25,.10);
+      --ease:cubic-bezier(.32,.72,0,1);
+      --mono:"Cascadia Code",Consolas,ui-monospace,monospace;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:17px/1.6 Outfit,"Segoe UI",system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:clip; }
+    body::before { content:""; position:fixed; inset:0; pointer-events:none; background:radial-gradient(60rem 40rem at 85% -10%,rgba(213,245,139,.35),transparent 60%),radial-gradient(50rem 36rem at -10% 30%,rgba(47,74,48,.07),transparent 60%); }
+    a { color:inherit; }
+    code { font-family:var(--mono); font-size:.9em; }
+    :focus-visible { outline:3px solid #a85212; outline-offset:4px; border-radius:8px; }
+    .skip { position:absolute; left:12px; top:-60px; background:var(--card); padding:12px 16px; border-radius:12px; z-index:4; }
+    .skip:focus { top:12px; }
+    .wrap { position:relative; width:min(1200px,100% - 48px); margin-inline:auto; }
+
+    /* Floating island nav */
+    .island { position:fixed; top:20px; left:50%; translate:-50% 0; z-index:3; display:flex; align-items:center; gap:6px; padding:6px; border-radius:999px; background:rgba(255,254,250,.72); backdrop-filter:blur(20px) saturate(1.4); -webkit-backdrop-filter:blur(20px) saturate(1.4); box-shadow:0 0 0 1px var(--hair),0 10px 30px -10px rgba(28,34,25,.18); }
+    .brand { display:flex; align-items:center; gap:10px; padding:4px 14px 4px 4px; text-decoration:none; font-weight:600; letter-spacing:-.02em; }
+    .brand-mark { display:grid; place-items:center; width:38px; height:38px; border-radius:999px; background:var(--forest); color:var(--lime); font-size:15px; letter-spacing:-.08em; }
+    .island-links { display:flex; gap:2px; }
+    .island-links a { text-decoration:none; font-size:14px; color:var(--muted); padding:9px 14px; border-radius:999px; transition:background-color .5s var(--ease),color .5s var(--ease); }
+    .island-links a:hover { background:var(--shell); color:var(--ink); }
+    .menu-btn { display:none; position:relative; width:44px; height:44px; border:0; border-radius:999px; background:var(--forest); cursor:pointer; }
+    .menu-btn span { position:absolute; left:14px; width:16px; height:1.5px; background:var(--lime); border-radius:2px; transition:transform .6s var(--ease); }
+    .menu-btn span:first-child { top:18px; } .menu-btn span:last-child { top:25px; }
+    .menu-open .menu-btn span:first-child { transform:translateY(3.5px) rotate(45deg); }
+    .menu-open .menu-btn span:last-child { transform:translateY(-3.5px) rotate(-45deg); }
+    .overlay { position:fixed; inset:0; z-index:2; display:flex; flex-direction:column; justify-content:center; gap:8px; padding:96px 28px 40px; background:rgba(246,245,239,.86); backdrop-filter:blur(40px); -webkit-backdrop-filter:blur(40px); opacity:0; visibility:hidden; transition:opacity .6s var(--ease),visibility 0s .6s; }
+    .menu-open .overlay { opacity:1; visibility:visible; transition:opacity .6s var(--ease); }
+    .overlay a { font-size:clamp(34px,9vw,52px); font-weight:450; letter-spacing:-.04em; line-height:1.2; text-decoration:none; transform:translateY(48px); opacity:0; transition:transform .8s var(--ease),opacity .8s var(--ease); }
+    .menu-open .overlay a { transform:none; opacity:1; }
+    .menu-open .overlay a:nth-child(2) { transition-delay:.05s; } .menu-open .overlay a:nth-child(3) { transition-delay:.1s; } .menu-open .overlay a:nth-child(4) { transition-delay:.15s; } .menu-open .overlay a:nth-child(5) { transition-delay:.2s; }
+
+    /* Buttons: pill with nested icon island */
+    .btn { display:inline-flex; align-items:center; gap:14px; min-height:52px; padding:6px 6px 6px 24px; border-radius:999px; text-decoration:none; font-weight:500; font-size:16px; transition:transform .5s var(--ease),background-color .5s var(--ease),box-shadow .5s var(--ease); }
+    .btn:active { transform:scale(.98); }
+    .btn-icon { display:grid; place-items:center; width:40px; height:40px; border-radius:999px; transition:transform .6s var(--ease); }
+    .btn-icon svg { width:16px; height:16px; }
+    .btn:hover .btn-icon { transform:translate(3px,-1px) scale(1.05); }
+    .btn-primary { background:var(--forest); color:#fbfdf6; box-shadow:0 12px 28px -12px rgba(31,42,29,.55); }
+    .btn-primary .btn-icon { background:var(--lime); color:var(--forest); }
+    .btn-primary:hover { background:#2a3827; }
+    .btn-ghost { background:var(--card); color:var(--ink); box-shadow:0 0 0 1px var(--hair); }
+    .btn-ghost .btn-icon { background:var(--shell); }
+    .btn-small { min-height:44px; font-size:14px; padding-left:18px; gap:10px; }
+    .btn-small .btn-icon { width:32px; height:32px; }
+
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:var(--card); box-shadow:0 0 0 1px var(--hair); font-size:11px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+    .eyebrow i { width:6px; height:6px; border-radius:50%; background:#6c9a3b; box-shadow:0 0 0 4px rgba(108,154,59,.15); }
+
+    /* Double bezel: outer tray + inner core with concentric radius */
+    .bezel { padding:7px; border-radius:2rem; background:var(--shell); box-shadow:0 0 0 1px var(--hair); }
+    .core { height:100%; border-radius:calc(2rem - 7px); background:var(--card); box-shadow:inset 0 1px 1px rgba(255,255,255,.9),var(--shadow); overflow:hidden; }
+
+    /* Hero */
+    .hero { min-height:100dvh; display:grid; align-items:center; padding:140px 0 96px; }
+    .hero-grid { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:64px; align-items:center; }
+    h1 { font-size:clamp(46px,6.6vw,96px); line-height:.98; letter-spacing:-.055em; font-weight:500; margin:26px 0 28px; }
+    h1 em { font-style:normal; color:var(--accent); }
+    .lead { font-size:clamp(18px,1.5vw,21px); color:var(--muted); max-width:34ch; margin:0 0 40px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; }
+    .hero-visual { position:relative; }
+    .hero-visual > .bezel:first-child .core { aspect-ratio:4/5; position:relative; }
+    .hero-visual img { width:100%; height:100%; object-fit:cover; object-position:60% 65%; filter:grayscale(1) contrast(1.05); opacity:.9; display:block; }
+    .hero-visual > .bezel:first-child .core::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 40%,rgba(31,42,29,.55)); }
+    .code-float { position:absolute; left:-56px; bottom:48px; width:min(340px,80%); rotate:-2deg; z-index:1; }
+    .code-float .core { background:var(--forest); color:#e1f7bd; padding:22px 24px; font:14px/1.75 var(--mono); }
+    .code-float .core span { color:#8fa784; }
+    .tag-float { position:absolute; right:24px; top:24px; z-index:1; rotate:3deg; padding:10px 16px; border-radius:999px; background:var(--lime); color:var(--forest); font-size:13px; font-weight:500; box-shadow:0 14px 30px -10px rgba(31,42,29,.4); }
+    .credit { margin:14px 4px 0; font-size:11px; color:var(--muted); text-align:right; }
+
+    /* Stats */
+    .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; padding:0 0 32px; }
+    .stat { padding:28px 26px; border-radius:1.5rem; background:var(--card); box-shadow:0 0 0 1px var(--hair); }
+    .stat b { display:block; font-size:clamp(36px,4vw,54px); font-weight:500; letter-spacing:-.05em; line-height:1; }
+    .stat span { display:block; margin-top:10px; font-size:14px; color:var(--muted); }
+
+    section { padding:128px 0; }
+    .head { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:48px; align-items:end; margin-bottom:56px; }
+    h2 { font-size:clamp(36px,4.6vw,64px); line-height:1.02; letter-spacing:-.05em; font-weight:500; margin:22px 0 0; }
+    .head p { color:var(--muted); margin:0; max-width:44ch; justify-self:end; }
+
+    /* Asymmetrical bento */
+    .bento { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:16px; }
+    .bento > * { grid-column:span 4; }
+    .bento .w8 { grid-column:span 8; } .bento .w6 { grid-column:span 6; } .bento .w5 { grid-column:span 5; } .bento .w7 { grid-column:span 7; }
+    .tile { display:flex; flex-direction:column; gap:14px; min-height:280px; padding:32px; }
+    .tile h3 { margin:auto 0 0; font-size:26px; font-weight:500; letter-spacing:-.035em; line-height:1.15; }
+    .tile p { margin:0; font-size:15px; color:var(--muted); max-width:46ch; }
+    .tile-num { font-size:13px; color:var(--muted); letter-spacing:.12em; text-transform:uppercase; }
+    .tile.dark { background:var(--forest); color:#f4f8ec; } .tile.dark p,.tile.dark .tile-num { color:#c7d2bd; }
+    .tile.lime { background:#e3f3c2; }
+    .lessons { display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 0; padding:0; list-style:none; }
+    .lessons li { padding:7px 14px; border-radius:999px; background:rgba(255,255,255,.06); box-shadow:0 0 0 1px rgba(255,255,255,.1); font-size:13px; }
+    .mini-code { margin:4px 0 0; padding:16px 18px; border-radius:1rem; background:var(--paper); font:13px/1.7 var(--mono); color:var(--accent); overflow-x:auto; }
+    .big-glyph { font-size:64px; line-height:1; font-weight:300; letter-spacing:-.06em; color:var(--accent); }
+
+    /* Flow */
+    .flow { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; counter-reset:step; list-style:none; padding:0; margin:0; }
+    .flow li { counter-increment:step; padding:28px 22px 26px; border-radius:1.5rem; background:var(--card); box-shadow:0 0 0 1px var(--hair); }
+    .flow li:nth-child(even) { margin-top:28px; }
+    .flow li::before { content:"0" counter(step); display:block; font-size:12px; letter-spacing:.14em; color:var(--muted); margin-bottom:40px; }
+    .flow strong { display:block; font-size:21px; font-weight:500; letter-spacing:-.03em; }
+    .flow span { display:block; margin-top:6px; font-size:14px; color:var(--muted); }
+
+    /* Start locally */
+    .start { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:56px; align-items:start; }
+    .steps { list-style:none; padding:0; margin:32px 0 0; display:grid; gap:10px; }
+    .steps li { display:flex; gap:18px; padding:20px 22px; border-radius:1.25rem; background:var(--card); box-shadow:0 0 0 1px var(--hair); font-size:16px; }
+    .steps b { flex:none; display:grid; place-items:center; width:32px; height:32px; border-radius:999px; background:var(--forest); color:var(--lime); font-size:13px; font-weight:500; }
+    .terminal .core { background:var(--forest); color:#e1f7bd; }
+    .term-bar { display:flex; gap:7px; padding:18px 22px; border-bottom:1px solid rgba(255,255,255,.07); }
+    .term-bar i { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.14); }
+    .terminal pre { margin:0; padding:26px 24px 30px; font:14px/1.9 var(--mono); white-space:pre-wrap; overflow-wrap:anywhere; }
+    .terminal pre span { color:#8fa784; }
+    .note { margin:20px 4px 0; font-size:14px; color:var(--muted); }
+
+    /* Honest limits */
+    .limits { padding:56px; }
+    .limits ul { margin:28px 0 0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; }
+    .limits li { font-size:15px; color:var(--muted); border-top:1px solid var(--hair); padding-top:18px; }
+    .limits li b { display:block; color:var(--ink); font-weight:500; font-size:17px; margin-bottom:6px; }
+    .limits h2 { font-size:clamp(30px,3.4vw,46px); }
+
+    .cta { text-align:center; padding:140px 0 120px; }
+    .cta h2 { max-width:16ch; margin:22px auto 36px; }
+    .cta .actions { justify-content:center; }
+    footer { padding:40px 0 56px; border-top:1px solid var(--hair); font-size:13px; color:var(--muted); }
+    footer .wrap { display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; }
+    footer a { text-underline-offset:3px; }
+
+    /* Scroll reveal: only with JS and when motion is allowed */
+    @media (prefers-reduced-motion:no-preference) {
+      .js [data-reveal] { opacity:0; transform:translateY(48px); filter:blur(8px); transition:opacity 1s var(--ease),transform 1.1s var(--ease),filter 1s var(--ease); transition-delay:var(--d,0s); }
+      .js [data-reveal].in { opacity:1; transform:none; filter:none; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      *,*::before,*::after { transition:none!important; animation:none!important; }
+    }
+
+    @media (max-width:980px) {
+      .hero-grid,.start,.head { grid-template-columns:minmax(0,1fr); }
+      .head p { justify-self:start; }
+      .hero-visual { max-width:560px; }
+      .code-float { left:-12px; }
+      .bento > *,.bento .w8,.bento .w6,.bento .w5,.bento .w7 { grid-column:span 6; }
+      .flow { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .flow li:nth-child(even) { margin-top:0; }
+      .limits ul { grid-template-columns:minmax(0,1fr); }
+    }
+    @media (max-width:767px) {
+      body { font-size:16px; }
+      .wrap { width:calc(100% - 32px); }
+      .island { top:12px; width:calc(100% - 24px); justify-content:space-between; }
+      .island-links,.island .btn { display:none; }
+      .menu-btn { display:block; }
+      .hero { padding:112px 0 64px; min-height:0; }
+      .hero-grid { gap:48px; }
+      .code-float,.tag-float { rotate:none; }
+      .code-float { position:relative; left:auto; bottom:auto; width:auto; margin:-56px 12px 0; }
+      .stats { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .stat { padding:22px 20px; }
+      section { padding:88px 0; }
+      .head { gap:20px; margin-bottom:36px; }
+      .bento > *,.bento .w8,.bento .w6,.bento .w5,.bento .w7 { grid-column:1 / -1; }
+      .bento { gap:12px; }
+      .tile { min-height:0; padding:26px; }
+      .tile h3 { margin-top:28px; }
+      .flow { grid-template-columns:minmax(0,1fr); }
+      .flow li::before { margin-bottom:20px; }
+      .limits { padding:30px 24px; }
+      .cta { padding:96px 0 88px; }
+      .btn { width:100%; justify-content:space-between; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#inhalt">Zum Inhalt</a>
+
+  <header class="island">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">c/d.</span>CuD</a>
+    <nav class="island-links" aria-label="Seitenbereiche">
+      <a href="#inhalt">Inhalt</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#starten">Lokal starten</a>
+      <a href="https://github.com/Sae-l/CuD">GitHub</a>
+    </nav>
+    <a class="btn btn-primary btn-small" href="Lernwerkzeug/">Lernraum öffnen<span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menü öffnen"><span></span><span></span></button>
+  </header>
+  <nav class="overlay" id="menu" aria-label="Menü">
+    <a href="#inhalt">Inhalt</a>
+    <a href="#ablauf">Ablauf</a>
+    <a href="#starten">Lokal starten</a>
+    <a href="https://github.com/Sae-l/CuD">GitHub</a>
+    <a href="Lernwerkzeug/">Lernraum öffnen ↗</a>
+  </nav>
+
+  <main id="top">
+    <div class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow" data-reveal><i></i>Coding und Digitalisierung · v0.2.1</span>
+          <h1 data-reveal style="--d:.08s">Programmieren lernen, <em>ganz ohne Vorwissen.</em></h1>
+          <p class="lead" data-reveal style="--d:.16s">Ein ruhiger Lernraum für dein Studium: Vorlesungen in kleinen Etappen, Begleitung zu jeder Übungsaufgabe und die Befehle, die du wirklich brauchst.</p>
+          <div class="actions" data-reveal style="--d:.24s">
+            <a class="btn btn-primary" href="Lernwerkzeug/">Lernraum öffnen<span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></span></a>
+            <a class="btn btn-ghost" href="https://github.com/Sae-l/CuD/releases/latest">Herunterladen<span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M8 2.5v8M4.5 7 8 10.5 11.5 7M3 13.5h10"/></svg></span></a>
+          </div>
+        </div>
+        <div class="hero-visual" data-reveal style="--d:.2s">
+          <div class="bezel"><div class="core"><img src="Lernwerkzeug/assets/lernraum.jpg" alt="" width="1600" height="900"></div></div>
+          <span class="tag-float">Lokal &amp; offline</span>
+          <div class="code-float bezel" aria-hidden="true"><div class="core"><span># deine erste Zeile</span><br>print("Hallo, Python!")<br><span>&gt;&gt;&gt;</span> Hallo, Python!</div></div>
+          <p class="credit">Foto: Alejandro Escamilla, Unsplash</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap stats" aria-label="Umfang">
+      <div class="stat" data-reveal><b>31</b><span>Übungsaufgaben begleitet</span></div>
+      <div class="stat" data-reveal style="--d:.06s"><b>10</b><span>Lernetappen inklusive FFT</span></div>
+      <div class="stat" data-reveal style="--d:.12s"><b>4</b><span>Live-Übungen mit Musterlösung</span></div>
+      <div class="stat" data-reveal style="--d:.18s"><b>0</b><span>Konten, Installationen, Tracking</span></div>
+    </div>
+
+    <section id="inhalt">
+      <div class="wrap">
+        <div class="head">
+          <div><span class="eyebrow" data-reveal>Was dich erwartet</span><h2 data-reveal style="--d:.08s">Alles für den Einstieg, an einem Ort.</h2></div>
+          <p data-reveal style="--d:.14s">Schlag eine Frage nach oder fang ganz vorne an. Jeder Bereich führt dich zum nächsten sinnvollen Schritt.</p>
+        </div>
+        <div class="bento">
+          <div class="bezel w8" data-reveal><div class="core tile dark">
+            <span class="tile-num">Vorlesungen</span>
+            <h3>Zehn Etappen in der Reihenfolge deiner Unterlagen.</h3>
+            <p>Jede Lektion endet mit einer Verständnisfrage und begründeter Rückmeldung.</p>
+            <ul class="lessons"><li>Python</li><li>NumPy</li><li>Pandas</li><li>Matplotlib</li><li>FFT</li></ul>
+          </div></div>
+          <div class="bezel" data-reveal style="--d:.06s"><div class="core tile lime">
+            <span class="tile-num">Übungen</span>
+            <span class="big-glyph" aria-hidden="true">6.1–6.3</span>
+            <h3>Alle 31 Aufgaben geführt.</h3>
+            <p>CSV einlesen, filtern, auswerten, mit gestuften Hinweisen.</p>
+          </div></div>
+          <div class="bezel w5" data-reveal><div class="core tile">
+            <span class="tile-num">Befehle</span>
+            <pre class="mini-code">df = pd.read_csv("messdaten.csv")
+df["wert"].mean()</pre>
+            <h3>Nachschlagen statt raten.</h3>
+            <p>Beschreibung, Beispiel und passende Datentypen auf einen Blick.</p>
+          </div></div>
+          <div class="bezel w7" data-reveal style="--d:.06s"><div class="core tile">
+            <span class="tile-num">Einrichtung</span>
+            <span class="big-glyph" aria-hidden="true">.py { }</span>
+            <h3>Python und VS Code, Schritt für Schritt.</h3>
+            <p>Die passende Anleitung für PC, Mac oder Tablet, bis deine erste Datei läuft.</p>
+          </div></div>
+          <div class="bezel w6" data-reveal><div class="core tile">
+            <span class="tile-num">Lernkontrolle</span>
+            <h3>Bearbeitungsmarken, die nur dir gehören.</h3>
+            <p>Gespeichert nur in deinem Browser. Keine Anmeldung, keine Übertragung.</p>
+          </div></div>
+          <div class="bezel w6" data-reveal style="--d:.06s"><div class="core tile">
+            <span class="tile-num">Transfer</span>
+            <h3>Ein eigenes Mini-Projekt zum Schluss.</h3>
+            <p>Wende das Gelernte auf eine eigene Zeitreihe an und prüfe dein Ergebnis selbst.</p>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ablauf">
+      <div class="wrap">
+        <div class="head">
+          <div><span class="eyebrow" data-reveal>So lernst du hier</span><h2 data-reveal style="--d:.08s">Von der Aufgabe zum eigenen Ergebnis.</h2></div>
+          <p data-reveal style="--d:.14s">Jede Übung folgt demselben Rhythmus. So weißt du immer, wo du stehst und was als Nächstes kommt.</p>
+        </div>
+        <ol class="flow">
+          <li data-reveal><strong>Aufgabe</strong><span>Verstehen, was gefragt ist.</span></li>
+          <li data-reveal style="--d:.06s"><strong>Wissen</strong><span>Das passende Konzept lernen.</span></li>
+          <li data-reveal style="--d:.12s"><strong>Befehl</strong><span>Den richtigen Befehl finden.</span></li>
+          <li data-reveal style="--d:.18s"><strong>Ausprobieren</strong><span>Selbst im Editor schreiben.</span></li>
+          <li data-reveal style="--d:.24s"><strong>Prüfen</strong><span>Mit der Lösung vergleichen.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="starten">
+      <div class="wrap start">
+        <div>
+          <span class="eyebrow" data-reveal>Lokal starten</span>
+          <h2 data-reveal style="--d:.08s">In drei Schritten auf deinem Rechner.</h2>
+          <ol class="steps">
+            <li data-reveal><b>1</b><span>Lade den <strong>ganzen Projektordner</strong> als ZIP herunter und entpacke ihn.</span></li>
+            <li data-reveal style="--d:.06s"><b>2</b><span>Öffne <code>Lernwerkzeug/index.html</code> im Browser.</span></li>
+            <li data-reveal style="--d:.12s"><b>3</b><span>Wähle <strong>Lernweg beginnen</strong> und richte Python ein.</span></li>
+          </ol>
+        </div>
+        <div data-reveal style="--d:.12s">
+          <div class="bezel terminal"><div class="core">
+            <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <pre><span># oder mit Git</span>
+git clone https://github.com/Sae-l/CuD.git
+cd CuD
+<span># danach im Browser öffnen:</span>
+Lernwerkzeug/index.html</pre>
+          </div></div>
+          <p class="note">Keine Installation, kein Paketmanager, kein Konto. Nach dem Download läuft alles offline. Deinen Python-Code führst du selbst im Editor aus.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="bezel" data-reveal><div class="core limits">
+          <span class="eyebrow">Ehrlich gesagt</span>
+          <h2>Was dieser Lernraum nicht ist.</h2>
+          <ul>
+            <li><b>Kein Ersatz für die Vorlesung.</b>Lerntexte und Musterlösungen sind selbst erstellt und von den Originalaufgaben getrennt.</li>
+            <li><b>Nicht vollständig belegt.</b>Der Datensatz bb12024.csv fehlt, die betroffenen Originalergebnisse bleiben unbestätigt.</li>
+            <li><b>Kein Kompetenznachweis.</b>Bearbeitungsmarken sind deine Selbsteinschätzung. Ein Gebrauchstest steht noch aus.</li>
+          </ul>
+        </div></div>
+      </div>
+    </section>
+
+    <div class="cta">
+      <div class="wrap">
+        <span class="eyebrow" data-reveal><i></i>Bereit?</span>
+        <h2 data-reveal style="--d:.08s">Dein nächster Schritt ist eine Zeile Code.</h2>
+        <div class="actions" data-reveal style="--d:.16s">
+          <a class="btn btn-primary" href="Lernwerkzeug/">Lernraum öffnen<span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></span></a>
+          <a class="btn btn-ghost" href="https://github.com/Sae-l/CuD/blob/main/Lernwerkzeug/ABDECKUNG.md">Abdeckungsplan<span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>CuD · Lernraum für Coding und Digitalisierung. Private Projektablage, Originalunterlagen behalten ihre Herkunft.</span>
+      <span>Schrift: Outfit (OFL) · <a href="https://github.com/Sae-l/CuD/blob/main/Lernwerkzeug/assets/README.md">Herkunft der Gestaltung</a></span>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add("js");
+    const reveal = [...document.querySelectorAll("[data-reveal]")];
+    // Above-the-fold content must never wait on the observer (throttled in background tabs).
+    const visible = reveal.filter(node => node.getBoundingClientRect().top < innerHeight);
+    requestAnimationFrame(() => requestAnimationFrame(() => visible.forEach(node => node.classList.add("in"))));
+    setTimeout(() => visible.forEach(node => node.classList.add("in")),400);
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),{rootMargin:"0px 0px -8% 0px"});
+      reveal.filter(node => !visible.includes(node)).forEach(node => io.observe(node));
+    } else reveal.forEach(node => node.classList.add("in"));
+    const btn = document.querySelector(".menu-btn"), menu = document.getElementById("menu");
+    const setMenu = open => { document.body.classList.toggle("menu-open",open); btn.setAttribute("aria-expanded",open); btn.setAttribute("aria-label",open ? "Menü schließen" : "Menü öffnen"); };
+    btn.addEventListener("click",() => setMenu(!document.body.classList.contains("menu-open")));
+    menu.addEventListener("click",e => { if (e.target.closest("a")) setMenu(false); });
+    addEventListener("keydown",e => { if (e.key === "Escape" && document.body.classList.contains("menu-open")) { setMenu(false); btn.focus(); } });
+  </script>
+</body>
+</html>
