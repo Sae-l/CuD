@@ -8,8 +8,8 @@ Version **0.2.1** begleitet alle 31 Aufgaben des vorhandenen Übungsskripts, vie
 
 ## In drei Schritten starten
 
-1. Lade den **gesamten Projektordner** über **Code → Download ZIP** herunter und entpacke ihn. Alternativ: `git clone https://github.com/Sae-l/CuD-1.git`. Der fest versionierte [Release v0.2.1](https://github.com/Sae-l/CuD-1/releases/tag/v0.2.1) enthält ein vollständiges ZIP und `SHA256SUMS`.
-2. Öffne [Lernwerkzeug/index.html](Lernwerkzeug/index.html) aus dem entpackten Ordner im Browser. Die GitHub-Dateiansicht zeigt nur den Quelltext.
+1. Lade das [vollständige Projekt-ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) herunter und entpacke es vollständig. Auf GitHub geht das auch über **Code → Download ZIP**; auf der Webseite über **Projekt als ZIP laden**. **„Seite speichern“ im Browser reicht nicht aus.** Alternativ: `git clone https://github.com/Sae-l/CuD.git`. Der ältere, fest versionierte [Release v0.2.1](https://github.com/Sae-l/CuD/releases/tag/v0.2.1) enthält ein vollständiges ZIP und `SHA256SUMS`.
+2. Öffne [index.html](index.html) aus dem entpackten Projektordner und wähle **Lernraum öffnen**. Alternativ öffne [Lernwerkzeug/index.html](Lernwerkzeug/index.html) direkt. Die GitHub-Dateiansicht zeigt nur den Quelltext.
 3. Wähle **Lernweg beginnen**, richte deine Python-Umgebung ein und beginne mit der ersten Vorlesung. **Übungen & Begleitung** führt zu allen Aufgaben; der Block 6.1–6.3 bleibt hervorgehoben.
 
 Die Lernwebseite benötigt keine Installation, keinen Paketmanager und kein Konto. Nach dem Herunterladen funktioniert sie lokal und offline. Lass den gesamten Projektordner zusammen, damit die Quellenlinks funktionieren. Deinen Python-Code führst du selbst aus; die Webseite ist eine Lernbegleitung. Externe Downloads und Colab benötigen Internet.

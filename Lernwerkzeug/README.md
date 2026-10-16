@@ -6,7 +6,7 @@ Die Startseite bietet **Vorlesungen**, **Übungen & Begleitung**, **Befehle nach
 
 ### Windows und macOS
 
-Entpacke das gesamte Repository und öffne [index.html](index.html) im Browser. Die Webseite benötigt weder Node.js noch Python und funktioniert nach dem Download offline. Python brauchst du erst, um selbst Programme auszuführen; dafür gibt es die Einrichtungsanleitungen in der Webseite. Alle Dateien und die benachbarten Ordner `Referenz/` und `Referenz_Sichtung/` müssen zusammenbleiben.
+Lade das [vollständige Projekt-ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) herunter, entpacke es vollständig und öffne [index.html](index.html) im Browser. Du kannst auch `index.html` im übergeordneten Projektordner öffnen und **Lernraum öffnen** wählen. Öffne die Datei außerhalb der ZIP-Vorschau. **„Seite speichern“ im Browser** lädt die benötigten Dateien und Quellen nicht vollständig herunter. Die Webseite benötigt weder Node.js noch Python und funktioniert nach dem Download offline. Python brauchst du erst, um selbst Programme auszuführen; dafür gibt es die Einrichtungsanleitungen in der Webseite. Alle Dateien und die benachbarten Ordner `Referenz/` und `Referenz_Sichtung/` müssen zusammenbleiben.
 
 ### Handy und Tablet
 
