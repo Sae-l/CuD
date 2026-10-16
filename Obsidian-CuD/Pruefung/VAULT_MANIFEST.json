@@ -1,0 +1,201 @@
+{
+  "format": 1,
+  "date": "2026-10-16",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 76,
+      "sha256": "6f5dbbe507167f118886abb224267642c9e9761bf7593d406eb2fe0a29b86bf2"
+    },
+    {
+      "path": ".obsidian/app.json",
+      "bytes": 148,
+      "sha256": "8ddc465b3fe09a7c6f8c9474576dfada0417b9ae24b5ba6f4c26b494ac5a4098"
+    },
+    {
+      "path": ".obsidian/appearance.json",
+      "bytes": 52,
+      "sha256": "d0e1e54e18e878a719d74238169c1c56bf6696fce977b35a830fe6fde58a51c7"
+    },
+    {
+      "path": ".obsidian/community-plugins.json",
+      "bytes": 4,
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    {
+      "path": ".obsidian/core-plugins.json",
+      "bytes": 675,
+      "sha256": "8ee3829d3ddc9e5556c870d2743561659fca4086c9872ebf02ef90e4d0622486"
+    },
+    {
+      "path": ".obsidian/graph.json",
+      "bytes": 494,
+      "sha256": "969396aec27e51d0dfe2d0f03f137c00bc49c376cb9cf8c0ad776bff4b1b9d2c"
+    },
+    {
+      "path": "00 Start.md",
+      "bytes": 3863,
+      "sha256": "a2ca01c406be16928623d1df7f8d5dd883797a57a806153236b488b8ee8de110"
+    },
+    {
+      "path": "01 Vault benutzen.md",
+      "bytes": 3215,
+      "sha256": "2222cd95af9ac80ad99b57caf8472dc7d0e8d69c494a7b0cdd4c966c5e9215ce"
+    },
+    {
+      "path": "02 Gesamtübersicht.md",
+      "bytes": 2746,
+      "sha256": "93066d105eab6f6da0f623f145924bf046b362d063b41363b33ebc5c6edfcb1a"
+    },
+    {
+      "path": "10 Konzept/10 Ziel und Umfang.md",
+      "bytes": 3551,
+      "sha256": "2b9728eb71658682bd3802552544d7a80dfd9c8418ae9a8f211b573815050fcd"
+    },
+    {
+      "path": "10 Konzept/11 Lernmodell und Arbeitsweise.md",
+      "bytes": 3645,
+      "sha256": "1b6d21aa687ab63793628ae049fca833b0177c31b30b64ef7d0d8e4bb0f9233a"
+    },
+    {
+      "path": "10 Konzept/12 Wissenschaftliche Grundlagen.md",
+      "bytes": 4609,
+      "sha256": "ba2c510fabe56d7ab1ce5602189b067fa3c17ea7758066a0ce9b236029be5a15"
+    },
+    {
+      "path": "20 Umsetzung/20 Technische Architektur.md",
+      "bytes": 4088,
+      "sha256": "8af0062f2f2a903ce5963077861f7433a2e7c99a90610e51f49e73e1249b9a06"
+    },
+    {
+      "path": "20 Umsetzung/21 Entstehung und Umsetzung.md",
+      "bytes": 3594,
+      "sha256": "e282a9f6ef365e1e818edd794d0ab0c95c4d39e1928ea280587f99c29c18f381"
+    },
+    {
+      "path": "20 Umsetzung/22 Fähigkeiten Skills und Werkzeuge.md",
+      "bytes": 4106,
+      "sha256": "5aa030e18cb28dfe46d11269fe7b74ca9459778587ac059f152ec16d06a711fe"
+    },
+    {
+      "path": "20 Umsetzung/23 Qualität und Prüfungen.md",
+      "bytes": 4120,
+      "sha256": "faccfd567e8c74d0e15007b4745cea48626b7a7c05d201a0bb9a397ca54246c7"
+    },
+    {
+      "path": "30 Weiterentwicklung/30 Neue Vorlesung hinzufügen.md",
+      "bytes": 4542,
+      "sha256": "a12c624dc797a69864c351708b459013554ac3e85c4189502d5f5baf0bca4225"
+    },
+    {
+      "path": "30 Weiterentwicklung/31 Neue Übung hinzufügen.md",
+      "bytes": 4668,
+      "sha256": "4158d3cb97fa67277d6a88315fc14feb59cf06c2a7b2565904cd3976afff042f"
+    },
+    {
+      "path": "30 Weiterentwicklung/32 Entwicklung und Release.md",
+      "bytes": 4836,
+      "sha256": "b99d47699439a271fcb4ac224752d0dc33d37c3906dce30d231c687d998f4e86"
+    },
+    {
+      "path": "30 Weiterentwicklung/33 Entwicklungsplan.md",
+      "bytes": 3737,
+      "sha256": "4dc5b0d35b740ea176d1a63b2a0750ce01ece65cf7f5276d522a3923e11a08bc"
+    },
+    {
+      "path": "40 Betrieb/40 Windows macOS und Android.md",
+      "bytes": 3952,
+      "sha256": "1fb5152c8e0f32bd6ce53514ec0d9167b02f3cc1b9485f50dcf41bac8ae3b2a7"
+    },
+    {
+      "path": "40 Betrieb/41 Lokal Cloud und Synchronisation.md",
+      "bytes": 4258,
+      "sha256": "2831702577eca588766abdc8c0e57d057fd713a38b3c6577d7636713c461b252"
+    },
+    {
+      "path": "40 Betrieb/42 GitHub Repositoryplan.md",
+      "bytes": 4866,
+      "sha256": "4dd48c6e51202a9caceebb128739a93607b911a2b441979481da58e8b667ca0f"
+    },
+    {
+      "path": "40 Betrieb/43 Sichtbarkeit für Besucher.md",
+      "bytes": 4178,
+      "sha256": "e9988b74a4c09fad636e2c0489234b4900c96bc993f03b948a6361abfd003db2"
+    },
+    {
+      "path": "40 Betrieb/44 Sicherheit und Datenschutz.md",
+      "bytes": 5300,
+      "sha256": "4cc8ad857c5b2fbedb4793692c849ee6185eb371d9b08960a6f5c00791b3bc10"
+    },
+    {
+      "path": "50 Websites/50 Die Vorstellungswebsite.md",
+      "bytes": 3615,
+      "sha256": "2363c7ec88c3e73c36088b523f706b247be0f65a2e2ab0fa80f7dca5ee9a219e"
+    },
+    {
+      "path": "50 Websites/51 Das Lernwerkzeug.md",
+      "bytes": 4286,
+      "sha256": "22105209858e445105f3fd387ff75a58d7c9b4851cf6a7b1a0e44f48b7898354"
+    },
+    {
+      "path": "50 Websites/52 Gestaltung und Barrierearmut.md",
+      "bytes": 3544,
+      "sha256": "2046aa67c6639895d217401a8631377fda73a9e86dc3847694be963f22b01553"
+    },
+    {
+      "path": "90 Nachweise/90 Stand und Nachweise.md",
+      "bytes": 5453,
+      "sha256": "7ecb6fe1e5cf893af3462b446d26477dea764201dc6810b6802c59861429f7d0"
+    },
+    {
+      "path": "90 Nachweise/91 Quellenverzeichnis.md",
+      "bytes": 4525,
+      "sha256": "07555176c3c87db374eb393186d85aa507f5e0acacfc2282a289cdf0b556257d"
+    },
+    {
+      "path": "90 Nachweise/92 ECC Plan-Orchestrate.md",
+      "bytes": 7426,
+      "sha256": "113404e9adbea697bdc18476a94188ab2c1eb3b5f0da24a9660c92198d0c2e51"
+    },
+    {
+      "path": "90 Nachweise/93 Vault-Prüfbericht.md",
+      "bytes": 3190,
+      "sha256": "724362176fa7344c9db2bbf8a434e8caee37ce08dee2c87b3be9ef99f86bcfc4"
+    },
+    {
+      "path": "CuD Gesamtkarte.canvas",
+      "bytes": 5892,
+      "sha256": "5c17e8b59fdefe92f64e43df424a820a1dbbd45ef765f2fbe74f9afdd2abd5c5"
+    },
+    {
+      "path": "Pruefung/Bestandsaufnahme.json",
+      "bytes": 1708,
+      "sha256": "6f1c191eeb60015a720c873179fe3e642ed2179f2240a8ed1e868e3af3b6572b"
+    },
+    {
+      "path": "Pruefung/Quellenabgleich.json",
+      "bytes": 7302,
+      "sha256": "36f729065d9c8413c52cf0bf34575743ad98e585152e38c045b952ea927e66c1"
+    },
+    {
+      "path": "Pruefung/vault_pruefen.py",
+      "bytes": 6034,
+      "sha256": "c0416df0fda476cd48d334cb510cd4b405a0e4945a1cba5c75389295ceee292c"
+    },
+    {
+      "path": "Vorlagen/Vorlage Freigabe.md",
+      "bytes": 1543,
+      "sha256": "76529d9fb524351bd3867544c72d07ef40e3265b805f7e82d07f3543f5e9bb48"
+    },
+    {
+      "path": "Vorlagen/Vorlage Vorlesung.md",
+      "bytes": 1846,
+      "sha256": "c8465387bd8356f3646ac3bc2dfe31b2482b46cebd7cf49b09f00c606776e6b4"
+    },
+    {
+      "path": "Vorlagen/Vorlage Übung.md",
+      "bytes": 1629,
+      "sha256": "17c778f9dbdcb92c08ccac8ac77fd300bc48b25e3e2b4f33cbc7d45249b15db9"
+    }
+  ]
+}
