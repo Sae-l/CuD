@@ -34,8 +34,8 @@
     },
     {
       "path": "00 Start.md",
-      "bytes": 3863,
-      "sha256": "a2ca01c406be16928623d1df7f8d5dd883797a57a806153236b488b8ee8de110"
+      "bytes": 4543,
+      "sha256": "e2fb51ca4c76e07f4b3fd9e7371d3bd4250ce2efca865bb4db94f262611c8993"
     },
     {
       "path": "01 Vault benutzen.md",
@@ -46,6 +46,11 @@
       "path": "02 Gesamtübersicht.md",
       "bytes": 2746,
       "sha256": "93066d105eab6f6da0f623f145924bf046b362d063b41363b33ebc5c6edfcb1a"
+    },
+    {
+      "path": "03 Projektleitfaden.md",
+      "bytes": 3923,
+      "sha256": "764d6f4a2214b53e71bfe44e261e370b3e523160d6ee07fb2a81b712a57dad5f"
     },
     {
       "path": "10 Konzept/10 Ziel und Umfang.md",
@@ -59,18 +64,18 @@
     },
     {
       "path": "10 Konzept/12 Wissenschaftliche Grundlagen.md",
-      "bytes": 4609,
-      "sha256": "ba2c510fabe56d7ab1ce5602189b067fa3c17ea7758066a0ce9b236029be5a15"
+      "bytes": 5303,
+      "sha256": "b3ef402dcd5052ed984ddeb15acb45c57110ff7078141f212a583dd60f307d74"
     },
     {
       "path": "20 Umsetzung/20 Technische Architektur.md",
-      "bytes": 4088,
-      "sha256": "8af0062f2f2a903ce5963077861f7433a2e7c99a90610e51f49e73e1249b9a06"
+      "bytes": 4212,
+      "sha256": "cf107189a66903c2e2cd6bdb2b86ed43d3b1f7d01cb7969a75772dd9bdb154b6"
     },
     {
       "path": "20 Umsetzung/21 Entstehung und Umsetzung.md",
-      "bytes": 3594,
-      "sha256": "e282a9f6ef365e1e818edd794d0ab0c95c4d39e1928ea280587f99c29c18f381"
+      "bytes": 3754,
+      "sha256": "58fb729e1bbe9d48705fc9b2d599aceba8ed60c539dd398fb54570422d26fb59"
     },
     {
       "path": "20 Umsetzung/22 Fähigkeiten Skills und Werkzeuge.md",
@@ -79,13 +84,38 @@
     },
     {
       "path": "20 Umsetzung/23 Qualität und Prüfungen.md",
-      "bytes": 4120,
-      "sha256": "faccfd567e8c74d0e15007b4745cea48626b7a7c05d201a0bb9a397ca54246c7"
+      "bytes": 4242,
+      "sha256": "3cc40ea5dbd1f270eebe00761dd90a8274ad6463166908627888a0c615b62f07"
+    },
+    {
+      "path": "20 Umsetzung/24 Laufzeit und Datenflüsse.md",
+      "bytes": 5449,
+      "sha256": "92da891230f136862b4be8b8655a46d2d7b67d06ccefe4a89fc9b4c0d96d56c3"
+    },
+    {
+      "path": "20 Umsetzung/25 Diagnose und Reparatur.md",
+      "bytes": 7582,
+      "sha256": "9a3c0149bfa64b398e63c70959366822c84b265c7ff50e26742a0236f22be1a8"
+    },
+    {
+      "path": "20 Umsetzung/26 Wiederaufbau und Arbeitsumgebung.md",
+      "bytes": 5320,
+      "sha256": "f72d92caf4d4b48061cb404cd7dd2bf753fbfbe76b11cdf30008d4d90c6ac48b"
+    },
+    {
+      "path": "20 Umsetzung/27 Entscheidungen und Baugeschichte.md",
+      "bytes": 5546,
+      "sha256": "827171c9e3bd4ee77f58cd47271a24531bb622886d11fa7f4d41cd1159c356a0"
+    },
+    {
+      "path": "20 Umsetzung/28 Komponenten und Einstiegspunkte.md",
+      "bytes": 8235,
+      "sha256": "786f84bd3ce8a397fbae2d4010ec149ed3d16e82914b825d957278be95f554c1"
     },
     {
       "path": "30 Weiterentwicklung/30 Neue Vorlesung hinzufügen.md",
-      "bytes": 4542,
-      "sha256": "a12c624dc797a69864c351708b459013554ac3e85c4189502d5f5baf0bca4225"
+      "bytes": 5331,
+      "sha256": "ce8008bf0dde74b5825534540db379b60e9cf3f3697d49142ff30740956d6d9d"
     },
     {
       "path": "30 Weiterentwicklung/31 Neue Übung hinzufügen.md",
@@ -144,13 +174,13 @@
     },
     {
       "path": "90 Nachweise/90 Stand und Nachweise.md",
-      "bytes": 5453,
-      "sha256": "7ecb6fe1e5cf893af3462b446d26477dea764201dc6810b6802c59861429f7d0"
+      "bytes": 5891,
+      "sha256": "d08ddc0c354039ccfd231c9d841399fba419999b9b616e1969ec11ba607331d3"
     },
     {
       "path": "90 Nachweise/91 Quellenverzeichnis.md",
-      "bytes": 4525,
-      "sha256": "07555176c3c87db374eb393186d85aa507f5e0acacfc2282a289cdf0b556257d"
+      "bytes": 4779,
+      "sha256": "537b63d94ec490bac2cb040e2c8afba310d721e13a3c2e6c368dfcd4f9b71057"
     },
     {
       "path": "90 Nachweise/92 ECC Plan-Orchestrate.md",
@@ -159,13 +189,18 @@
     },
     {
       "path": "90 Nachweise/93 Vault-Prüfbericht.md",
-      "bytes": 3190,
-      "sha256": "724362176fa7344c9db2bbf8a434e8caee37ce08dee2c87b3be9ef99f86bcfc4"
+      "bytes": 4506,
+      "sha256": "3b01566218f3b9badca2a495d49c447faee1c869184cc73fdd8b06c35ae2e3f9"
+    },
+    {
+      "path": "90 Nachweise/94 Gesprächs- und Quellenabgleich.md",
+      "bytes": 5990,
+      "sha256": "49f80539daa6b4268e8cf4a8e0de80603be6a4e58a33f7bcc9a204a01b1d4263"
     },
     {
       "path": "CuD Gesamtkarte.canvas",
-      "bytes": 5892,
-      "sha256": "5c17e8b59fdefe92f64e43df424a820a1dbbd45ef765f2fbe74f9afdd2abd5c5"
+      "bytes": 12541,
+      "sha256": "b412a55d4804ddf079ecab3701dd2de6c55a015772ba529055b84af50fc53e4f"
     },
     {
       "path": "Pruefung/Bestandsaufnahme.json",
@@ -178,9 +213,24 @@
       "sha256": "36f729065d9c8413c52cf0bf34575743ad98e585152e38c045b952ea927e66c1"
     },
     {
+      "path": "Pruefung/Referenzabgleich.json",
+      "bytes": 7582,
+      "sha256": "627b637e9a9ef41eb7510515fa41d42277a2a663d9e5fbb563ec2bf2d310e884"
+    },
+    {
+      "path": "Pruefung/beispiel_pruefen.cjs",
+      "bytes": 2423,
+      "sha256": "eb190b2aa7f7948d38dcd5702eded59c7c89bcd373a4c04e06677af7962f956f"
+    },
+    {
+      "path": "Pruefung/test_vault_pruefen.py",
+      "bytes": 1248,
+      "sha256": "89be8191b097faed5cc1035cfc6cc617f3cf0174aad373a27c797e4fc7635582"
+    },
+    {
       "path": "Pruefung/vault_pruefen.py",
-      "bytes": 6034,
-      "sha256": "c0416df0fda476cd48d334cb510cd4b405a0e4945a1cba5c75389295ceee292c"
+      "bytes": 6284,
+      "sha256": "57cb4f8c398f9887150a23fb31e6e455673e25fcae28cc83bfc7f638fda047bb"
     },
     {
       "path": "Vorlagen/Vorlage Freigabe.md",

@@ -50,3 +50,5 @@ Praxisquelle des bestehenden Konzepts: [Raspberry Pi Foundation: Using PRIMM to 
 Für neue Fachbeispiele zusätzlich die konkret verwendete API und Paketversion prüfen. Eine allgemeine Bibliotheksstartseite ersetzt keine Kontrolle von Randfällen und numerischen Erwartungen.
 
 Weiter: [[00 Start]] · [[90 Stand und Nachweise]] · [[91 Quellenverzeichnis]]
+
+Zusätzlich wurde eine definierte Auswahl anderer Projektgespräche mit Dateien und Git-Historie abgeglichen. Umfang und nicht lesbarer Chat: [[94 Gesprächs- und Quellenabgleich]]. Rohgespräche werden nicht als öffentliche Quellenkopie mitgeliefert.

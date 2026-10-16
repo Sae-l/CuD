@@ -61,3 +61,7 @@ Weiter: [[00 Start]] · [[90 Stand und Nachweise]] · [[91 Quellenverzeichnis]]
 ## Ergänzung zum Uploadauftrag
 
 Nach Erstellung des ersten Bestands wurden Einstellungen und Canvas-Anordnung in Obsidian verändert. Diese Änderungen wurden vor der Übernahme gesichtet und bleiben erhalten. Das Vaultmanifest wird für diesen geprüften Stand erneuert. Die Bestandsaufnahme.json dokumentiert weiterhin den ursprünglichen Erstellungszeitpunkt; ihr damaliger Eintrag zum Veröffentlichungsstatus ist historisch. Veröffentlichungsziel ist der Branch [docs/obsidian-cud-vault](https://github.com/Sae-l/CuD/tree/docs/obsidian-cud-vault).
+
+## Ergänzung: zentrale Projektreferenz
+
+Die erneute Repositorysichtung verwendet main auf `b784b9b` nach dem Merge von PR #11. Fünf Projektchats wurden gelesen, ein weiterer war technisch nicht lesbar. Implementierung, Arbeitskopien und alte Gesprächsstände werden unter [[94 Gesprächs- und Quellenabgleich]] getrennt. Die neue Hauptreferenz ist [[03 Projektleitfaden]]. Die obenstehenden Angaben bleiben als Erstaufnahme erhalten.

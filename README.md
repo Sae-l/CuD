@@ -22,7 +22,7 @@ Die automatisierten Browserprüfungen sind in [kompatibilitaet.json](Lernwerkzeu
 
 ## Wissensbasis in Obsidian
 
-Die [deutsche CuD-Wissensbasis](Obsidian-CuD/00%20Start.md) erklärt Zweck, wissenschaftliche Grundlagen, Architektur, Inhaltserweiterung, Plattformen, Betrieb und Datenschutz. Öffne den Unterordner `Obsidian-CuD` als Vault in Obsidian; Community-Plugins sind nicht erforderlich. Die Canvas-Datei enthält die verknüpfte Gesamtkarte. Prüfungen: `python Obsidian-CuD/Pruefung/vault_pruefen.py`.
+Die [deutsche CuD-Hauptreferenz](Obsidian-CuD/03%20Projektleitfaden.md) erklärt Zweck, Baugeschichte, wissenschaftliche Grundlagen, Laufzeit und Inhaltserweiterung. Sie verbindet Fehlersymptome mit Codeorten, Reparaturprüfungen und dem Wiederaufbau der Arbeitsumgebung. Ein dokumentierter Abgleich von GitHub, Projektdateien und fünf Projektchats begrenzt die Aussagen nachvollziehbar. Öffne den Unterordner `Obsidian-CuD` als Vault in Obsidian; Community-Plugins sind nicht erforderlich. Die Canvas-Datei enthält die verknüpfte Gesamtkarte. Prüfungen: `python Obsidian-CuD/Pruefung/vault_pruefen.py`.
 
 ## Was liegt wo?
 

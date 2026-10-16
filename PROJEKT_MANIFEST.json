@@ -24,9 +24,9 @@
     },
     {
       "path": ".github/workflows/check.yml",
-      "bytes": 1613,
-      "sha256": "66159d3c9dc67a51f94a8f4a3058d1f5d0098aebb48b7c12a57edb02312f1e63",
-      "git_blob_sha1": "494f60e1c866c9c9ca18ef4fefab1a32e1a9ecea"
+      "bytes": 1755,
+      "sha256": "0b886fc7f08ad49717e7820b8e9be4c1a8b6ecc0a0b510593a76c99881570bb4",
+      "git_blob_sha1": "9cb93e6f602a9831255ce1fd8c2acd07c1f0b16f"
     },
     {
       "path": ".github/workflows/release.yml",
@@ -366,9 +366,9 @@
     },
     {
       "path": "Obsidian-CuD/00 Start.md",
-      "bytes": 3863,
-      "sha256": "a2ca01c406be16928623d1df7f8d5dd883797a57a806153236b488b8ee8de110",
-      "git_blob_sha1": "f52fa622748f88f4563b48b3a94c034685f5c0a2"
+      "bytes": 4543,
+      "sha256": "e2fb51ca4c76e07f4b3fd9e7371d3bd4250ce2efca865bb4db94f262611c8993",
+      "git_blob_sha1": "c7bef87faa11cb13c3dfc29ff26932733e679b1a"
     },
     {
       "path": "Obsidian-CuD/01 Vault benutzen.md",
@@ -381,6 +381,12 @@
       "bytes": 2746,
       "sha256": "93066d105eab6f6da0f623f145924bf046b362d063b41363b33ebc5c6edfcb1a",
       "git_blob_sha1": "d42a11db156b6d4b4d3aad8261f3c0f5a672f4a9"
+    },
+    {
+      "path": "Obsidian-CuD/03 Projektleitfaden.md",
+      "bytes": 3923,
+      "sha256": "764d6f4a2214b53e71bfe44e261e370b3e523160d6ee07fb2a81b712a57dad5f",
+      "git_blob_sha1": "078489ac5c917db2af95abd7eee2991c89ad5dac"
     },
     {
       "path": "Obsidian-CuD/10 Konzept/10 Ziel und Umfang.md",
@@ -396,21 +402,21 @@
     },
     {
       "path": "Obsidian-CuD/10 Konzept/12 Wissenschaftliche Grundlagen.md",
-      "bytes": 4609,
-      "sha256": "ba2c510fabe56d7ab1ce5602189b067fa3c17ea7758066a0ce9b236029be5a15",
-      "git_blob_sha1": "ce452da1e1bf03c36388fbc7b49e52680abe5c86"
+      "bytes": 5303,
+      "sha256": "b3ef402dcd5052ed984ddeb15acb45c57110ff7078141f212a583dd60f307d74",
+      "git_blob_sha1": "7a8e1914db16e7ab8208507a02e4bc1a9b341235"
     },
     {
       "path": "Obsidian-CuD/20 Umsetzung/20 Technische Architektur.md",
-      "bytes": 4088,
-      "sha256": "8af0062f2f2a903ce5963077861f7433a2e7c99a90610e51f49e73e1249b9a06",
-      "git_blob_sha1": "f80f7337f24a8c7b9d93f19fb3a34e0c943042ca"
+      "bytes": 4212,
+      "sha256": "cf107189a66903c2e2cd6bdb2b86ed43d3b1f7d01cb7969a75772dd9bdb154b6",
+      "git_blob_sha1": "4e9e084e1ef26df8dacad30d3d37988cc169c0d0"
     },
     {
       "path": "Obsidian-CuD/20 Umsetzung/21 Entstehung und Umsetzung.md",
-      "bytes": 3594,
-      "sha256": "e282a9f6ef365e1e818edd794d0ab0c95c4d39e1928ea280587f99c29c18f381",
-      "git_blob_sha1": "975fb43921af33a70b2222282627306b1a646dac"
+      "bytes": 3754,
+      "sha256": "58fb729e1bbe9d48705fc9b2d599aceba8ed60c539dd398fb54570422d26fb59",
+      "git_blob_sha1": "8f83f3a3aff52ba3985b8dacf28bc145d23a173d"
     },
     {
       "path": "Obsidian-CuD/20 Umsetzung/22 Fähigkeiten Skills und Werkzeuge.md",
@@ -420,15 +426,45 @@
     },
     {
       "path": "Obsidian-CuD/20 Umsetzung/23 Qualität und Prüfungen.md",
-      "bytes": 4120,
-      "sha256": "faccfd567e8c74d0e15007b4745cea48626b7a7c05d201a0bb9a397ca54246c7",
-      "git_blob_sha1": "101ceda299a26db4a364c8ac8070f52a4dc30385"
+      "bytes": 4242,
+      "sha256": "3cc40ea5dbd1f270eebe00761dd90a8274ad6463166908627888a0c615b62f07",
+      "git_blob_sha1": "c1c3f42d3afc1ebf210291d6ce64cdf13b99fd10"
+    },
+    {
+      "path": "Obsidian-CuD/20 Umsetzung/24 Laufzeit und Datenflüsse.md",
+      "bytes": 5449,
+      "sha256": "92da891230f136862b4be8b8655a46d2d7b67d06ccefe4a89fc9b4c0d96d56c3",
+      "git_blob_sha1": "ad4f1c3ed7cfaf0dd8da727efab9b44469ca5a3f"
+    },
+    {
+      "path": "Obsidian-CuD/20 Umsetzung/25 Diagnose und Reparatur.md",
+      "bytes": 7582,
+      "sha256": "9a3c0149bfa64b398e63c70959366822c84b265c7ff50e26742a0236f22be1a8",
+      "git_blob_sha1": "07725a6ba12622603b189685161e670b1f55231f"
+    },
+    {
+      "path": "Obsidian-CuD/20 Umsetzung/26 Wiederaufbau und Arbeitsumgebung.md",
+      "bytes": 5320,
+      "sha256": "f72d92caf4d4b48061cb404cd7dd2bf753fbfbe76b11cdf30008d4d90c6ac48b",
+      "git_blob_sha1": "ea64ce274a80cf1e3190ae22eb97e77b1d1c2eb5"
+    },
+    {
+      "path": "Obsidian-CuD/20 Umsetzung/27 Entscheidungen und Baugeschichte.md",
+      "bytes": 5546,
+      "sha256": "827171c9e3bd4ee77f58cd47271a24531bb622886d11fa7f4d41cd1159c356a0",
+      "git_blob_sha1": "2390ef98ccf99bf7755e85dc18dadc7abdebcede"
+    },
+    {
+      "path": "Obsidian-CuD/20 Umsetzung/28 Komponenten und Einstiegspunkte.md",
+      "bytes": 8235,
+      "sha256": "786f84bd3ce8a397fbae2d4010ec149ed3d16e82914b825d957278be95f554c1",
+      "git_blob_sha1": "a59765aa659aca15a19405d9b2a3c7409fa6ac32"
     },
     {
       "path": "Obsidian-CuD/30 Weiterentwicklung/30 Neue Vorlesung hinzufügen.md",
-      "bytes": 4542,
-      "sha256": "a12c624dc797a69864c351708b459013554ac3e85c4189502d5f5baf0bca4225",
-      "git_blob_sha1": "5916ad1fbbbec559dfb57937de69a30e8f0e57ce"
+      "bytes": 5331,
+      "sha256": "ce8008bf0dde74b5825534540db379b60e9cf3f3697d49142ff30740956d6d9d",
+      "git_blob_sha1": "526abd3365df2b52d9231cd222b230cdd1de1c56"
     },
     {
       "path": "Obsidian-CuD/30 Weiterentwicklung/31 Neue Übung hinzufügen.md",
@@ -498,15 +534,15 @@
     },
     {
       "path": "Obsidian-CuD/90 Nachweise/90 Stand und Nachweise.md",
-      "bytes": 5453,
-      "sha256": "7ecb6fe1e5cf893af3462b446d26477dea764201dc6810b6802c59861429f7d0",
-      "git_blob_sha1": "e9b946ecba337d0be8c479370020998abb4a3590"
+      "bytes": 5891,
+      "sha256": "d08ddc0c354039ccfd231c9d841399fba419999b9b616e1969ec11ba607331d3",
+      "git_blob_sha1": "0e5907a7490288f568c151bb54dbeb29af9c6f89"
     },
     {
       "path": "Obsidian-CuD/90 Nachweise/91 Quellenverzeichnis.md",
-      "bytes": 4525,
-      "sha256": "07555176c3c87db374eb393186d85aa507f5e0acacfc2282a289cdf0b556257d",
-      "git_blob_sha1": "064e6a215eb58ac92564517f5e3c388426116d7f"
+      "bytes": 4779,
+      "sha256": "537b63d94ec490bac2cb040e2c8afba310d721e13a3c2e6c368dfcd4f9b71057",
+      "git_blob_sha1": "3ee6d5772c9919fae4ba47a2eff798b16906a648"
     },
     {
       "path": "Obsidian-CuD/90 Nachweise/92 ECC Plan-Orchestrate.md",
@@ -516,15 +552,21 @@
     },
     {
       "path": "Obsidian-CuD/90 Nachweise/93 Vault-Prüfbericht.md",
-      "bytes": 3190,
-      "sha256": "724362176fa7344c9db2bbf8a434e8caee37ce08dee2c87b3be9ef99f86bcfc4",
-      "git_blob_sha1": "5004baa072e67756d5f730b31110f111b6471684"
+      "bytes": 4506,
+      "sha256": "3b01566218f3b9badca2a495d49c447faee1c869184cc73fdd8b06c35ae2e3f9",
+      "git_blob_sha1": "eef7b66465d749e5f40c4f67d8a38e1afc21085c"
+    },
+    {
+      "path": "Obsidian-CuD/90 Nachweise/94 Gesprächs- und Quellenabgleich.md",
+      "bytes": 5990,
+      "sha256": "49f80539daa6b4268e8cf4a8e0de80603be6a4e58a33f7bcc9a204a01b1d4263",
+      "git_blob_sha1": "a0250ecc02adab26ea728d8002f32d3f999449c7"
     },
     {
       "path": "Obsidian-CuD/CuD Gesamtkarte.canvas",
-      "bytes": 5892,
-      "sha256": "5c17e8b59fdefe92f64e43df424a820a1dbbd45ef765f2fbe74f9afdd2abd5c5",
-      "git_blob_sha1": "3a001126c93e81ea9d3067d80e210626128a1d19"
+      "bytes": 12541,
+      "sha256": "b412a55d4804ddf079ecab3701dd2de6c55a015772ba529055b84af50fc53e4f",
+      "git_blob_sha1": "5cd48d32871e955e4c2ef30914849aaaeb1c00c4"
     },
     {
       "path": "Obsidian-CuD/Pruefung/Bestandsaufnahme.json",
@@ -539,16 +581,34 @@
       "git_blob_sha1": "8cdbe66df8178178955b69f84ce9a9ea8b016d99"
     },
     {
+      "path": "Obsidian-CuD/Pruefung/Referenzabgleich.json",
+      "bytes": 7582,
+      "sha256": "627b637e9a9ef41eb7510515fa41d42277a2a663d9e5fbb563ec2bf2d310e884",
+      "git_blob_sha1": "e3822d54ccc6b828efe0f1bd9271afc0cf53bf31"
+    },
+    {
       "path": "Obsidian-CuD/Pruefung/VAULT_MANIFEST.json",
-      "bytes": 6871,
-      "sha256": "045c93582e86005185e2169804de37de922e2e92fc7a071461353bc7eae48f77",
-      "git_blob_sha1": "25f4dfe2d3f998f9fe78a82f593e0a63f74b71c7"
+      "bytes": 8670,
+      "sha256": "8e219af0ded31ae1d0fc2c929d26e98e4870510c8d5d99fcbbfc93f8d6266d1f",
+      "git_blob_sha1": "fcf5eea7388668ecaa80d10e6c1d7854c876c626"
+    },
+    {
+      "path": "Obsidian-CuD/Pruefung/beispiel_pruefen.cjs",
+      "bytes": 2423,
+      "sha256": "eb190b2aa7f7948d38dcd5702eded59c7c89bcd373a4c04e06677af7962f956f",
+      "git_blob_sha1": "2180c3f1d8c8521a6fa9b0ec561cd7703d4c7b67"
+    },
+    {
+      "path": "Obsidian-CuD/Pruefung/test_vault_pruefen.py",
+      "bytes": 1248,
+      "sha256": "89be8191b097faed5cc1035cfc6cc617f3cf0174aad373a27c797e4fc7635582",
+      "git_blob_sha1": "6b07f1c9bb1db62146c674ae1452ec3269f66c43"
     },
     {
       "path": "Obsidian-CuD/Pruefung/vault_pruefen.py",
-      "bytes": 6034,
-      "sha256": "c0416df0fda476cd48d334cb510cd4b405a0e4945a1cba5c75389295ceee292c",
-      "git_blob_sha1": "e2665c38fae295778a147798086c09a4752f8cb7"
+      "bytes": 6284,
+      "sha256": "57cb4f8c398f9887150a23fb31e6e455673e25fcae28cc83bfc7f638fda047bb",
+      "git_blob_sha1": "58d515f2986aa9c12fc55b25450e0eaa55c4d5b8"
     },
     {
       "path": "Obsidian-CuD/Vorlagen/Vorlage Freigabe.md",
@@ -570,9 +630,9 @@
     },
     {
       "path": "README.md",
-      "bytes": 7178,
-      "sha256": "d7432bd5c76296f18ee33f1ea7b113eb2676ea07dcb29fb30e69fb3a10cef0d3",
-      "git_blob_sha1": "7667413680cc04dc1285d3b274a19708597585d3"
+      "bytes": 7390,
+      "sha256": "4ba669005cbe2b0c2e66d20c91b19ffe4d526b9e685026c7390920c09b40e9c5",
+      "git_blob_sha1": "e19eccc1d109e15c092b27fdbdfcf3caf003f1f2"
     },
     {
       "path": "RELEASE_NOTES.md",

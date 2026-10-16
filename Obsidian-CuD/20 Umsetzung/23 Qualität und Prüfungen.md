@@ -48,3 +48,5 @@ Der aktuelle Manifest-Vorabcheck dieses Dokumentationsauftrags war bereits vor d
 - [Lernwerkzeug/GEBRAUCHSTEST.md](https://github.com/Sae-l/CuD/blob/bdff10b0918473d8a37e05141a85fdf37c762c4d/Lernwerkzeug/GEBRAUCHSTEST.md)
 
 Weiter: [[00 Start]] · [[90 Stand und Nachweise]] · [[91 Quellenverzeichnis]]
+
+Bei einem Fehler zuerst [[25 Diagnose und Reparatur]] verwenden; beim Neuaufbau [[26 Wiederaufbau und Arbeitsumgebung]].

@@ -1,0 +1,178 @@
+{
+  "date": "2026-10-16",
+  "repository": "Sae-l/CuD",
+  "reviewed_main_commit": "b784b9bed47ba9232c0e121b0f496a6dd75b119d",
+  "visibility": "public",
+  "merged_vault_pr": 11,
+  "reviewed_files": [
+    {
+      "path": "index.html",
+      "sha256_reviewed_checkout": "0d9a1773029ba4db74e05f5a69b7402b57465cb374b84dceb62aa0749877fbae",
+      "git_blob_sha1": "ce56cca5b5004eb76e7d498d8783f00efed3bb81",
+      "outer_workspace_exists": false,
+      "outer_workspace_bytes_equal": null
+    },
+    {
+      "path": "README.md",
+      "sha256_reviewed_checkout": "d7432bd5c76296f18ee33f1ea7b113eb2676ea07dcb29fb30e69fb3a10cef0d3",
+      "git_blob_sha1": "7667413680cc04dc1285d3b274a19708597585d3",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": false
+    },
+    {
+      "path": "Lernwerkzeug/index.html",
+      "sha256_reviewed_checkout": "93842ca43a8f0d842b69b35e05d63b573706bc2f0c8d72b216f56f9e3f53c4bc",
+      "git_blob_sha1": "a19a3d92d6baa4b52381edc9dfffff506b60db85",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": true
+    },
+    {
+      "path": "Lernwerkzeug/app.js",
+      "sha256_reviewed_checkout": "6e1d3bafadca82cdc1a0bc031aa211226ffb892083f383ba4b2210cb843be634",
+      "git_blob_sha1": "50914c5c9ab1d6ae6e2568a52b5c48aa41556193",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": true
+    },
+    {
+      "path": "Lernwerkzeug/kurs.js",
+      "sha256_reviewed_checkout": "9ca9e32e53049258174a1b3f4e54b8d7699646af11ad3875a66a9aa0088b87f1",
+      "git_blob_sha1": "49f989b6970f79a06bd1c7b6c8e2596933616443",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": true
+    },
+    {
+      "path": "Lernwerkzeug/inhalte.js",
+      "sha256_reviewed_checkout": "890f6617b83a117f5dc9ada08671a1cd4c567ae2b9ed606d1ef841241328e761",
+      "git_blob_sha1": "06a4a23d52b73c0025f90727e3b232ee1ee48a53",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": true
+    },
+    {
+      "path": "Lernwerkzeug/styles.css",
+      "sha256_reviewed_checkout": "4bb5b3720824bea733aad1f2ce0afff6619a8a6ef49787684d9666b5930a348e",
+      "git_blob_sha1": "24559661b421851aedf2b357144260019da99c2b",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": false
+    },
+    {
+      "path": "Lernwerkzeug/pruefen.cjs",
+      "sha256_reviewed_checkout": "5f3ecd31ffb756efddd52fd42cf360f6820eca6d375b45ecf5647e9b17ad6fcc",
+      "git_blob_sha1": "de027e7caa87ed03ca6728fc9f21079d8877284a",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": false
+    },
+    {
+      "path": "Lernwerkzeug/kompatibilitaet.cjs",
+      "sha256_reviewed_checkout": "f1afc39318f2d9d41f403ac6f140e2931a4a12c6aad0f19e816c4c199b3fe58f",
+      "git_blob_sha1": "277248c75b5373c6c816ac75dd80f53f04fcb7c7",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": false
+    },
+    {
+      "path": "Lernwerkzeug/LERNKONZEPT.md",
+      "sha256_reviewed_checkout": "c57986cf4b376bd20877b11515e24b6543b525aea9d08d99b65d2dcb17149e15",
+      "git_blob_sha1": "2e94fc7d157a9f9bec53e88ea9ed4a8facc97622",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": true
+    },
+    {
+      "path": "Lernwerkzeug/ERWEITERN.md",
+      "sha256_reviewed_checkout": "4a7bdcd435e1b850ffc67ad1577ea47a9e4533092fbec4d694dee8e6ea6ecdbc",
+      "git_blob_sha1": "6f4dfeca566783b050e3308ddf1bf04ac4645ec7",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": true
+    },
+    {
+      "path": "Lernwerkzeug/ABDECKUNG.md",
+      "sha256_reviewed_checkout": "a30c74a4a7ddeacfe46335c5dcc4f707bc62100096302506b02ffa346dffad32",
+      "git_blob_sha1": "30c121b8696de6ac857a02a66e1db86fb8d44cef",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": true
+    },
+    {
+      "path": "scripts/manifest.py",
+      "sha256_reviewed_checkout": "e73abd0d8bdcd9321bb0a0958802445001e9f8bbbe4f6ac8afff9c4b7f53c575",
+      "git_blob_sha1": "b0af42cf08ecd79096770be5441d380962f640c2",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": true
+    },
+    {
+      "path": "scripts/release.py",
+      "sha256_reviewed_checkout": "17e199366619b7271a5870b32a894cf4779bf1eafd0809c991732e0c06808c4b",
+      "git_blob_sha1": "fc7fd94361986d01cc5fe83b0ec159f17f8f8c64",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": true
+    },
+    {
+      "path": "scripts/uebungen_pruefen.py",
+      "sha256_reviewed_checkout": "5a62e53875da93fa026e7e823dbdae979df18411e8add16a179e9c2731575a8c",
+      "git_blob_sha1": "b38ccc74582f54b1ddd6c64542902e57177f172c",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": true
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha256_reviewed_checkout": "e82c86706355c95b0f574cdc453d7d2743dea9591d734c8933912127377cf0f0",
+      "git_blob_sha1": "f5294807da3a9dcdb8a87f138f62c79d7cf8fc4f",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": true
+    },
+    {
+      "path": "ARBEITSPLAN_Lernwerkzeug.md",
+      "sha256_reviewed_checkout": "61c641cd8ab698683aa286814600a933ead82d345aa63d09da5fc2a3cb82ba84",
+      "git_blob_sha1": "0dc5e8b7f400e8f2dc4a5d089f46f06f0a844a40",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": false
+    },
+    {
+      "path": "AUDIT.md",
+      "sha256_reviewed_checkout": "7a4c9bda5b969b0c5ccfd0186c2f9e3e1773ee1179089e885d2065fad549886c",
+      "git_blob_sha1": "9b85c176906a90f1eb4c99f7bc72a082ff7c1afa",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": false
+    },
+    {
+      "path": ".github/workflows/check.yml",
+      "sha256_reviewed_checkout": "66159d3c9dc67a51f94a8f4a3058d1f5d0098aebb48b7c12a57edb02312f1e63",
+      "git_blob_sha1": "494f60e1c866c9c9ca18ef4fefab1a32e1a9ecea",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": false
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "sha256_reviewed_checkout": "7cf2614ec5a5c8a58f28d84775bc1a299201da0b4dc4e69f0b4294b9f361f675",
+      "git_blob_sha1": "189a4817102f1a9156b7d9697cf1f2827a82b1be",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": true
+    },
+    {
+      "path": "Lernwerkzeug/pruefung/ergebnis.json",
+      "sha256_reviewed_checkout": "208f6331dad905a0a4d4ce2b1e32360eecfc64bace570f7dc65321f9ea8e711d",
+      "git_blob_sha1": "1cc79d92185260d618d4e30d80386436d2d82699",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": false
+    },
+    {
+      "path": "Lernwerkzeug/pruefung/kompatibilitaet.json",
+      "sha256_reviewed_checkout": "115c02e68573b84ffe33ecb759bf465119b9e27ab7664722c1bc3cb1dceb7235",
+      "git_blob_sha1": "ee1905d7f03083bcbf9abd47e20c09bdc1e2767c",
+      "outer_workspace_exists": true,
+      "outer_workspace_bytes_equal": false
+    }
+  ],
+  "chat_review": {
+    "read": 5,
+    "unavailable": 1,
+    "partial_history": true,
+    "raw_transcripts_published": false,
+    "unavailable_title": "Lernwebseite mit gemeinsamer Suche"
+  },
+  "research_provenance": {
+    "historically_documented_framework": "PRIMM",
+    "original_article_and_dunlosky": "supplementary literature added in the vault",
+    "product_learning_outcomes_validated": false
+  },
+  "latest_release_at_review": "v0.2.1",
+  "release_precedes_vault_merge": true,
+  "application_code_changed": false
+}

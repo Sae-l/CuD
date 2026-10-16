@@ -49,3 +49,5 @@ Jede Erweiterung soll Herkunft, Lernziel, ausführbares Beispiel, unabhängige E
 - [SKILL_RECHERCHE.md](https://github.com/Sae-l/CuD/blob/bdff10b0918473d8a37e05141a85fdf37c762c4d/SKILL_RECHERCHE.md)
 
 Weiter: [[00 Start]] · [[90 Stand und Nachweise]] · [[91 Quellenverzeichnis]]
+
+Der erneute Gesprächsabgleich und begründete Entscheidungen stehen unter [[27 Entscheidungen und Baugeschichte]] und [[94 Gesprächs- und Quellenabgleich]].
