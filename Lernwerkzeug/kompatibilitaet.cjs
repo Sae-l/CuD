@@ -22,8 +22,9 @@ async function main() {
   const {chromium,firefox,webkit} = require("playwright");
   const types = {".html":"text/html",".css":"text/css",".js":"text/javascript",".ttf":"font/ttf",".jpg":"image/jpeg"};
   const files = new Map(["index.html","styles.css","inhalte.js","kurs.js","app.js","assets/gsap.min.js","assets/ScrollTrigger.min.js","assets/Outfit.ttf","assets/lernraum.jpg"].map(name => [
-    `/${name}`,{bytes:fs.readFileSync(path.join(__dirname,name)),type:types[path.extname(name)]}
+    `/CuD/Lernwerkzeug/${name}`,{bytes:fs.readFileSync(path.join(__dirname,name)),type:types[path.extname(name)]}
   ]));
+  files.set("/CuD/index.html",{bytes:fs.readFileSync(path.join(__dirname,"../index.html")),type:"text/html"});
   const server = http.createServer((request,response) => {
     const file = files.get(request.url);
     response.writeHead(file ? 200 : 404,{"Content-Type":`${file?.type || "text/plain"}; charset=utf-8`});
@@ -32,7 +33,7 @@ async function main() {
   server.listen(0,"127.0.0.1");
   await once(server,"listening");
   const origin = `http://127.0.0.1:${server.address().port}`;
-  const url = `${origin}/index.html`;
+  const url = `${origin}/CuD/Lernwerkzeug/index.html`;
   const profiles = [[320,740],[390,844],[768,1024],[1024,768],[844,390],[1280,800],[1440,1000]];
   try {
   for (const engine of [chromium,firefox,webkit]) {
@@ -61,8 +62,21 @@ async function main() {
         // shortcut: Windows-WebKit scheitert hier an file://, auf echtem Safari separat prüfen.
         report.localFile = "UNVERIFIED: Windows WebKit file:// internal error; HTTP tested";
       }
-      await page.goto(url);
-      await page.locator(".welcome-hero").waitFor();
+      for (const width of [390,1440]) {
+        await page.setViewportSize({width,height:1000});
+        await page.goto(`${origin}/CuD/index.html`);
+        assert.equal(await page.locator("h1").count(),1);
+        assert(await page.locator('meta[name="description"]').getAttribute("content"));
+        assert(await page.locator(".hero-visual img").evaluate(img => img.complete && img.naturalWidth > 0));
+        assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+        if (width === 390) {
+          await page.locator(".menu-btn").click();
+          await page.locator('#menu a[href="Lernwerkzeug/index.html"]').click();
+        } else await page.locator(".hero .btn-primary").click();
+        await page.waitForURL(url);
+        await page.locator(".welcome-hero").waitFor();
+      }
+      report.landing = "PASS: /CuD/ desktop and mobile entry links";
       await page.evaluate(() => document.fonts.ready);
       assert.equal(await page.evaluate(() => document.fonts.check('16px Outfit')),true);
       assert(await page.evaluate(() => window.gsap && window.ScrollTrigger && ScrollTrigger.getAll().length > 0));

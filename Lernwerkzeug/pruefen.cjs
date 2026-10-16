@@ -203,7 +203,16 @@ async function browserTests() {
       await page.goto(id ? `${url}#${id}` : url);
       await waitForItem(id);
     }
-    await navigate();
+    const landing = pathToFileURL(path.join(root,"../index.html")).href;
+    await page.goto(landing);
+    const entryLinks = await page.locator('a[href^="Lernwerkzeug/"]').evaluateAll(nodes => nodes.map(node => node.getAttribute("href")));
+    assert.equal(entryLinks.filter(href => href === "Lernwerkzeug/index.html").length,4,"Alle Lernraum-Zugänge müssen direkt die HTML-Datei öffnen");
+    for (const href of entryLinks) assert(fs.statSync(fileURLToPath(new URL(href,landing))).isFile(),href);
+    const zipURL = "https://github.com/Sae-l/CuD/archive/refs/heads/main.zip";
+    assert.equal(await page.locator(`a[href="${zipURL}"]`).count(),2,"ZIP statt veraltetem Release verlinken");
+    await page.locator(".hero .btn-primary").click();
+    assert.equal(page.url(),url);
+    await waitForItem();
     await page.waitForLoadState("networkidle");
     assert.equal(await page.locator("#nav-toggle").isVisible(),false);
     assert.equal(await page.locator("#lernnavigation").isVisible(),true);
@@ -423,7 +432,7 @@ async function browserTests() {
     assert(await page.evaluate(() => matchMedia("(prefers-reduced-motion: reduce)").matches));
     assert.deepEqual(errors,[]);
     assert.deepEqual(externalRequests,[]);
-    return {searchCases:cases.length,views:items.length + Object.keys(overviewTitles).length + 1,commandRows:15 + commands.length,learningQuizzes:lessons.length,progressPersistence:true,originalTasks:originalTasks.length,localLinks:localLinks.size,externalRequests:externalRequests.length};
+    return {searchCases:cases.length,views:items.length + Object.keys(overviewTitles).length + 1,commandRows:15 + commands.length,learningQuizzes:lessons.length,progressPersistence:true,offlineLanding:true,originalTasks:originalTasks.length,localLinks:localLinks.size,externalRequests:externalRequests.length};
   } finally { await browser.close(); }
 }
 
