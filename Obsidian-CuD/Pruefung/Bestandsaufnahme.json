@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-16",
+  "timezone": "Europe/Berlin",
+  "repository": {
+    "full_name": "Sae-l/CuD",
+    "visibility": "public",
+    "default_branch": "main",
+    "main_sha": "bdff10b0918473d8a37e05141a85fdf37c762c4d",
+    "metadata_method": "GitHub connector get_repo; public commit API readback"
+  },
+  "http_checks": [
+    {
+      "url": "https://sae-l.github.io/CuD/",
+      "status": 200,
+      "title": "CuD · Programmieren lernen"
+    },
+    {
+      "url": "https://sae-l.github.io/CuD/Lernwerkzeug/",
+      "status": 200,
+      "title": "Coding · Lernwerkzeug"
+    }
+  ],
+  "remote_files_read": [
+    {
+      "path": "README.md",
+      "blob_sha": "df2acbf22e28f296da667de3c3d29d1ed9d51dd8"
+    },
+    {
+      "path": "index.html",
+      "blob_sha": "ce56cca5b5004eb76e7d498d8783f00efed3bb81"
+    }
+  ],
+  "existing_app_evidence": {
+    "version": "0.2.1",
+    "original_tasks": 31,
+    "live_exercises": 4,
+    "lessons": 10,
+    "result_date": "2026-10-15T14:28:55.494Z",
+    "matrix_date": "2026-10-15T14:31:02.568Z",
+    "matrix_host": "win32",
+    "views": 76,
+    "sizes": 7,
+    "engines": 3,
+    "combinations": 1596,
+    "full_app_suite_rerun_for_this_vault": false
+  },
+  "baseline_manifest": {
+    "status": "FAIL",
+    "before_vault_creation": true,
+    "paths": [
+      ".claude/launch.json"
+    ],
+    "rewritten": false
+  },
+  "unverified": [
+    "actual macOS and Android devices",
+    "actual Safari",
+    "screen readers",
+    "learning outcomes",
+    "current branch protection settings",
+    "course material publication rights"
+  ],
+  "publication_performed": false,
+  "community_plugins_installed": false
+}

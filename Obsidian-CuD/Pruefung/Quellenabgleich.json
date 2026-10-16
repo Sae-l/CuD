@@ -1,0 +1,208 @@
+{
+  "date": "2026-10-16",
+  "repository": "Sae-l/CuD",
+  "commit": "bdff10b0918473d8a37e05141a85fdf37c762c4d",
+  "method": "Public Git tree readback and local design-checkout blob comparison",
+  "status": "PASS",
+  "sources": [
+    {
+      "path": ".github/workflows/check.yml",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "322475d1210e1018a54be5d9a338d2d2651db3ec",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "189a4817102f1a9156b7d9697cf1f2827a82b1be",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": ".gitignore",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "dd0772cf507d64372276ae745fadd32b3121c428",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "ARBEITSPLAN_Lernwerkzeug.md",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "0dc5e8b7f400e8f2dc4a5d089f46f06f0a844a40",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "AUDIT.md",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "9b85c176906a90f1eb4c99f7bc72a082ff7c1afa",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "f5294807da3a9dcdb8a87f138f62c79d7cf8fc4f",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/ABDECKUNG.md",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "30c121b8696de6ac857a02a66e1db86fb8d44cef",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/ERWEITERN.md",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "6f4dfeca566783b050e3308ddf1bf04ac4645ec7",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/GEBRAUCHSTEST.md",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "7b12f2927c5b6a4a5bc69a3a9ca0c35898a5d408",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/LERNKONZEPT.md",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "2e94fc7d157a9f9bec53e88ea9ed4a8facc97622",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/README.md",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "e3ff9f86dc44b5b8d67af4a40853195eece28990",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/app.js",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "50914c5c9ab1d6ae6e2568a52b5c48aa41556193",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/assets/README.md",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "f9b54cb1daf5b6b3197ccc1f456c00932f4eb987",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/assets/sources.json",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "bd7e0e2a1a9cdf8241ee547ca624c0e2bc54506d",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/index.html",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "a19a3d92d6baa4b52381edc9dfffff506b60db85",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/inhalte.js",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "06a4a23d52b73c0025f90727e3b232ee1ee48a53",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/kurs.js",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "49f989b6970f79a06bd1c7b6c8e2596933616443",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/pruefen.cjs",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "de027e7caa87ed03ca6728fc9f21079d8877284a",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/pruefung/PRUEFBERICHT.md",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "28170ae909a21e5240811bf9cd0939531180ec3b",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/pruefung/ergebnis.json",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "1cc79d92185260d618d4e30d80386436d2d82699",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/pruefung/kompatibilitaet.json",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "ee1905d7f03083bcbf9abd47e20c09bdc1e2767c",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "Lernwerkzeug/styles.css",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "24559661b421851aedf2b357144260019da99c2b",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "PROJEKT_MANIFEST.json",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "65fb030ec662f0d4fe225d5af24a2509a27e3ed3",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "README.md",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "df2acbf22e28f296da667de3c3d29d1ed9d51dd8",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "RELEASE_NOTES.md",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "b4eb83bd53e202c65520cc9df5ff19ee80163200",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "REPOSITORY_SETTINGS.md",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "a444db2958285cd1fbb1d9ebdbda61f41ed626d8",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "SKILL_RECHERCHE.md",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "3640d4100c168b564cdf44e1cc6681af6267f584",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "index.html",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "ce56cca5b5004eb76e7d498d8783f00efed3bb81",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "package.json",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "cb4627faa0de651c10f362dec2a2187f30ee37af",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "requirements-test.txt",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "fe2d16363d6bc3cc8f405ce1d372e351071e95ad",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "scripts/manifest.py",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "b0af42cf08ecd79096770be5441d380962f640c2",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "scripts/release.py",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "fc7fd94361986d01cc5fe83b0ec159f17f8f8c64",
+      "reviewed_checkout_matches_commit": true
+    },
+    {
+      "path": "scripts/uebungen_pruefen.py",
+      "exists_at_cited_commit": true,
+      "git_blob_sha1": "b38ccc74582f54b1ddd6c64542902e57177f172c",
+      "reviewed_checkout_matches_commit": true
+    }
+  ],
+  "scope": "File existence and bytes; no new full subject-matter acceptance"
+}

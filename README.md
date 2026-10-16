@@ -20,6 +20,10 @@ Das Layout passt sich der Fensterbreite an. Auf einem Desktop-Rechner kannst du 
 
 Die automatisierten Browserprüfungen sind in [kompatibilitaet.json](Lernwerkzeug/pruefung/kompatibilitaet.json) dokumentiert: Chromium, Firefox und WebKit auf dem Prüfrechner sowie emulierte Handy- und Tabletgrößen. WebKit auf Windows ersetzt keinen Safari-Test auf einem Mac oder iPad. Echte Geräte, Screenreader und Betriebssysteminstallationen bleiben gesondert zu prüfen. Maßgeblich sind die gespeicherten Ergebnisse und der [Prüfbericht](Lernwerkzeug/pruefung/PRUEFBERICHT.md).
 
+## Wissensbasis in Obsidian
+
+Die [deutsche CuD-Wissensbasis](Obsidian-CuD/00%20Start.md) erklärt Zweck, wissenschaftliche Grundlagen, Architektur, Inhaltserweiterung, Plattformen, Betrieb und Datenschutz. Öffne den Unterordner `Obsidian-CuD` als Vault in Obsidian; Community-Plugins sind nicht erforderlich. Die Canvas-Datei enthält die verknüpfte Gesamtkarte. Prüfungen: `python Obsidian-CuD/Pruefung/vault_pruefen.py`.
+
 ## Was liegt wo?
 
 | Pfad | Inhalt |

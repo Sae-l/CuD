@@ -1,0 +1,79 @@
+---
+title: "32 Entwicklung und Release"
+description: "Zum bloßen Lesen der Website ist diese Umgebung nicht erforderlich. Die Entwicklungsvorgaben sind Node.js 24, Python 3.12, npm-Lockdatei und die exakt versionierten Testpakete. Maßgeblich sind die jeweils aktuellen Datei"
+type: note
+language: de
+created: 2026-10-16
+updated: 2026-10-16
+status: dokumentiert
+tags: ["cud"]
+---
+
+# Reproduzierbar entwickeln und Änderungen übernehmen
+
+Zum bloßen Lesen der Website ist diese Umgebung nicht erforderlich. Die Entwicklungsvorgaben sind Node.js 24, Python 3.12, npm-Lockdatei und die exakt versionierten Testpakete. Maßgeblich sind die jeweils aktuellen Dateien im bearbeiteten Checkout.
+
+## Einen echten Checkout verwenden
+
+Der angegebene übergeordnete Arbeitsordner besitzt derzeit kein eigenes `.git`. Der bei der Sichtung vorhandene Checkout unter `.upload-work/CuD-design` zeigte denselben Commit wie die entfernte `main`. Vor einer späteren Änderung tatsächlichen Checkout, Branch, Remote und Arbeitsbaum erneut prüfen. Der Vault selbst enthält keine ausgeführten Git-Schreiboperationen.
+
+```sh
+git clone https://github.com/Sae-l/CuD.git
+cd CuD
+git status --short
+git switch -c docs/gepruefte-erweiterung
+```
+
+Branchname und Ziel an die konkrete Änderung anpassen. Zugangsdaten gehören in den System-Anmeldedienst, nicht in URLs oder Dateien.
+
+## Windows / PowerShell
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-test.txt
+npm ci --ignore-scripts
+npx --no-install playwright install --only-shell chromium firefox webkit
+$env:LERNWERKZEUG_PYTHON = (Resolve-Path '.venv\Scripts\python.exe').Path
+npm test
+.\.venv\Scripts\python.exe -m unittest discover -s scripts -p 'test_*.py'
+```
+
+Eine vorhandene passende Python-3.12-Installation lässt sich auch über ihren absoluten Pfad aufrufen. Das Beispiel erfordert weder eine Aktivierung der Umgebung noch eine Änderung der PowerShell-Ausführungsrichtlinie.
+
+## macOS / Linux
+
+```sh
+python3.12 -m venv .venv
+./.venv/bin/python -m pip install -r requirements-test.txt
+npm ci --ignore-scripts
+npx --no-install playwright install --only-shell chromium firefox webkit
+export LERNWERKZEUG_PYTHON="$PWD/.venv/bin/python"
+npm test
+./.venv/bin/python -m unittest discover -s scripts -p 'test_*.py'
+```
+
+Die Befehle beschreiben eine Einrichtung und sind kein durchgeführter macOS-Test. Browser können zusätzliche Systempakete benötigen. Vorhandene offizielle Voraussetzungen beachten; Schutzfunktionen nicht deaktivieren.
+
+## Manifest bewusst pflegen
+
+Vor Änderungen `scripts/manifest.py --check` mit dem gewählten Interpreter ausführen. Nach Änderungen zuerst den Diff und die Originalhashes prüfen. Erst dann `--write`, danach erneut `--check`. Unter Windows den Interpreter der Umgebung voranstellen, unter macOS/Linux entsprechend `./.venv/bin/python`.
+
+Ein fehlgeschlagener Manifestcheck darf nicht durch blindes Neuschreiben beseitigt werden. Der Vorabcheck in diesem Auftrag zeigte bereits `.claude/launch.json` als Abweichung. Für den anschließenden Upload wird die neue Dokumentation in einem sauberen Git-Checkout bewusst manifestiert. Der unabhängige Vorbefund im übergeordneten Arbeitsordner bleibt davon getrennt und wird nicht übernommen.
+
+## Pull Request, CI und Release
+
+Kleine Änderung abgrenzen, Tests und Grenzen beschreiben, Diff reviewen und erforderliche CI-Prüfungen am tatsächlichen Commit abwarten. Die vorhandene Workflow-Datei prüft Windows und Linux. Das Vorhandensein dieser Datei beweist keinen aktuellen grünen Lauf oder aktive Branchregeln.
+
+Für ein Release müssen `package.json`, Lockdatei und Tag zusammenpassen. `scripts/release.py` baut das ZIP aus dem Manifest und prüft die Einträge bytegenau; `SHA256SUMS` dokumentiert das Paket. Den Versionsnamen im dort beschriebenen Aufruf verwenden, nicht unverändert einen alten Tag neu veröffentlichen.
+
+Die in diesem Auftrag bereitgestellte Vault-ZIP ist ein eigenständiges Dokumentationspaket. Sie ist kein neues CuD-Softwarerelease. [[42 GitHub Repositoryplan]] beschreibt die spätere Einordnung.
+
+## Projektbelege
+
+- [CONTRIBUTING.md](https://github.com/Sae-l/CuD/blob/bdff10b0918473d8a37e05141a85fdf37c762c4d/CONTRIBUTING.md)
+- [scripts/manifest.py](https://github.com/Sae-l/CuD/blob/bdff10b0918473d8a37e05141a85fdf37c762c4d/scripts/manifest.py)
+- [scripts/release.py](https://github.com/Sae-l/CuD/blob/bdff10b0918473d8a37e05141a85fdf37c762c4d/scripts/release.py)
+- [.github/workflows/check.yml](https://github.com/Sae-l/CuD/blob/bdff10b0918473d8a37e05141a85fdf37c762c4d/.github/workflows/check.yml)
+- [.github/workflows/release.yml](https://github.com/Sae-l/CuD/blob/bdff10b0918473d8a37e05141a85fdf37c762c4d/.github/workflows/release.yml)
+
+Weiter: [[00 Start]] · [[90 Stand und Nachweise]] · [[91 Quellenverzeichnis]]
