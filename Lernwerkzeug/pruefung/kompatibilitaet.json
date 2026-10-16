@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-16T16:32:17.205Z",
+  "date": "2026-10-16T22:13:41.001Z",
   "status": "FAIL",
   "host": "win32",
   "engines": [
@@ -54,11 +54,69 @@
       "errors": [],
       "externalRequests": [],
       "localFile": "PASS",
-      "landing": "PASS: /CuD/ desktop and mobile entry links",
+      "landing": "PASS: /CuD/ 320, 390, 768, 1440px and 640x320 landscape entry links, signatures and overflow",
+      "landingRecovery": "PASS: keyboard focus loop, Escape, inert background, resize recovery, no-JS navigation and reduced motion",
+      "touchProfiles": "390×844, 768×1024: navigation and hints PASS (emulation)",
+      "learning": "quiz, persistent progress, malformed data and blocked-storage session fallback PASS",
+      "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route, local font and GSAP, hero line count, learning carousel wrap, exclusive accordion, ScrollTrigger cleanup"
+    },
+    {
+      "name": "firefox",
+      "version": "157.0",
+      "transport": "HTTP loopback",
+      "profiles": [
+        {
+          "width": 320,
+          "height": 740,
+          "views": 76,
+          "status": "PASS"
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "views": 76,
+          "status": "PASS"
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "views": 76,
+          "status": "PASS"
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "views": 76,
+          "status": "PASS"
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "views": 76,
+          "status": "PASS"
+        },
+        {
+          "width": 1280,
+          "height": 800,
+          "views": 76,
+          "status": "PASS"
+        },
+        {
+          "width": 1440,
+          "height": 1000,
+          "views": 76,
+          "status": "PASS"
+        }
+      ],
+      "errors": [],
+      "externalRequests": [],
+      "localFile": "PASS",
+      "landing": "PASS: /CuD/ 320, 390, 768, 1440px and 640x320 landscape entry links, signatures and overflow",
+      "landingRecovery": "PASS: keyboard focus loop, Escape, inert background, resize recovery, no-JS navigation and reduced motion",
       "touchProfiles": "390×844, 768×1024: navigation and hints PASS (emulation)",
       "learning": "quiz, persistent progress, malformed data and blocked-storage session fallback PASS",
       "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route, local font and GSAP, hero line count, learning carousel wrap, exclusive accordion, ScrollTrigger cleanup"
     }
   ],
-  "error": "browserType.launch: spawn UNKNOWN\nCall log:\n\u001b[2m  - <launching> D:\\Saeed\\TH-Köln\\Coding\\.upload-work\\browsers\\firefox-1555\\firefox\\firefox.exe -no-remote -headless -profile D:\\Saeed\\TH-Köln\\Coding\\.upload-work\\CuD-local-fix\\.upload-work\\browser-temp\\playwright_firefoxdev_profile-Fhvrjy -juggler-pipe -silent\u001b[22m\n"
+  "error": "WebKit 2370 failed before page creation on Windows (exit 0xC0E90002). Chromium and Firefox completed all profiles and regressions. Full local launcher log retained outside the published repository."
 }

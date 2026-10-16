@@ -4,7 +4,7 @@ description: "**Adresse:** [sae-l.github.io/CuD/Lernwerkzeug/](https://sae-l.git
 type: note
 language: de
 created: 2026-10-16
-updated: 2026-10-16
+updated: 2026-10-17
 status: dokumentiert
 tags: ["cud"]
 ---
@@ -27,6 +27,8 @@ tags: ["cud"]
 | Abdeckung und Quellen | Umfang, PDF-Seiten und ungelöste Datenfragen nachvollziehen |
 
 Die linke Navigation führt zu Lernbereichen und hebt den ursprünglichen CSV-Block 6.1–6.3 hervor. Auf schmalen Fenstern wird sie aufklappbar. Ein Suchfeld und Filter für Art und Thema unterstützen den direkten Einstieg.
+
+Direkte Einstiege verwenden `Lernwerkzeug/index.html#…`, zum Beispiel `#vorlesungen`. Inhaltswechsel, Zurück/Vorwärts und ein erneuter Klick auf dieselbe Route müssen funktionieren. Lösungen und Hinweise werden beim erneuten Öffnen geschlossen; Suchvorschauen dürfen ihre Antworten nicht vorwegnehmen. Die Root-Startseite hat eine eigene Gestaltung und ist kein Ersatz für eine Sichtprüfung des Lernraums.
 
 ## Suche und Ergebnisansicht
 

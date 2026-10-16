@@ -2,6 +2,21 @@
 
 Das Werkzeug ist bereits datengetrieben erweiterbar: `kurs.js` liefert Vorlesungen und Zusatzbefehle, `inhalte.js` die bestehenden Übungsobjekte. Darstellung und Suche liegen in `app.js`. Neue Inhalte werden nicht automatisch aus PDFs erzeugt oder fachlich freigegeben.
 
+## Architektur und Änderungsumfang
+
+Die Projektstartseite `../index.html` enthält ihre eigene Gestaltung und Menülogik. Der Lernraum `index.html` lädt `styles.css`, danach die lokalen Skripte `inhalte.js`, `kurs.js` und `app.js`; GSAP und ScrollTrigger stammen ebenfalls aus `assets/`. Es gibt keinen Buildschritt, Serverdienst, Kontozugang oder Python-Interpreter im Browser. Die Daten werden als lokale Skripte geladen, damit der entpackte Ordner auch über `file://` benutzbar bleibt.
+
+`app.js` verbindet die Inhaltsdaten mit Suche, Quiz, Quellenlinks und lokaler Fortschrittsmarkierung. Die Route steht hinter `#`, etwa `index.html#lektion-1`. IDs sind damit zugleich Adressen und Speicherschlüssel. Relative Links aus der Projektstartseite müssen `Lernwerkzeug/index.html#…` enthalten; Links innerhalb des Lernraums verwenden `#…`. Lass `index.html` in dateiübergreifenden Einstiegen ausdrücklich stehen: Verzeichnisadressen funktionieren beim direkten Öffnen nicht in jedem Browser.
+
+| Änderung | Mitprüfen |
+| --- | --- |
+| Neue Lektion oder Übung | Datenobjekt, Quelle, eindeutige ID, Suchtreffer, Quiz/Lösung und unabhängige Ergebniserwartung |
+| ID oder Route | Alle Querverweise, `needs`, Navigation, Tests, bestehende Lesezeichen und Fortschrittsmarken |
+| Gestaltung oder Menü | Projektstartseite und Lernraum getrennt, schmale/breite Darstellung, Tastatur und reduzierte Bewegung |
+| Neue lokale Datei | Relative Links, Herkunft/Rechte, Offline-Paket und Integritätsmanifest |
+
+Eine Fehlerkorrektur an Navigation oder JavaScript erfordert keine Neugestaltung. Halte vor einer Layoutänderung fest, welche konkrete Nutzung sie verbessert, und vergleiche die gerenderten Ansichten vor und nach der Änderung. CSS-Klassen, DOM-Struktur und Testselektoren müssen zusammenpassen; ändere Tests nicht nur, damit eine unbeabsichtigte Gestaltungsänderung grün wird.
+
 ## Eine neue Vorlesungsetappe
 
 1. Lege die Originaldatei unverändert in `Referenz/Vorlesungen/` ab. Dokumentiere Herkunft und SHA-256; erschließe die benötigten Seiten in `Referenz_Sichtung/`. Bestehende Sichtungsnachweise nicht überschreiben.
@@ -65,3 +80,9 @@ Das neue `praxis-zeitreihe` zeigt die vorhandene Darstellung von Arbeitsabläufe
 Es braucht für die vorhandene Größenordnung kein neues Framework, Backend oder Konto. Wenn irgendwann mehrere Kurse unterschiedliche Nummernkreise, Lernstände oder Rollen teilen sollen, ist ein übergreifender Kurskatalog eine neue Anforderung; er wird hier nicht vorweggenommen.
 
 Für Begleitcode ohne PDF kann eine Lektion `sourceHref` und `sourceTitle` setzen; sie umgehen die sonst abgeleitete PDF-Adresse. Lektion 10 verwendet diesen Weg für die unveränderte FFT-Datei. Die vollständige Liste der Quellen und ihre Aussagegrenzen stehen im Abdeckungsplan.
+
+## Funktion und Gestaltung getrennt abnehmen
+
+Prüfe zuerst Datenvertrag, Quellen, ausführbare Beispiele und Interaktionen mit den vorhandenen Tests. Prüfe dann die tatsächlich gerenderte Projektstartseite und den Lernraum: mindestens eine schmale Handybreite und eine Desktopbreite, lange Texte, sichtbaren Tastaturfokus, Menübedienung, Bild- und Schriftladung sowie reduzierte Bewegung. Dokumentiere die verwendeten Größen, Beobachtungen und Screenshots im Prüfbericht. Ein Test auf horizontales Überlaufen erkennt weder eine veränderte visuelle Hierarchie noch einen unpassenden Stil.
+
+Zu den Zuständen gehören eine Suche ohne Treffer mit Rücksetzweg, unbekannte Inhaltsadressen mit Navigation zurück, richtige/falsche Quizantworten, blockierte Fortschrittsspeicherung und die erkennbare Grenze fehlender Originaldaten. Für die statische Anwendung gibt es keinen serverseitigen Lade- oder Anmeldevorgang; externe Downloads bleiben von Offline-Bedienung getrennt. Nenne tatsächlich ungeprüfte Zustände ausdrücklich. Für Einreichen, Merge, Release und die getrennte Pages-Prüfung gilt [CONTRIBUTING.md](../CONTRIBUTING.md#automatische-prüfungen-und-veröffentlichung).

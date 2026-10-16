@@ -69,8 +69,8 @@
     },
     {
       "path": "20 Umsetzung/20 Technische Architektur.md",
-      "bytes": 4212,
-      "sha256": "cf107189a66903c2e2cd6bdb2b86ed43d3b1f7d01cb7969a75772dd9bdb154b6"
+      "bytes": 5081,
+      "sha256": "ec353cc62814014ee404b967930fbcc5a81a02020d22e07cc4f025c124d80734"
     },
     {
       "path": "20 Umsetzung/21 Entstehung und Umsetzung.md",
@@ -94,8 +94,8 @@
     },
     {
       "path": "20 Umsetzung/25 Diagnose und Reparatur.md",
-      "bytes": 7582,
-      "sha256": "9a3c0149bfa64b398e63c70959366822c84b265c7ff50e26742a0236f22be1a8"
+      "bytes": 9089,
+      "sha256": "3c194a62061311e927113b29601f5eedcb9ea5ce003c0c6b030580b98788099a"
     },
     {
       "path": "20 Umsetzung/26 Wiederaufbau und Arbeitsumgebung.md",
@@ -124,8 +124,8 @@
     },
     {
       "path": "30 Weiterentwicklung/32 Entwicklung und Release.md",
-      "bytes": 4836,
-      "sha256": "b99d47699439a271fcb4ac224752d0dc33d37c3906dce30d231c687d998f4e86"
+      "bytes": 6341,
+      "sha256": "44739639966b5620e1ec664d773cf79816c9edc815602598345b332f67157b99"
     },
     {
       "path": "30 Weiterentwicklung/33 Entwicklungsplan.md",
@@ -159,18 +159,18 @@
     },
     {
       "path": "50 Websites/50 Die Vorstellungswebsite.md",
-      "bytes": 3615,
-      "sha256": "2363c7ec88c3e73c36088b523f706b247be0f65a2e2ab0fa80f7dca5ee9a219e"
+      "bytes": 4405,
+      "sha256": "dc9c6a5d4eba4cca593ad7b8a6d78ce9a21378346a796e1dde6b7b66b99218ab"
     },
     {
       "path": "50 Websites/51 Das Lernwerkzeug.md",
-      "bytes": 4286,
-      "sha256": "22105209858e445105f3fd387ff75a58d7c9b4851cf6a7b1a0e44f48b7898354"
+      "bytes": 4703,
+      "sha256": "a71114a4bc49e859a1839321bd0b929fe70a77b3e80d40e402966eab7f7346fe"
     },
     {
       "path": "50 Websites/52 Gestaltung und Barrierearmut.md",
-      "bytes": 3544,
-      "sha256": "2046aa67c6639895d217401a8631377fda73a9e86dc3847694be963f22b01553"
+      "bytes": 4668,
+      "sha256": "421e3bbbe12d54b09824813f54fb9136e3578c6b0a84136faca47277664927ea"
     },
     {
       "path": "90 Nachweise/90 Stand und Nachweise.md",

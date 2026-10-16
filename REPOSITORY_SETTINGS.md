@@ -1,10 +1,10 @@
 # Repository-Konfiguration
 
-Stand: 15.10.2026. Einstellungen über die GitHub-API gesetzt und anschließend zurückgelesen. Die Beschreibung gilt für Sae-l/CuD-1; Geheimnisse und Anmeldedaten werden nicht im Repository gespeichert.
+Aktueller Metadatenabgleich: 17.10.2026, `Sae-l/CuD`, öffentlich, Standardbranch `main`. Sichtbarkeit und Branch wurden über den GitHub-Connector zurückgelesen. Geheimnisse und Anmeldedaten werden nicht im Repository gespeichert. Die übrigen administrativen Einstellungen der Tabelle stammen aus dem datierten API-Abgleich vom 15.10.2026 und sind vor Änderungen erneut zu prüfen.
 
 | Bereich | Einstellung |
 | --- | --- |
-| Sichtbarkeit | Privat; main ist Standardbranch |
+| Sichtbarkeit | Öffentlich; main ist Standardbranch (17.10.2026 bestätigt) |
 | Beschreibung und Themen | Deutscher Projektzweck; python, education, offline, learning, data-analysis |
 | Zusammenführen | Pull Request mit aktuellen erfolgreichen Prüfungen; veraltete Reviewfreigaben verfallen |
 | Erforderliche Prüfungen | Prüfen (ubuntu-latest), Prüfen (windows-latest); Branch muss vor dem Merge aktuell sein |
@@ -25,7 +25,7 @@ Stand: 15.10.2026. Einstellungen über die GitHub-API gesetzt und anschließend 
 
 Projektprüfung läuft bei Pull Requests und main-Pushes auf Windows und Linux. Sie prüft zuerst das Commit-Manifest und die Unit-Tests, danach Inhalte, Python und drei Browser-Engines. Die Nachweise des Laufs werden 14 Tage als CI-Artefakte gespeichert.
 
-Ein stabiler Tag vX.Y.Z startet den Release-Workflow. Er wiederholt die Prüfungen, stellt danach die dokumentierten Nachweisdateien aus dem Commit wieder her und erzeugt ein ZIP genau aus den manifestierten Dateien. Tag und Paketversion müssen übereinstimmen. ZIP-Einträge und SHA-256 werden geprüft; lokale Caches und Geheimnisse sind nicht enthalten. Der private Release erhält ZIP und SHA256SUMS. Details: scripts/release.py und CONTRIBUTING.md.
+Ein stabiler Tag vX.Y.Z startet den Release-Workflow. Er wiederholt die Prüfungen, stellt danach die dokumentierten Nachweisdateien aus dem Commit wieder her und erzeugt ein ZIP genau aus den manifestierten Dateien. Tag und Paketversion müssen übereinstimmen. ZIP-Einträge und SHA-256 werden geprüft; lokale Caches und Geheimnisse sind nicht enthalten. Der Release erhält ZIP und SHA256SUMS; die Dateien sind bei öffentlichem Repository öffentlich zugänglich. Details: scripts/release.py und CONTRIBUTING.md.
 
 Die gespeicherten Projektberichte sind ein lokaler Windows-Nachweis. Linux- und Windows-CI-Läufe sind getrennte Nachweise am jeweiligen Commit; ein konfigurierter Workflow allein ist kein bestandener Test.
 

@@ -2,6 +2,8 @@
 
 Die Startseite bietet **Vorlesungen**, **Übungen & Begleitung**, **Befehle nachschlagen**, **Python einrichten** und **VS Code einrichten**. Beginne mit der Einrichtung, bearbeite die erste Lektion und probiere die Beispiele selbst aus. Suche und Filter helfen dir, später einen bestimmten Befehl oder Fehler wiederzufinden.
 
+Das Projekt hat zwei Einstiege: [index.html im Projektordner](../index.html) stellt den Lernraum vor; [Lernwerkzeug/index.html](index.html) öffnet ihn direkt. Im Lernraum wechseln Links wie [Vorlesungen](index.html#vorlesungen) oder [Übungen](index.html#uebung) den Inhalt innerhalb derselben Seite. Du kannst diese Adressen als Lesezeichen speichern. Mit **Zurück** und **Vorwärts** im Browser wechselst du zwischen besuchten Bereichen. Die getrennte Projektstartseite und der Lernraum gehören gemeinsam zum Offline-Paket.
+
 ## Auf deinem Gerät öffnen
 
 ### Windows und macOS
@@ -58,8 +60,12 @@ Jede Lektion enthält eine eigene Verständnisfrage. Wähle eine Antwort und dr�
 
 Die Bearbeitungsmarken werden nur im selben Browser unter `cud-lernfortschritt-v1` gespeichert. Sie werden nicht gesendet oder zwischen Geräten synchronisiert. Bei blockierter Speicherung bleibt die Bedienung erhalten und die Seite weist auf die Sitzung als Grenze hin. Im direkten Dateibetrieb kann das Speicherverhalten vom Browser und Dateipfad abhängen. Ein gelöstes Häkchen entfernt die jeweilige Marke. Die Marken sind deine Selbsteinschätzung und kein Nachweis des Lernnutzens.
 
+Nach einem Update kann ein anderer entpackter Ordner oder der Wechsel zwischen Datei- und HTTP-Zugriff einen getrennten Speicherbereich verwenden. Bewahre deinen selbst geschriebenen Python-Code im eigenen Übungsordner auf; die Webseite speichert diesen Code nicht.
+
 **Abdeckung & nächste Schritte** zeigt alle 31 Aufgaben aus dem vorhandenen Übungsblatt; alle 31 sind mit gestuften Hinweisen und Lösung begleitet. Vier Live-Übungen und die FFT-Lektion sind zusätzlich erreichbar. **Eigenes Mini-Projekt** verbindet CSV, Pandas und OOP mit einer herunterladbaren synthetischen `becken-mini.csv`. Diese Datei ersetzt keine fehlenden Originaldaten. Die genaue Einordnung steht in [ABDECKUNG.md](ABDECKUNG.md). Originalergebnisse für bb12024.csv, vollständige visuelle Quellenprüfung und Gebrauchstests bleiben offen.
 
 ## Entwicklung und Tests
 
 Für das bloße Benutzen ist keine Entwicklungsumgebung nötig. Die reproduzierbare Einrichtung und alle Prüfaufrufe stehen in [CONTRIBUTING.md](../CONTRIBUTING.md). Ergebnisse liegen in [ergebnis.json](pruefung/ergebnis.json), [kompatibilitaet.json](pruefung/kompatibilitaet.json) und [PRUEFBERICHT.md](pruefung/PRUEFBERICHT.md).
+
+Wie die beiden Webseiten, Inhaltsdaten und Prüfungen zusammenarbeiten und wie du neue Inhalte ergänzt, beschreibt [ERWEITERN.md](ERWEITERN.md). Ein erfolgreicher Funktionstest ersetzt keine Sichtprüfung der Gestaltung und keinen Gebrauchstest mit Lernenden.

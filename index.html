@@ -27,7 +27,8 @@
     .wrap { position:relative; width:min(1200px,100% - 48px); margin-inline:auto; }
 
     /* Floating island nav */
-    .island { position:fixed; top:20px; left:50%; translate:-50% 0; z-index:3; display:flex; align-items:center; gap:6px; padding:6px; border-radius:999px; background:rgba(255,254,250,.72); backdrop-filter:blur(20px) saturate(1.4); -webkit-backdrop-filter:blur(20px) saturate(1.4); box-shadow:0 0 0 1px var(--hair),0 10px 30px -10px rgba(28,34,25,.18); }
+    .island { position:fixed; top:20px; left:50%; translate:-50% 0; z-index:3; display:flex; align-items:center; gap:6px; padding:6px; width:max-content; max-width:calc(100% - 24px); border-radius:999px; background:rgba(255,254,250,.72); backdrop-filter:blur(20px) saturate(1.4); -webkit-backdrop-filter:blur(20px) saturate(1.4); box-shadow:0 0 0 1px var(--hair),0 10px 30px -10px rgba(28,34,25,.18); }
+    .island-links a,.island > .btn { white-space:nowrap; }
     .brand { display:flex; align-items:center; gap:10px; padding:4px 14px 4px 4px; text-decoration:none; font-weight:600; letter-spacing:-.02em; }
     .brand-mark { display:grid; place-items:center; width:38px; height:38px; border-radius:999px; background:var(--forest); color:var(--lime); font-size:15px; letter-spacing:-.08em; }
     .island-links { display:flex; gap:2px; }
@@ -38,9 +39,10 @@
     .menu-btn span:first-child { top:18px; } .menu-btn span:last-child { top:25px; }
     .menu-open .menu-btn span:first-child { transform:translateY(3.5px) rotate(45deg); }
     .menu-open .menu-btn span:last-child { transform:translateY(-3.5px) rotate(-45deg); }
-    .overlay { position:fixed; inset:0; z-index:2; display:flex; flex-direction:column; justify-content:center; gap:8px; padding:96px 28px 40px; background:rgba(246,245,239,.86); backdrop-filter:blur(40px); -webkit-backdrop-filter:blur(40px); opacity:0; visibility:hidden; transition:opacity .6s var(--ease),visibility 0s .6s; }
+    .overlay { position:fixed; inset:0; z-index:2; display:flex; flex-direction:column; justify-content:safe center; overflow-y:auto; gap:8px; padding:96px 28px 40px; background:rgba(246,245,239,.86); backdrop-filter:blur(40px); -webkit-backdrop-filter:blur(40px); opacity:0; visibility:hidden; transition:opacity .6s var(--ease),visibility 0s .6s; }
+    .menu-open { overflow:hidden; }
     .menu-open .overlay { opacity:1; visibility:visible; transition:opacity .6s var(--ease); }
-    .overlay a { font-size:clamp(34px,9vw,52px); font-weight:450; letter-spacing:-.04em; line-height:1.2; text-decoration:none; transform:translateY(48px); opacity:0; transition:transform .8s var(--ease),opacity .8s var(--ease); }
+    .overlay a { flex:none; font-size:clamp(34px,9vw,52px); font-weight:450; letter-spacing:-.04em; line-height:1.2; text-decoration:none; transform:translateY(48px); opacity:0; transition:transform .8s var(--ease),opacity .8s var(--ease); }
     .menu-open .overlay a { transform:none; opacity:1; }
     .menu-open .overlay a:nth-child(2) { transition-delay:.05s; } .menu-open .overlay a:nth-child(3) { transition-delay:.1s; } .menu-open .overlay a:nth-child(4) { transition-delay:.15s; } .menu-open .overlay a:nth-child(5) { transition-delay:.2s; }
 
@@ -68,7 +70,7 @@
     /* Hero */
     .hero { min-height:100dvh; display:grid; align-items:center; padding:140px 0 96px; }
     .hero-grid { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:64px; align-items:center; }
-    h1 { font-size:clamp(46px,6.6vw,96px); line-height:.98; letter-spacing:-.055em; font-weight:500; margin:26px 0 28px; }
+    h1 { font-size:clamp(42px,5vw,72px); line-height:1.02; letter-spacing:-.055em; font-weight:500; margin:26px 0 28px; }
     h1 em { font-style:normal; color:var(--accent); }
     .lead { font-size:clamp(18px,1.5vw,21px); color:var(--muted); max-width:34ch; margin:0 0 40px; }
     .actions { display:flex; flex-wrap:wrap; gap:12px; }
@@ -167,7 +169,10 @@
       .wrap { width:calc(100% - 32px); }
       .island { top:12px; width:calc(100% - 24px); justify-content:space-between; }
       .island-links,.island .btn { display:none; }
-      .menu-btn { display:block; }
+      .js .menu-btn { display:block; }
+      html:not(.js) .overlay { position:static; padding:100px 24px 0; opacity:1; visibility:visible; background:none; backdrop-filter:none; }
+      html:not(.js) .overlay a { font-size:20px; transform:none; opacity:1; }
+      html:not(.js) .hero { padding-top:40px; }
       .hero { padding:112px 0 64px; min-height:0; }
       .hero-grid { gap:48px; }
       .code-float,.tag-float { rotate:none; }
@@ -214,7 +219,7 @@
     <div class="hero">
       <div class="wrap hero-grid">
         <div>
-          <span class="eyebrow" data-reveal><i></i>Coding und Digitalisierung · v0.2.1</span>
+          <span class="eyebrow" data-reveal><i></i>Coding und Digitalisierung · v0.2.2</span>
           <h1 data-reveal style="--d:.08s">Programmieren lernen, <em>ganz ohne Vorwissen.</em></h1>
           <p class="lead" data-reveal style="--d:.16s">Ein ruhiger Lernraum für dein Studium: Vorlesungen in kleinen Etappen, Begleitung zu jeder Übungsaufgabe und die Befehle, die du wirklich brauchst.</p>
           <div class="actions" data-reveal style="--d:.24s">
@@ -247,27 +252,27 @@
         <div class="bento">
           <div class="bezel w8" data-reveal><div class="core tile dark">
             <span class="tile-num">Vorlesungen</span>
-            <h3>Zehn Etappen in der Reihenfolge deiner Unterlagen.</h3>
+            <h3><a href="Lernwerkzeug/index.html#vorlesungen">Zehn Etappen in der Reihenfolge deiner Unterlagen.</a></h3>
             <p>Jede Lektion endet mit einer Verständnisfrage und begründeter Rückmeldung.</p>
             <ul class="lessons"><li>Python</li><li>NumPy</li><li>Pandas</li><li>Matplotlib</li><li>FFT</li></ul>
           </div></div>
           <div class="bezel" data-reveal style="--d:.06s"><div class="core tile lime">
             <span class="tile-num">Übungen</span>
             <span class="big-glyph" aria-hidden="true">6.1–6.3</span>
-            <h3>Alle 31 Aufgaben geführt.</h3>
+            <h3><a href="Lernwerkzeug/index.html#uebung">Alle 31 Aufgaben geführt.</a></h3>
             <p>CSV einlesen, filtern, auswerten, mit gestuften Hinweisen.</p>
           </div></div>
           <div class="bezel w5" data-reveal><div class="core tile">
             <span class="tile-num">Befehle</span>
             <pre class="mini-code">df = pd.read_csv("messdaten.csv")
 df["wert"].mean()</pre>
-            <h3>Nachschlagen statt raten.</h3>
+            <h3><a href="Lernwerkzeug/index.html#befehle">Nachschlagen statt raten.</a></h3>
             <p>Beschreibung, Beispiel und passende Datentypen auf einen Blick.</p>
           </div></div>
           <div class="bezel w7" data-reveal style="--d:.06s"><div class="core tile">
             <span class="tile-num">Einrichtung</span>
             <span class="big-glyph" aria-hidden="true">.py { }</span>
-            <h3>Python und VS Code, Schritt für Schritt.</h3>
+            <h3><a href="Lernwerkzeug/index.html#python-setup">Python und VS Code, Schritt für Schritt.</a></h3>
             <p>Die passende Anleitung für PC, Mac oder Tablet, bis deine erste Datei läuft.</p>
           </div></div>
           <div class="bezel w6" data-reveal><div class="core tile">
@@ -353,8 +358,9 @@ Lernwerkzeug/index.html</pre>
 
   <footer>
     <div class="wrap">
-      <span>CuD · Lernraum für Coding und Digitalisierung. Private Projektablage, Originalunterlagen behalten ihre Herkunft.</span>
+      <span>CuD · Lernraum für Coding und Digitalisierung. Originalunterlagen behalten ihre Herkunft und Rechte.</span>
       <span>Schrift: Outfit (OFL) · <a href="Lernwerkzeug/assets/README.md">Herkunft der Gestaltung</a></span>
+      <span>Gestaltung & Weiterentwicklung · <strong>Mohamed Saeed Alhalak</strong></span>
     </div>
   </footer>
 
@@ -370,10 +376,37 @@ Lernwerkzeug/index.html</pre>
       reveal.filter(node => !visible.includes(node)).forEach(node => io.observe(node));
     } else reveal.forEach(node => node.classList.add("in"));
     const btn = document.querySelector(".menu-btn"), menu = document.getElementById("menu");
-    const setMenu = open => { document.body.classList.toggle("menu-open",open); btn.setAttribute("aria-expanded",open); btn.setAttribute("aria-label",open ? "Menü schließen" : "Menü öffnen"); };
+    const background = document.querySelectorAll("main, footer, .island .brand, .island-links, .island > .btn");
+    const setMenu = open => {
+      document.body.classList.toggle("menu-open",open);
+      btn.setAttribute("aria-expanded",String(open));
+      btn.setAttribute("aria-label",open ? "Menü schließen" : "Menü öffnen");
+      background.forEach(node => { node.inert = open; });
+      if (open) menu.querySelector("a").focus();
+    };
     btn.addEventListener("click",() => setMenu(!document.body.classList.contains("menu-open")));
-    menu.addEventListener("click",e => { if (e.target.closest("a")) setMenu(false); });
-    addEventListener("keydown",e => { if (e.key === "Escape" && document.body.classList.contains("menu-open")) { setMenu(false); btn.focus(); } });
+    menu.addEventListener("click",e => {
+      const link = e.target.closest("a");
+      if (!link) return;
+      setMenu(false);
+      const target = link.hash && document.querySelector(link.hash);
+      if (target) { target.tabIndex = -1; target.focus({preventScroll:true}); }
+    });
+    addEventListener("keydown",e => {
+      if (!document.body.classList.contains("menu-open")) return;
+      if (e.key === "Escape") { setMenu(false); btn.focus(); }
+      if (e.key === "Tab") {
+        const last = menu.querySelector("a:last-child");
+        if (e.shiftKey && document.activeElement === btn) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); btn.focus(); }
+      }
+    });
+    matchMedia("(min-width:768px)").addEventListener("change",e => {
+      if (e.matches && document.body.classList.contains("menu-open")) {
+        setMenu(false);
+        document.querySelector(".island .brand").focus();
+      }
+    });
   </script>
 </body>
 </html>

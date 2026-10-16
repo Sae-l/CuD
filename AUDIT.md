@@ -1,6 +1,6 @@
 # Review und Verbesserungen
 
-Aktueller Stand: Version 0.2.1 mit 31 Aufgabenbegleitungen, vier Live-Übungen, FFT und automatischer Projektprüfung; siehe **Release-Korrektur 0.2.1** am Ende. Die folgenden bisherigen Abschnitte dokumentieren die erste Auditphase und deren damalige Git-Übernahme.
+Aktueller Stand: Version 0.2.2 mit 31 Aufgabenbegleitungen, vier Live-Übungen, FFT und automatischer Projektprüfung; siehe **Release-Korrektur 0.2.1** am Ende. Die folgenden bisherigen Abschnitte dokumentieren die erste Auditphase und deren damalige Git-Übernahme.
 
 Stand: 15.10.2026. Geprüft und lokal umgesetzt im vorhandenen Lernwerkzeug. Die acht Originaldateien in `Referenz/` bleiben bytegleich. Die Auditphase erfolgte in einer Arbeitsablage ohne `.git`-Verzeichnis; Commit, Push und Pull Request sind eine nachfolgende, gesondert beauftragte Übernahme.
 
@@ -110,3 +110,13 @@ Die drei Dependabot-PRs für Playwright 1.64.0, Pandas 3.0.6 und NumPy 2.5.4 sch
 Nach ausdrücklicher Abstimmung mit dem Nutzer wurde die abgeschlossene Gestaltung aus dem Chat „Apply GPT taste skill“ übernommen: Startseite, lokale Outfit-/GSAP-/Bilddateien, Herkunft und Lizenzhinweise, responsive Gestaltung und Designprüfungen. Die gemeinsame Fassung wird mit den aktualisierten Testabhängigkeiten geprüft; die älteren Designberichte gelten nur für ihren jeweiligen Lauf.
 
 Gemeinsame Nachprüfung: Firefox 157 drosselte die schnelle Hash-Navigation; ein neuer Tab je Größe löst dies unter Erhalt aller Fälle. Die lokale WebKit-27.2-Prüfung ist durch Code Integrity (3077/3033, zwei DLLs) blockiert. Die Dreiermatrix muss deshalb auf GitHub Windows/Linux vollständig bestehen; keine lokale Schutzregel wird abgeschaltet. Der Prüfbericht trennt lokale Vorprüfung und CI-Nachweise.
+
+## Gestaltung und sichere Integration: 17.10.2026
+
+Die lokale Ablage ohne `.git` war kein synchroner Checkout. Ihr `Lernwerkzeug/styles.css` war bytegleich mit dem Stand vor dem Gestaltungscommit `4b701d0` (PR #8): SHA-256 `676203b67a037750b77b2419013b534a930802d9c8536790459236293b5ab4ff`. Die aktuelle `main` enthielt bereits die neuere Gestaltung mit SHA-256 `4bb5b3720824bea733aad1f2ce0afff6619a8a6ef49787684d9666b5930a348e`. Beispielsweise war die lokale Topleiste eckig (Radius 0), die veröffentlichte abgerundet (999px). Die CSS-Datei wurde lokal aus dem geprüften Repository wiederhergestellt; dieser Befund ist keine Behauptung eines CSS-Rollbacks durch PR #13.
+
+Der Downloadpatch änderte Dateiverweise und Anleitung, keine CSS-Regeln. Das frühere lokale Synchronisationsskript kopierte die Root-HTML-Datei dagegen vollständig und nahm sie nicht in seine Sicherungsliste auf. Eine abweichende frühere Root-Gestaltung ist deshalb nicht vollständig rekonstruierbar. Die sichere Integration erfolgt jetzt über einen sauberen aktuellen Checkout und eine ausdrücklich kontrollierte Dateiliste. Persönliche Obsidian-Ansichten und lokale Arbeitsdateien werden nicht übernommen.
+
+v0.2.2 erhält die vier expliziten Offline-Einstiege und den vollständigen ZIP-Download. Ergänzt sind der Autorenname, direkte Inhaltszugänge, eine begrenzte Überschriftengröße, stabile Tablet-Navigation sowie Tastaturfokus, Hintergrundsperre, Escape, Größenwechsel und ein statischer Mobilmenü-Ersatz ohne JavaScript. Vorhandene Originalunterlagen und Lernstandschlüssel bleiben unverändert. Keine neue Laufzeitabhängigkeit wurde eingeführt.
+
+Der Regressionstest prüft jetzt auch die gerundete Lernraum-Topleiste, beide Signaturen, direkte Inhaltslinks und die Menü-Wiederherstellung. Gerenderte Desktop-, Tablet- und Mobilansichten sowie leere Suche, unbekannter Inhalt, positive Rückmeldung, fehlende Originaldaten und blockierte Speicherung wurden lokal geprüft. Private Designbilder und das Skill-JSON bleiben unter `.upload-work/design-review/`; der veröffentlichte Prüfbericht nennt die Ergebnisse. Die Tests vergleichen keine Pixelreferenz und ersetzen keine menschliche Gestaltungsprüfung.
