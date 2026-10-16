@@ -53,3 +53,7 @@ Weiter: [[00 Start]] · [[90 Stand und Nachweise]] · [[91 Quellenverzeichnis]]
 ## Erweiterung zur Hauptreferenz
 
 Fünf Projektchats, ein nicht lesbarer Chat, 22 zentrale Projektdateien und der GitHub-Stand nach PR #11 wurden abgeglichen. [[94 Gesprächs- und Quellenabgleich]] nennt Umfang und Grenzen. Die isolierte Probe `node Obsidian-CuD/Pruefung/beispiel_pruefen.cjs` prüft das korrigierte Erweiterungsbeispiel einschließlich echter lokaler Quelle und unabhängiger Ausgabe; das Lernwerkzeug erhält dabei keine zusätzliche Lektion. [[Pruefung/Referenzabgleich.json|Referenzabgleich.json]] dokumentiert die Dateihashes und Unterschiede zur älteren Arbeitsablage.
+
+## Korrektur der plattformabhängigen Manifestreihenfolge
+
+Der erste Linux-CI-Lauf von PR #12 scheiterte ausschließlich an der Dateireihenfolge im Vaultmanifest; die gespeicherten Dateiinhalte waren gleich. Windows sortierte Path-Objekte anders als POSIX. Die Inventarliste wird jetzt ausdrücklich nach den relativen POSIX-Pfadzeichenfolgen sortiert. Ein Regressionstest mit gemischter Groß-/Kleinschreibung prüft diese Reihenfolge; eine reine Reihenfolgeabweichung erhält außerdem eine verständliche Fehlermeldung. Ausführen: `python -m unittest discover -s Obsidian-CuD/Pruefung -p "test_*.py"`. Die erneuten GitHub-Prüfungen sind der maßgebliche Nachweis für Windows und Linux.

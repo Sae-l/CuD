@@ -22,7 +22,8 @@ def inventory():
             continue
         data = p.read_bytes()
         records.append({'path':rel.as_posix(),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
-    return records
+    # Path ordering differs between Windows and POSIX. Manifest bytes must not.
+    return sorted(records, key=lambda record: record['path'])
 
 
 def inspect():
@@ -121,7 +122,9 @@ def main():
             before = {r['path']:r for r in expected}
             after = {r['path']:r for r in actual}
             result['status'] = 'FAIL'
-            result['errors'].append('Manifestabweichung: '+', '.join(sorted(p for p in before.keys()|after.keys() if before.get(p)!=after.get(p))))
+            changed = sorted(p for p in before.keys()|after.keys() if before.get(p)!=after.get(p))
+            detail = ', '.join(changed) if changed else 'abweichende Reihenfolge; Dateiinhalte unverändert'
+            result['errors'].append('Manifestabweichung: '+detail)
     result['manifest_files'] = len(actual)
     print(json.dumps(result,ensure_ascii=False,indent=2))
     raise SystemExit(0 if result['status']=='PASS' else 1)

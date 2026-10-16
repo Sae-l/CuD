@@ -24,9 +24,9 @@
     },
     {
       "path": ".github/workflows/check.yml",
-      "bytes": 1674,
-      "sha256": "c186acaba9bc671f2d63d830621bcb1f6c97bf5da851e0aeb5b52e74f198de0c",
-      "git_blob_sha1": "8698a3b170c4bd3851ab76e95eb9b0ef7071f8c8"
+      "bytes": 1755,
+      "sha256": "0b886fc7f08ad49717e7820b8e9be4c1a8b6ecc0a0b510593a76c99881570bb4",
+      "git_blob_sha1": "9cb93e6f602a9831255ce1fd8c2acd07c1f0b16f"
     },
     {
       "path": ".github/workflows/release.yml",
@@ -552,9 +552,9 @@
     },
     {
       "path": "Obsidian-CuD/90 Nachweise/93 Vault-Prüfbericht.md",
-      "bytes": 3813,
-      "sha256": "9e7a26c666cc10440580a7b8dc0ad18ae24777058ecb8a2283f3841407581845",
-      "git_blob_sha1": "fb95bab348a36e647e435ffc6feb74024495d1a5"
+      "bytes": 4506,
+      "sha256": "3b01566218f3b9badca2a495d49c447faee1c869184cc73fdd8b06c35ae2e3f9",
+      "git_blob_sha1": "eef7b66465d749e5f40c4f67d8a38e1afc21085c"
     },
     {
       "path": "Obsidian-CuD/90 Nachweise/94 Gesprächs- und Quellenabgleich.md",
@@ -588,9 +588,9 @@
     },
     {
       "path": "Obsidian-CuD/Pruefung/VAULT_MANIFEST.json",
-      "bytes": 8500,
-      "sha256": "33bed207e2bfba21eecdaf8d67ea9b878ac816118b54798e7429ae16972d1f48",
-      "git_blob_sha1": "078a49758353763e3e35149f9cbf6d010aef39fe"
+      "bytes": 8670,
+      "sha256": "8e219af0ded31ae1d0fc2c929d26e98e4870510c8d5d99fcbbfc93f8d6266d1f",
+      "git_blob_sha1": "fcf5eea7388668ecaa80d10e6c1d7854c876c626"
     },
     {
       "path": "Obsidian-CuD/Pruefung/beispiel_pruefen.cjs",
@@ -599,10 +599,16 @@
       "git_blob_sha1": "2180c3f1d8c8521a6fa9b0ec561cd7703d4c7b67"
     },
     {
+      "path": "Obsidian-CuD/Pruefung/test_vault_pruefen.py",
+      "bytes": 1248,
+      "sha256": "89be8191b097faed5cc1035cfc6cc617f3cf0174aad373a27c797e4fc7635582",
+      "git_blob_sha1": "6b07f1c9bb1db62146c674ae1452ec3269f66c43"
+    },
+    {
       "path": "Obsidian-CuD/Pruefung/vault_pruefen.py",
-      "bytes": 6034,
-      "sha256": "c0416df0fda476cd48d334cb510cd4b405a0e4945a1cba5c75389295ceee292c",
-      "git_blob_sha1": "e2665c38fae295778a147798086c09a4752f8cb7"
+      "bytes": 6284,
+      "sha256": "57cb4f8c398f9887150a23fb31e6e455673e25fcae28cc83bfc7f638fda047bb",
+      "git_blob_sha1": "58d515f2986aa9c12fc55b25450e0eaa55c4d5b8"
     },
     {
       "path": "Obsidian-CuD/Vorlagen/Vorlage Freigabe.md",

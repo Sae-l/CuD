@@ -189,8 +189,8 @@
     },
     {
       "path": "90 Nachweise/93 Vault-Prüfbericht.md",
-      "bytes": 3813,
-      "sha256": "9e7a26c666cc10440580a7b8dc0ad18ae24777058ecb8a2283f3841407581845"
+      "bytes": 4506,
+      "sha256": "3b01566218f3b9badca2a495d49c447faee1c869184cc73fdd8b06c35ae2e3f9"
     },
     {
       "path": "90 Nachweise/94 Gesprächs- und Quellenabgleich.md",
@@ -201,11 +201,6 @@
       "path": "CuD Gesamtkarte.canvas",
       "bytes": 12541,
       "sha256": "b412a55d4804ddf079ecab3701dd2de6c55a015772ba529055b84af50fc53e4f"
-    },
-    {
-      "path": "Pruefung/beispiel_pruefen.cjs",
-      "bytes": 2423,
-      "sha256": "eb190b2aa7f7948d38dcd5702eded59c7c89bcd373a4c04e06677af7962f956f"
     },
     {
       "path": "Pruefung/Bestandsaufnahme.json",
@@ -223,9 +218,19 @@
       "sha256": "627b637e9a9ef41eb7510515fa41d42277a2a663d9e5fbb563ec2bf2d310e884"
     },
     {
+      "path": "Pruefung/beispiel_pruefen.cjs",
+      "bytes": 2423,
+      "sha256": "eb190b2aa7f7948d38dcd5702eded59c7c89bcd373a4c04e06677af7962f956f"
+    },
+    {
+      "path": "Pruefung/test_vault_pruefen.py",
+      "bytes": 1248,
+      "sha256": "89be8191b097faed5cc1035cfc6cc617f3cf0174aad373a27c797e4fc7635582"
+    },
+    {
       "path": "Pruefung/vault_pruefen.py",
-      "bytes": 6034,
-      "sha256": "c0416df0fda476cd48d334cb510cd4b405a0e4945a1cba5c75389295ceee292c"
+      "bytes": 6284,
+      "sha256": "57cb4f8c398f9887150a23fb31e6e455673e25fcae28cc83bfc7f638fda047bb"
     },
     {
       "path": "Vorlagen/Vorlage Freigabe.md",
