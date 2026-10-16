@@ -39,6 +39,7 @@ jobs:
       - run: npx --no-install playwright install --with-deps --only-shell chromium firefox webkit
       - run: python scripts/manifest.py --check
       - run: python Obsidian-CuD/Pruefung/vault_pruefen.py
+      - run: node Obsidian-CuD/Pruefung/beispiel_pruefen.cjs
       - run: python -m unittest discover -s scripts -p "test_*.py"
       - run: npm test
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

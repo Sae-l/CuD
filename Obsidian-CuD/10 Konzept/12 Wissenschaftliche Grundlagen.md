@@ -39,6 +39,10 @@ Die Übersichtsarbeit bewertet Übungstests und verteiltes Lernen insgesamt gün
 
 Farben, Animationen, die konkrete Kartenanordnung und technische Bibliothekswahl werden hier nicht als wissenschaftlich validierte Lerninterventionen ausgegeben.
 
+## Herkunft der Auswahl nach Gesprächsabgleich
+
+Die gelesene Konversation „Python-Lernplattform strukturieren“ nennt PRIMM ausdrücklich als gewähltes Lernkonzept und verweist auf die Raspberry Pi Foundation. Das belegt die damalige Auswahl des Ansatzes. Der Originalartikel von 2019 und Dunlosky et al. sind ergänzende wissenschaftliche Einordnung dieser Wissensbasis. Die Sichtung liefert keinen Nachweis einer früheren vollständigen Literaturauswertung und keinen CuD-Wirksamkeitstest. Design- und Bibliotheksentscheidungen werden nicht nachträglich als Ergebnis dieser Studien ausgegeben. Siehe [[27 Entscheidungen und Baugeschichte]] und [[94 Gesprächs- und Quellenabgleich]].
+
 ## Nächster Wirksamkeitsnachweis
 
 Zuerst den vorhandenen Gebrauchstest durchführen: Starten, Orientierung, eine begleitete Aufgabe und eine neue Variante beobachten. Für eine weitergehende Studie Lernziel und Messkriterien vorab festlegen, Vorwissen erfassen, eine sinnvolle Vergleichsbedingung planen und einen verzögerten Transfer prüfen. Datenschutz und freiwillige Teilnahme gesondert klären. Dieser Vorschlag ist kein durchgeführtes Experiment.

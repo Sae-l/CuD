@@ -13,11 +13,13 @@ tags: ["cud", "moc"]
 
 Diese deutschsprachige Wissensbasis erklärt den Lernraum **Coding und Digitalisierung**: Zweck, Lernmodell, technische Umsetzung, Erweiterung, Veröffentlichung und Grenzen. Sie ist als zusammenhängende Dokumentation und als Obsidian-Vault nutzbar.
 
-**Lesestart:** [[01 Vault benutzen]] → [[10 Ziel und Umfang]] → [[20 Technische Architektur]].
+**Hauptreferenz:** [[03 Projektleitfaden]] — Verständnis, Diagnose, Reparatur und Wiederaufbau.
+
+**Lesestart:** [[01 Vault benutzen]] → [[03 Projektleitfaden]] → [[10 Ziel und Umfang]].
 **Visuelle Übersicht:** [[CuD Gesamtkarte.canvas]] und [[02 Gesamtübersicht]].
 
 > [!info] Geprüfter Stand vom 16.10.2026
-> Repository: [Sae-l/CuD](https://github.com/Sae-l/CuD), öffentlich; Standardbranch `main`. Gelesener Commit: `bdff10b0918473d8a37e05141a85fdf37c762c4d`. Die Projektversion ist 0.2.1. Ältere Texte nennen noch CuD-1 und eine private Ablage. Diese Angaben sind nicht als aktueller Zugriffsschutz zu verstehen.
+> Repository: [Sae-l/CuD](https://github.com/Sae-l/CuD), öffentlich; Standardbranch `main`. Gelesener Commit: `b784b9bed47ba9232c0e121b0f496a6dd75b119d`. Die Projektversion ist 0.2.1. Ältere Texte nennen noch CuD-1 und eine private Ablage. Diese Angaben sind nicht als aktueller Zugriffsschutz zu verstehen.
 
 ## Lernen und wissenschaftliche Grundlage
 
@@ -31,6 +33,15 @@ Diese deutschsprachige Wissensbasis erklärt den Lernraum **Coding und Digitalis
 - [[21 Entstehung und Umsetzung]] — nachvollziehbarer Entwicklungsweg.
 - [[22 Fähigkeiten Skills und Werkzeuge]] — notwendige Fähigkeiten, verwendete Werkzeuge und dokumentierte Skills.
 - [[23 Qualität und Prüfungen]] — Softwaretests, Geräteprüfungen und Lernwirksamkeit getrennt betrachten.
+
+## Probleme lösen und das Projekt wieder aufbauen
+
+- [[24 Laufzeit und Datenflüsse]] — Verarbeitung und Vertrauensgrenzen Schritt für Schritt.
+- [[25 Diagnose und Reparatur]] — Symptome, Codeorte und Reparaturnachweise.
+- [[26 Wiederaufbau und Arbeitsumgebung]] — Checkout, Anzeige, Prüfumgebung und Paket.
+- [[27 Entscheidungen und Baugeschichte]] — warum das Projekt so gebaut wurde.
+- [[28 Komponenten und Einstiegspunkte]] — Funktionskarte aus dem geprüften Code.
+- [[94 Gesprächs- und Quellenabgleich]] — fünf gelesene Chats, Ersatzquellen und belegte Grenzen.
 
 ## Inhalte weiterentwickeln
 

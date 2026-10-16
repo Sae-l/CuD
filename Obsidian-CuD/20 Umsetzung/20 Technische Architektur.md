@@ -63,3 +63,5 @@ Entwicklung: [[32 Entwicklung und Release]]. Datenschutz: [[44 Sicherheit und Da
 - [Lernwerkzeug/inhalte.js](https://github.com/Sae-l/CuD/blob/bdff10b0918473d8a37e05141a85fdf37c762c4d/Lernwerkzeug/inhalte.js)
 
 Weiter: [[00 Start]] · [[90 Stand und Nachweise]] · [[91 Quellenverzeichnis]]
+
+Detaillierter Laufweg: [[24 Laufzeit und Datenflüsse]]. Zuständige Quellstellen: [[28 Komponenten und Einstiegspunkte]].

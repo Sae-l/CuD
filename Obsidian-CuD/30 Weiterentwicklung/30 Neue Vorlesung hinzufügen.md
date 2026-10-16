@@ -28,9 +28,10 @@ Im Array `vorlesungen` eine neue dauerhafte ID verwenden. **`lektion-10` ist ber
   id: "lektion-11",
   title: "Funktionen mit kleinen Prüffällen kontrollieren",
   topic: "Funktionen",
-  origin: "eigene-ergaenzung",
-  sourceHref: "https://docs.python.org/3/tutorial/controlflow.html#defining-functions",
-  sourceTitle: "Python-Dokumentation: Funktionen; eigenes Beispiel",
+  origin: "003",
+  pages: "4–6; eigene Vertiefung",
+  page: 4,
+  sourceTitle: "Vorlesung 003, PDF-S. 4–6; eigene Vertiefung zu Funktionen",
   needs: ["lektion-5"],
   summary: "Ein Rückgabewert lässt sich gezielt kontrollieren.",
   goal: "Du prüfst eine eigene Funktion mit zwei Eingaben.",
@@ -60,7 +61,7 @@ Die vorhandene Reihenfolge erzeugt Folgeschritte; `needs` erlaubt ausdrücklich 
 
 Code in einer sauberen Python-Umgebung ausführen und die erwartete Ausgabe unabhängig kontrollieren. Verständnisfrage mit falscher und richtiger Antwort testen. Quelle, Voraussetzungen, Suche und Navigation prüfen. Danach die betroffenen Tests aus [[32 Entwicklung und Release]] ausführen und den gespeicherten Bericht einordnen.
 
-Erst nach Diff- und Originalhashkontrolle das Manifest bewusst erneuern. Abnahme: stabile neue ID, echte Quelle oder klar benannte eigene Ergänzung, korrektes ausführbares Beispiel, eindeutige Quizantwort und funktionierende Verweise. Das Beispiel oben ist eine Vorlage und wurde diesem Lernraum nicht hinzugefügt.
+Erst nach Diff- und Originalhashkontrolle das Manifest bewusst erneuern. Abnahme: stabile neue ID, echte Quelle oder klar benannte eigene Ergänzung, korrektes ausführbares Beispiel, eindeutige Quizantwort und funktionierende Verweise. Das Beispiel oben bleibt eine Vorlage und wurde dem ausgelieferten Lernraum nicht hinzugefügt. Bei dieser Referenzerweiterung wird seine Einbindung isoliert gegen die vorhandenen Pflichtfelder und Quellenableitungen geprüft. Eine externe HTTP-Adresse ist hier kein Ersatz für eine lokale Kursquelle: Die aktuelle Quellenprüfung erwartet auflösbare lokale Dateien. `sourceHref` eignet sich im bestehenden Vertrag beispielsweise für den lokalen FFT-Begleitcode.
 
 ## Projektbelege
 
@@ -69,3 +70,5 @@ Erst nach Diff- und Originalhashkontrolle das Manifest bewusst erneuern. Abnahme
 - [CONTRIBUTING.md](https://github.com/Sae-l/CuD/blob/bdff10b0918473d8a37e05141a85fdf37c762c4d/CONTRIBUTING.md)
 
 Weiter: [[00 Start]] · [[90 Stand und Nachweise]] · [[91 Quellenverzeichnis]]
+
+Die reproduzierbare Dokumentationsprobe liegt in [[Pruefung/beispiel_pruefen.cjs|beispiel_pruefen.cjs]]. Vom Repository-Ordner aus mit `node Obsidian-CuD/Pruefung/beispiel_pruefen.cjs` starten; `LERNWERKZEUG_PYTHON` kann den vorhandenen Interpreter auswählen. Sie ergänzt die Beispiellektion nur in einer isolierten Node-VM, prüft lokale Quelle und Pflichtfelder und führt das kleine Python-Beispiel aus. Sie schreibt keinen neuen Kursinhalt.
