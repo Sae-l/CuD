@@ -4,7 +4,7 @@ description: "Zum bloßen Lesen der Website ist diese Umgebung nicht erforderlic
 type: note
 language: de
 created: 2026-10-16
-updated: 2026-10-16
+updated: 2026-10-17
 status: dokumentiert
 tags: ["cud"]
 ---
@@ -16,6 +16,8 @@ Zum bloßen Lesen der Website ist diese Umgebung nicht erforderlich. Die Entwick
 ## Einen echten Checkout verwenden
 
 Der angegebene übergeordnete Arbeitsordner besitzt derzeit kein eigenes `.git`. Der bei der Sichtung vorhandene Checkout unter `.upload-work/CuD-design` zeigte denselben Commit wie die entfernte `main`. Vor einer späteren Änderung tatsächlichen Checkout, Branch, Remote und Arbeitsbaum erneut prüfen. Der Vault selbst enthält keine ausgeführten Git-Schreiboperationen.
+
+Eine gemischte Arbeitskopie nicht pauschal über die aktuelle `main` kopieren. Zuerst den aktuellen entfernten Stand abrufen, Originalhashes vergleichen und die Unterschiede von HTML, CSS, JavaScript, Daten und Tests gemeinsam reviewen. Nur beabsichtigte Reparaturen übernehmen. Auch wenn JavaScript neuer ist, kann die danebenliegende CSS-Datei noch vor einer bereits übernommenen Gestaltung liegen. Das Manifest erkennt eine Dateiveränderung, entscheidet aber nicht, welcher Stand fachlich oder gestalterisch richtig ist.
 
 ```sh
 git clone https://github.com/Sae-l/CuD.git
@@ -65,6 +67,10 @@ Ein fehlgeschlagener Manifestcheck darf nicht durch blindes Neuschreiben beseiti
 Kleine Änderung abgrenzen, Tests und Grenzen beschreiben, Diff reviewen und erforderliche CI-Prüfungen am tatsächlichen Commit abwarten. Die vorhandene Workflow-Datei prüft Windows und Linux. Das Vorhandensein dieser Datei beweist keinen aktuellen grünen Lauf oder aktive Branchregeln.
 
 Für ein Release müssen `package.json`, Lockdatei und Tag zusammenpassen. `scripts/release.py` baut das ZIP aus dem Manifest und prüft die Einträge bytegenau; `SHA256SUMS` dokumentiert das Paket. Den Versionsnamen im dort beschriebenen Aufruf verwenden, nicht unverändert einen alten Tag neu veröffentlichen.
+
+Das Wartungspaket vom 17.10.2026 trägt die Patchversion **v0.2.2**: Gestaltung wiederherstellen, sichere Einstiege erhalten, Bedienung und Dokumentation nachführen. Die Versionsnummer allein ist noch kein Beleg für einen veröffentlichten Release. Den Abschluss anhand von Tag-Ziel, erfolgreichem Release-Workflow, ZIP und `SHA256SUMS` zurücklesen. Anschließend Pages gesondert am übernommenen Commit prüfen: Quelle ist die Repository-Wurzel `/`; beide Webseiten und ihre lokalen Assets müssen unter `/CuD/` erreichbar sein. Merge, Release und Pages-Deployment sind getrennte Nachweise.
+
+Vor der Integration Funktion und Gestaltung getrennt prüfen, Nachweise aktualisieren, Vault- und Projektmanifest bewusst erneuern und die aktuelle Windows-/Linux-CI abwarten. Private Designnachweise bleiben lokal im ausgeschlossenen Arbeitsbereich. Die ausführliche Schrittfolge steht in `CONTRIBUTING.md`; [[52 Gestaltung und Barrierearmut]] beschreibt die gerenderte Abnahme.
 
 Die in diesem Auftrag bereitgestellte Vault-ZIP ist ein eigenständiges Dokumentationspaket. Sie ist kein neues CuD-Softwarerelease. [[42 GitHub Repositoryplan]] beschreibt die spätere Einordnung.
 

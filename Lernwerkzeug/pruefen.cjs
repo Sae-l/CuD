@@ -205,14 +205,22 @@ async function browserTests() {
     }
     const landing = pathToFileURL(path.join(root,"../index.html")).href;
     await page.goto(landing);
+    assert((await page.locator("footer").innerText()).includes("Mohamed Saeed Alhalak"),"Signatur auf der Startseite fehlt");
     const entryLinks = await page.locator('a[href^="Lernwerkzeug/"]').evaluateAll(nodes => nodes.map(node => node.getAttribute("href")));
     assert.equal(entryLinks.filter(href => href === "Lernwerkzeug/index.html").length,4,"Alle Lernraum-Zugänge müssen direkt die HTML-Datei öffnen");
     for (const href of entryLinks) assert(fs.statSync(fileURLToPath(new URL(href,landing))).isFile(),href);
     const zipURL = "https://github.com/Sae-l/CuD/archive/refs/heads/main.zip";
     assert.equal(await page.locator(`a[href="${zipURL}"]`).count(),2,"ZIP statt veraltetem Release verlinken");
+    for (const id of ["vorlesungen","uebung","befehle","python-setup"]) {
+      await page.locator(`.tile h3 a[href="Lernwerkzeug/index.html#${id}"]`).click();
+      assert.equal(page.url(),`${url}#${id}`);
+      await waitForItem(id);
+      await page.goto(landing);
+    }
     await page.locator(".hero .btn-primary").click();
     assert.equal(page.url(),url);
     await waitForItem();
+    assert((await page.locator("footer").innerText()).includes("Mohamed Saeed Alhalak"),"Signatur im Lernraum fehlt");
     await page.waitForLoadState("networkidle");
     assert.equal(await page.locator("#nav-toggle").isVisible(),false);
     assert.equal(await page.locator("#lernnavigation").isVisible(),true);

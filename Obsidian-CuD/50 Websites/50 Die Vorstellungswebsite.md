@@ -4,7 +4,7 @@ description: "**Adresse:** [sae-l.github.io/CuD/](https://sae-l.github.io/CuD/).
 type: note
 language: de
 created: 2026-10-16
-updated: 2026-10-16
+updated: 2026-10-17
 status: dokumentiert
 tags: ["cud"]
 ---
@@ -15,7 +15,7 @@ tags: ["cud"]
 
 ## Ziel und Aufbau
 
-Die Seite richtet sich an Personen, die das Projekt noch nicht kennen. Sie erklärt Nutzen, Umfang, Lernweg und lokalen Einstieg. Der sichtbare Hauptsatz lautet „Programmieren lernen, ganz ohne Vorwissen.“ Die primären Aktionen öffnen den Lernraum oder führen zum neuesten Release.
+Die Seite richtet sich an Personen, die das Projekt noch nicht kennen. Sie erklärt Nutzen, Umfang, Lernweg und lokalen Einstieg. Der sichtbare Hauptsatz lautet „Programmieren lernen, ganz ohne Vorwissen.“ Die primären Aktionen öffnen den Lernraum oder laden den vollständigen `main`-Projektstand als ZIP. Ein Branch-ZIP ist veränderlich; ein Releaseasset gehört zu seinem festen Tag.
 
 | Abschnitt | Inhalt und Funktion |
 | --- | --- |
@@ -31,15 +31,17 @@ Die Seite richtet sich an Personen, die das Projekt noch nicht kennen. Sie erkl�
 
 Die Root-Seite enthält HTML, eigene CSS-Regeln und kleines JavaScript für Einblendungen und das mobile Menü. Schrift und Foto referenzieren `Lernwerkzeug/assets/`. Sie ist daher nicht unabhängig von diesem Assetordner. Ihre Gestaltung verwendet helle Flächen, dunkelgrüne Aktionen und einen hellgrünen Akzent.
 
-Der Link `Lernwerkzeug/` öffnet die eigentliche Anwendung. Der GitHub-Link führt zum Quellrepository, der Downloadlink zum Release. Eine GitHub-Dateiansicht führt die HTML-Seite nicht als Lernanwendung aus.
+Der Link `Lernwerkzeug/index.html` öffnet die eigentliche Anwendung auch im entpackten Dateibetrieb. Der GitHub-Link führt zum Quellrepository, der Downloadlink zum vollständigen Branch-ZIP. Eine GitHub-Dateiansicht führt die HTML-Seite nicht als Lernanwendung aus. Nur diese HTML-Datei zu speichern genügt nicht: lokale Schrift, Foto, Anwendung und Quellenordner gehören dazu.
+
+Die Inhaltsüberschriften öffnen ihre passenden Lernbereiche direkt über `Lernwerkzeug/index.html#…`: Vorlesungen, Übungen, Befehle und Einrichtung. Im Footer des Lernraums führt **CuD Startseite** zurück zur Vorstellung. Beide Wege gehören zur Navigationsprüfung; auch die Tastatur muss die Überschriftenlinks erreichen können.
 
 ## Was sie erklären sollte
 
 Besucher sollen sofort verstehen: Für wen ist CuD? Wie starte ich? Wo läuft Python? Welche Aufgaben sind begleitet? Welche Grenzen gelten? Die Seite sollte beim Umfang immer denselben Stand wie README und Abdeckungsplan nennen. Eine Aussage über garantierten Lernerfolg oder pauschal geprüfte Geräte wäre durch die derzeitigen Belege nicht gedeckt.
 
-## Aktueller Korrekturbedarf
+## Wartung und Prüfung
 
-Der Footer nennt noch eine private Projektablage, obwohl CuD öffentlich ist. Das sollte bei der nächsten abgegrenzten Dokumentationskorrektur angepasst werden. Ebenso sind noch vorhandene CuD-1-Verweise in anderen Projektdateien zu prüfen. Die Dokumentation verändert die Website selbst nicht.
+Die HTTP-Angabe vom 16.10.2026 oben bleibt ein datierter Nachweis. Bei jeder Veröffentlichung aktuelle URL, Hauptaktion, mobilen Menüweg, Offline-Einstieg und tatsächlichen Download prüfen. Der Footer muss den gültigen Projektzweck und Herkunftshinweise korrekt wiedergeben; ältere Angaben über eine private Ablage sind kein Zugriffsschutz. Der sichtbare Autorenname lautet **Mohamed Saeed Alhalak**; er ersetzt keine Quellen- und Lizenzangaben fremder Materialien.
 
 Der interaktive Lernraum ist unter [[51 Das Lernwerkzeug]] beschrieben; die geplante Sichtbarkeit von Dateien unter [[43 Sichtbarkeit für Besucher]].
 

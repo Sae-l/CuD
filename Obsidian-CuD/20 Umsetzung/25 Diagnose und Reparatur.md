@@ -4,7 +4,7 @@ description: "Symptome, zuständige Komponenten, Reproduktion und geeignete Abna
 type: "note"
 language: de
 created: "2026-10-16"
-updated: "2026-10-16"
+updated: "2026-10-17"
 status: "dokumentiert"
 tags: ["cud", "wartung"]
 reviewed_commit: "b784b9bed47ba9232c0e121b0f496a6dd75b119d"
@@ -46,6 +46,7 @@ flowchart TD
 | FileNotFoundError im eigenen Code | Tatsächlicher Arbeitsordner, Dateiname und Erweiterung; nicht nur Speicherort von main.py | `Path.cwd()` und Existenz genau des verwendeten relativen Pfads |
 | Anderes numerisches Ergebnis | Datensatz, Spalte, Einheiten, NaN und konkrete Filtergrenze mit Originalauftrag vergleichen | Unabhängig gerechneter kleiner Prüffall; Annahme sichtbar |
 | Mobil Überlauf oder unzugänglicher Knopf | `styles.css`, Größen, Fokus und Menüstatus; Tabellen intern scrollen | Betroffene Breite, Tastatur, Touch und reduzierte Bewegung |
+| Funktion repariert, Gestaltung plötzlich älter | Lokale HTML-/CSS-/JS-Dateien einzeln gegen die aktuelle `main` und die letzte akzeptierte Gestaltung vergleichen; gemischte Arbeitskopie ausschließen | Zusammengehöriger Dateistand, gerenderter Vorher-/Nachher-Vergleich beider Oberflächen und bestehende Funktionstests |
 | Animation bleibt nach Navigation | `route()`, `startMotion` und `syncMotion()`; vorherige Trigger bereinigt? | Vor/nach Routenwechsel und nach Umschalten reduzierter Bewegung |
 | Test bleibt RUNNING oder meldet FAIL | Ersten Fehler lesen; Interpreter und Pakete, Python-Rückgabecode, gemeinsamen Fehlerabschluss prüfen | Erfolgs- und echter Fehlerfall erzeugen den richtigen Status |
 | Browser startet nicht | Browserpakete, Version, Profil-/Temp-Pfad und Betriebssystemvoraussetzungen | Start mit beschreibbarem temporärem Projektpfad; kein Abschalten von Schutzrichtlinien |
@@ -56,6 +57,12 @@ flowchart TD
 | Releasepaket wird abgelehnt | Tag-/Paketversion und Manifest; `pack()` in release.py | Passende stabile Version, geprüfte Bytes und SHA256SUMS |
 
 ## Den kleinsten wirksamen Eingriff wählen
+
+### Gestaltungsrückschritt vom 17.10.2026 einordnen
+
+Der untersuchte Arbeitsordner kombinierte eine ältere `Lernwerkzeug/styles.css` aus dem Stand vor dem Premium-Design-Commit `4b701d0` mit später korrigierten Einstiegen. Die entfernte `main` enthielt die Premium-Gestaltung weiterhin. Die lokale Downloadkorrektur änderte Linkziele und Texte; daraus ergibt sich keine beabsichtigte Neugestaltung. Das lokale Synchronisationsskript kopierte außerdem die vollständige Root-Startseite aus einem anderen Checkout, obwohl diese Datei nicht in seiner Sicherungsliste stand. Das beweist keinen verlorenen früheren Seiteninhalt, zeigt aber einen unvollständig gesicherten Synchronisationsumfang.
+
+Die Reparatur übernimmt den zusammengehörigen Gestaltungsstand der geprüften `main` und erhält die ausdrücklich dateitauglichen `index.html`-Einstiege. Künftige Korrekturen benötigen einen Vergleich aller betroffenen Dateibytes und eine gerenderte Sichtprüfung; reine Linktests verhindern diesen Rückschritt nicht. Die privaten Vergleichsdateien und Skripte bleiben unter `.upload-work/`; historische Berichte werden dadurch nicht nachträglich zu neuen Prüfnachweisen.
 
 Inhalt oder Erwartung falsch → in `inhalte.js`, `kurs.js` oder dem fachlichen Prüffall arbeiten. Such- oder Navigationslogik falsch → `app.js`. Bedienung falsch → betroffene HTML-/CSS-/JS-Stelle. Deploymentquelle falsch → tatsächliche Hostingkonfiguration prüfen; keine Inhaltsdatei als Ersatz für eine Settingskorrektur ändern.
 

@@ -4,7 +4,7 @@ description: "Der Lernraum verwendet eine ruhige helle Grundfläche, dunkelgrün
 type: note
 language: de
 created: 2026-10-16
-updated: 2026-10-16
+updated: 2026-10-17
 status: dokumentiert
 tags: ["cud"]
 ---
@@ -31,6 +31,12 @@ GSAP und ScrollTrigger unterstützen Bildbewegung und Kartenstaffelung im Lernra
 ## Herkunft und Lizenzen
 
 Outfit wird mit SIL Open Font License ausgeliefert. GSAP und ScrollTrigger haben eigene Lizenzhinweise. Fotoherkunft, Downloadadressen, Dateigrößen und Hashwerte sind im Assetverzeichnis dokumentiert. Eine Quellangabe ersetzt nicht die Prüfung des jeweils vorgesehenen Nutzungsumfangs. Beim Austausch Hinweise und Integritätswerte aktualisieren; nicht still auf externe Font- oder Bildserver wechseln.
+
+## Gestaltung vor Rückschritten schützen
+
+Vor einer Änderung Zweck, Hauptaktion, visuelle Referenz und Zielgrößen festhalten. Projektstartseite und Lernraum bei denselben schmalen und breiten Größen vor und nach der Änderung ansehen. Hierarchie, Textumbrüche, Abstände, Bildausschnitt, Kontrast, Tastaturfokus und mobile Menübedienung prüfen. Lange Titel und Code dürfen benachbarte Bedienelemente nicht verdrängen. Funktions- und Überlaufprüfungen allein erkennen keinen Wechsel zu einer älteren Gestaltung.
+
+Leere Suche, unbekannte Route, Quizrückmeldung, blockierter Speicher und fehlende Originaldaten brauchen verständliche Rückmeldung und einen nächsten Schritt. Ein nicht geprüfter Zustand bleibt ungeprüft. Private Screenshots und das JSON-Protokoll der Skill-Prüfung liegen lokal unter `.upload-work/design-review/`; sie werden nicht veröffentlicht oder an externe Referenzdienste geschickt. Der reguläre Prüfbericht hält die tatsächlich gewonnenen Beobachtungen und Grenzen fest. Der Skill-Checker kontrolliert die Vollständigkeit des Protokolls, nicht die Qualität der Gestaltung.
 
 ## Sinnvolle nächste Nutzungsprüfung
 

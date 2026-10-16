@@ -4,7 +4,7 @@ description: "CuD besteht aus HTML, CSS und JavaScript. Die Nutzung erfordert ke
 type: note
 language: de
 created: 2026-10-16
-updated: 2026-10-16
+updated: 2026-10-17
 status: dokumentiert
 tags: ["cud"]
 ---
@@ -40,9 +40,13 @@ flowchart TD
 
 Die Skripte werden mit `defer` in der Reihenfolge `inhalte.js`, `kurs.js`, `app.js` geladen. Der Renderer muss die bereits vervollständigten Inhaltsdaten sehen. Ein neues Framework ist für die derzeitige Größe nicht erforderlich.
 
+Die Root-Seite besitzt eigene CSS-Regeln und Menülogik; `Lernwerkzeug/styles.css` gestaltet den Lernraum. Beide Oberflächen werden getrennt geprüft. Ein funktionierender Einstieg belegt noch keine korrekte Gestaltung des geöffneten Lernraums. HTML, CSS und Skripte müssen aus einem zusammengehörigen geprüften Stand stammen; ein einzelner Dateiaustausch kann eine ältere Gestaltung unbemerkt zurückbringen.
+
 ## Daten und Navigation
 
 Inhaltseinträge tragen stabile IDs. Einträge werden über eine ID-Zuordnung gefunden, Verweise in `needs` und `related` verbinden sie. Vorlesungsreihenfolge, Themenfilter und Anzahl werden weitgehend aus den Daten erzeugt. Hash-Adressen wie `#vorlesungen` oder `#aufgabe-6-1` erlauben direkte Einstiege.
+
+Aus der Projektstartseite lautet der relative Einstieg ausdrücklich `Lernwerkzeug/index.html#vorlesungen`, innerhalb des Lernraums genügt `#vorlesungen`. Die ausgeschriebene Startdatei erhält den Zugang im entpackten Offline-Ordner und unter dem Pages-Projektpfad `/CuD/`. Ein führender Schrägstrich würde den Repository-Pfad umgehen. Beim Umbenennen einer ID auch Lesezeichen, Querverweise und gespeicherte Bearbeitungsmarken berücksichtigen.
 
 Die Suche normalisiert unter anderem Umlaute und Großschreibung. Sie berücksichtigt Suchwörter in Titeln, Aliasen und Erklärungen und gewichtet bestimmte Treffer stärker. Mathematische Operatoren bleiben suchbar. Es gibt keinen externen Suchdienst und kein Sprachmodell im Laufzeitpfad.
 

@@ -8,6 +8,8 @@ const http = require("node:http");
 const {once} = require("node:events");
 const output = path.join(__dirname,"pruefung");
 fs.mkdirSync(output,{recursive:true});
+const designOutput = path.join(__dirname,"../.upload-work/design-review");
+fs.mkdirSync(designOutput,{recursive:true});
 const temporary = path.join(__dirname,"../.upload-work/browser-temp");
 fs.mkdirSync(temporary,{recursive:true});
 process.env.TEMP = temporary;
@@ -62,21 +64,83 @@ async function main() {
         // shortcut: Windows-WebKit scheitert hier an file://, auf echtem Safari separat prüfen.
         report.localFile = "UNVERIFIED: Windows WebKit file:// internal error; HTTP tested";
       }
-      for (const width of [390,1440]) {
-        await page.setViewportSize({width,height:1000});
+      for (const [width,height] of [[320,1000],[390,1000],[640,320],[768,1000],[1440,1000]]) {
+        await page.setViewportSize({width,height});
         await page.goto(`${origin}/CuD/index.html`);
         assert.equal(await page.locator("h1").count(),1);
         assert(await page.locator('meta[name="description"]').getAttribute("content"));
+        assert((await page.locator("footer").innerText()).includes("Mohamed Saeed Alhalak"),"Signatur auf der Startseite fehlt");
+        assert(await page.locator(".island").evaluate(node => parseFloat(getComputedStyle(node).borderTopLeftRadius) >= 100),"Pillenförmige Navigation erhalten");
         assert(await page.locator(".hero-visual img").evaluate(img => img.complete && img.naturalWidth > 0));
         assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-        if (width === 390) {
-          await page.locator(".menu-btn").click();
+        if (engine.name() === "chromium" && [390,768,1440].includes(width)) {
+          for (const node of await page.locator("[data-reveal]").all()) {
+            await node.evaluate(node => node.scrollIntoView({block:"center",behavior:"instant"}));
+            await page.waitForFunction(() => [...document.querySelectorAll("[data-reveal]")].filter(node => {
+              const box = node.getBoundingClientRect();
+              return box.top < innerHeight * .9 && box.bottom > 0;
+            }).every(node => node.classList.contains("in")));
+          }
+          await page.evaluate(() => scrollTo({top:0,behavior:"instant"}));
+          await page.screenshot({path:path.join(designOutput,`landing-${width}.png`),fullPage:true,animations:"disabled"});
+        }
+        if (width <= 767) {
+          const button = page.locator(".menu-btn");
+          const first = page.locator("#menu a").first(), last = page.locator("#menu a").last();
+          await button.click();
+          assert.equal(await button.getAttribute("aria-expanded"),"true");
+          assert.equal(await first.evaluate(node => node === document.activeElement),true);
+          assert.equal(await page.locator("main").evaluate(node => node.inert),true);
+          assert.equal(await page.locator("footer").evaluate(node => node.inert),true);
+          for (const link of [first,last]) {
+            await link.scrollIntoViewIfNeeded();
+            assert(await link.evaluate(node => {
+              const box = node.getBoundingClientRect();
+              return box.top >= 0 && box.bottom <= innerHeight;
+            }),"Menülinks auch bei geringer Fensterhöhe erreichbar");
+          }
+          await last.focus();
+          await page.keyboard.press("Tab");
+          assert.equal(await button.evaluate(node => node === document.activeElement),true);
+          await page.keyboard.press("Shift+Tab");
+          assert.equal(await last.evaluate(node => node === document.activeElement),true);
+          await page.keyboard.press("Escape");
+          assert.equal(await button.getAttribute("aria-expanded"),"false");
+          assert.equal(await button.evaluate(node => node === document.activeElement),true);
+          assert.equal(await page.locator("main").evaluate(node => node.inert),false);
+          await button.click();
+          await page.setViewportSize({width:1440,height:1000});
+          await page.waitForFunction(() => !document.body.classList.contains("menu-open"));
+          await page.setViewportSize({width,height});
+          await button.click();
           await page.locator('#menu a[href="Lernwerkzeug/index.html"]').click();
         } else await page.locator(".hero .btn-primary").click();
         await page.waitForURL(url);
         await page.locator(".welcome-hero").waitFor();
       }
-      report.landing = "PASS: /CuD/ desktop and mobile entry links";
+      report.landing = "PASS: /CuD/ 320, 390, 768, 1440px and 640x320 landscape entry links, signatures and overflow";
+      assert((await page.locator("footer").innerText()).includes("Mohamed Saeed Alhalak"),"Signatur im Lernraum fehlt");
+      assert(await page.locator(".topbar").evaluate(node => parseFloat(getComputedStyle(node).borderTopLeftRadius) >= 100),"Pillenförmige Lernraum-Navigation erhalten");
+      const noScript = await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});
+      await noScript.route("**/*",route => route.request().url().startsWith(`${origin}/`) ? route.continue() : route.abort());
+      const fallback = await noScript.newPage();
+      await fallback.goto(`${origin}/CuD/index.html`);
+      assert.equal(await fallback.locator(".menu-btn").isVisible(),false);
+      assert.equal(await fallback.locator('#menu a[href="#inhalt"]').isVisible(),true);
+      assert.equal(await fallback.locator('#menu a[href="Lernwerkzeug/index.html"]').isVisible(),true);
+      assert(await fallback.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+      await noScript.close();
+      const reduced = await browser.newContext({reducedMotion:"reduce",viewport:{width:390,height:844}});
+      await reduced.route("**/*",route => route.request().url().startsWith(`${origin}/`) ? route.continue() : route.abort());
+      const calm = await reduced.newPage();
+      await calm.goto(`${origin}/CuD/index.html`);
+      assert(await calm.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior === "auto" && [...document.querySelectorAll("body,body *")].every(node => {
+        const style = getComputedStyle(node);
+        return style.animationName === "none" && style.transitionDuration.split(",").every(value => parseFloat(value) === 0);
+      })),"Startseite respektiert reduzierte Bewegung");
+      assert(await calm.locator(".hero h1").evaluate(node => getComputedStyle(node).opacity === "1"));
+      await reduced.close();
+      report.landingRecovery = "PASS: keyboard focus loop, Escape, inert background, resize recovery, no-JS navigation and reduced motion";
       await page.evaluate(() => document.fonts.ready);
       assert.equal(await page.evaluate(() => document.fonts.check('16px Outfit')),true);
       assert(await page.evaluate(() => window.gsap && window.ScrollTrigger && ScrollTrigger.getAll().length > 0));

@@ -2,13 +2,13 @@
 
 Ein lokales Lernwerkzeug für Studierende im Kurs **Coding und Digitalisierung**, auch ohne Programmierkenntnisse: verständliche Vorlesungsetappen, eine Befehlsübersicht, Einrichtungsanleitungen und Begleitung zu allen 31 Aufgaben des vorhandenen Übungsskripts.
 
-Version **0.2.1** begleitet alle 31 Aufgaben des vorhandenen Übungsskripts, vier Live-Übungen und zehn Lernetappen einschließlich FFT. Lernkontrollen, lokale Bearbeitungsmarken und ein eigenes Transferprojekt helfen beim Üben.
+Version **0.2.2** begleitet alle 31 Aufgaben des vorhandenen Übungsskripts, vier Live-Übungen und zehn Lernetappen einschließlich FFT. Lernkontrollen, lokale Bearbeitungsmarken und ein eigenes Transferprojekt helfen beim Üben.
 
 **Aufgabe → benötigtes Wissen → passender Befehl → selbst ausprobieren → Ergebnis prüfen**
 
 ## In drei Schritten starten
 
-1. Lade das [vollständige Projekt-ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) herunter und entpacke es vollständig. Auf GitHub geht das auch über **Code → Download ZIP**; auf der Webseite über **Projekt als ZIP laden**. **„Seite speichern“ im Browser reicht nicht aus.** Alternativ: `git clone https://github.com/Sae-l/CuD.git`. Der ältere, fest versionierte [Release v0.2.1](https://github.com/Sae-l/CuD/releases/tag/v0.2.1) enthält ein vollständiges ZIP und `SHA256SUMS`.
+1. Lade das [vollständige Projekt-ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) herunter und entpacke es vollständig. Auf GitHub geht das auch über **Code → Download ZIP**; auf der Webseite über **Projekt als ZIP laden**. **„Seite speichern“ im Browser reicht nicht aus.** Alternativ: `git clone https://github.com/Sae-l/CuD.git`. Der fest versionierte [Release v0.2.2](https://github.com/Sae-l/CuD/releases/tag/v0.2.2) enthält ein vollständiges ZIP und `SHA256SUMS`.
 2. Öffne [index.html](index.html) aus dem entpackten Projektordner und wähle **Lernraum öffnen**. Alternativ öffne [Lernwerkzeug/index.html](Lernwerkzeug/index.html) direkt. Die GitHub-Dateiansicht zeigt nur den Quelltext.
 3. Wähle **Lernweg beginnen**, richte deine Python-Umgebung ein und beginne mit der ersten Vorlesung. **Übungen & Begleitung** führt zu allen Aufgaben; der Block 6.1–6.3 bleibt hervorgehoben.
 
@@ -57,4 +57,10 @@ Technische Tests belegen keinen Lernnutzen. Gebrauchstest und vollständige visu
 
 ## Aufbewahrung und Rechte
 
-Dieses Repository dient als private Projektablage. Originalunterlagen behalten ihre jeweilige Herkunft; eine übergreifende Lizenz für fremde Kursmaterialien wird hier nicht vergeben. Originaldateien bleiben unverändert, einschließlich des byte-identischen doppelten Analyse-PDFs. `.gitattributes` verhindert automatische Zeilenumwandlungen beim Git-Transfer. Temporäre Arbeitsdateien und lokale Browserprotokolle werden über `.gitignore` ausgeschlossen.
+Dieses Repository ist öffentlich zugänglich; diese Sichtbarkeit ersetzt keine Nutzungserlaubnis für fremde Kursmaterialien. Originalunterlagen behalten ihre jeweilige Herkunft; eine übergreifende Lizenz für fremde Kursmaterialien wird hier nicht vergeben. Originaldateien bleiben unverändert, einschließlich des byte-identischen doppelten Analyse-PDFs. `.gitattributes` verhindert automatische Zeilenumwandlungen beim Git-Transfer. Temporäre Arbeitsdateien und lokale Browserprotokolle werden über `.gitignore` ausgeschlossen.
+
+## Gestaltung und Wartung in v0.2.2
+
+Der lokale Lernraum verwendet wieder die veröffentlichte Gestaltung: abgerundete Navigation, ruhige Papierflächen und konsistente Eingabe- und Aktionsfelder. Der vorherige lokale Ordner enthielt einen älteren CSS-Stand neben neueren Dateien. Die Downloadkorrektur bleibt erhalten. Die Startseite bietet direkte Links zu Vorlesungen, Übungen, Befehlen und Einrichtung; das Mobilmenü unterstützt Tastaturfokus, Escape und einen Einstieg ohne JavaScript. Beide Oberflächen tragen die Signatur **Mohamed Saeed Alhalak**.
+
+Betrieb und Architektur: [Bedienung](Lernwerkzeug/README.md). Neue Inhalte und sichere Prüfung: [Erweitern](Lernwerkzeug/ERWEITERN.md) und [Beitragen und Veröffentlichen](CONTRIBUTING.md). Die [Diagnose](AUDIT.md#gestaltung-und-sichere-integration-17102026) trennt lokale Dateidrift von Fehlern im veröffentlichten Stand.
