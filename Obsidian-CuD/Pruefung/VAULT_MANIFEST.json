@@ -124,13 +124,13 @@
     },
     {
       "path": "30 Weiterentwicklung/32 Entwicklung und Release.md",
-      "bytes": 7435,
-      "sha256": "1084fbb6d865aaf85013865f4e33387e6283070e6ca37b6701cf29fcd1549a52"
+      "bytes": 7596,
+      "sha256": "11156fbdb4b8c9c6edaf7a9ce4f85cafa501e377c54e540520ad1a5da3427d0f"
     },
     {
       "path": "30 Weiterentwicklung/33 Entwicklungsplan.md",
-      "bytes": 3737,
-      "sha256": "4dc5b0d35b740ea176d1a63b2a0750ce01ece65cf7f5276d522a3923e11a08bc"
+      "bytes": 3883,
+      "sha256": "93d3f64d24a71679b47ab4ff205b8758bb48ba01975dbc60ccd88a9b0d7a6c10"
     },
     {
       "path": "40 Betrieb/40 Windows macOS und Android.md",
@@ -144,18 +144,18 @@
     },
     {
       "path": "40 Betrieb/42 GitHub Repositoryplan.md",
-      "bytes": 4866,
-      "sha256": "4dd48c6e51202a9caceebb128739a93607b911a2b441979481da58e8b667ca0f"
+      "bytes": 4999,
+      "sha256": "14a29b05108fe98d20f364b8da8a2f88f55f08d74968b5cb9eb364643b8f6ae4"
     },
     {
       "path": "40 Betrieb/43 Sichtbarkeit für Besucher.md",
-      "bytes": 4178,
-      "sha256": "e9988b74a4c09fad636e2c0489234b4900c96bc993f03b948a6361abfd003db2"
+      "bytes": 4565,
+      "sha256": "d40cdd221b218ed46bc386cd403fbff41fcefe8635b03ae0312c132db2ca5e08"
     },
     {
       "path": "40 Betrieb/44 Sicherheit und Datenschutz.md",
-      "bytes": 5300,
-      "sha256": "4cc8ad857c5b2fbedb4793692c849ee6185eb371d9b08960a6f5c00791b3bc10"
+      "bytes": 5479,
+      "sha256": "97e62c86e33b194835258859b396336105668ab34128d958b5d078d023f141a1"
     },
     {
       "path": "50 Websites/50 Die Vorstellungswebsite.md",
@@ -174,8 +174,8 @@
     },
     {
       "path": "90 Nachweise/90 Stand und Nachweise.md",
-      "bytes": 5891,
-      "sha256": "d08ddc0c354039ccfd231c9d841399fba419999b9b616e1969ec11ba607331d3"
+      "bytes": 7498,
+      "sha256": "951396b1d31e5fd8c0cf2869f6d28c34dc5880d1cd68548995c92e6edc4bd8bd"
     },
     {
       "path": "90 Nachweise/91 Quellenverzeichnis.md",

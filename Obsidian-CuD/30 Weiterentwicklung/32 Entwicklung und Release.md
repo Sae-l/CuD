@@ -15,7 +15,7 @@ Zum bloßen Lesen der Website ist diese Umgebung nicht erforderlich. Die Entwick
 
 ## Einen echten Checkout verwenden
 
-Der angegebene übergeordnete Arbeitsordner besitzt derzeit kein eigenes `.git`. Der bei der Sichtung vorhandene Checkout unter `.upload-work/CuD-design` zeigte denselben Commit wie die entfernte `main`. Vor einer späteren Änderung tatsächlichen Checkout, Branch, Remote und Arbeitsbaum erneut prüfen. Der Vault selbst enthält keine ausgeführten Git-Schreiboperationen.
+Vor Änderungen tatsächlichen Checkout, Branch, Remote und Arbeitsbaum prüfen. Beim Repositoryabgleich vom 17.10.2026 enthielt die übergeordnete Arbeitsablage kein `.git`; die Korrektur begann deshalb in einem sauberen Checkout der aktuellen `main` auf `b296826`. Eine Dokumentationskopie ist kein Ersatz für einen Git-Arbeitsbaum. [[90 Stand und Nachweise]] hält diesen zeitlich begrenzten Befund fest.
 
 Eine gemischte Arbeitskopie nicht pauschal über die aktuelle `main` kopieren. Zuerst den aktuellen entfernten Stand abrufen, Originalhashes vergleichen und die Unterschiede von HTML, CSS, JavaScript, Daten und Tests gemeinsam reviewen. Nur beabsichtigte Reparaturen übernehmen. Auch wenn JavaScript neuer ist, kann die danebenliegende CSS-Datei noch vor einer bereits übernommenen Gestaltung liegen. Das Manifest erkennt eine Dateiveränderung, entscheidet aber nicht, welcher Stand fachlich oder gestalterisch richtig ist.
 
@@ -60,7 +60,7 @@ Die Befehle beschreiben eine Einrichtung und sind kein durchgeführter macOS-Tes
 
 Vor Änderungen `scripts/manifest.py --check` mit dem gewählten Interpreter ausführen. Nach Änderungen zuerst den Diff und die Originalhashes prüfen. Erst dann `--write`, danach erneut `--check`. Unter Windows den Interpreter der Umgebung voranstellen, unter macOS/Linux entsprechend `./.venv/bin/python`.
 
-Ein fehlgeschlagener Manifestcheck darf nicht durch blindes Neuschreiben beseitigt werden. Der Vorabcheck in diesem Auftrag zeigte bereits `.claude/launch.json` als Abweichung. Für den anschließenden Upload wird die neue Dokumentation in einem sauberen Git-Checkout bewusst manifestiert. Der unabhängige Vorbefund im übergeordneten Arbeitsordner bleibt davon getrennt und wird nicht übernommen.
+Ein fehlgeschlagener Manifestcheck darf nicht durch blindes Neuschreiben beseitigt werden. `.claude/` und die Root-`.obsidian/` sind lokale Konfiguration und vom Manifest ausgeschlossen. Die gemeinsamen Einstellungen unter `Obsidian-CuD/.obsidian/` gehören zum Vault; dessen persönliche `workspace*.json` bleiben ausgeschlossen. Zuerst Inhalte und Diff prüfen, danach das Vaultmanifest und anschließend das Projektmanifest bewusst erneuern.
 
 ## Pull Request, CI und Release
 
@@ -74,11 +74,11 @@ Die Versionsnummer allein ist noch kein Beleg für einen veröffentlichten Relea
 
 Vor der Integration Funktion und Gestaltung getrennt prüfen, Nachweise aktualisieren, Vault- und Projektmanifest bewusst erneuern und die aktuelle Windows-/Linux-CI abwarten. Private Designnachweise bleiben lokal im ausgeschlossenen Arbeitsbereich. Die ausführliche Schrittfolge steht in `CONTRIBUTING.md`; [[52 Gestaltung und Barrierearmut]] beschreibt die gerenderte Abnahme.
 
-Die in diesem Auftrag bereitgestellte Vault-ZIP ist ein eigenständiges Dokumentationspaket. Sie ist kein neues CuD-Softwarerelease. [[42 GitHub Repositoryplan]] beschreibt die spätere Einordnung.
+Das früher bereitgestellte Vault-ZIP war ein eigenständiges Dokumentationspaket. Inzwischen ist der Vault Teil des veröffentlichten CuD-Repositories. [[42 GitHub Repositoryplan]] beschreibt seine Einordnung.
 
 ## Lernplan-Ausgabe v0.3.0
 
-Die Ausgabe vom 17.10.2026 ergänzt den persönlichen Lernplan, Wiederholungsrunden mit festen Abständen und Lektionssprünge. Bestehende Bearbeitungsmarken bleiben erhalten; Wiederholungsdaten liegen separat im Browser. Neue Vorlesungen nutzen den vorhandenen Datenvertrag. Der [Entwicklungsplan](../../ENTWICKLUNGSPLAN.md) beschreibt Gestaltung, Lernmethoden, Struktur und Gebrauchstest. Der lokale Firefox-Startfehler bleibt dokumentiert; vor Merge müssen die aktuellen Windows-/Linux-Jobs und vor Veröffentlichung zusätzlich der Tag-Workflow bestehen. Releaseartefakte sind `CuD-1-v0.3.0.zip` und `SHA256SUMS`.
+Die veröffentlichte Ausgabe vom 17.10.2026 ergänzt den persönlichen Lernplan, Wiederholungsrunden mit festen Abständen und Lektionssprünge. Bestehende Bearbeitungsmarken bleiben erhalten; Wiederholungsdaten liegen separat im Browser. Neue Vorlesungen nutzen den vorhandenen Datenvertrag. Der [Entwicklungsplan](../../ENTWICKLUNGSPLAN.md) beschreibt Gestaltung, Lernmethoden, Struktur und Gebrauchstest. Die bestandenen Windows-/Linux-Jobs und der erfolgreiche Tag-Workflow für `b296826` stehen in [[90 Stand und Nachweise]]. Der lokale Firefox-Startfehler bleibt ein eigener Befund. Releaseartefakte sind `CuD-1-v0.3.0.zip` und `SHA256SUMS`; spätere Änderungen brauchen eigene CI.
 
 ## Projektbelege
 

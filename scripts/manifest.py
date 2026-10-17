@@ -6,13 +6,15 @@ import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXCLUDED = {".git", ".upload-work", ".test-packages", ".test-env", ".venv", "__pycache__", "node_modules"}
+EXCLUDED = {".git", ".claude", ".upload-work", ".test-packages", ".test-env", ".venv", "__pycache__", "node_modules"}
 
 
 def entries(root):
     records = []
     for directory, folders, files in os.walk(root):
-        folders[:] = [name for name in folders if name not in EXCLUDED]
+        # Nur der dokumentierte Unter-Vault liefert gemeinsame Obsidian-Einstellungen aus.
+        folders[:] = [name for name in folders if name not in EXCLUDED
+                      and not (Path(directory) == root and name == ".obsidian")]
         for name in files:
             file = Path(directory) / name
             relative = file.relative_to(root).as_posix()
@@ -38,7 +40,7 @@ def main():
     actual = entries(ROOT)
     if args.write:
         manifest["files"] = actual
-        manifest["scope"] = "All project files; excludes this manifest, debug.log, secrets and local dependencies/environments/caches"
+        manifest["scope"] = "All project files; excludes this manifest, debug.log, .env files, .claude, root .obsidian and local dependencies/environments/caches"
         target.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if manifest["files"] != actual:
         before = {entry["path"]: entry for entry in manifest["files"]}

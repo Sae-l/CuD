@@ -4,7 +4,7 @@ description: "Die Sichtbarkeit ist auf drei Ebenen zu prüfen: im Lerninterface,
 type: note
 language: de
 created: 2026-10-16
-updated: 2026-10-16
+updated: 2026-10-17
 status: dokumentiert
 tags: ["cud"]
 ---
@@ -26,9 +26,11 @@ Die Sichtbarkeit ist auf drei Ebenen zu prüfen: im Lerninterface, in der ausgel
 | Nutzernamen, private Notizen, Rohbeobachtungen | Nur nach bewusstem Zweck | Nicht standardmäßig öffentlich | Separat privat aufbewahren |
 | Lokaler Lernstand | Im eigenen Browser | Nicht automatisch im Repo | Lokale Selbsteinschätzung beibehalten |
 
-## Was am aktuellen Stand zu korrigieren ist
+## Aktueller Einstieg und offene Freigaben
 
-Das öffentliche Repository und der Footer beziehungsweise Teile des README sprechen noch von einer privaten Projektablage. Diese Formulierung stellt keinen Zugriffsschutz her. Die Wissensbasis dokumentiert den Widerspruch; eine spätere Produktänderung soll Texte und tatsächlichen Veröffentlichungsumfang zusammen korrigieren.
+README und Website beschreiben die öffentliche Lernbegleitung und führen zum Online-Lernraum. Das frühere Problem mit der Bezeichnung als private Ablage ist kein aktueller Zugriffsschutz. Die [Rechteübersicht](../../RECHTE.md) trennt eigenen Code und Lerninhalt von fremden Unterlagen und Assetlizenzen. Eine allgemeine Lizenz und der erlaubte Veröffentlichungsumfang fremder Kursmaterialien bleiben Inhaberentscheidungen.
+
+Besucher sollen zuerst Zweck, Lernraum und Offline-Paket finden, danach Quellenabdeckung, bekannte Grenzen und Meldewege. Technische Nachweise bleiben erreichbar. Hinweise und Musterlösungen werden didaktisch erst auf Wunsch geöffnet; im ausgelieferten Quelltext sind sie weiterhin lesbar.
 
 Eine Seitenleiste darf für Lernende technische Prüfskripte ausblenden, um den Einstieg einfach zu halten. Das ist eine Informationsentscheidung. Soll eine Datei geheim bleiben, darf sie weder in ein öffentliches Repository noch in ein öffentliches Deployment gelangen.
 

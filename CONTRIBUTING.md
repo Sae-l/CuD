@@ -2,6 +2,8 @@
 
 Das Lernwerkzeug ist eine statische Webseite ohne Buildschritt. Für Text- und Layoutänderungen bearbeitest du die vorhandenen HTML-, CSS- und JavaScript-Dateien. Die Originalunterlagen in `Referenz/` bleiben unverändert. Herkunft und Rechte fremder Kursmaterialien werden durch einen Beitrag nicht geändert.
 
+Nutze für Fehler und Vorschläge die [Issue-Vorlagen](https://github.com/Sae-l/CuD/issues/new/choose), für Sicherheitslücken [SECURITY.md](SECURITY.md). Es gelten [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) und der in [RECHTE.md](RECHTE.md) dokumentierte offene Lizenzumfang. Neue fremde Quellen ohne geklärte öffentliche Weitergabe gehören nicht in einen Pull Request.
+
 ## Die passende Datei finden
 
 | Änderung | Datei |
@@ -24,6 +26,8 @@ Beschränke eine Änderung auf ihren Zweck. Wenn du eine Inhalts-ID änderst, pr
 Die Projektstartseite und der Lernraum sind zwei getrennte Oberflächen. Eine Navigationskorrektur darf ihre Gestaltung nur so weit ändern, wie die Korrektur es braucht. Verwende für Einstiege aus dem Projektordner ausdrücklich `Lernwerkzeug/index.html`, bei Bedarf mit Inhaltsanker. Absolute Pfade wie `/Lernwerkzeug/` verlieren den Projektpfad auf GitHub Pages; reine Verzeichnislinks sind im Dateibetrieb unzuverlässig. Prüfe Einstiege sowohl über die entpackte `index.html` als auch über einen HTTP-Projektpfad wie `/CuD/index.html`.
 
 Wenn der Arbeitsordner kein eigenes `.git` enthält, ist er kein vollständiger Git-Checkout. Vergleiche seine beabsichtigten Änderungen zuerst mit einem sauberen Checkout der aktuellen `main`: nicht nur JavaScript, sondern auch zugehöriges HTML, CSS, Inhaltsdaten, Tests und Manifest. Übernimm ausschließlich geprüfte Unterschiede. Ein neueres Änderungsdatum oder ein neu geschriebenes Manifest beweist nicht, dass eine Datei den neueren Funktions- oder Gestaltungsstand enthält.
+
+Arbeite anschließend im echten Checkout. `.claude/` und die `.obsidian/` im Projektwurzelordner bleiben lokal und werden auch vom Release-Manifest ausgeschlossen. Die bewusst mitgelieferten Einstellungen unter `Obsidian-CuD/.obsidian/` gehören dagegen zum Dokumentations-Vault; dessen persönliche `workspace*.json` bleiben ausgeschlossen. `.gitignore` und Manifest ersetzen keine Prüfung auf private Daten im Diff.
 
 ## Prüfumgebung einrichten
 
