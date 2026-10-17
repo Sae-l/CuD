@@ -1,4 +1,14 @@
-# Prüfbericht 0.2.1
+# Prüfbericht und Nachweisverlauf
+
+## Aktuelle Einordnung für v0.2.3
+
+Die Bedienverbesserungen am Commit `74ba715c0042f3e399a33a50c882218dccd9d522` bestanden [Projektprüfung #31](https://github.com/Sae-l/CuD/actions/runs/39017560114) auf Windows und Linux. Je System bestanden Chromium 156.0.8078.4, Firefox 157.0 und WebKit 27.2 jeweils 76 Ansichten in sieben Größen: zusammen 3192 Layoutprüfungen. Auch Inhalts-/Pythonprüfung, Projektmanifest, Vaultprüfung und Manifest-/Release-Unit-Tests bestanden. Die regulären Browserkontexte meldeten null JavaScript-Fehler und externe Laufzeitanfragen. [CI_NACHWEIS.json](CI_NACHWEIS.json) nennt Quellcommit, Jobs und Artefakt-Hashes.
+
+Der gespeicherte lokale Windows-Bericht bleibt wegen der unten belegten Signatursperre FAIL. Die folgenden Abschnitte sind datierte historische Nachweise ihrer jeweiligen Eingaben. Sie werden durch den CI-Erfolg weder umgeschrieben noch als erneute lokale Ausführung ausgegeben. Version 0.2.3 ergänzt Dokumentation und Versionskennzeichnung; ihr finaler Commit muss die vorgeschriebenen CI-Prüfungen erneut bestehen. Der Tag-Workflow wiederholt die vollständige Linux-Browsermatrix vor dem Paketbau. Tag, Release-Dateien und Pages-Deployment werden gesondert zurückgelesen.
+
+Eine lokale Headless-Chromium-Stichprobe beim skriptgesteuerten Scrollen umfasste 180 Frame-Callback-Abstände je Oberfläche bei 1440×900px. Median rund 16,7ms, keine Abstände über 50ms und keine gemeldeten Long Tasks. Das ist keine Messung der GPU-Präsentation, realer Mobilgeräte oder des Lernnutzens.
+
+## Ausgangsstand 0.2.1
 
 Stand: 15.10.2026. Gemeinsame Fassung aus Datenkorrektur, fertiger Gestaltung und aktualisierten Testabhängigkeiten. Ergebnisse gelten jeweils für die im Bericht dokumentierte Umgebung und den zugehörigen Quellstand. GitHub Actions liefert eigene Windows-/Linux-Nachweise am PR- und Release-Commit.
 

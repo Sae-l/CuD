@@ -2,13 +2,13 @@
 
 Ein lokales Lernwerkzeug für Studierende im Kurs **Coding und Digitalisierung**, auch ohne Programmierkenntnisse: verständliche Vorlesungsetappen, eine Befehlsübersicht, Einrichtungsanleitungen und Begleitung zu allen 31 Aufgaben des vorhandenen Übungsskripts.
 
-Version **0.2.2** begleitet alle 31 Aufgaben des vorhandenen Übungsskripts, vier Live-Übungen und zehn Lernetappen einschließlich FFT. Lernkontrollen, lokale Bearbeitungsmarken und ein eigenes Transferprojekt helfen beim Üben.
+Version **0.2.3** begleitet alle 31 Aufgaben des vorhandenen Übungsskripts, vier Live-Übungen und zehn Lernetappen einschließlich FFT. Lernkontrollen, lokale Bearbeitungsmarken und ein eigenes Transferprojekt helfen beim Üben. Die Wartungsausgabe verbessert Quizfeedback, Bedienflächen und Animationen.
 
 **Aufgabe → benötigtes Wissen → passender Befehl → selbst ausprobieren → Ergebnis prüfen**
 
 ## In drei Schritten starten
 
-1. Lade das [vollständige Projekt-ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) herunter und entpacke es vollständig. Auf GitHub geht das auch über **Code → Download ZIP**; auf der Webseite über **Projekt als ZIP laden**. **„Seite speichern“ im Browser reicht nicht aus.** Alternativ: `git clone https://github.com/Sae-l/CuD.git`. Der fest versionierte [Release v0.2.2](https://github.com/Sae-l/CuD/releases/tag/v0.2.2) enthält ein vollständiges ZIP und `SHA256SUMS`.
+1. Lade das [vollständige Projekt-ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) herunter und entpacke es vollständig. Auf GitHub geht das auch über **Code → Download ZIP**; auf der Webseite über **Projekt als ZIP laden**. **„Seite speichern“ im Browser reicht nicht aus.** Alternativ: `git clone https://github.com/Sae-l/CuD.git`. Der fest versionierte [Release v0.2.3](https://github.com/Sae-l/CuD/releases/tag/v0.2.3) enthält ein vollständiges ZIP und `SHA256SUMS`.
 2. Öffne [index.html](index.html) aus dem entpackten Projektordner und wähle **Lernraum öffnen**. Alternativ öffne [Lernwerkzeug/index.html](Lernwerkzeug/index.html) direkt. Die GitHub-Dateiansicht zeigt nur den Quelltext.
 3. Wähle **Lernweg beginnen**, richte deine Python-Umgebung ein und beginne mit der ersten Vorlesung. **Übungen & Begleitung** führt zu allen Aufgaben; der Block 6.1–6.3 bleibt hervorgehoben.
 
@@ -19,6 +19,8 @@ Die Lernwebseite benötigt keine Installation, keinen Paketmanager und kein Kont
 Das Layout passt sich der Fensterbreite an. Auf einem Desktop-Rechner kannst du die Startdatei direkt im Browser öffnen. Auf iOS und Android hängt das Öffnen zusammengehöriger Dateien vom Browser und Dateimanager ab. Falls die lokale Ansicht nicht funktioniert, stelle den **gesamten Repository-Ordner** über einen statischen HTTP-Server bereit; nur `index.html` zu übertragen reicht nicht. [Gerätezugang und Anleitung](Lernwerkzeug/README.md#auf-deinem-gerät-öffnen).
 
 Die automatisierten Browserprüfungen sind in [kompatibilitaet.json](Lernwerkzeug/pruefung/kompatibilitaet.json) dokumentiert: Chromium, Firefox und WebKit auf dem Prüfrechner sowie emulierte Handy- und Tabletgrößen. WebKit auf Windows ersetzt keinen Safari-Test auf einem Mac oder iPad. Echte Geräte, Screenreader und Betriebssysteminstallationen bleiben gesondert zu prüfen. Maßgeblich sind die gespeicherten Ergebnisse und der [Prüfbericht](Lernwerkzeug/pruefung/PRUEFBERICHT.md).
+
+Der [CI-Nachweis](Lernwerkzeug/pruefung/CI_NACHWEIS.json) dokumentiert den erfolgreichen Verhaltensstand `74ba715`: vollständige Chromium-/Firefox-/WebKit-Matrix auf Windows und Linux, insgesamt 3192 Layoutprüfungen. Der ausgelieferte lokale Bericht bleibt ein eigener, datierter Nachweis und enthält wegen einer Windows-Signatursperre weiterhin FAIL. Für den finalen Release-Commit sind die zugehörigen [GitHub-Actions-Läufe](https://github.com/Sae-l/CuD/actions) maßgeblich; frühere Ergebnisse werden nicht als neue Ausführung ausgegeben.
 
 ## Wissensbasis in Obsidian
 
@@ -58,6 +60,12 @@ Technische Tests belegen keinen Lernnutzen. Gebrauchstest und vollständige visu
 ## Aufbewahrung und Rechte
 
 Dieses Repository ist öffentlich zugänglich; diese Sichtbarkeit ersetzt keine Nutzungserlaubnis für fremde Kursmaterialien. Originalunterlagen behalten ihre jeweilige Herkunft; eine übergreifende Lizenz für fremde Kursmaterialien wird hier nicht vergeben. Originaldateien bleiben unverändert, einschließlich des byte-identischen doppelten Analyse-PDFs. `.gitattributes` verhindert automatische Zeilenumwandlungen beim Git-Transfer. Temporäre Arbeitsdateien und lokale Browserprotokolle werden über `.gitignore` ausgeschlossen.
+
+## Bedienfeedback in v0.2.3
+
+Nach einem Wechsel der Quizantwort verschwindet die alte Bewertung; prüfe die neue Auswahl erneut. Das Einstiegsquiz markiert die gewählte Antwort sichtbar und für assistive Technik. Bearbeitungsmarken melden ihren Zustand ausdrücklich. Größere Navigations-, Filter- und Hilfsziele, stärkere Feldgrenzen und kurze Druck- und Menüübergänge verbessern die Bedienung. Dekorative Hover-Bewegungen gelten nur für Mausbedienung; reduzierte Bewegung bleibt berücksichtigt.
+
+Die Regressionen prüfen zusätzlich den Antwortwechsel, Auswahl per Enter, ausgewählte 44×44px-Ziele, Speicherfehler, den Ausfall von GSAP und HTML-artigen Suchtext. Das ist keine vollständige WCAG-Abnahme. Keine neue Abhängigkeit, Geräte-Vibration oder externe Gestaltungsladung wurde ergänzt. [Änderungsnotizen](RELEASE_NOTES.md).
 
 ## Gestaltung und Wartung in v0.2.2
 
