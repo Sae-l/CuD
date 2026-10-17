@@ -12,13 +12,17 @@ Das Projekt hat zwei Einstiege: [index.html im Projektordner](../index.html) ste
 
 ## Auf deinem Gerät öffnen
 
+### Direkt online
+
+Öffne den [Online-Lernraum](https://sae-l.github.io/CuD/Lernwerkzeug/index.html). Auf Handy und Tablet ist das der direkte Einstieg ohne ZIP oder Dateimanager. Dafür brauchst du Internet; es gibt keinen zugesagten Offline-Cache der Online-Seite. Deine Lernstände bleiben im Speicher dieses Browsers und werden nicht automatisch mit entpackten Offline-Kopien geteilt.
+
 ### Windows und macOS
 
 Lade das [vollständige Projekt-ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) herunter, entpacke es vollständig und öffne [index.html](index.html) im Browser. Du kannst auch `index.html` im übergeordneten Projektordner öffnen und **Lernraum öffnen** wählen. Öffne die Datei außerhalb der ZIP-Vorschau. **„Seite speichern“ im Browser** lädt die benötigten Dateien und Quellen nicht vollständig herunter. Die Webseite benötigt weder Node.js noch Python und funktioniert nach dem Download offline. Python brauchst du erst, um selbst Programme auszuführen; dafür gibt es die Einrichtungsanleitungen in der Webseite. Alle Dateien und die benachbarten Ordner `Referenz/` und `Referenz_Sichtung/` müssen zusammenbleiben.
 
 ### Handy und Tablet
 
-Die Seite passt sich an schmale und breite Bildschirme an. Falls dein Dateimanager `index.html` nur als Vorschau anzeigt oder die benachbarten Dateien nicht lädt, nutze einen statischen HTTP-Server mit dem **gesamten Repository als Wurzel**. Diese Möglichkeit benötigt einen Rechner mit Python, auf dem das Repository liegt:
+Die Seite passt sich an schmale und breite Bildschirme an. Die lokale Dateiöffnung auf Android ist mit [Issue #10](https://github.com/Sae-l/CuD/issues/10) noch offen und nicht auf echten Geräten abgenommen. Falls dein Dateimanager `index.html` nur als Vorschau anzeigt oder die benachbarten Dateien nicht lädt, nutze zunächst den Online-Lernraum. Für lokale Dateien ist ein statischer HTTP-Server mit dem **gesamten Repository als Wurzel** ein weiterer Weg. Diese Möglichkeit benötigt einen Rechner mit Python, auf dem das Repository liegt:
 
 ```sh
 python -m http.server 8000 --bind 127.0.0.1
@@ -34,7 +38,7 @@ Auf iPad und Android ist die Desktop-Version von VS Code nicht auf dieselbe Weis
 
 [Browserergebnisse](pruefung/kompatibilitaet.json) und [Prüfbericht](pruefung/PRUEFBERICHT.md) dokumentieren die automatisierten Prüfungen mit Chromium, Firefox und WebKit auf dem Prüfrechner sowie emulierten Handy- und Tabletgrößen. Das ist kein Nachweis für echte iOS-/Android-Geräte oder Safari auf macOS/iPadOS. Screenreader und tatsächliche Installationen bleiben offen. Ein gespeicherter Bericht gilt nur für den darin dokumentierten Stand.
 
-Der zusätzliche [CI-Nachweis](pruefung/CI_NACHWEIS.json) hält die frühere bestandene vollständige Windows-/Linux-Matrix am Verhaltensstand `74ba715` fest. Im lokalen Lernplan-Ausbau vom 17.10.2026 bestehen Chromium und WebKit; Firefox scheitert bereits beim Browserstart. Der lokale Gesamtbericht bleibt deshalb FAIL. Für diesen neuen Stand sind eigene aktuelle CI-Läufe erforderlich; der frühere Nachweis bestätigt ihn nicht.
+Für **v0.3.0** am Commit `b296826` bestand am 17.10.2026 die [Windows-/Linux-Projektprüfung](https://github.com/Sae-l/CuD/actions/runs/39047674536); auch [Release](https://github.com/Sae-l/CuD/actions/runs/39047712894) und [Pages-Deployment](https://github.com/Sae-l/CuD/actions/runs/39047673571) waren erfolgreich. Der zusätzliche [CI-Nachweis als JSON](pruefung/CI_NACHWEIS.json) gehört unverändert zum früheren Verhaltensstand `74ba715`. Der lokale Firefox-Startfehler und der lokale Gesamtbericht FAIL bleiben getrennte Befunde. Für spätere Änderungen gelten nur deren eigene aktuelle CI-Läufe.
 
 ## Eine Übung bearbeiten
 

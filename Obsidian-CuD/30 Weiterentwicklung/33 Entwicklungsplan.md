@@ -4,7 +4,7 @@ description: "Dieser Plan ist ein Vorschlag für die Weiterentwicklung nach Fert
 type: project
 language: de
 created: 2026-10-16
-updated: 2026-10-16
+updated: 2026-10-17
 status: dokumentiert
 tags: ["cud", "entwicklung"]
 ---
@@ -21,7 +21,7 @@ Dieser Plan ist ein Vorschlag für die Weiterentwicklung nach Fertigstellung der
 
 ## Step 2 — Quellenkonflikte und Projekttexte korrigieren
 
-**Tags:** fix, docs. Die im aktuellen README und Footer vorhandene Bezeichnung als private Ablage ist bei einem öffentlichen Repository sachlich falsch. Aktuelle CuD-Adressen, Paketmetadaten und Rechtehinweise konsistent pflegen; bestehende Quellenkonflikte sichtbar halten.
+**Tags:** fix, docs. README und Website beschreiben inzwischen den öffentlichen Lernraum. Die Repositorykorrektur gleicht Besucher-Einstieg, Veröffentlichungsstand und historische Vaulttexte ab. Aktuelle CuD-Adressen, Paketmetadaten und Rechtehinweise konsistent pflegen; bestehende Quellenkonflikte sichtbar halten. Die offene Lizenz- und Materialentscheidung ist in [RECHTE.md](../../RECHTE.md) getrennt dokumentiert.
 
 **Abnahme:** Besucher erhalten eine zutreffende Sichtbarkeitsbeschreibung; aktuelle Einstiegslinks zeigen auf CuD; offene Originaldaten und Filterannahmen bleiben sichtbar.
 

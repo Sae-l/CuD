@@ -1,5 +1,7 @@
 /debug.log
 /.upload-work/
+.claude/
+/.obsidian/
 __pycache__/
 *.py[cod]
 node_modules/

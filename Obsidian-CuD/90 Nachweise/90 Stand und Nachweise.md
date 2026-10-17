@@ -4,12 +4,22 @@ description: "Diese Übersicht trennt aktuelle Abfragen, vorhandene Softwareberi
 type: note
 language: de
 created: 2026-10-16
-updated: 2026-10-16
+updated: 2026-10-17
 status: dokumentiert
 tags: ["cud"]
 ---
 
-# Belegstand vom 16.10.2026
+# Aktueller Abgleich vom 17.10.2026
+
+Der öffentliche Standardbranch `main` und der Release **v0.3.0** zeigen auf `b29682606c275bec90c8944531afaabda301e9a2`. Der deutsche Vault ist darin enthalten. [Projektprüfung](https://github.com/Sae-l/CuD/actions/runs/39047674536) mit Windows und Linux, [Release-Workflow](https://github.com/Sae-l/CuD/actions/runs/39047712894) und [Pages-Deployment](https://github.com/Sae-l/CuD/actions/runs/39047673571) wurden erfolgreich zurückgelesen. Beide Website-Einstiege antworteten mit HTTP 200. Das ist keine neue Prüfung auf echten Mobilgeräten.
+
+Der öffentliche Branch-Endpunkt bestätigt Branchschutz. Detailregeln und Actions-Administration wurden beim aktuellen Abgleich nicht vollständig neu gelesen. Der gespeicherte lokale Firefox-Startfehler bleibt FAIL; die CI-Läufe sind eigene Belege. `CI_NACHWEIS.json` gehört weiterhin zum älteren Verhaltensstand `74ba715`.
+
+Die Arbeitsablage im übergeordneten Ordner enthielt beim Abgleich kein `.git`; alle 158 Remote-Dateien waren vorhanden, neun unterschieden sich. Die Repositorykorrektur beginnt deshalb in einem sauberen Checkout von `b296826`. Lokale Unterschiede werden nicht pauschal als neuere Version übernommen. Der Manifestfilter trennt lokale `.claude/`- und Root-`.obsidian/`-Einstellungen von den gemeinsamen Vault-Einstellungen.
+
+Die folgenden Abschnitte sind **historische Erstaufnahme und Entstehungsnachweise**. Ihre damaligen Uploadziele, Pfade, Versionsnummern und Konflikte beschreiben nicht den heutigen Veröffentlichungsstand. Neue Änderungen brauchen eigene Nachweise.
+
+## Historische Erstaufnahme vom 16.10.2026
 
 Diese Übersicht trennt aktuelle Abfragen, vorhandene Softwareberichte, lokale Arbeitsdateien und Vorschläge. Sie ist die Bezugsebene für die Wissensseiten.
 

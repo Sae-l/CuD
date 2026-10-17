@@ -4,7 +4,7 @@ description: "Diese Seite beschreibt konkrete technische Anforderungen und die d
 type: note
 language: de
 created: 2026-10-16
-updated: 2026-10-16
+updated: 2026-10-17
 status: dokumentiert
 tags: ["cud"]
 ---
@@ -45,7 +45,7 @@ Wer Code oder CSV in einen externen Dienst lädt, löst eine zusätzliche Datenv
 
 ## Obsidian und Sicherung
 
-Der Vault enthält keine Community-Plugins. Persönliche Workspace-Dateien werden im bereitgestellten Archiv ausgeschlossen. Vor einem späteren Git-Upload private Ergänzungen, absolute Arbeitswege und Zugangsdaten kontrollieren. Backups oder ZIP-Prüfsummen helfen bei Wiederherstellung und Integrität; sie ersetzen keine Rechte- oder Sichtbarkeitsentscheidung.
+Der Vault enthält keine Community-Plugins und ist bereits im öffentlichen Repository enthalten. Persönliche Workspace-Dateien bleiben ausgeschlossen. Vor jeder weiteren Veröffentlichung private Ergänzungen, absolute Arbeitswege und Zugangsdaten kontrollieren. [SECURITY.md](../../SECURITY.md) beschreibt den Sicherheitsmeldeweg einschließlich des Falls, dass keine private GitHub-Meldung verfügbar ist. Backups oder ZIP-Prüfsummen helfen bei Wiederherstellung und Integrität; sie ersetzen keine Rechte- oder Sichtbarkeitsentscheidung.
 
 Eine Einführung von Konten, Cloud-Fortschritt, Analytics oder fremden Inhaltseingaben wäre ein neuer Datenfluss und braucht eine eigene Planung. [[41 Lokal Cloud und Synchronisation]] zeigt den gegenwärtigen Umfang.
 

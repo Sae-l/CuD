@@ -18,6 +18,10 @@ class ReleaseTest(unittest.TestCase):
             (root / 'node_modules').mkdir()
             (root / 'node_modules/cache').write_text('excluded')
             (root / '.env').write_text('excluded-secret')
+            for name in ('.claude/launch.json', '.obsidian/app.json'):
+                file = root / name
+                file.parent.mkdir()
+                file.write_text('local-only')
             (root / 'PROJEKT_MANIFEST.json').write_text(json.dumps({'files': entries(root)}))
             output = root / '.upload-work/release'
             archive, digest, count = pack(root, output, 'v0.2.0')
@@ -28,6 +32,7 @@ class ReleaseTest(unittest.TestCase):
             with zipfile.ZipFile(archive) as package:
                 self.assertEqual(package.read('CuD-1-v0.2.0/quelle.bin'), b'a\r\nb\x00')
                 self.assertFalse(any('.env' in name or 'cache' in name for name in package.namelist()))
+                self.assertFalse(any('/.claude/' in name or '/.obsidian/' in name for name in package.namelist()))
             self.assertEqual(hashlib.sha256(first).hexdigest(), digest)
             with self.assertRaises(ValueError):
                 pack(root, output, 'v0.1.0')

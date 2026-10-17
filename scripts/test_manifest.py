@@ -6,6 +6,17 @@ from manifest import entries
 
 
 class ManifestTest(unittest.TestCase):
+    def test_local_config_excluded_but_shared_vault_config_preserved(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in (".claude/launch.json", ".obsidian/app.json", ".obsidian/.obsidian/app.json",
+                         "Obsidian-CuD/.obsidian/graph.json"):
+                file = root / name
+                file.parent.mkdir(parents=True, exist_ok=True)
+                file.write_text("{}")
+            self.assertEqual([record["path"] for record in entries(root)],
+                             ["Obsidian-CuD/.obsidian/graph.json"])
+
     def test_bytes_changes_and_exclusions(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

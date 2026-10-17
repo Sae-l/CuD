@@ -2,7 +2,7 @@
   "schema_version": 1,
   "date": "2026-10-17",
   "repository": "Sae-l/CuD",
-  "scope": "All project files; excludes this manifest, debug.log, secrets and local dependencies/environments/caches",
+  "scope": "All project files; excludes this manifest, debug.log, .env files, .claude, root .obsidian and local dependencies/environments/caches",
   "files": [
     {
       "path": ".editorconfig",
@@ -17,10 +17,28 @@
       "git_blob_sha1": "c002906ed11d895e85f47cccb27b6f873e59e39e"
     },
     {
+      "path": ".github/ISSUE_TEMPLATE/fehler.md",
+      "bytes": 854,
+      "sha256": "05e8cef38fb068bf6a84c560a0a7ef8fab34634962a208e40d423c3c49d05a60",
+      "git_blob_sha1": "d6644c328baf9b5038bee7f644da50b7518a50c5"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/verbesserung.md",
+      "bytes": 579,
+      "sha256": "2632dd6053f897418baf7e210354525b3360d5c946413ab1d725b7854c879d63",
+      "git_blob_sha1": "8ccf5d81b0ab2de9662ed4a01f6eaf744029b2a6"
+    },
+    {
       "path": ".github/dependabot.yml",
       "bytes": 370,
       "sha256": "a08e7645a963ecc6776fc1f08c15e263c6ddb1f4ae6c2eeaa1e5d3f171dc303e",
       "git_blob_sha1": "a59099be90e76e87504e77ba70fe888c5f0503ee"
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "bytes": 694,
+      "sha256": "cf511accb5a7df12384d7c1cce9fde52511c338e3dd139f713e0dddabf4a9b87",
+      "git_blob_sha1": "43872fd01d61f3036e27e3cf0a63bfeb30f861c5"
     },
     {
       "path": ".github/workflows/check.yml",
@@ -30,15 +48,15 @@
     },
     {
       "path": ".github/workflows/release.yml",
-      "bytes": 1534,
-      "sha256": "7cf2614ec5a5c8a58f28d84775bc1a299201da0b4dc4e69f0b4294b9f361f675",
-      "git_blob_sha1": "189a4817102f1a9156b7d9697cf1f2827a82b1be"
+      "bytes": 1526,
+      "sha256": "9273ea67d0792b8715de73c716e69aab960436619a8e54bfd199196ce821e629",
+      "git_blob_sha1": "10c37b1a92e44d778853ffd595b7cd936d00e00c"
     },
     {
       "path": ".gitignore",
-      "bytes": 123,
-      "sha256": "ec2d4f912d4ff9a5afa3d9bd1e9881b3ac6101448d8d7ac136e5bf70661a961f",
-      "git_blob_sha1": "dd0772cf507d64372276ae745fadd32b3121c428"
+      "bytes": 144,
+      "sha256": "e2e2c117380640101ac26a60452af848edf6b608f55e33fa4c913e320211ee4c",
+      "git_blob_sha1": "13a9b03ee2f8f65821effdbeb422dd1ce5a814f4"
     },
     {
       "path": ".node-version",
@@ -53,6 +71,12 @@
       "git_blob_sha1": "e4fba2183587225f216eeada4c78dfab6b2e65f5"
     },
     {
+      "path": "ACCESSIBILITY.md",
+      "bytes": 1363,
+      "sha256": "25dfd5b674da73536efd692b8807b82b2b0d3c8b22d315ea6f6d6d14d31d764a",
+      "git_blob_sha1": "0769d12c241e25afa867974fca2ea02d035bf161"
+    },
+    {
       "path": "ARBEITSPLAN_Lernwerkzeug.md",
       "bytes": 17048,
       "sha256": "61c641cd8ab698683aa286814600a933ead82d345aa63d09da5fc2a3cb82ba84",
@@ -65,10 +89,16 @@
       "git_blob_sha1": "91d8970d8e6cfd04bcee530ad20b5e518986034e"
     },
     {
+      "path": "CODE_OF_CONDUCT.md",
+      "bytes": 952,
+      "sha256": "7194c05d85b119df64b85b45cf9c757b9789ee99068658363cd2db95f165a930",
+      "git_blob_sha1": "9118363d798e86987171cf629104c9359b6457c5"
+    },
+    {
       "path": "CONTRIBUTING.md",
-      "bytes": 11241,
-      "sha256": "26853b7f02c8762b87856c8e456fec63d030726b6768d00916846b971f43c5de",
-      "git_blob_sha1": "d576e073952c76a3a07515566a871164902221b3"
+      "bytes": 12035,
+      "sha256": "654f5ab5946cb1cbee5091d98897f98b02e11328bf72186476feea0ec129f93f",
+      "git_blob_sha1": "fb9740992407176ae7b1d49d77a7c4394d3f7f66"
     },
     {
       "path": "ENTWICKLUNGSPLAN.md",
@@ -102,9 +132,9 @@
     },
     {
       "path": "Lernwerkzeug/README.md",
-      "bytes": 11245,
-      "sha256": "a28853a1f8d6404bb8786735c3006792a91d03a797829e224af98c41caf9ccad",
-      "git_blob_sha1": "02507843f75df4d5f61b805d70a482de48047170"
+      "bytes": 12029,
+      "sha256": "77420240042be759b69864fc0e211ebfbe7ecc4f87e05102120c63cd31ea60b1",
+      "git_blob_sha1": "5cc9a323d293b4ea4fb256e09107a62d78a7d1a6"
     },
     {
       "path": "Lernwerkzeug/app.js",
@@ -492,15 +522,15 @@
     },
     {
       "path": "Obsidian-CuD/30 Weiterentwicklung/32 Entwicklung und Release.md",
-      "bytes": 7435,
-      "sha256": "1084fbb6d865aaf85013865f4e33387e6283070e6ca37b6701cf29fcd1549a52",
-      "git_blob_sha1": "14ef045efe32b740dc73f949e385e520bcfe42f9"
+      "bytes": 7596,
+      "sha256": "11156fbdb4b8c9c6edaf7a9ce4f85cafa501e377c54e540520ad1a5da3427d0f",
+      "git_blob_sha1": "1fda9d0c61de610fd7751557fcb02d1cdc895651"
     },
     {
       "path": "Obsidian-CuD/30 Weiterentwicklung/33 Entwicklungsplan.md",
-      "bytes": 3737,
-      "sha256": "4dc5b0d35b740ea176d1a63b2a0750ce01ece65cf7f5276d522a3923e11a08bc",
-      "git_blob_sha1": "a6135cf70fd943be00d6c83cf9e9d08815e93b0d"
+      "bytes": 3883,
+      "sha256": "93d3f64d24a71679b47ab4ff205b8758bb48ba01975dbc60ccd88a9b0d7a6c10",
+      "git_blob_sha1": "5d7beca47663fe52cd84b20664e27ad057a80e91"
     },
     {
       "path": "Obsidian-CuD/40 Betrieb/40 Windows macOS und Android.md",
@@ -516,21 +546,21 @@
     },
     {
       "path": "Obsidian-CuD/40 Betrieb/42 GitHub Repositoryplan.md",
-      "bytes": 4866,
-      "sha256": "4dd48c6e51202a9caceebb128739a93607b911a2b441979481da58e8b667ca0f",
-      "git_blob_sha1": "9f8807104551daa278e96069caf46bab37b112a1"
+      "bytes": 4999,
+      "sha256": "14a29b05108fe98d20f364b8da8a2f88f55f08d74968b5cb9eb364643b8f6ae4",
+      "git_blob_sha1": "4ff57f2ee17ebce7fa7e62414f05158ee1435a2f"
     },
     {
       "path": "Obsidian-CuD/40 Betrieb/43 Sichtbarkeit für Besucher.md",
-      "bytes": 4178,
-      "sha256": "e9988b74a4c09fad636e2c0489234b4900c96bc993f03b948a6361abfd003db2",
-      "git_blob_sha1": "99b50fdf910fd3a8363b6a6cc3d79a9591c83d9b"
+      "bytes": 4565,
+      "sha256": "d40cdd221b218ed46bc386cd403fbff41fcefe8635b03ae0312c132db2ca5e08",
+      "git_blob_sha1": "feb126fb6bbb66501fa3cd538d5eb008153ba62f"
     },
     {
       "path": "Obsidian-CuD/40 Betrieb/44 Sicherheit und Datenschutz.md",
-      "bytes": 5300,
-      "sha256": "4cc8ad857c5b2fbedb4793692c849ee6185eb371d9b08960a6f5c00791b3bc10",
-      "git_blob_sha1": "02644aacf743e070ae723be3d4367327dd905083"
+      "bytes": 5479,
+      "sha256": "97e62c86e33b194835258859b396336105668ab34128d958b5d078d023f141a1",
+      "git_blob_sha1": "ae2d90ee8e8680aa80759bd7f7d5c121f9405151"
     },
     {
       "path": "Obsidian-CuD/50 Websites/50 Die Vorstellungswebsite.md",
@@ -552,9 +582,9 @@
     },
     {
       "path": "Obsidian-CuD/90 Nachweise/90 Stand und Nachweise.md",
-      "bytes": 5891,
-      "sha256": "d08ddc0c354039ccfd231c9d841399fba419999b9b616e1969ec11ba607331d3",
-      "git_blob_sha1": "0e5907a7490288f568c151bb54dbeb29af9c6f89"
+      "bytes": 7498,
+      "sha256": "951396b1d31e5fd8c0cf2869f6d28c34dc5880d1cd68548995c92e6edc4bd8bd",
+      "git_blob_sha1": "875fa7d352d78233c070aa53a28f9d6b35228044"
     },
     {
       "path": "Obsidian-CuD/90 Nachweise/91 Quellenverzeichnis.md",
@@ -607,8 +637,8 @@
     {
       "path": "Obsidian-CuD/Pruefung/VAULT_MANIFEST.json",
       "bytes": 8670,
-      "sha256": "1613cdff0ca5b26c258fff05b1c044116a259a5ad025fd34e2fdcd6bd8220401",
-      "git_blob_sha1": "67e3a7d7bbde6eaf7a65a4b12544270e16c3f976"
+      "sha256": "b0ae34be2f67b99b409b35d75e7297477d5955d7ebc604fa4ae912a5c3e0d82a",
+      "git_blob_sha1": "1484868388ddd4408836f9e6523e11c8fb3835db"
     },
     {
       "path": "Obsidian-CuD/Pruefung/beispiel_pruefen.cjs",
@@ -648,9 +678,15 @@
     },
     {
       "path": "README.md",
-      "bytes": 10565,
-      "sha256": "f4e5403cedf8d77ccb60c0ea7a7e5bc4a34c1d2b4e58b4e471feeb5973f51b7c",
-      "git_blob_sha1": "88e3e49fd8e32c28d7f28156c42511860628cd4e"
+      "bytes": 10389,
+      "sha256": "e9f8f5df0609f7ae2ea6c2e5a89bd17c2179f72a38c568cf80e249782f1a833d",
+      "git_blob_sha1": "897d4fbb85ffa6931aa9f5a3026a4d5a2299346e"
+    },
+    {
+      "path": "RECHTE.md",
+      "bytes": 2117,
+      "sha256": "27e4d654626db8bb5da3fd9e0b7c17186f4a710379d0a47a0922a174a9e73e99",
+      "git_blob_sha1": "b572ec13d4b414f786a34a31d6fc1eec98bb592f"
     },
     {
       "path": "RELEASE_NOTES.md",
@@ -660,9 +696,9 @@
     },
     {
       "path": "REPOSITORY_SETTINGS.md",
-      "bytes": 3555,
-      "sha256": "e41bab0887265f264dac7e13397b81361fdff1024991781c9e06b53d66c547de",
-      "git_blob_sha1": "2c11531eb92ac7a3f29c334279b9994898bca6e7"
+      "bytes": 5329,
+      "sha256": "13e542c43b85b02c09b1e51d4e382ac069208b3c5afd297dbc8772825c827fc6",
+      "git_blob_sha1": "0b9eeec5a3150c7da6027b030e910c65caba9ee7"
     },
     {
       "path": "Referenz/Code/002_fftpy.sec",
@@ -887,6 +923,12 @@
       "git_blob_sha1": "f0ff06d171928e7a5851d9c9b6f9c2ff9d68b718"
     },
     {
+      "path": "SECURITY.md",
+      "bytes": 1464,
+      "sha256": "0657d52aad220076ab53fd3f98aa36de4755d2334ac8dd1ff5d2bd239c4f2875",
+      "git_blob_sha1": "1e29571abf2ef7c66c180fd0628ae799b7ec8367"
+    },
+    {
       "path": "SKILL_RECHERCHE.md",
       "bytes": 5350,
       "sha256": "3111dc9d5142ed2d5e40fa15bdd4b821eaaf30611296f64b2137dad9b5614b92",
@@ -918,9 +960,9 @@
     },
     {
       "path": "scripts/manifest.py",
-      "bytes": 2495,
-      "sha256": "0aac1918202e15cb9b4f42b72664ad2e0a573ca139b079d095a946741d61643d",
-      "git_blob_sha1": "77fb7ad08b0ad3e4799508e98e4cd6ac6f9a4815"
+      "bytes": 2705,
+      "sha256": "2b3237e9d9f56810dbde53e0dc0cbbf0c97e8386b0b37c88ac0d7e144cb40b2d",
+      "git_blob_sha1": "3b54a91fb0e2ed0f21a6ccc28510337560f9a9b7"
     },
     {
       "path": "scripts/release.py",
@@ -930,15 +972,15 @@
     },
     {
       "path": "scripts/test_manifest.py",
-      "bytes": 1395,
-      "sha256": "c2ab6dec245dc4f2be7cebdb75d9b8557f64eeab7ac367f2a57152ede7136f80",
-      "git_blob_sha1": "e2325867e589e0a853309a5b8413367312229493"
+      "bytes": 2008,
+      "sha256": "e3c28ada04351f13ab3e0cb19a18948d82f6dfe8903849b5644ab3e060ab1083",
+      "git_blob_sha1": "0db746024f4fac7f2826b48e128be78b02c4cb5d"
     },
     {
       "path": "scripts/test_release.py",
-      "bytes": 1684,
-      "sha256": "fc71e6a66434f5cc946f633ca7375d2dc8da48c9486650ed42cc6332dd1fb4fa",
-      "git_blob_sha1": "2834b966456da0f64775130075c1ec66a3d03deb"
+      "bytes": 1987,
+      "sha256": "d0608795624c3cf14b3e54884fd11af98bc27e64c6c3ecfad415ef290f97f94d",
+      "git_blob_sha1": "24007524be068bf6bd03302edec55c667bd444c1"
     },
     {
       "path": "scripts/uebungen_pruefen.py",

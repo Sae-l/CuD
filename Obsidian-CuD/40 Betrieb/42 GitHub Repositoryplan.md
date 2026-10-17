@@ -4,14 +4,14 @@ description: "Aktuelles Repository: [Sae-l/CuD](https://github.com/Sae-l/CuD). A
 type: note
 language: de
 created: 2026-10-16
-updated: 2026-10-16
+updated: 2026-10-17
 status: dokumentiert
 tags: ["cud"]
 ---
 
 # Tatsächlicher Aufbau und künftiger Veröffentlichungsumfang
 
-Aktuelles Repository: [Sae-l/CuD](https://github.com/Sae-l/CuD). Am 16.10.2026 per Connector als **public** mit Standardbranch `main` bestätigt. Die folgenden bestehenden Hauptpfade wurden am gelesenen Stand und in der Arbeitsablage geprüft. `Obsidian-CuD/` ist das Ergebnis dieses Dokumentationsauftrags. Der zur Veröffentlichung vorbereitete Stand liegt auf dem Branch `docs/obsidian-cud-vault`; er wird über einen Pull Request zur Übernahme vorgeschlagen.
+Aktuelles Repository: [Sae-l/CuD](https://github.com/Sae-l/CuD), **öffentlich**, Standardbranch `main`. Der Abgleich vom 17.10.2026 bestätigt den Release v0.3.0 am Commit `b296826`; `Obsidian-CuD/` ist dort bereits enthalten. Der frühere Uploadbranch `docs/obsidian-cud-vault` beschreibt die Entstehung, nicht einen noch ausstehenden Upload. Aktuelle und historische Nachweise trennt [[90 Stand und Nachweise]].
 
 ```text
 CuD/
@@ -59,9 +59,11 @@ Ein künftiger Veröffentlichungsordner kann nur Root-Startseite, Lernwerkzeug, 
 
 Eine separate private Arbeitsablage kann ungeklärte Originalmaterialien, ausführliche Sichtungsunterlagen und persönliche Arbeitsnotizen aufnehmen. Dieses Modell ist **ein Vorschlag**; die aktuelle öffentliche Repositorykopie enthält bereits Quellenpfade. Eine schlankere Pages-Ausgabe allein verbirgt nichts, was im öffentlichen Git-Repository steht.
 
-## Upload dieser Dokumentation
+## Änderungen an dieser Dokumentation
 
-Vor einer späteren Integration den Vaultinhalt reviewen und entscheiden, ob er als Maintainer-Dokumentation öffentlich sein soll. Persönliche Obsidian-Workspace-Dateien ausschließen. Die neue Dokumentation bewusst ins Projektmanifest aufnehmen und separat vom vorhandenen `.claude/launch.json`-Vorbefund behandeln. Dann über einen begrenzten Pull Request prüfen lassen. Nach dem anschließenden ausdrücklichen Uploadauftrag wird die Wissensbasis über den Branch `docs/obsidian-cud-vault` und einen Pull Request veröffentlicht. Eine Übernahme in main oder eine neue fachliche beziehungsweise Geräteabnahme ist damit nicht gleichzusetzen.
+Der Vault ist bereits öffentlich. Weitere Änderungen zuerst im echten Git-Checkout reviewen, persönliche Ergänzungen ausschließen und über einen begrenzten Pull Request prüfen lassen. Gemeinsame Einstellungen unter `Obsidian-CuD/.obsidian/` bleiben im Paket; persönliche `workspace*.json`, `.claude/` und die Root-`.obsidian/` bleiben lokal. Nach dem Diff-Review erst das Vaultmanifest und dann das Projektmanifest erneuern. Eine technische Übernahme bestätigt keine neue fachliche Prüfung, Geräteabnahme oder Materialfreigabe.
+
+Für Besucher führen README und Website direkt zum Online-Lernraum; der Release bietet das versionierte Offline-Paket. Fehler und Vorschläge nutzen die Issue-Vorlagen. [RECHTE.md](../../RECHTE.md) hält die noch offenen Entscheidungen zu Lizenz und fremden Kursmaterialien fest.
 
 Siehe [[43 Sichtbarkeit für Besucher]], [[44 Sicherheit und Datenschutz]] und [[32 Entwicklung und Release]].
 

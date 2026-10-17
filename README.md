@@ -6,9 +6,13 @@ Version **0.3.0** ergänzt einen persönlichen Lernplan, Wiederholungsrunden und
 
 **Aufgabe → benötigtes Wissen → passender Befehl → selbst ausprobieren → Ergebnis prüfen**
 
-## In drei Schritten starten
+**[Online im Lernraum starten](https://sae-l.github.io/CuD/Lernwerkzeug/index.html)** · [Projekt kennenlernen](https://sae-l.github.io/CuD/) · [Offline-Paket v0.3.0](https://github.com/Sae-l/CuD/releases/tag/v0.3.0)
 
-1. Lade das [vollständige Projekt-ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) herunter und entpacke es vollständig. Auf GitHub geht das auch über **Code → Download ZIP**; auf der Webseite über **Projekt als ZIP laden**. **„Seite speichern“ im Browser reicht nicht aus.** Alternativ: `git clone https://github.com/Sae-l/CuD.git`. Der fest versionierte [Release v0.3.0](https://github.com/Sae-l/CuD/releases/tag/v0.3.0) enthält ein vollständiges ZIP und `SHA256SUMS`.
+Online öffnest du **Meinen Lernplan**, richtest bei Bedarf Python ein und beginnst mit der ersten Lektion. Die Lernseite benötigt kein Konto. Zum Online-Aufruf brauchst du Internet; die Offline-Nutzung beginnt mit dem vollständigen Download.
+
+## Offline in drei Schritten starten
+
+1. Lade beim [Release v0.3.0](https://github.com/Sae-l/CuD/releases/tag/v0.3.0) das vollständige ZIP und `SHA256SUMS` herunter und entpacke das ZIP vollständig. Für den jeweils veränderlichen Entwicklungsstand gibt es [main als ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) oder `git clone https://github.com/Sae-l/CuD.git`. **„Seite speichern“ im Browser reicht nicht aus.**
 2. Öffne [index.html](index.html) aus dem entpackten Projektordner und wähle **Lernraum öffnen**. Alternativ öffne [Lernwerkzeug/index.html](Lernwerkzeug/index.html) direkt. Die GitHub-Dateiansicht zeigt nur den Quelltext.
 3. Wähle **Meinen Lernplan öffnen**, richte deine Python-Umgebung ein und beginne mit der ersten Vorlesung. **Übungen & Begleitung** führt zu allen Aufgaben; der Block 6.1–6.3 bleibt hervorgehoben.
 
@@ -18,11 +22,11 @@ Die Lernwebseite benötigt keine Installation, keinen Paketmanager und kein Kont
 
 ## Handy, Tablet, Windows und Mac
 
-Das Layout passt sich der Fensterbreite an. Auf einem Desktop-Rechner kannst du die Startdatei direkt im Browser öffnen. Auf iOS und Android hängt das Öffnen zusammengehöriger Dateien vom Browser und Dateimanager ab. Falls die lokale Ansicht nicht funktioniert, stelle den **gesamten Repository-Ordner** über einen statischen HTTP-Server bereit; nur `index.html` zu übertragen reicht nicht. [Gerätezugang und Anleitung](Lernwerkzeug/README.md#auf-deinem-gerät-öffnen).
+Das Layout passt sich der Fensterbreite an. Auf Handy und Tablet ist der [Online-Lernraum](https://sae-l.github.io/CuD/Lernwerkzeug/index.html) der direkte Einstieg. Auf einem Desktop-Rechner kannst du auch die entpackte Startdatei im Browser öffnen. Auf iOS und Android hängt die lokale Dateiöffnung vom Browser und Dateimanager ab; dazu ist [Android-Problem #10](https://github.com/Sae-l/CuD/issues/10) noch offen. Falls die lokale Ansicht nicht funktioniert, beschreibt die [Geräteanleitung](Lernwerkzeug/README.md#auf-deinem-gerät-öffnen) einen HTTP-Server mit dem **gesamten Repository-Ordner**. Nur `index.html` zu übertragen reicht nicht.
 
 Die automatisierten Browserprüfungen sind in [kompatibilitaet.json](Lernwerkzeug/pruefung/kompatibilitaet.json) dokumentiert: Chromium, Firefox und WebKit auf dem Prüfrechner sowie emulierte Handy- und Tabletgrößen. WebKit auf Windows ersetzt keinen Safari-Test auf einem Mac oder iPad. Echte Geräte, Screenreader und Betriebssysteminstallationen bleiben gesondert zu prüfen. Maßgeblich sind die gespeicherten Ergebnisse und der [Prüfbericht](Lernwerkzeug/pruefung/PRUEFBERICHT.md).
 
-Der [CI-Nachweis](Lernwerkzeug/pruefung/CI_NACHWEIS.json) dokumentiert den früheren erfolgreichen Verhaltensstand `74ba715`: vollständige Chromium-/Firefox-/WebKit-Matrix auf Windows und Linux, insgesamt 3192 Layoutprüfungen. Beim lokalen Lernplan-Ausbau vom 17.10.2026 bestehen Chromium und WebKit jeweils 78 Ansichten in sieben Größen; Firefox scheitert vor dem Seitenaufruf an einem Windows-Startfehler. Der aktuelle lokale Gesamtbericht bleibt deshalb FAIL. Für eine Veröffentlichung braucht dieser neue Stand eigene aktuelle [GitHub-Actions-Läufe](https://github.com/Sae-l/CuD/actions); frühere Ergebnisse werden nicht als neue Ausführung ausgegeben.
+Der veröffentlichte Stand **v0.3.0**, Commit `b296826`, bestand am 17.10.2026 die [Windows-/Linux-Projektprüfung](https://github.com/Sae-l/CuD/actions/runs/39047674536), den [Release-Workflow](https://github.com/Sae-l/CuD/actions/runs/39047712894) und das [Pages-Deployment](https://github.com/Sae-l/CuD/actions/runs/39047673571). Der gespeicherte lokale Gesamtbericht bleibt wegen eines Firefox-Startfehlers FAIL. Der [CI-Nachweis als JSON](Lernwerkzeug/pruefung/CI_NACHWEIS.json) gehört weiterhin zum früheren Verhaltensstand `74ba715`; er wurde nicht als neuer Testlauf umgeschrieben. Spätere Änderungen benötigen eigene aktuelle Prüfungen.
 
 ## Wissensbasis in Obsidian
 
@@ -47,6 +51,12 @@ Konfiguration und GitHub-Einstellungen: [REPOSITORY_SETTINGS.md](REPOSITORY_SETT
 
 Für Lernende: [Bedienung](Lernwerkzeug/README.md), [Lernkonzept und Quellenabdeckung](Lernwerkzeug/LERNKONZEPT.md), [Gebrauchstest](Lernwerkzeug/GEBRAUCHSTEST.md). Für die Projektplanung: [Arbeitsplan](ARBEITSPLAN_Lernwerkzeug.md) und [Skill-Recherche](SKILL_RECHERCHE.md).
 
+## Probleme melden und mitarbeiten
+
+[Fehler oder Verbesserung melden](https://github.com/Sae-l/CuD/issues/new/choose). Nenne Version, Gerät, Browser und ob du die Online-Seite, eine entpackte Datei oder einen lokalen Server verwendest. Entferne persönliche Daten aus Screenshots und Protokollen. Für Sicherheitslücken gilt der [Sicherheitsmeldeweg](SECURITY.md).
+
+[Beitragen](CONTRIBUTING.md) · [Umgang miteinander](CODE_OF_CONDUCT.md) · [Barrierearmut und bekannte Grenzen](ACCESSIBILITY.md) · [Rechte und offene Lizenzentscheidung](RECHTE.md).
+
 ## Inhaltliche Grenzen
 
 Hinweise und Musterlösungen öffnest du einzeln. Lösungstexte und Zahlenantworten erscheinen nicht in Suchvorschauen. Lerntexte, Miniübungen und Musterlösungen sind selbst erstellt und von Originalaufgaben unterschieden.
@@ -63,14 +73,6 @@ Technische Tests belegen keinen Lernnutzen. Gebrauchstest und vollständige visu
 
 Dieses Repository ist öffentlich zugänglich; diese Sichtbarkeit ersetzt keine Nutzungserlaubnis für fremde Kursmaterialien. Originalunterlagen behalten ihre jeweilige Herkunft; eine übergreifende Lizenz für fremde Kursmaterialien wird hier nicht vergeben. Originaldateien bleiben unverändert, einschließlich des byte-identischen doppelten Analyse-PDFs. `.gitattributes` verhindert automatische Zeilenumwandlungen beim Git-Transfer. Temporäre Arbeitsdateien und lokale Browserprotokolle werden über `.gitignore` ausgeschlossen.
 
-## Bedienfeedback in v0.2.3
+## Änderungen und Wartung
 
-Nach einem Wechsel der Quizantwort verschwindet die alte Bewertung; prüfe die neue Auswahl erneut. Das Einstiegsquiz markiert die gewählte Antwort sichtbar und für assistive Technik. Bearbeitungsmarken melden ihren Zustand ausdrücklich. Größere Navigations-, Filter- und Hilfsziele, stärkere Feldgrenzen und kurze Druck- und Menüübergänge verbessern die Bedienung. Dekorative Hover-Bewegungen gelten nur für Mausbedienung; reduzierte Bewegung bleibt berücksichtigt.
-
-Die Regressionen prüfen zusätzlich den Antwortwechsel, Auswahl per Enter, ausgewählte 44×44px-Ziele, Speicherfehler, den Ausfall von GSAP und HTML-artigen Suchtext. Das ist keine vollständige WCAG-Abnahme. Keine neue Abhängigkeit, Geräte-Vibration oder externe Gestaltungsladung wurde ergänzt. [Änderungsnotizen](RELEASE_NOTES.md).
-
-## Gestaltung und Wartung in v0.2.2
-
-Der lokale Lernraum verwendet wieder die veröffentlichte Gestaltung: abgerundete Navigation, ruhige Papierflächen und konsistente Eingabe- und Aktionsfelder. Der vorherige lokale Ordner enthielt einen älteren CSS-Stand neben neueren Dateien. Die Downloadkorrektur bleibt erhalten. Die Startseite bietet direkte Links zu Vorlesungen, Übungen, Befehlen und Einrichtung; das Mobilmenü unterstützt Tastaturfokus, Escape und einen Einstieg ohne JavaScript. Beide Oberflächen tragen die Signatur **Mohamed Saeed Alhalak**.
-
-Betrieb und Architektur: [Bedienung](Lernwerkzeug/README.md). Neue Inhalte und sichere Prüfung: [Erweitern](Lernwerkzeug/ERWEITERN.md) und [Beitragen und Veröffentlichen](CONTRIBUTING.md). Die [Diagnose](AUDIT.md#gestaltung-und-sichere-integration-17102026) trennt lokale Dateidrift von Fehlern im veröffentlichten Stand.
+Die Versionsgeschichte mit Bedienfeedback und Gestaltungskorrekturen steht in [RELEASE_NOTES.md](RELEASE_NOTES.md). Betrieb und Architektur: [Bedienung](Lernwerkzeug/README.md). Neue Inhalte und sichere Prüfung: [Erweitern](Lernwerkzeug/ERWEITERN.md) und [Beitragen und Veröffentlichen](CONTRIBUTING.md). Die [Diagnose](AUDIT.md#gestaltung-und-sichere-integration-17102026) trennt lokale Dateidrift von Fehlern im veröffentlichten Stand.
