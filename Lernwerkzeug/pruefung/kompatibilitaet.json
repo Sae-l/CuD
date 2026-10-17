@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-16T22:13:41.001Z",
+  "date": "2026-10-17T08:07:20.308Z",
   "status": "FAIL",
   "host": "win32",
   "engines": [
@@ -58,7 +58,8 @@
       "landingRecovery": "PASS: keyboard focus loop, Escape, inert background, resize recovery, no-JS navigation and reduced motion",
       "touchProfiles": "390×844, 768×1024: navigation and hints PASS (emulation)",
       "learning": "quiz, persistent progress, malformed data and blocked-storage session fallback PASS",
-      "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route, local font and GSAP, hero line count, learning carousel wrap, exclusive accordion, ScrollTrigger cleanup"
+      "motionFallback": "PASS: visible content, quiz and navigation without GSAP; search markup rendered as text",
+      "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion including button press, unknown route, local font and GSAP, hero line count, learning carousel wrap, exclusive accordion, ScrollTrigger cleanup, 44px controls, prediction selection, quiz feedback reset, progress feedback, missing GSAP and search markup"
     },
     {
       "name": "firefox",
@@ -115,8 +116,17 @@
       "landingRecovery": "PASS: keyboard focus loop, Escape, inert background, resize recovery, no-JS navigation and reduced motion",
       "touchProfiles": "390×844, 768×1024: navigation and hints PASS (emulation)",
       "learning": "quiz, persistent progress, malformed data and blocked-storage session fallback PASS",
-      "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route, local font and GSAP, hero line count, learning carousel wrap, exclusive accordion, ScrollTrigger cleanup"
+      "motionFallback": "PASS: visible content, quiz and navigation without GSAP; search markup rendered as text",
+      "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion including button press, unknown route, local font and GSAP, hero line count, learning carousel wrap, exclusive accordion, ScrollTrigger cleanup, 44px controls, prediction selection, quiz feedback reset, progress feedback, missing GSAP and search markup"
+    },
+    {
+      "name": "webkit",
+      "version": "27.2",
+      "transport": "HTTP loopback",
+      "profiles": [],
+      "errors": [],
+      "externalRequests": []
     }
   ],
-  "error": "WebKit 2370 failed before page creation on Windows (exit 0xC0E90002). Chromium and Firefox completed all profiles and regressions. Full local launcher log retained outside the published repository."
+  "error": "browserContext.newPage: Target page, context or browser has been closed"
 }

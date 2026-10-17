@@ -56,7 +56,7 @@ Die Startseite bietet fünf direkte Lernzugänge, das kleine Python-Vorhersagebe
 
 PDF-Verweise enthalten `#page=N`; ob der Betrachter direkt dorthin springt, hängt vom Browser ab. Verwendete Originalseiten sind zusätzlich als Bilder verlinkt. Manche Browser laden Markdown-Berichte herunter; du kannst sie im Editor lesen.
 
-Jede Lektion enthält eine eigene Verständnisfrage. Wähle eine Antwort und drücke **Antwort prüfen**; die Rückmeldung erklärt den Grund. Schreibe danach die Miniübung selbst, bevor du **Ich habe die Miniübung selbst geschrieben und geprüft** markierst. **Weiterlernen** auf der Startseite führt zur ersten noch nicht markierten Etappe.
+Jede Lektion enthält eine eigene Verständnisfrage. Wähle eine Antwort und drücke **Antwort prüfen**; die Rückmeldung erklärt den Grund. Wenn du danach eine andere Antwort auswählst, verschwindet die alte Bewertung. Prüfe die neue Auswahl erneut. Im kleinen Einstiegsquiz wird die zuletzt gewählte Antwort zusätzlich dunkel markiert. Schreibe danach die Miniübung selbst, bevor du **Ich habe die Miniübung selbst geschrieben und geprüft** markierst. **Weiterlernen** auf der Startseite führt zur ersten noch nicht markierten Etappe.
 
 Die Bearbeitungsmarken werden nur im selben Browser unter `cud-lernfortschritt-v1` gespeichert. Sie werden nicht gesendet oder zwischen Geräten synchronisiert. Bei blockierter Speicherung bleibt die Bedienung erhalten und die Seite weist auf die Sitzung als Grenze hin. Im direkten Dateibetrieb kann das Speicherverhalten vom Browser und Dateipfad abhängen. Ein gelöstes Häkchen entfernt die jeweilige Marke. Die Marken sind deine Selbsteinschätzung und kein Nachweis des Lernnutzens.
 
