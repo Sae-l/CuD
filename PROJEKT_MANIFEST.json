@@ -383,12 +383,6 @@
       "git_blob_sha1": "e21a18dc273108270255e8199871dcb9ca35db88"
     },
     {
-      "path": "Obsidian-CuD/.obsidian/workspace.json",
-      "bytes": 4825,
-      "sha256": "59d857f436922045efdeb8417ebce586c206182bca129b5b9f5dcb71c24f1a3c",
-      "git_blob_sha1": "fc0146d1410d1470f1eb1a214e2bc41f5e661370"
-    },
-    {
       "path": "Obsidian-CuD/00 Start.md",
       "bytes": 4543,
       "sha256": "e2fb51ca4c76e07f4b3fd9e7371d3bd4250ce2efca865bb4db94f262611c8993",
@@ -924,9 +918,9 @@
     },
     {
       "path": "scripts/manifest.py",
-      "bytes": 2306,
-      "sha256": "e73abd0d8bdcd9321bb0a0958802445001e9f8bbbe4f6ac8afff9c4b7f53c575",
-      "git_blob_sha1": "b0af42cf08ecd79096770be5441d380962f640c2"
+      "bytes": 2495,
+      "sha256": "0aac1918202e15cb9b4f42b72664ad2e0a573ca139b079d095a946741d61643d",
+      "git_blob_sha1": "77fb7ad08b0ad3e4799508e98e4cd6ac6f9a4815"
     },
     {
       "path": "scripts/release.py",
@@ -936,9 +930,9 @@
     },
     {
       "path": "scripts/test_manifest.py",
-      "bytes": 1132,
-      "sha256": "a30a7cb557c17879a9549c8a72085a886ffa0c48354ca739339546465b9b0bc2",
-      "git_blob_sha1": "f6d3fac8c34b82b2a31df36d802ffe89c7d7d669"
+      "bytes": 1395,
+      "sha256": "c2ab6dec245dc4f2be7cebdb75d9b8557f64eeab7ac367f2a57152ede7136f80",
+      "git_blob_sha1": "e2325867e589e0a853309a5b8413367312229493"
     },
     {
       "path": "scripts/test_release.py",

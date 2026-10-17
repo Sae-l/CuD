@@ -16,6 +16,9 @@ def entries(root):
         for name in files:
             file = Path(directory) / name
             relative = file.relative_to(root).as_posix()
+            # Obsidian speichert hier persönliche, von Git ignorierte Fensterzustände.
+            if ".obsidian" in file.parts and name.startswith("workspace"):
+                continue
             if relative in {"PROJEKT_MANIFEST.json", "debug.log"} or name.startswith(".env") or file.suffix in {".pyc", ".pyo"}:
                 continue
             data = file.read_bytes()

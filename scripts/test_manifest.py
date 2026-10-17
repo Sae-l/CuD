@@ -15,6 +15,10 @@ class ManifestTest(unittest.TestCase):
             (root / "PROJEKT_MANIFEST.json").write_text("{}")
             (root / "node_modules").mkdir()
             (root / "node_modules" / "cache").write_text("ignored")
+            obsidian = root / "Obsidian-CuD" / ".obsidian"
+            obsidian.mkdir(parents=True)
+            (obsidian / "workspace.json").write_text("private window layout")
+            (obsidian / "workspace-mobile.json").write_text("private mobile layout")
             before = entries(root)
             self.assertEqual(len(before), 1)
             self.assertEqual(before[0]["bytes"], 5)
