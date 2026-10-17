@@ -1,3 +1,25 @@
+# CuD v0.2.3
+
+Wartungsausgabe vom 17.10.2026: unmittelbares Bedienfeedback und nachvollziehbare Browsernachweise.
+
+- Eine andere Quizantwort wählen entfernt die alte Bewertung. Prüfe die neue Auswahl erneut; das Einstiegsquiz markiert die gewählte Antwort zusätzlich sichtbar und für assistive Technik.
+- Bearbeitungsmarken melden ausdrücklich, ob eine Lektion markiert ist. Die bestehende lokale Speicherung und ihr Sitzungsersatz bleiben erhalten.
+- Die geprüften Navigations-, Filter-, Suchvorschlags- und Hilfsziele sind mindestens 44×44px groß. Feld- und Antwortgrenzen sind kontrastreicher. Kurze Druck- und Menüübergänge reagieren überwiegend in 160–240ms; dekorative Hover-Bewegungen gelten nur bei Mausbedienung. Reduzierte Bewegung bleibt berücksichtigt.
+- Neue Regressionen prüfen Antwortwechsel, Tastaturauswahl, ausgewählte Bedienziele, Speicherfehler, ausgefallene Animationsdateien und HTML-artigen Suchtext. Keine neue Abhängigkeit oder externe Gestaltungsladung.
+- README, Bedienungs- und Beitragsanleitung, Prüfbericht und deutsche Release-Notiz im Obsidian-Vault sind abgeglichen. Der CI-Nachweis nennt den tatsächlich geprüften Quellcommit und die Artefakte; lokale Windows-Signatursperren bleiben davon getrennt dokumentiert.
+
+## v0.2.3 starten und prüfen
+
+1. `CuD-1-v0.2.3.zip` und `SHA256SUMS` aus diesem Release herunterladen. Den SHA-256-Wert des ZIPs mit dem Eintrag in `SHA256SUMS` vergleichen.
+2. Das ZIP vollständig entpacken und `index.html` öffnen; alternativ `Lernwerkzeug/index.html` direkt starten. Alle Unterordner zusammenlassen.
+3. Python-Beispiele selbst im Editor ausführen. Die Lernwebseite benötigt weder Node.js noch Python.
+
+Der Verhaltensstand `74ba715` bestand die vollständige Chromium-/Firefox-/WebKit-Matrix auf Windows und Linux mit 3192 Layoutprüfungen. Der finale Release-Commit wird zusätzlich durch die vorgeschriebenen CI-Jobs geprüft; der Tag-Workflow wiederholt Tests und veröffentlicht ausschließlich manifestgeprüfte Commit-Bytes mit `SHA256SUMS`. Konkrete Läufe stehen in GitHub Actions. Die lokale WebKit-Sperre bleibt ein eigener Umgebungsbefund; keine Schutzregel wurde abgeschaltet.
+
+Unverändert enthalten: 31 begleitete Aufgaben, vier Live-Übungen und zehn Lektionen. `bb12024.csv` fehlt; die betroffenen Originalkennzahlen bleiben unbestätigt. Reale Geräte, Safari auf Apple-Hardware, Screenreader und Lernnutzen sind keine bestandenen Prüfungen dieses Releases. Die acht Originaldateien und ihre Rechte bleiben unverändert.
+
+---
+
 # CuD v0.2.2
 
 Wartungsausgabe vom 17.10.2026: konsistente Gestaltung und sichere Offline-Einstiege.

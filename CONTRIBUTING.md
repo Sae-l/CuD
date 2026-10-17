@@ -54,6 +54,8 @@ npm test
 
 `LERNWERKZEUG_PYTHON` ist optional und wählt den Python-Interpreter für die Tests. Setze die Variable, wenn die benötigten Python-Pakete in einer eigenen Umgebung liegen. Die obigen Befehle beschreiben die Einrichtung; sie belegen keine bereits erfolgte Prüfung auf macOS oder Linux. Browser können zusätzliche Systemvoraussetzungen benötigen.
 
+Falls ein Browser schon bei einer leeren Testseite scheitert, trenne Laufzeit- und Anwendungsfehler. Unter Windows können Code-Integrity-Ereignisse 3077/3033 eine gesperrte Browserkomponente belegen. Keine Schutzregel abschalten, keinen älteren Browser einsetzen und keine Engine aus der Matrix streichen. Dokumentiere den lokalen Fehler und prüfe denselben Commit mit der vollständigen vorhandenen Windows-/Linux-CI. Deren erfolgreicher Lauf ist ein gesonderter Nachweis; er macht den lokalen FAIL-Bericht nicht nachträglich grün.
+
 ## Vor dem Einreichen prüfen
 
 `npm test` führt zuerst `Lernwerkzeug/pruefen.cjs`, danach `Lernwerkzeug/kompatibilitaet.cjs` aus. Ein Fehler beendet den Testaufruf mit einem Fehlerstatus. Maschinenlesbare Ergebnisse und Screenshots werden unter `Lernwerkzeug/pruefung/` aktualisiert; der lesbare Prüfbericht wird gesondert gepflegt:
@@ -61,6 +63,7 @@ npm test
 - [ergebnis.json](Lernwerkzeug/pruefung/ergebnis.json): Inhalts-, Python- und Browserprüfungen.
 - [kompatibilitaet.json](Lernwerkzeug/pruefung/kompatibilitaet.json): Browser, Ansichtsgrößen und Ergebnisse der Kompatibilitätsprüfung.
 - [PRUEFBERICHT.md](Lernwerkzeug/pruefung/PRUEFBERICHT.md): lesbare Einordnung und offene Prüfungen.
+- [CI_NACHWEIS.json](Lernwerkzeug/pruefung/CI_NACHWEIS.json): zurückgelesener vollständiger CI-Lauf mit Quellcommit, Jobs und Artefakt-Hashes; kein Ersatz für eine erneute Prüfung geänderter Eingaben.
 
 Prüfe die betroffenen Ansichten außerdem im Browser, einschließlich schmaler Breite, Tastaturbedienung und reduzierter Bewegung. Aktualisiere den lesbaren Prüfbericht nur mit tatsächlich gewonnenen Nachweisen. Emulierte Geräte ersetzen keine echten Geräte; Playwright-WebKit ersetzt keinen Safari-Test auf Apple-Hardware.
 

@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-17",
+  "source_commit": "74ba715c0042f3e399a33a50c882218dccd9d522",
+  "workflow_run": 39017560114,
+  "workflow_url": "https://github.com/Sae-l/CuD/actions/runs/39017560114",
+  "status": "PASS",
+  "scope": "Immutable evidence for the specified behavior commit; release metadata changes require new CI. Local Windows WebKit failure remains separate.",
+  "systems": [
+    {
+      "system": "linux",
+      "job_id": 117352695534,
+      "engines": [
+        {
+          "name": "chromium",
+          "version": "156.0.8078.4",
+          "profiles": 7,
+          "layout_checks": 532,
+          "javascript_errors": [],
+          "external_requests": []
+        },
+        {
+          "name": "firefox",
+          "version": "157.0",
+          "profiles": 7,
+          "layout_checks": 532,
+          "javascript_errors": [],
+          "external_requests": []
+        },
+        {
+          "name": "webkit",
+          "version": "27.2",
+          "profiles": 7,
+          "layout_checks": 532,
+          "javascript_errors": [],
+          "external_requests": []
+        }
+      ]
+    },
+    {
+      "system": "win32",
+      "job_id": 117352695988,
+      "engines": [
+        {
+          "name": "chromium",
+          "version": "156.0.8078.4",
+          "profiles": 7,
+          "layout_checks": 532,
+          "javascript_errors": [],
+          "external_requests": []
+        },
+        {
+          "name": "firefox",
+          "version": "157.0",
+          "profiles": 7,
+          "layout_checks": 532,
+          "javascript_errors": [],
+          "external_requests": []
+        },
+        {
+          "name": "webkit",
+          "version": "27.2",
+          "profiles": 7,
+          "layout_checks": 532,
+          "javascript_errors": [],
+          "external_requests": []
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 12095806030,
+      "name": "pruefnachweise-ubuntu-latest",
+      "digest": "sha256:2ba8ccaae9fb455a6c8551cc1db12b1e04a49bd6141d4b8ad0b3bbfdb846fa74",
+      "commit": "74ba715c0042f3e399a33a50c882218dccd9d522"
+    },
+    {
+      "id": 12095204317,
+      "name": "pruefnachweise-windows-latest",
+      "digest": "sha256:b7476d3becc32f8eb1d503fecf19bbcb552414d57aa72a191575067f9e36623f",
+      "commit": "74ba715c0042f3e399a33a50c882218dccd9d522"
+    }
+  ]
+}

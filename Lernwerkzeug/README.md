@@ -28,6 +28,8 @@ Auf iPad und Android ist die Desktop-Version von VS Code nicht auf dieselbe Weis
 
 [Browserergebnisse](pruefung/kompatibilitaet.json) und [Prüfbericht](pruefung/PRUEFBERICHT.md) dokumentieren die automatisierten Prüfungen mit Chromium, Firefox und WebKit auf dem Prüfrechner sowie emulierten Handy- und Tabletgrößen. Das ist kein Nachweis für echte iOS-/Android-Geräte oder Safari auf macOS/iPadOS. Screenreader und tatsächliche Installationen bleiben offen. Ein gespeicherter Bericht gilt nur für den darin dokumentierten Stand.
 
+Der zusätzliche [CI-Nachweis](pruefung/CI_NACHWEIS.json) hält die bestandene vollständige Windows-/Linux-Matrix am Verhaltensstand `74ba715` fest. Eine lokale Windows-Signatursperre betrifft die dort verwendete WebKit-Testkomponente; sie wird nicht durch Abschalten von Schutzregeln umgangen. Für die jeweilige Releaseversion gelten zusätzlich ihre konkreten GitHub-Actions-Läufe.
+
 ## Eine Übung bearbeiten
 
 1. Öffne **Übungen & Begleitung**. Dort findest du alle Module. Für den CSV-Block wähle Aufgabe **6.1**, und speichere die verlinkte `messdaten.csv` in einem eigenen Übungsordner. Lege daneben `main.py` an.
@@ -56,7 +58,7 @@ Die Startseite bietet fünf direkte Lernzugänge, das kleine Python-Vorhersagebe
 
 PDF-Verweise enthalten `#page=N`; ob der Betrachter direkt dorthin springt, hängt vom Browser ab. Verwendete Originalseiten sind zusätzlich als Bilder verlinkt. Manche Browser laden Markdown-Berichte herunter; du kannst sie im Editor lesen.
 
-Jede Lektion enthält eine eigene Verständnisfrage. Wähle eine Antwort und drücke **Antwort prüfen**; die Rückmeldung erklärt den Grund. Schreibe danach die Miniübung selbst, bevor du **Ich habe die Miniübung selbst geschrieben und geprüft** markierst. **Weiterlernen** auf der Startseite führt zur ersten noch nicht markierten Etappe.
+Jede Lektion enthält eine eigene Verständnisfrage. Wähle eine Antwort und drücke **Antwort prüfen**; die Rückmeldung erklärt den Grund. Wenn du danach eine andere Antwort auswählst, verschwindet die alte Bewertung. Prüfe die neue Auswahl erneut. Im kleinen Einstiegsquiz wird die zuletzt gewählte Antwort zusätzlich dunkel markiert. Schreibe danach die Miniübung selbst, bevor du **Ich habe die Miniübung selbst geschrieben und geprüft** markierst. **Weiterlernen** auf der Startseite führt zur ersten noch nicht markierten Etappe.
 
 Die Bearbeitungsmarken werden nur im selben Browser unter `cud-lernfortschritt-v1` gespeichert. Sie werden nicht gesendet oder zwischen Geräten synchronisiert. Bei blockierter Speicherung bleibt die Bedienung erhalten und die Seite weist auf die Sitzung als Grenze hin. Im direkten Dateibetrieb kann das Speicherverhalten vom Browser und Dateipfad abhängen. Ein gelöstes Häkchen entfernt die jeweilige Marke. Die Marken sind deine Selbsteinschätzung und kein Nachweis des Lernnutzens.
 

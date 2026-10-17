@@ -66,9 +66,9 @@
     },
     {
       "path": "CONTRIBUTING.md",
-      "bytes": 10405,
-      "sha256": "3e812bab3dc4b64b91ef977739a4eae33e5120d3836232397d5fc367ea86bda8",
-      "git_blob_sha1": "cd35ac8bc4fc9e2f7bc95e6ab635f6189e569c38"
+      "bytes": 11150,
+      "sha256": "c4fad0dca5e0ab69de1dfdb0f58dfaa3279816ac775654bc3934cb57151ee2ff",
+      "git_blob_sha1": "7e393a99cff12f08e6b12d5015d78f34c3f058ce"
     },
     {
       "path": "Lernwerkzeug/ABDECKUNG.md",
@@ -96,15 +96,15 @@
     },
     {
       "path": "Lernwerkzeug/README.md",
-      "bytes": 9410,
-      "sha256": "f55e4a2f6ab37d3e24a93f231999f82b50ea12f8bee401fc012a1e89dbe1e2ff",
-      "git_blob_sha1": "51d049f17f55c0d136ec3f2b40f7095a2acffe17"
+      "bytes": 9999,
+      "sha256": "9eef37574b59905336eaa37e3b9a11721dd2efd305aaefa7fceff18e4c1b5f9e",
+      "git_blob_sha1": "da0186ba4744d88a536ac6d8f1af76ddde035055"
     },
     {
       "path": "Lernwerkzeug/app.js",
-      "bytes": 35968,
-      "sha256": "6e1d3bafadca82cdc1a0bc031aa211226ffb892083f383ba4b2210cb843be634",
-      "git_blob_sha1": "50914c5c9ab1d6ae6e2568a52b5c48aa41556193"
+      "bytes": 36563,
+      "sha256": "fbdff80befc7703941863d7c5054e1307345aeedea7f649832290601737e14ac",
+      "git_blob_sha1": "8cb231c917adeb95cc4e10a69f82449afd935093"
     },
     {
       "path": "Lernwerkzeug/assets/GSAP-README.md",
@@ -186,9 +186,9 @@
     },
     {
       "path": "Lernwerkzeug/kompatibilitaet.cjs",
-      "bytes": 23310,
-      "sha256": "002502f992adc65b8986ef1fe676a737aa68718a0adcd24088ed4baa27fb6cbc",
-      "git_blob_sha1": "4dd31efcffd43c3cc5cd2938f84795e7a6f25070"
+      "bytes": 27885,
+      "sha256": "7da8d696c64df5bb1795740464f18d0bb640e2083df76cb97b279a0d7e7b5761",
+      "git_blob_sha1": "bc940e34f4e957bb73c78b902b488b3c919c2aa0"
     },
     {
       "path": "Lernwerkzeug/kurs.js",
@@ -203,10 +203,16 @@
       "git_blob_sha1": "b2d5858624cc324f7e8a13968e698cd038e12e3a"
     },
     {
+      "path": "Lernwerkzeug/pruefung/CI_NACHWEIS.json",
+      "bytes": 2401,
+      "sha256": "ba3183f48da17c39461d2c7aa34c020615100ae14c23269ce1de8fb7e74ef4a5",
+      "git_blob_sha1": "ffa90d307dbb348f17e45d18e391f351c372fd8c"
+    },
+    {
       "path": "Lernwerkzeug/pruefung/PRUEFBERICHT.md",
-      "bytes": 9359,
-      "sha256": "41b40dc0a493e10116743438ed319a25d026a27034cc0d7ceb44147a545ba935",
-      "git_blob_sha1": "a6fc88706211c2d11864f433b950b7dee664ffac"
+      "bytes": 16116,
+      "sha256": "e09a69733765ad7a4c6b287b6ca8bc8a0da6dacd170f033bb57dae113905dc58",
+      "git_blob_sha1": "a2551c0d32e2a3b658f83a74ea72f7eef72f99bc"
     },
     {
       "path": "Lernwerkzeug/pruefung/audit-1440.png",
@@ -247,8 +253,8 @@
     {
       "path": "Lernwerkzeug/pruefung/ergebnis.json",
       "bytes": 645,
-      "sha256": "b6256b890aae11ca90b7e2b86fc153f95db1aba236120cfb60e7bb138f629d40",
-      "git_blob_sha1": "f838485871e357485058b26e7609596c8f101097"
+      "sha256": "14cd98afd1268b642a27201b8c7e47e5b48f113d2bc997a5e46c5a4da4dcbcdc",
+      "git_blob_sha1": "70005b6078e3002625708361e3aa1970d6273476"
     },
     {
       "path": "Lernwerkzeug/pruefung/erweiterung.json",
@@ -264,9 +270,9 @@
     },
     {
       "path": "Lernwerkzeug/pruefung/kompatibilitaet.json",
-      "bytes": 3765,
-      "sha256": "c9a9a470a58b86df59dbc2bce2fc74eaf7c0a0d9d842e1bab871c495e5e99882",
-      "git_blob_sha1": "be585684ba6a13d4898f59393fd1f8cd4605004a"
+      "bytes": 4302,
+      "sha256": "259faf30a45189a9ba04eb019aff79eceecae5f2c3d46c5a6b5b042b4aa41b82",
+      "git_blob_sha1": "b7315c4ef1edad81779ab63ca9bb013126073507"
     },
     {
       "path": "Lernwerkzeug/pruefung/lerncheck-desktop.png",
@@ -324,9 +330,9 @@
     },
     {
       "path": "Lernwerkzeug/styles.css",
-      "bytes": 24765,
-      "sha256": "4bb5b3720824bea733aad1f2ce0afff6619a8a6ef49787684d9666b5930a348e",
-      "git_blob_sha1": "24559661b421851aedf2b357144260019da99c2b"
+      "bytes": 25843,
+      "sha256": "4c780cb663ae9a97fdbb01ce8bd51cfa3f23cea829ff1d4aa16334983736a885",
+      "git_blob_sha1": "9dae81ee3abca8ba177d626aeadc7a0ec9ab0e6c"
     },
     {
       "path": "Obsidian-CuD/.gitignore",
@@ -474,9 +480,9 @@
     },
     {
       "path": "Obsidian-CuD/30 Weiterentwicklung/32 Entwicklung und Release.md",
-      "bytes": 6341,
-      "sha256": "44739639966b5620e1ec664d773cf79816c9edc815602598345b332f67157b99",
-      "git_blob_sha1": "550a10ca824dc2b71acb1007eb01a1f66b57fcba"
+      "bytes": 6787,
+      "sha256": "e7eff26ef3e83b8b9ab000197c76f297e63ec7a0ec8cae6455de0df5824d9b83",
+      "git_blob_sha1": "7a75e7a218255d01fccfcb95de4b89ca8edeb4e3"
     },
     {
       "path": "Obsidian-CuD/30 Weiterentwicklung/33 Entwicklungsplan.md",
@@ -589,8 +595,8 @@
     {
       "path": "Obsidian-CuD/Pruefung/VAULT_MANIFEST.json",
       "bytes": 8670,
-      "sha256": "e134a49eef07a37d133214ae37edebb1cd20b948931d8ba82daeda6d944b4f88",
-      "git_blob_sha1": "d0194173b6115c4a5f0c48807b78b6e29c5f0887"
+      "sha256": "2dc0c178914072b640cc4fb69be80ab47b341427aaeaf4009065389de8c814aa",
+      "git_blob_sha1": "63f20f22448e5f702a673086cd6a05505e9c5e70"
     },
     {
       "path": "Obsidian-CuD/Pruefung/beispiel_pruefen.cjs",
@@ -630,15 +636,15 @@
     },
     {
       "path": "README.md",
-      "bytes": 8630,
-      "sha256": "46a79a57c8e857ddd309adab4d985aaf223547e48c05c4840fa8bc5e7215a3b1",
-      "git_blob_sha1": "a7a7e52cbea8a6dc0195f85d2f23db8e124463e8"
+      "bytes": 10108,
+      "sha256": "05803fda9bf52751dca8ff82c93011f72f27335ce29c9ae9d01078e6ed006a07",
+      "git_blob_sha1": "eafaad604e64b4ec68cd4e0e89508c0e941b0486"
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2187,
-      "sha256": "3462bd53a6ee92788e60eb5568c535f882959e7c696dcb621d008ea1c93c963b",
-      "git_blob_sha1": "6315ca376b27d3185e35bb12a6527aa4b88a9766"
+      "bytes": 4724,
+      "sha256": "21a8685636a1e4a30e68a056cc634a6d6a63c460dd6be42a8e5815c34f22c45c",
+      "git_blob_sha1": "9325f62c23a1dd4a94603c416d3adc2b3257e393"
     },
     {
       "path": "REPOSITORY_SETTINGS.md",
@@ -876,21 +882,21 @@
     },
     {
       "path": "index.html",
-      "bytes": 28523,
-      "sha256": "742a2a5d2bd80a999ab70042b0c22c46fab581d464e3c6ff16d69b0edc75271e",
-      "git_blob_sha1": "79ef4e96bd32ab964a5b5d1c3407f7ea25908e25"
+      "bytes": 28768,
+      "sha256": "4189fe83d1513981efa7d32f37bc8a2050732e47243a6ee429b14009eeb8ad5a",
+      "git_blob_sha1": "4e32c3a3f8d393558216860340071f6b3718a3f1"
     },
     {
       "path": "package-lock.json",
       "bytes": 1252,
-      "sha256": "b4bb3abcbf9f5f57f1ac8de84cca4f65146ddd3de5c0eb1d2d06e4629460bd60",
-      "git_blob_sha1": "4dc77ede1b12549771ff52b3c72c78cffab63d56"
+      "sha256": "246ece4a213737024926c85c1f8c9557f9098b6a1c76093b82952e1261d202e8",
+      "git_blob_sha1": "d0badf9c43395a71388f427b8f4ea07b609b2b3c"
     },
     {
       "path": "package.json",
-      "bytes": 444,
-      "sha256": "eb2a12d15ece8ec7bc91c778b9685ee1df1fedc06326e6f6f6c0b14794bfbc92",
-      "git_blob_sha1": "7e8a6877b0f0331005869a5def9926eae3ba470e"
+      "bytes": 443,
+      "sha256": "4866b65cd88bbe3477bfd458494c2e77895af40916181cc6727ba466555f63fc",
+      "git_blob_sha1": "6cdf2783467d3b409e808954395277e9f6f120d0"
     },
     {
       "path": "requirements-test.txt",

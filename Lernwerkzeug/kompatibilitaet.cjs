@@ -73,6 +73,9 @@ async function main() {
         assert(await page.locator(".island").evaluate(node => parseFloat(getComputedStyle(node).borderTopLeftRadius) >= 100),"Pillenförmige Navigation erhalten");
         assert(await page.locator(".hero-visual img").evaluate(img => img.complete && img.naturalWidth > 0));
         assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+        for (const link of await page.locator(".island-links a").all()) {
+          if (await link.isVisible()) assert(await link.evaluate(node => { const box = node.getBoundingClientRect(); return box.height >= 44 && box.width >= 44; }),"Navigationsziele mindestens 44×44px");
+        }
         if (engine.name() === "chromium" && [390,768,1440].includes(width)) {
           for (const node of await page.locator("[data-reveal]").all()) {
             await node.evaluate(node => node.scrollIntoView({block:"center",behavior:"instant"}));
@@ -139,11 +142,27 @@ async function main() {
         return style.animationName === "none" && style.transitionDuration.split(",").every(value => parseFloat(value) === 0);
       })),"Startseite respektiert reduzierte Bewegung");
       assert(await calm.locator(".hero h1").evaluate(node => getComputedStyle(node).opacity === "1"));
+      const calmButton = calm.locator(".hero .btn-primary");
+      await calmButton.scrollIntoViewIfNeeded();
+      const calmBox = await calmButton.boundingBox();
+      await calm.mouse.move(calmBox.x + calmBox.width / 2,calmBox.y + calmBox.height / 2);
+      await calm.mouse.down();
+      assert.equal(await calmButton.evaluate(node => getComputedStyle(node).transform),"none","Kein Druck-Zoom bei reduzierter Bewegung");
+      await calm.mouse.up();
       await reduced.close();
       report.landingRecovery = "PASS: keyboard focus loop, Escape, inert background, resize recovery, no-JS navigation and reduced motion";
       await page.evaluate(() => document.fonts.ready);
       assert.equal(await page.evaluate(() => document.fonts.check('16px Outfit')),true);
       assert(await page.evaluate(() => window.gsap && window.ScrollTrigger && ScrollTrigger.getAll().length > 0));
+      const predictions = page.locator(".prediction");
+      assert.deepEqual(await predictions.evaluateAll(nodes => nodes.map(node => node.getAttribute("aria-pressed"))),["false","false"]);
+      await predictions.first().focus();
+      await page.keyboard.press("Enter");
+      assert.deepEqual(await predictions.evaluateAll(nodes => nodes.map(node => node.getAttribute("aria-pressed"))),["true","false"]);
+      assert.equal(await page.locator(".first-code .quiz-feedback").getAttribute("data-result"),"correct");
+      await predictions.nth(1).click();
+      assert.deepEqual(await predictions.evaluateAll(nodes => nodes.map(node => node.getAttribute("aria-pressed"))),["false","true"]);
+      assert.equal(await page.locator(".first-code .quiz-feedback").getAttribute("data-result"),"retry");
       const tip = page.locator(".learning-rhythm > p");
       assert((await tip.innerText()).startsWith("Vorhersagen:"));
       await page.getByRole("button",{name:"Nächster Lerntipp",exact:true}).click();
@@ -194,6 +213,9 @@ async function main() {
           }
         }
         await go("start");
+        for (const control of await page.locator('select,.search-tip button,summary,nav a').all()) {
+          if (await control.isVisible()) assert(await control.evaluate(node => { const box = node.getBoundingClientRect(); return box.height >= 44 && box.width >= 44; }),`${width}px: Bedienziel kleiner als 44×44px: ${await control.innerText()}`);
+        }
         if (width <= 760) {
           const toggle = page.locator("#nav-toggle");
           assert.equal(await toggle.isVisible(),true);
@@ -290,10 +312,19 @@ async function main() {
       await quiz.locator('input[value="0"]').check();
       await quiz.getByRole("button",{name:"Antwort prüfen"}).click();
       assert((await quiz.getByRole("status").innerText()).startsWith("Richtig."));
+      assert.equal(await quiz.getByRole("status").getAttribute("data-result"),"correct");
+      await quiz.locator('input[value="1"]').check();
+      assert.equal(await quiz.getByRole("status").innerText(),"","Antwortwechsel verwirft die alte Bewertung");
+      assert.equal(await quiz.getByRole("status").getAttribute("data-result"),null);
+      await quiz.getByRole("button",{name:"Antwort prüfen"}).click();
+      assert((await quiz.getByRole("status").innerText()).startsWith("Noch nicht."));
+      assert.equal(await quiz.getByRole("status").getAttribute("data-result"),"retry");
       await page.locator("#lektion-bearbeitet").check();
+      assert((await page.locator(".completion + .example-note").innerText()).startsWith("Als bearbeitet markiert."));
       await page.reload();
       assert.equal(await page.locator("#lektion-bearbeitet").isChecked(),true);
       await page.locator("#lektion-bearbeitet").uncheck();
+      assert((await page.locator(".completion + .example-note").innerText()).startsWith("Nicht als bearbeitet markiert."));
       const blocked = await browser.newContext();
       await blocked.addInitScript(() => {
         Object.defineProperty(Storage.prototype,"getItem",{value() { throw new DOMException("blocked","SecurityError"); }});
@@ -322,12 +353,34 @@ async function main() {
         await malformed.close();
       }
       report.learning = "quiz, persistent progress, malformed data and blocked-storage session fallback PASS";
+      const withoutMotion = await browser.newContext({viewport:{width:1440,height:900}});
+      await withoutMotion.route("**/*",route => {
+        const target = route.request().url();
+        return target.startsWith(`${origin}/`) && !/\/(gsap|ScrollTrigger)\.min\.js$/.test(target) ? route.continue() : route.abort();
+      });
+      const plain = await withoutMotion.newPage();
+      plain.on("pageerror",error => report.errors.push(error.message));
+      plain.on("request",request => { if (/^https?:/.test(request.url()) && !request.url().startsWith(`${origin}/`)) report.externalRequests.push(request.url()); });
+      await plain.goto(url);
+      assert.equal(await plain.evaluate(() => typeof window.gsap),"undefined");
+      assert.equal(await plain.locator(".hero-copy").evaluate(node => getComputedStyle(node).opacity),"1");
+      await plain.getByRole("button",{name:"Du kannst Python lernen!",exact:true}).click();
+      assert.equal(await plain.locator(".first-code .quiz-feedback").getAttribute("data-result"),"correct");
+      const markup = '<img id="injected" src="x" onerror="window.injected=true">';
+      await plain.locator("#suche").fill(markup);
+      assert((await plain.locator("#trefferzahl").innerText()).includes(markup));
+      assert.equal(await plain.locator("#injected").count(),0,"Suchtext bleibt Text statt HTML");
+      await plain.locator("#reset").click();
+      await plain.locator('nav a[href="#vorlesungen"]').click();
+      await plain.getByRole("heading",{name:"Eine Idee nach der anderen.",exact:true}).waitFor();
+      await withoutMotion.close();
+      report.motionFallback = "PASS: visible content, quiz and navigation without GSAP; search markup rendered as text";
       await page.evaluate(() => { location.hash = "unbekannt"; });
       await page.getByRole("heading",{name:"Inhalt nicht gefunden",exact:true}).waitFor();
       await go("start");
       assert.deepEqual(report.errors,[]);
       assert.deepEqual(report.externalRequests,[]);
-      report.regressions = "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion, unknown route, local font and GSAP, hero line count, learning carousel wrap, exclusive accordion, ScrollTrigger cleanup";
+      report.regressions = "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion including button press, unknown route, local font and GSAP, hero line count, learning carousel wrap, exclusive accordion, ScrollTrigger cleanup, 44px controls, prediction selection, quiz feedback reset, progress feedback, missing GSAP and search markup";
     } finally {
       await browser.close();
       save();

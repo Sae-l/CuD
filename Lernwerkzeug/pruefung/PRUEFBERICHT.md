@@ -1,4 +1,14 @@
-# Prüfbericht 0.2.1
+# Prüfbericht und Nachweisverlauf
+
+## Aktuelle Einordnung für v0.2.3
+
+Die Bedienverbesserungen am Commit `74ba715c0042f3e399a33a50c882218dccd9d522` bestanden [Projektprüfung #31](https://github.com/Sae-l/CuD/actions/runs/39017560114) auf Windows und Linux. Je System bestanden Chromium 156.0.8078.4, Firefox 157.0 und WebKit 27.2 jeweils 76 Ansichten in sieben Größen: zusammen 3192 Layoutprüfungen. Auch Inhalts-/Pythonprüfung, Projektmanifest, Vaultprüfung und Manifest-/Release-Unit-Tests bestanden. Die regulären Browserkontexte meldeten null JavaScript-Fehler und externe Laufzeitanfragen. [CI_NACHWEIS.json](CI_NACHWEIS.json) nennt Quellcommit, Jobs und Artefakt-Hashes.
+
+Der gespeicherte lokale Windows-Bericht bleibt wegen der unten belegten Signatursperre FAIL. Die folgenden Abschnitte sind datierte historische Nachweise ihrer jeweiligen Eingaben. Sie werden durch den CI-Erfolg weder umgeschrieben noch als erneute lokale Ausführung ausgegeben. Version 0.2.3 ergänzt Dokumentation und Versionskennzeichnung; ihr finaler Commit muss die vorgeschriebenen CI-Prüfungen erneut bestehen. Der Tag-Workflow wiederholt die vollständige Linux-Browsermatrix vor dem Paketbau. Tag, Release-Dateien und Pages-Deployment werden gesondert zurückgelesen.
+
+Eine lokale Headless-Chromium-Stichprobe beim skriptgesteuerten Scrollen umfasste 180 Frame-Callback-Abstände je Oberfläche bei 1440×900px. Median rund 16,7ms, keine Abstände über 50ms und keine gemeldeten Long Tasks. Das ist keine Messung der GPU-Präsentation, realer Mobilgeräte oder des Lernnutzens.
+
+## Ausgangsstand 0.2.1
 
 Stand: 15.10.2026. Gemeinsame Fassung aus Datenkorrektur, fertiger Gestaltung und aktualisierten Testabhängigkeiten. Ergebnisse gelten jeweils für die im Bericht dokumentierte Umgebung und den zugehörigen Quellstand. GitHub Actions liefert eigene Windows-/Linux-Nachweise am PR- und Release-Commit.
 
@@ -48,3 +58,31 @@ Ausgangsvergleich: Die lokale Ablage enthielt das ältere CSS vor PR #8; `main` 
 - Der erste Sandbox-Lauf scheiterte beim Firefox-Start an `nsIWindowsRegKey.create`. Mit gewöhnlichen Windows-Rechten bestanden Chromium und Firefox einschließlich aller Regressionen; WebKit beendet sich weiterhin vor Seitenöffnung mit `0xC0E90002`. Der lokale Gesamtbericht bleibt deshalb FAIL mit zwei bestandenen Engines. Der CI-Erfolg wird separat am konkreten PR-/Release-Commit in GitHub Actions geprüft. Es wurden keine Sicherheitsregeln gelockert.
 
 Die regulären älteren Screenshots in diesem Ordner bleiben historische Nachweise ihres damaligen Standes. Diese Reparatur fügt keine privaten Designbilder zum Repository hinzu. Echte Hardware, Safari auf Apple-Geräten, Screenreader und Anfänger-Lernnutzen bleiben offen. Der [Audit](../../AUDIT.md) erklärt die Ursache; [CONTRIBUTING](../../CONTRIBUTING.md) beschreibt sichere Weiterentwicklung.
+
+## Animation und Bedienfeedback: 17.10.2026
+
+Die vier betroffenen UI-/Browserprüfdateien stimmten vor der Bearbeitung anhand ihrer Git-Blob-Hashes mit GitHub `main` auf `d8de421aa1e59ff3e74830d9b39d7831c343645e` überein. Die folgenden Änderungen sind lokal geprüft; ein neues Deployment oder eine neue CI-Ausführung ist damit nicht belegt.
+
+| Befund | Änderung |
+| --- | --- |
+| Nach einem Antwortwechsel stand die alte Quizbewertung weiter da. | Ein Auswahlwechsel entfernt die Bewertung bis zur nächsten Prüfung. |
+| Im Einstiegsquiz war die gewählte Antwort nicht erkennbar. | Die Auswahl erhält einen dunklen Zustand und `aria-pressed`; Feedback bleibt als Text erhalten. |
+| Änderungen der Bearbeitungsmarke erzeugten keinen eindeutigen Statustext. | Markiert/nicht markiert wird ausdrücklich im vorhandenen Statusbereich genannt. |
+| Navigation, Filter, Suchvorschläge und Hilfsüberschriften waren teilweise nur 26–40px hoch. | Diese Bedienelemente sind nun mindestens 44px hoch. Feld- und Antwortgrenzen erhalten stärkeren Kontrast. |
+| Lange Übergänge und Hover-Bewegungen erschwerten unmittelbares Bedienfeedback. | Bedienübergänge überwiegend 160–240ms; dekorative Hover-Transformationen nur mit Mauszeiger. Bei reduzierter Bewegung bleibt auch ein gedrückter Startseitenbutton ohne Zoom. |
+
+Bestanden: Inhalts-/Pythonprüfung mit 27 Lernbeispielen, 34 Befehlsbeispielen, 31 Originalaufgaben einschließlich CSV-Pipeline, vier Live-Übungen, FFT, zehn Lernfragen, 18 Suchfällen, 118 lokalen Verweisen und acht unveränderten Originalhashes. Zwei Manifest-/Release-Unit-Tests bestanden. Verwendete lokale Laufzeit: Node 24.20.0 und Python 3.14.7; die im Projekt vorgegebene Python-3.12-CI wurde in diesem Durchgang nicht ausgeführt.
+
+Chromium 156.0.8078.4 und Firefox 157.0 bestanden jeweils 76 Ansichten in sieben Größen, zusammen 1064 Layoutprüfungen. Zusätzlich bestanden die bisherigen Menü-, Fokus-, Touch-, Speicher- und Reduced-Motion-Prüfungen sowie neue Regressionen für Auswahlzustände, Antwortwechsel, Statusmeldungen und 44px-Ziele. Mit absichtlich blockierten GSAP-/ScrollTrigger-Dateien blieben Inhalt, Einstiegsquiz und Navigation benutzbar. HTML-artiger Suchtext blieb Text. In diesen regulären Browserkontexten wurden keine JavaScript-Fehler oder externen Laufzeitanfragen festgestellt.
+
+Der erste Sandbox-Lauf scheiterte an Firefox' Testprofilzugriff. Mit normalen Windows-Rechten bestanden Chromium und Firefox. WebKit 27.2 schloss sich jedoch vor der ersten Seitenöffnung (`browserContext.newPage: Target page, context or browser has been closed`). `kompatibilitaet.json` und der gesamte `npm test`-Aufruf bleiben deshalb ausdrücklich FAIL; es gibt keinen aktuellen WebKit-Nachweis. Schutzrichtlinien wurden nicht verändert.
+
+Gerenderte Vorher-/Nachher-Prüfung beider Oberflächen bei 390, 768 und 1440px: kein horizontaler Seitenüberlauf, Hauptüberschriften mit zwei bis drei Zeilen und keine verbleibenden zu niedrigen Ziele in der geprüften Navigation sowie den Buttons, Filtern und Hilfsüberschriften. Stichproben aus berechneten Browserfarben: ausgewählte Antwort 14,74:1 Textkontrast; korrekte Rückmeldung 13,30:1; Feldgrenzen 3,72:1 gegenüber ihrer Umgebung. Diese Stichproben sind keine vollständige WCAG-Abnahme oder Screenreader-Prüfung. Private Vergleichsbilder und der genaue Skill-/Werkzeugnachweis bleiben unter `.upload-work/design-review/2026-10-17-feedback/`.
+
+Die sechs lokalen Gestaltungsdateien entsprechen weiterhin `assets/sources.json`. `npm audit` meldete null bekannte Schwachstellen für die installierten npm-Pakete. Die zusätzliche npm-Advisory-Abfrage für das separat eingebundene GSAP 3.15.0 lieferte keine Einträge. Das sind zeitgebundene Datenbankabfragen und Integritätsnachweise, kein vollständiger Sicherheitsnachweis. Keine neue Abhängigkeit, externe Gestaltungsladung oder Geräte-Vibration wurde ergänzt. Reale Mobilgeräte, Safari, assistive Technik, gemessene Framerate und Lernnutzen bleiben offen.
+
+### Eingegrenzte WebKit-Ursache
+
+Ein Minimaltest vom 17.10.2026 öffnet nur eine neue WebKit-Seite und setzt eine Überschrift, ohne Anwendungsdateien oder GSAP. Schon `browserContext.newPage()` scheitert. Die zeitgleichen Windows-Code-Integrity-Ereignisse 3077 und 3033 um 10:26:12 Uhr (Europe/Berlin) nennen ausdrücklich `webkit-2370/WebKitWebProcess.exe`, das die geltenden Signaturanforderungen nicht erfüllt. Damit ist die lokale Laufzeitsperre belegt; dieser Abbruch stammt nicht aus dem Lernwerkzeug. Es wurden keine Freigaben, Ausnahmen, älteren Browserpakete oder Schutzlockerungen eingerichtet.
+
+Ein unabhängiger Agent prüfte die vier UI-/Browserprüfdeltas lesend und fand keine belegte neue Produktregression. Seine Testhinweise wurden aufgenommen: Die ausgewählten Ziele werden jetzt auf mindestens 44×44px geprüft; externe Request-Versuche werden auch im Kontext mit ausgefallener Animationsbibliothek gezählt. Diese Stichprobe deckt nicht alle Inline-Links und Zielabstände ab. Die unveränderte Windows-/Linux-CI verlangt weiterhin alle drei Browser; ihre Ergebnisse sind getrennt vom lokalen Windows-Bericht zu beurteilen.

@@ -103,11 +103,14 @@ function renderQuiz(item) {
   });
   const button = el("button","Antwort prüfen","secondary-link"); button.type = "submit";
   const feedback = el("p",undefined,"quiz-feedback"); feedback.setAttribute("role","status");
+  feedback.setAttribute("aria-atomic","true");
   form.append(fieldset,button,feedback);
+  form.addEventListener("change",() => { feedback.textContent = ""; delete feedback.dataset.result; });
   form.addEventListener("submit",event => {
     event.preventDefault();
     const correct = Number(new FormData(form).get(`quiz-${item.id}`)) === quiz.correct;
     feedback.textContent = `${correct ? "Richtig." : "Noch nicht."} ${quiz.explanation}`;
+    feedback.dataset.result = correct ? "correct" : "retry";
   });
   article.append(form);
 }
@@ -119,7 +122,7 @@ function renderProgress(item) {
   checkbox.checked = completed.has(item.id);
   label.append(checkbox,document.createTextNode("Ich habe die Miniübung selbst geschrieben und geprüft."));
   const note = el("p",undefined,"example-note"); note.setAttribute("role","status");
-  const update = () => { note.textContent = progressPersistent ? "Deine Selbsteinschätzung wird nur in diesem Browser gespeichert. Kein Testnachweis und keine Synchronisation. Zum Entfernen das Häkchen lösen." : "Speicherung ist hier nicht verfügbar. Deine Marken gelten nur für diese Sitzung. Sie sind eine Selbsteinschätzung, kein Testnachweis."; };
+  const update = () => { note.textContent = `${checkbox.checked ? "Als bearbeitet markiert." : "Nicht als bearbeitet markiert."} ${progressPersistent ? "Deine Selbsteinschätzung wird nur in diesem Browser gespeichert. Kein Testnachweis und keine Synchronisation. Zum Entfernen das Häkchen lösen." : "Speicherung ist hier nicht verfügbar. Deine Marken gelten nur für diese Sitzung. Sie sind eine Selbsteinschätzung, kein Testnachweis."}`; };
   checkbox.addEventListener("change",() => {
     if (checkbox.checked) completed.add(item.id); else completed.delete(item.id);
     try { localStorage.setItem(progressKey,JSON.stringify([...completed])); progressPersistent = true; }
@@ -328,10 +331,16 @@ function renderStart() {
   demo.append(pre,el("p","Was erscheint in der Ausgabe?"));
   const feedback = el("p","Wähle deine Vermutung.","quiz-feedback");
   feedback.setAttribute("role","status");
+  feedback.setAttribute("aria-atomic","true");
   for (const [label,correct] of [["Du kannst Python lernen!",true],["{name} kannst Python lernen!",false]]) {
     const button = el("button",label,"prediction");
     button.type = "button";
-    button.addEventListener("click",() => { feedback.textContent = correct ? "Richtig! Der f-String setzt den Wert von name ein: Du." : "Fast! Das f vor dem Text ersetzt {name} durch den gespeicherten Wert. Versuche es noch einmal."; });
+    button.setAttribute("aria-pressed","false");
+    button.addEventListener("click",() => {
+      demo.querySelectorAll(".prediction").forEach(option => option.setAttribute("aria-pressed",String(option === button)));
+      feedback.textContent = correct ? "Richtig! Der f-String setzt den Wert von name ein: Du." : "Fast! Das f vor dem Text ersetzt {name} durch den gespeicherten Wert. Versuche es noch einmal.";
+      feedback.dataset.result = correct ? "correct" : "retry";
+    });
     demo.append(button);
   }
   demo.append(feedback);
