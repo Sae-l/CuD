@@ -16,6 +16,30 @@ fs.writeFileSync(path.join(output,"ergebnis.json"),JSON.stringify({status:"RUNNI
 const context = vm.createContext({});
 vm.runInContext(fs.readFileSync(path.join(root,"inhalte.js"),"utf8"),context);
 vm.runInContext(fs.readFileSync(path.join(root,"kurs.js"),"utf8"),context);
+vm.runInContext(fs.readFileSync(path.join(root,"lernstand.js"),"utf8"),context);
+// Terminlogik unabhängig vom Browser und von der Uhr des Prüfrechners prüfen.
+assert(vm.runInContext(`(() => {
+  const day = 86400000, now = 100 * day;
+  const first = planReview(undefined,true,now);
+  if (first.step !== 1 || first.due !== now + day) throw Error("Erster Termin");
+  if (planReview(first,true,now + 1) !== first) throw Error("Mehrfachklick verlängert Abstand");
+  let state = first;
+  for (const days of [3,7,14,14]) {
+    const due = state.due;
+    state = planReview(state,true,due);
+    if (state.due !== due + days * day) throw Error("Fälliger Abstand");
+  }
+  const failed = planReview(state,false,now);
+  if (failed.step !== 0 || failed.due !== now) throw Error("Fehler bleibt nicht fällig");
+  if (planReview(failed,true,now).due !== now + day) throw Error("Neustart nach Fehler");
+  const valid = parseReviewState(JSON.stringify({a:first,b:{step:99,due:now},c:{step:1,due:-1},d:{step:1,due:"morgen"},e:{step:1,due:9e15},unknown:first}),["a","b","c","d","e"]);
+  if (valid.size !== 1 || !valid.has("a")) throw Error("Ungültiger Speicher akzeptiert");
+  for (const raw of [null,"null","[]","5"]) if (parseReviewState(raw,["a"]).size) throw Error("Falsches Speicherformat");
+  let malformedRejected = false;
+  try { parseReviewState("kaputt",["a"]); } catch { malformedRejected = true; }
+  if (!malformedRejected) throw Error("Defektes JSON still akzeptiert");
+  return true;
+})()`,context));
 const {items,sources,commands,lessons,coverage} = JSON.parse(vm.runInContext("JSON.stringify({items:inhalte,sources:quellen,commands:weitereBefehle,lessons:vorlesungen,coverage:abdeckung})",context));
 const ids = new Set(items.map(item => item.id));
 assert.equal(ids.size,items.length);
@@ -193,7 +217,7 @@ async function browserTests() {
     page.on("console",message => {if(message.type() === "error") errors.push(message.text());});
     page.on("request",request => {if(/^https?:/.test(request.url())) externalRequests.push(request.url());});
     const url = pathToFileURL(path.join(root,"index.html")).href;
-    const overviewTitles = {vorlesungen:"Eine Idee nach der anderen.",uebung:"Deine Übung: Messdaten verstehen.",befehle:"Welcher Befehl passt wozu?",lernkonzept:"So lernst du hier programmieren.",abdeckung:"Was ist bereits abgedeckt?"};
+    const overviewTitles = {lernplan:"Heute ein Stück weiter.",wiederholen:"Heute wiederholen.",vorlesungen:"Eine Idee nach der anderen.",uebung:"Deine Übung: Messdaten verstehen.",befehle:"Welcher Befehl passt wozu?",lernkonzept:"So lernst du hier programmieren.",abdeckung:"Was ist bereits abgedeckt?"};
     async function waitForItem(id = "") {
       const title = items.find(item => item.id === id)?.title || overviewTitles[id] || "Dein erster Schritt ins Programmieren.";
       await page.waitForFunction(expected => document.querySelector("#inhalt h1")?.textContent === expected,title);
@@ -341,6 +365,84 @@ async function browserTests() {
     await page.locator("#lektion-bearbeitet").uncheck();
     await page.reload();
     assert.equal(await page.locator("#lektion-bearbeitet").isChecked(),false);
+    // Lernplan: bestehende Marken übernehmen, Fehler erneut anbieten, keine Lösung vorwegnehmen.
+    await page.evaluate(id => {
+      localStorage.removeItem("cud-wiederholung-v1");
+      localStorage.setItem("cud-lernfortschritt-v1",JSON.stringify([id]));
+    },lessons[0].id);
+    await page.reload();
+    await navigate("lernplan");
+    assert.equal(await page.locator("progress").getAttribute("value"),"1");
+    assert.equal(await page.locator(".plan-current .primary-link").getAttribute("href"),`#${lessons[1].id}`);
+    assert.equal(await page.locator(".plan-path li").count(),lessons.length);
+    assert((await page.locator(".review-count").innerText()).startsWith("1 Idee"));
+    const planScreens = path.join(root,"../.upload-work/design-review");
+    fs.mkdirSync(planScreens,{recursive:true});
+    for (const [width,height] of [[320,740],[390,844],[768,1024],[1440,1000]]) {
+      await page.setViewportSize({width,height});
+      for (const id of ["lernplan","wiederholen"]) {
+        await navigate(id);
+        assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),`${id}: ${width}px Überlauf`);
+        if (width !== 320) await page.locator("#inhalt").screenshot({path:path.join(planScreens,`${id}-${width}.png`),animations:"disabled"});
+      }
+    }
+    await navigate("wiederholen");
+    assert.equal(await page.locator("details[open]").count(),0);
+    assert.equal(await page.locator("#inhalt pre").count(),0);
+    const finishReview = page.getByRole("button",{name:"Runde abschließen",exact:true});
+    assert(await finishReview.isDisabled());
+    await page.locator(`.lesson-quiz input[value="${(lessons[0].quiz.correct + 1) % lessons[0].quiz.options.length}"]`).check();
+    await page.getByRole("button",{name:"Antwort prüfen",exact:true}).click();
+    assert.equal(await page.evaluate(id => JSON.parse(localStorage.getItem("cud-wiederholung-v1"))[id].step,lessons[0].id),0);
+    await finishReview.click();
+    assert((await page.locator("#inhalt").innerText()).includes("Deine Runde ist beendet"));
+    await navigate("lernplan");
+    assert((await page.locator(".review-count").innerText()).startsWith("1 Idee"));
+    await navigate("wiederholen");
+    await page.locator(`.lesson-quiz input[value="${lessons[0].quiz.correct}"]`).check();
+    await page.getByRole("button",{name:"Antwort prüfen",exact:true}).click();
+    const scheduled = await page.evaluate(id => JSON.parse(localStorage.getItem("cud-wiederholung-v1"))[id],lessons[0].id);
+    assert.equal(scheduled.step,1);
+    assert(scheduled.due > Date.now());
+    await page.getByRole("button",{name:"Antwort prüfen",exact:true}).click();
+    assert.equal(await page.evaluate(id => JSON.parse(localStorage.getItem("cud-wiederholung-v1"))[id].due,lessons[0].id),scheduled.due);
+    await page.locator(`.lesson-quiz input[value="${(lessons[0].quiz.correct + 1) % lessons[0].quiz.options.length}"]`).check();
+    assert(await finishReview.isDisabled(),"Geänderte Antwort muss erneut geprüft werden");
+    await navigate("lernplan");
+    assert((await page.locator(".review-count").innerText()).includes("keine Wiederholung"));
+    await navigate(lessons[0].id);
+    assert(await page.locator("#lektion-bearbeitet").isChecked(),"Quiz verändert keine Bearbeitungsmarke");
+    for (const [name,id] of [["Beispiel","lektion-beispiel"],["Selbst schreiben","lektion-praxis"],["Verständnischeck","lektion-check"]]) {
+      await page.getByRole("button",{name,exact:true}).click();
+      assert.equal(await page.locator(":focus").getAttribute("id"),id);
+      assert.equal(new URL(page.url()).hash,`#${lessons[0].id}`,"Sprünge verändern keine Inhaltsroute");
+    }
+    for (const [raw,count] of [["kaputt",1],[JSON.stringify({[lessons[0].id]:{step:200,due:0}}),1]]) {
+      await page.evaluate(raw => localStorage.setItem("cud-wiederholung-v1",raw),raw);
+      await page.reload();
+      await navigate("lernplan");
+      assert((await page.locator(".review-count").innerText()).startsWith(String(count)));
+    }
+    await page.evaluate(ids => localStorage.setItem("cud-lernfortschritt-v1",JSON.stringify(ids)),lessons.map(lesson => lesson.id));
+    await page.reload();
+    await navigate("lernplan");
+    assert.equal(await page.locator(".plan-current .primary-link").getAttribute("href"),"#praxis-zeitreihe");
+    const blocked = await browser.newContext({offline:true});
+    await blocked.addInitScript(() => {
+      Storage.prototype.getItem = () => { throw new Error("Test: gesperrt"); };
+      Storage.prototype.setItem = () => { throw new Error("Test: gesperrt"); };
+    });
+    const session = await blocked.newPage();
+    await session.goto(`${url}#${lessons[0].id}`);
+    await session.locator(`.lesson-quiz input[value="${lessons[0].quiz.correct}"]`).check();
+    await session.getByRole("button",{name:"Antwort prüfen",exact:true}).click();
+    assert((await session.locator(".quiz-feedback").innerText()).includes("nur für diese Sitzung"));
+    await session.evaluate(() => { location.hash = "lernplan"; });
+    await session.locator(".plan-overview").waitFor();
+    assert((await session.locator(".review-count").innerText()).includes("keine Wiederholung"));
+    await blocked.close();
+    await page.evaluate(() => { localStorage.removeItem("cud-wiederholung-v1"); localStorage.removeItem("cud-lernfortschritt-v1"); });
+    await page.reload();
     // Alle Ansichten und alle gerenderten lokalen Dateiverweise prüfen.
     for (const item of items) {
       await navigate(item.id);
@@ -440,7 +542,7 @@ async function browserTests() {
     assert(await page.evaluate(() => matchMedia("(prefers-reduced-motion: reduce)").matches));
     assert.deepEqual(errors,[]);
     assert.deepEqual(externalRequests,[]);
-    return {searchCases:cases.length,views:items.length + Object.keys(overviewTitles).length + 1,commandRows:15 + commands.length,learningQuizzes:lessons.length,progressPersistence:true,offlineLanding:true,originalTasks:originalTasks.length,localLinks:localLinks.size,externalRequests:externalRequests.length};
+    return {searchCases:cases.length,views:items.length + Object.keys(overviewTitles).length + 1,commandRows:15 + commands.length,learningQuizzes:lessons.length,progressPersistence:true,learningPlan:true,reviewScheduling:true,reviewStorageFallback:true,lessonJumps:true,offlineLanding:true,originalTasks:originalTasks.length,localLinks:localLinks.size,externalRequests:externalRequests.length};
   } finally { await browser.close(); }
 }
 

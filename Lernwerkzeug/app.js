@@ -21,6 +21,20 @@ const completed = (() => {
     return new Set();
   }
 })();
+const reviewKey = "cud-wiederholung-v1";
+let reviewPersistent = true;
+const reviews = (() => {
+  try { return parseReviewState(localStorage.getItem(reviewKey),vorlesungen.map(lesson => lesson.id)); }
+  catch { reviewPersistent = false; return new Map(); }
+})();
+
+function dueReviews(now = Date.now()) {
+  return vorlesungen.filter(lesson => reviews.has(lesson.id) ? reviews.get(lesson.id).due <= now : completed.has(lesson.id));
+}
+
+function reviewStorageNote() {
+  return reviewPersistent ? "Wiederholungen werden nur in diesem Browser gespeichert." : "Wiederholungen gelten nur für diese Sitzung; der Speicher ist nicht verfügbar oder die gespeicherten Daten waren unlesbar.";
+}
 const stopwords = new Set(["wie","ich","die","der","das","den","dem","ein","eine","einen","einer","mit","von","zu","zum","zur","und","ist","kann","man","was","mache"]);
 for (const topic of [...new Set(inhalte.map(item => item.topic))]) topicInput.append(el("option",topic));
 for (const command of weitereBefehle) {
@@ -55,15 +69,18 @@ function el(tag, text, className) {
 }
 
 function section(title, parent = article) {
-  parent.append(el("h2",title));
+  const heading = el("h2",title);
+  parent.append(heading);
+  return heading;
 }
 
 function textList(title, texts, ordered = false) {
   if (!texts?.length) return;
-  section(title);
+  const heading = section(title);
   const list = el(ordered ? "ol" : "ul");
   texts.forEach(text => list.append(el("li",text)));
   article.append(list);
+  return heading;
 }
 
 function itemLinks(title, ids) {
@@ -91,7 +108,8 @@ function codeBlock(code, parent = article) {
 function renderQuiz(item) {
   const quiz = item.quiz;
   if (!quiz) return;
-  section("Verstanden? Prüfe deine Idee");
+  const heading = section("Verstanden? Prüfe deine Idee");
+  heading.id = "lektion-check"; heading.tabIndex = -1;
   const form = el("form",undefined,"lesson-quiz");
   const fieldset = el("fieldset");
   fieldset.append(el("legend",quiz.question));
@@ -111,8 +129,15 @@ function renderQuiz(item) {
     const correct = Number(new FormData(form).get(`quiz-${item.id}`)) === quiz.correct;
     feedback.textContent = `${correct ? "Richtig." : "Noch nicht."} ${quiz.explanation}`;
     feedback.dataset.result = correct ? "correct" : "retry";
+    const planned = planReview(reviews.get(item.id),correct);
+    reviews.set(item.id,planned);
+    try { localStorage.setItem(reviewKey,JSON.stringify(Object.fromEntries(reviews))); reviewPersistent = true; }
+    catch { reviewPersistent = false; }
+    feedback.textContent += correct ? ` Wiederholen ab ${new Date(planned.due).toLocaleString("de-DE",{dateStyle:"medium",timeStyle:"short"})}.` : " Diese Idee bleibt zum Wiederholen vorgemerkt.";
+    feedback.textContent += ` ${reviewStorageNote()}`;
   });
   article.append(form);
+  return form;
 }
 
 function renderProgress(item) {
@@ -176,6 +201,18 @@ function renderItem(item) {
       article.append(back);
       section("Das kannst du danach");
       article.append(el("p",item.goal,"learning-goal"));
+      const jumps = el("nav",undefined,"lesson-jumps");
+      jumps.setAttribute("aria-label","In dieser Lektion");
+      for (const [label,target] of [["Beispiel","lektion-beispiel"],["Selbst schreiben","lektion-praxis"],["Verständnischeck","lektion-check"]]) {
+        const button = el("button",label);
+        button.type = "button";
+        button.addEventListener("click",() => {
+          const heading = document.getElementById(target);
+          heading.focus({preventScroll:true}); heading.scrollIntoView({block:"start"});
+        });
+        jumps.append(button);
+      }
+      article.append(jumps);
     }
     for (const [title,text] of item.blocks) { section(title); article.append(el("p",text)); }
   }
@@ -196,7 +233,8 @@ function renderItem(item) {
   itemLinks("Das brauchst du",item.needs);
   textList(item.kind === "Fehlerhilfe" ? "So grenzt du den Fehler ein" : "Deine Arbeitsschritte",item.steps,true);
   if (item.code) {
-    section(item.kind === "Vorlesung" ? "Erst vorhersagen: Was wird ausgegeben?" : "Ein kleines Beispiel");
+    const heading = section(item.kind === "Vorlesung" ? "Erst vorhersagen: Was wird ausgegeben?" : "Ein kleines Beispiel");
+    if (item.kind === "Vorlesung") { heading.id = "lektion-beispiel"; heading.tabIndex = -1; }
     codeBlock(item.code);
     if (item.output !== undefined) {
       const detail = el("details");
@@ -215,13 +253,14 @@ function renderItem(item) {
     }
   }
   if (item.kind === "Vorlesung") {
-    textList("Jetzt bist du dran",[
+    const practiceHeading = textList("Jetzt bist du dran",[
       "Vorhersagen: Lies das Beispiel und notiere die erwartete Ausgabe, bevor du sie öffnest.",
       "Ausführen: Schreibe den Code in deine Python-Datei und vergleiche die Ausgabe mit deiner Vermutung.",
       `Untersuchen: ${item.investigate}`,
       `Verändern: ${item.modify}`,
       `Selbst schreiben: ${item.make}`
     ],true);
+    practiceHeading.id = "lektion-praxis"; practiceHeading.tabIndex = -1;
     const answer = el("details");
     answer.append(el("summary","Selbstkontrolle zur Miniübung öffnen"),el("p",item.answer));
     article.append(answer,el("p","Wiederholung: Erkläre morgen ohne Vorlage die wichtigste Idee und löse die kleine Aufgabe noch einmal.","learning-goal"));
@@ -268,6 +307,65 @@ function renderItem(item) {
   sourceLinks(item);
 }
 
+function renderLearningPlan() {
+  const next = vorlesungen.find(lesson => !completed.has(lesson.id));
+  const due = dueReviews();
+  article.replaceChildren(el("p","Dein persönlicher Lernplan","kind"),el("h1","Heute ein Stück weiter."),el("p","Eine Idee verstehen, selbst Code schreiben und später ohne Vorlage wiederholen. Hier geht es für dich weiter.","intro"));
+  const grid = el("div",undefined,"plan-grid");
+  const current = el("section",undefined,"plan-current");
+  if (next) {
+    current.append(el("p",`Etappe ${String(vorlesungen.indexOf(next) + 1).padStart(2,"0")} / ${vorlesungen.length} · ${next.topic}`,"plan-meta"),el("h2",next.title),el("p",next.goal),actionLink(completed.size ? "Etappe fortsetzen" : "Erste Etappe öffnen",`#${next.id}`,"primary-link"));
+    const source = quellen[next.sources[0]];
+    current.append(actionLink(source.title,source.href,"plan-source"));
+  } else {
+    current.append(el("p","Alle Etappen selbst bearbeitet","plan-meta"),el("h2","Jetzt kommt dein eigener Code."),el("p","Wende die Ideen im Mini-Projekt auf neue Daten an. Die Bearbeitungsmarken sind deine Selbsteinschätzung."),actionLink("Mini-Projekt öffnen","#praxis-zeitreihe","primary-link"));
+  }
+  const overview = el("section",undefined,"plan-overview");
+  overview.append(el("h2","Dein Lernrhythmus"),el("p",`${completed.size} von ${vorlesungen.length} Etappen selbst bearbeitet.`));
+  const progress = el("progress"); progress.max = vorlesungen.length; progress.value = completed.size;
+  progress.setAttribute("aria-label","Als selbst bearbeitet markierte Etappen");
+  overview.append(progress,el("p",due.length ? `${due.length} ${due.length === 1 ? "Idee ist" : "Ideen sind"} zum Wiederholen vorgemerkt.` : "Heute ist keine Wiederholung fällig.","review-count"),actionLink(due.length ? "Wiederholung starten" : "Wiederholungsplan ansehen","#wiederholen","secondary-link"),el("p","Eine richtige Auswahl plant eine Wiederholung ein. Das Häkchen setzt du nach dem eigenen Programmieren selbst.","example-note"));
+  grid.append(current,overview); article.append(grid);
+  const setup = el("div",undefined,"plan-setup");
+  setup.append(el("strong","Zum ersten Mal hier?"),el("p","Richte zuerst deine Werkzeuge ein. Danach beginnst du mit Etappe 1."),actionLink("Python einrichten","#python-setup"),actionLink("VS Code einrichten","#vscode-setup"));
+  article.append(setup);
+  section("Dein Weg durch die Vorlesungen");
+  const path = el("ol",undefined,"plan-path");
+  for (const [index,lesson] of vorlesungen.entries()) {
+    const row = el("li");
+    const link = actionLink("",`#${lesson.id}`);
+    link.append(el("span",String(index + 1).padStart(2,"0"),"plan-number"),el("span",lesson.title),el("small",completed.has(lesson.id) ? "Selbst bearbeitet" : lesson === next ? "Nächste Etappe" : "Offen"));
+    if (lesson === next) link.classList.add("plan-next");
+    row.append(link); path.append(row);
+  }
+  article.append(path,actionLink("Vorlesungsdetails und Originale ansehen","#vorlesungen"),el("p",`${reviewStorageNote()} ${progressPersistent ? "Bearbeitungsmarken bleiben in diesem Browser." : "Bearbeitungsmarken gelten nur für diese Sitzung."} Keine Synchronisation und keine Kompetenzmessung.`,"example-note"));
+}
+
+function renderReview(queue = dueReviews(), index = 0) {
+  article.replaceChildren(el("p","Ohne Vorlage erinnern","kind"),el("h1","Heute wiederholen."));
+  const lesson = queue[index];
+  if (!lesson) {
+    article.append(el("p",queue.length ? "Deine Runde ist beendet. Ideen mit falscher Antwort bleiben fällig; du kannst sie später noch einmal üben." : "Gerade ist nichts fällig. Bearbeite eine Etappe und prüfe deine Idee. Eine richtige Antwort plant die nächste Wiederholung ein.","intro"));
+    const upcoming = vorlesungen.filter(item => reviews.get(item.id)?.due > Date.now()).sort((a,b) => reviews.get(a.id).due - reviews.get(b.id).due);
+    if (upcoming.length) article.append(el("p",`Nächster Termin: ${new Date(reviews.get(upcoming[0].id).due).toLocaleString("de-DE",{dateStyle:"medium",timeStyle:"short"})} · ${upcoming[0].title}`));
+    article.append(actionLink("Zum Lernplan","#lernplan","primary-link"));
+  } else {
+    article.append(el("p",`Idee ${index + 1} von ${queue.length} · ${lesson.title}`,"intro"),el("p","Schreibe zuerst deine Erklärung und die Miniübung in deinen Editor oder auf Papier. Öffne die Selbstkontrolle erst nach deinem Versuch."));
+    const prompt = el("section",undefined,"recall-prompt");
+    prompt.append(el("h2","Erklären und selbst schreiben"),el("p",lesson.investigate),el("p",lesson.make));
+    const check = el("details");
+    check.append(el("summary","Selbstkontrolle öffnen"),el("p",lesson.answer)); prompt.append(check); article.append(prompt);
+    const quiz = renderQuiz(lesson);
+    const next = el("button",index + 1 < queue.length ? "Nächste Idee" : "Runde abschließen","primary-link");
+    next.type = "button"; next.disabled = true;
+    quiz.addEventListener("submit",() => { next.disabled = false; });
+    quiz.addEventListener("change",() => { next.disabled = true; });
+    next.addEventListener("click",() => { renderReview(queue,index + 1); article.focus({preventScroll:true}); article.scrollIntoView({block:"start"}); });
+    article.append(next,actionLink("Lektion nachlesen",`#${lesson.id}`,"secondary-link"));
+  }
+  article.append(el("p",`Die Auswahlfrage plant den Termin; deine selbst geschriebene Lösung wird hier nicht bewertet. Richtige Antworten verlängern fällige Abstände auf ${reviewIntervals.join(", ")} Tage. Fehler bleiben fällig. ${reviewStorageNote()}`,"example-note"));
+}
+
 function renderStart() {
   const hero = el("div",undefined,"welcome-hero");
   const image = el("img",undefined,"hero-image");
@@ -277,7 +375,7 @@ function renderStart() {
   title.append(document.createTextNode("Dein erster Schritt "),el("span","ins Programmieren."));
   intro.append(el("p","Willkommen in deinem Lernraum","kind"),title,el("p","Du musst noch nichts können. Entdecke Python, verstehe deine Vorlesung und schreibe Schritt für Schritt deinen eigenen Code.","intro"));
   const actions = el("div",undefined,"hero-actions");
-  actions.append(actionLink("Lernweg beginnen","#python-setup","primary-link"),actionLink("Zur aktuellen Übung","#uebung","secondary-link"));
+  actions.append(actionLink("Meinen Lernplan öffnen","#lernplan","primary-link"),actionLink("Zur aktuellen Übung","#uebung","secondary-link"));
   intro.append(actions);
   hero.append(image,intro,el("p","Coding und Digitalisierung · Vom ersten Gedanken zum eigenen Programm.","hero-caption"));
   article.replaceChildren(hero);
@@ -524,6 +622,8 @@ function route(focus = false) {
   if (item) renderItem(item);
   else if (!id || id === "start") renderStart();
   else if (id === "vorlesungen") renderLectures();
+  else if (id === "lernplan") renderLearningPlan();
+  else if (id === "wiederholen") renderReview();
   else if (id === "uebung") renderExercise();
   else if (id === "befehle") renderCommands();
   else if (id === "lernkonzept") renderConcept();

@@ -76,6 +76,10 @@ Vor der Integration Funktion und Gestaltung getrennt prüfen, Nachweise aktualis
 
 Die in diesem Auftrag bereitgestellte Vault-ZIP ist ein eigenständiges Dokumentationspaket. Sie ist kein neues CuD-Softwarerelease. [[42 GitHub Repositoryplan]] beschreibt die spätere Einordnung.
 
+## Lernplan-Ausgabe v0.3.0
+
+Die Ausgabe vom 17.10.2026 ergänzt den persönlichen Lernplan, Wiederholungsrunden mit festen Abständen und Lektionssprünge. Bestehende Bearbeitungsmarken bleiben erhalten; Wiederholungsdaten liegen separat im Browser. Neue Vorlesungen nutzen den vorhandenen Datenvertrag. Der [Entwicklungsplan](../../ENTWICKLUNGSPLAN.md) beschreibt Gestaltung, Lernmethoden, Struktur und Gebrauchstest. Der lokale Firefox-Startfehler bleibt dokumentiert; vor Merge müssen die aktuellen Windows-/Linux-Jobs und vor Veröffentlichung zusätzlich der Tag-Workflow bestehen. Releaseartefakte sind `CuD-1-v0.3.0.zip` und `SHA256SUMS`.
+
 ## Projektbelege
 
 - [CONTRIBUTING.md](https://github.com/Sae-l/CuD/blob/bdff10b0918473d8a37e05141a85fdf37c762c4d/CONTRIBUTING.md)

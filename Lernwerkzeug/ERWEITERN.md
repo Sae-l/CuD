@@ -2,6 +2,8 @@
 
 Das Werkzeug ist bereits datengetrieben erweiterbar: `kurs.js` liefert Vorlesungen und Zusatzbefehle, `inhalte.js` die bestehenden Übungsobjekte. Darstellung und Suche liegen in `app.js`. Neue Inhalte werden nicht automatisch aus PDFs erzeugt oder fachlich freigegeben.
 
+Seit dem lokalen Ausbau vom 17.10.2026 lädt `index.html` zwischen `kurs.js` und `app.js` zusätzlich `lernstand.js`. Diese Datei enthält nur die validierte Speicherstruktur und die unabhängig prüfbare Terminregel. Speicherzugriff und Oberfläche bleiben in `app.js`. Neue Vorlesungen erscheinen automatisch im Lernplan und nutzen ihr vorhandenes `quiz`, `investigate`, `make` und `answer` für die Wiederholung. Die stabilen IDs sind auch Wiederholungsschlüssel. Produktregeln und Ausbaukriterien: [Entwicklungsplan](../ENTWICKLUNGSPLAN.md).
+
 ## Architektur und Änderungsumfang
 
 Die Projektstartseite `../index.html` enthält ihre eigene Gestaltung und Menülogik. Der Lernraum `index.html` lädt `styles.css`, danach die lokalen Skripte `inhalte.js`, `kurs.js` und `app.js`; GSAP und ScrollTrigger stammen ebenfalls aus `assets/`. Es gibt keinen Buildschritt, Serverdienst, Kontozugang oder Python-Interpreter im Browser. Die Daten werden als lokale Skripte geladen, damit der entpackte Ordner auch über `file://` benutzbar bleibt.

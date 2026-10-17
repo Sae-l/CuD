@@ -1,58 +1,59 @@
 {
-  "date": "2026-10-17T08:07:20.308Z",
+  "date": "2026-10-17T15:30:46.567Z",
   "status": "FAIL",
   "host": "win32",
   "engines": [
     {
       "name": "chromium",
-      "version": "156.0.8078.4",
+      "status": "PASS",
       "transport": "HTTP loopback",
       "profiles": [
         {
           "width": 320,
           "height": 740,
-          "views": 76,
+          "views": 78,
           "status": "PASS"
         },
         {
           "width": 390,
           "height": 844,
-          "views": 76,
+          "views": 78,
           "status": "PASS"
         },
         {
           "width": 768,
           "height": 1024,
-          "views": 76,
+          "views": 78,
           "status": "PASS"
         },
         {
           "width": 1024,
           "height": 768,
-          "views": 76,
+          "views": 78,
           "status": "PASS"
         },
         {
           "width": 844,
           "height": 390,
-          "views": 76,
+          "views": 78,
           "status": "PASS"
         },
         {
           "width": 1280,
           "height": 800,
-          "views": 76,
+          "views": 78,
           "status": "PASS"
         },
         {
           "width": 1440,
           "height": 1000,
-          "views": 76,
+          "views": 78,
           "status": "PASS"
         }
       ],
       "errors": [],
       "externalRequests": [],
+      "version": "156.0.8078.4",
       "localFile": "PASS",
       "landing": "PASS: /CuD/ 320, 390, 768, 1440px and 640x320 landscape entry links, signatures and overflow",
       "landingRecovery": "PASS: keyboard focus loop, Escape, inert background, resize recovery, no-JS navigation and reduced motion",
@@ -63,70 +64,71 @@
     },
     {
       "name": "firefox",
-      "version": "157.0",
+      "status": "FAIL",
+      "transport": "HTTP loopback",
+      "profiles": [],
+      "errors": [],
+      "externalRequests": [],
+      "error": "browserType.launch: Failed to launch the browser process.\nBrowser logs:\n\n<launching> D:\\Saeed\\TH-Köln\\Coding\\.upload-work\\browsers\\firefox-1555\\firefox\\firefox.exe -no-remote -headless -profile D:\\Saeed\\TH-Köln\\Coding\\.upload-work\\browser-temp\\playwright_firefoxdev_profile-BjITyP -juggler-pipe -silent\n<launched> pid=36428\n[pid=36428][err] *** You are running in headless mode.\n[pid=36428][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 125: unreachable code after return statement\n[pid=36428][err] JavaScript error: resource:///modules/InstallerPrefs.sys.mjs, line 133: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWindowsRegKey.create]\n[pid=36428] <process did exit: exitCode=3221225477, signal=null>\n[pid=36428] starting temporary directories cleanup\nCall log:\n\u001b[2m  - <launching> D:\\Saeed\\TH-Köln\\Coding\\.upload-work\\browsers\\firefox-1555\\firefox\\firefox.exe -no-remote -headless -profile D:\\Saeed\\TH-Köln\\Coding\\.upload-work\\browser-temp\\playwright_firefoxdev_profile-BjITyP -juggler-pipe -silent\u001b[22m\n\u001b[2m  - <launched> pid=36428\u001b[22m\n\u001b[2m  - [pid=36428][err] *** You are running in headless mode.\u001b[22m\n\u001b[2m  - [pid=36428][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 125: unreachable code after return statement\u001b[22m\n\u001b[2m  - [pid=36428][err] JavaScript error: resource:///modules/InstallerPrefs.sys.mjs, line 133: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWindowsRegKey.create]\u001b[22m\n\u001b[2m  - [pid=36428] <process did exit: exitCode=3221225477, signal=null>\u001b[22m\n\u001b[2m  - [pid=36428] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=36428] <gracefully close start>\u001b[22m\n\u001b[2m  - [pid=36428] <kill>\u001b[22m\n\u001b[2m  - [pid=36428] <skipped force kill spawnedProcess.killed=false processClosed=true>\u001b[22m\n\u001b[2m  - [pid=36428] finished temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=36428] <gracefully close end>\u001b[22m\n"
+    },
+    {
+      "name": "webkit",
+      "status": "PASS",
       "transport": "HTTP loopback",
       "profiles": [
         {
           "width": 320,
           "height": 740,
-          "views": 76,
+          "views": 78,
           "status": "PASS"
         },
         {
           "width": 390,
           "height": 844,
-          "views": 76,
+          "views": 78,
           "status": "PASS"
         },
         {
           "width": 768,
           "height": 1024,
-          "views": 76,
+          "views": 78,
           "status": "PASS"
         },
         {
           "width": 1024,
           "height": 768,
-          "views": 76,
+          "views": 78,
           "status": "PASS"
         },
         {
           "width": 844,
           "height": 390,
-          "views": 76,
+          "views": 78,
           "status": "PASS"
         },
         {
           "width": 1280,
           "height": 800,
-          "views": 76,
+          "views": 78,
           "status": "PASS"
         },
         {
           "width": 1440,
           "height": 1000,
-          "views": 76,
+          "views": 78,
           "status": "PASS"
         }
       ],
       "errors": [],
       "externalRequests": [],
-      "localFile": "PASS",
+      "version": "27.2",
+      "localFile": "UNVERIFIED: Windows WebKit file:// internal error; HTTP tested",
       "landing": "PASS: /CuD/ 320, 390, 768, 1440px and 640x320 landscape entry links, signatures and overflow",
       "landingRecovery": "PASS: keyboard focus loop, Escape, inert background, resize recovery, no-JS navigation and reduced motion",
       "touchProfiles": "390×844, 768×1024: navigation and hints PASS (emulation)",
       "learning": "quiz, persistent progress, malformed data and blocked-storage session fallback PASS",
       "motionFallback": "PASS: visible content, quiz and navigation without GSAP; search markup rendered as text",
       "regressions": "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion including button press, unknown route, local font and GSAP, hero line count, learning carousel wrap, exclusive accordion, ScrollTrigger cleanup, 44px controls, prediction selection, quiz feedback reset, progress feedback, missing GSAP and search markup"
-    },
-    {
-      "name": "webkit",
-      "version": "27.2",
-      "transport": "HTTP loopback",
-      "profiles": [],
-      "errors": [],
-      "externalRequests": []
     }
-  ],
-  "error": "browserContext.newPage: Target page, context or browser has been closed"
+  ]
 }
