@@ -2,15 +2,17 @@
 
 Ein lokales Lernwerkzeug für Studierende im Kurs **Coding und Digitalisierung**, auch ohne Programmierkenntnisse: verständliche Vorlesungsetappen, eine Befehlsübersicht, Einrichtungsanleitungen und Begleitung zu allen 31 Aufgaben des vorhandenen Übungsskripts.
 
-Version **0.2.3** begleitet alle 31 Aufgaben des vorhandenen Übungsskripts, vier Live-Übungen und zehn Lernetappen einschließlich FFT. Lernkontrollen, lokale Bearbeitungsmarken und ein eigenes Transferprojekt helfen beim Üben. Die Wartungsausgabe verbessert Quizfeedback, Bedienflächen und Animationen.
+Version **0.3.0** ergänzt einen persönlichen Lernplan, Wiederholungsrunden und direkte Sprünge innerhalb der Lektionen. Alle 31 Aufgaben des vorhandenen Übungsskripts, vier Live-Übungen und zehn Lernetappen einschließlich FFT bleiben enthalten. Lernkontrollen, lokale Bearbeitungsmarken und ein eigenes Transferprojekt helfen beim Üben.
 
 **Aufgabe → benötigtes Wissen → passender Befehl → selbst ausprobieren → Ergebnis prüfen**
 
 ## In drei Schritten starten
 
-1. Lade das [vollständige Projekt-ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) herunter und entpacke es vollständig. Auf GitHub geht das auch über **Code → Download ZIP**; auf der Webseite über **Projekt als ZIP laden**. **„Seite speichern“ im Browser reicht nicht aus.** Alternativ: `git clone https://github.com/Sae-l/CuD.git`. Der fest versionierte [Release v0.2.3](https://github.com/Sae-l/CuD/releases/tag/v0.2.3) enthält ein vollständiges ZIP und `SHA256SUMS`.
+1. Lade das [vollständige Projekt-ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) herunter und entpacke es vollständig. Auf GitHub geht das auch über **Code → Download ZIP**; auf der Webseite über **Projekt als ZIP laden**. **„Seite speichern“ im Browser reicht nicht aus.** Alternativ: `git clone https://github.com/Sae-l/CuD.git`. Der fest versionierte [Release v0.3.0](https://github.com/Sae-l/CuD/releases/tag/v0.3.0) enthält ein vollständiges ZIP und `SHA256SUMS`.
 2. Öffne [index.html](index.html) aus dem entpackten Projektordner und wähle **Lernraum öffnen**. Alternativ öffne [Lernwerkzeug/index.html](Lernwerkzeug/index.html) direkt. Die GitHub-Dateiansicht zeigt nur den Quelltext.
-3. Wähle **Lernweg beginnen**, richte deine Python-Umgebung ein und beginne mit der ersten Vorlesung. **Übungen & Begleitung** führt zu allen Aufgaben; der Block 6.1–6.3 bleibt hervorgehoben.
+3. Wähle **Meinen Lernplan öffnen**, richte deine Python-Umgebung ein und beginne mit der ersten Vorlesung. **Übungen & Begleitung** führt zu allen Aufgaben; der Block 6.1–6.3 bleibt hervorgehoben.
+
+**Mein Lernplan** zeigt die nächste offene Etappe und fällige **Wiederholungen**. [Entwicklungsplan](ENTWICKLUNGSPLAN.md): verbindliche Designregeln, Lernmethoden, Struktur, Quellenvertrag und nächster Ausbau. Tag, Release und zugehörige CI-Läufe belegen den Veröffentlichungsstand getrennt.
 
 Die Lernwebseite benötigt keine Installation, keinen Paketmanager und kein Konto. Nach dem Herunterladen funktioniert sie lokal und offline. Lass den gesamten Projektordner zusammen, damit die Quellenlinks funktionieren. Deinen Python-Code führst du selbst aus; die Webseite ist eine Lernbegleitung. Externe Downloads und Colab benötigen Internet.
 
@@ -20,7 +22,7 @@ Das Layout passt sich der Fensterbreite an. Auf einem Desktop-Rechner kannst du 
 
 Die automatisierten Browserprüfungen sind in [kompatibilitaet.json](Lernwerkzeug/pruefung/kompatibilitaet.json) dokumentiert: Chromium, Firefox und WebKit auf dem Prüfrechner sowie emulierte Handy- und Tabletgrößen. WebKit auf Windows ersetzt keinen Safari-Test auf einem Mac oder iPad. Echte Geräte, Screenreader und Betriebssysteminstallationen bleiben gesondert zu prüfen. Maßgeblich sind die gespeicherten Ergebnisse und der [Prüfbericht](Lernwerkzeug/pruefung/PRUEFBERICHT.md).
 
-Der [CI-Nachweis](Lernwerkzeug/pruefung/CI_NACHWEIS.json) dokumentiert den erfolgreichen Verhaltensstand `74ba715`: vollständige Chromium-/Firefox-/WebKit-Matrix auf Windows und Linux, insgesamt 3192 Layoutprüfungen. Der ausgelieferte lokale Bericht bleibt ein eigener, datierter Nachweis und enthält wegen einer Windows-Signatursperre weiterhin FAIL. Für den finalen Release-Commit sind die zugehörigen [GitHub-Actions-Läufe](https://github.com/Sae-l/CuD/actions) maßgeblich; frühere Ergebnisse werden nicht als neue Ausführung ausgegeben.
+Der [CI-Nachweis](Lernwerkzeug/pruefung/CI_NACHWEIS.json) dokumentiert den früheren erfolgreichen Verhaltensstand `74ba715`: vollständige Chromium-/Firefox-/WebKit-Matrix auf Windows und Linux, insgesamt 3192 Layoutprüfungen. Beim lokalen Lernplan-Ausbau vom 17.10.2026 bestehen Chromium und WebKit jeweils 78 Ansichten in sieben Größen; Firefox scheitert vor dem Seitenaufruf an einem Windows-Startfehler. Der aktuelle lokale Gesamtbericht bleibt deshalb FAIL. Für eine Veröffentlichung braucht dieser neue Stand eigene aktuelle [GitHub-Actions-Läufe](https://github.com/Sae-l/CuD/actions); frühere Ergebnisse werden nicht als neue Ausführung ausgegeben.
 
 ## Wissensbasis in Obsidian
 

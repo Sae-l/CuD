@@ -1,3 +1,25 @@
+# CuD v0.3.0
+
+Lernplan-Ausgabe vom 17.10.2026 für Studienanfänger ohne Programmiererfahrung.
+
+- **Mein Lernplan** zeigt die erste offene Etappe, den selbst markierten Bearbeitungsstand, die Quellen und fällige Wiederholungen.
+- **Wiederholen** verbindet Erklärfragen und eigene Schreibaufgaben mit einer geschlossenen Selbstkontrolle und begründetem Quizfeedback. Richtige Antworten planen Abstände von 1, 3, 7 und 14 Tagen; Fehler bleiben fällig. Mehrfachklicks vor dem Termin verlängern nicht.
+- Drei Lektionssprünge führen direkt zu Beispiel, eigener Arbeit und Verständnischeck. Die vorhandene Gestaltung bleibt auf Handy, Tablet und Desktop nutzbar.
+- Wiederholungstermine werden getrennt von bestehenden Bearbeitungsmarken lokal gespeichert. Ungültige Einträge werden verworfen; bei gesperrtem Speicher bleibt die Sitzung nutzbar. Keine zusätzliche Laufzeitabhängigkeit und keine externen Laufzeitanfragen.
+- Der Entwicklungsplan dokumentiert Designregeln, PRIMM, Abrufübungen, Datenvertrag für neue Vorlesungen, Debugging und den geplanten Gebrauchstest. Die Browsermatrix führt nach einem Engine-Fehler die übrigen Prüfungen aus und meldet den Gesamtfehler weiterhin.
+
+## Starten und prüfen
+
+1. `CuD-1-v0.3.0.zip` und `SHA256SUMS` herunterladen und den SHA-256-Wert vergleichen.
+2. Vollständig entpacken und `index.html` öffnen. Alle Unterordner zusammenlassen.
+3. **Meinen Lernplan öffnen** wählen, bei Bedarf Python/VS Code einrichten und mit der nächsten Etappe beginnen. Python-Code läuft im eigenen Editor.
+
+Der lokale Inhalts-/Offline-Test besteht mit 78 Ansichten, 27 Python-Beispielen, zehn Lernfragen und acht unveränderten Originalhashes. Chromium und WebKit bestehen lokal jeweils 546 Layoutprüfungen; Firefox scheitert vor dem Seitenaufruf an einem Windows-Startfehler. Das ist kein lokaler Firefox-Erfolg. Vor Merge und Release muss die vollständige aktuelle Windows-/Linux-CI bestehen; der Tag-Workflow prüft erneut und veröffentlicht manifestgeprüfte Commit-Bytes. Die konkreten Läufe stehen in GitHub Actions.
+
+31 Originalaufgaben, vier Live-Übungen und zehn Lektionen bleiben enthalten. `bb12024.csv` fehlt weiterhin; die betroffenen Originalkennzahlen sind unbestätigt. Bearbeitungsmarken sind Selbsteinschätzungen. Feste Wiederholungsabstände und Auswahlfragen belegen keinen Lernerfolg. Echte Geräte, Safari auf Apple-Hardware, Screenreader und Gebrauchstests bleiben offen.
+
+---
+
 # CuD v0.2.3
 
 Wartungsausgabe vom 17.10.2026: unmittelbares Bedienfeedback und nachvollziehbare Browsernachweise.

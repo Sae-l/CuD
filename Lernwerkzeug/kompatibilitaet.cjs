@@ -23,7 +23,7 @@ save();
 async function main() {
   const {chromium,firefox,webkit} = require("playwright");
   const types = {".html":"text/html",".css":"text/css",".js":"text/javascript",".ttf":"font/ttf",".jpg":"image/jpeg"};
-  const files = new Map(["index.html","styles.css","inhalte.js","kurs.js","app.js","assets/gsap.min.js","assets/ScrollTrigger.min.js","assets/Outfit.ttf","assets/lernraum.jpg"].map(name => [
+  const files = new Map(["index.html","styles.css","inhalte.js","kurs.js","lernstand.js","app.js","assets/gsap.min.js","assets/ScrollTrigger.min.js","assets/Outfit.ttf","assets/lernraum.jpg"].map(name => [
     `/CuD/Lernwerkzeug/${name}`,{bytes:fs.readFileSync(path.join(__dirname,name)),type:types[path.extname(name)]}
   ]));
   files.set("/CuD/index.html",{bytes:fs.readFileSync(path.join(__dirname,"../index.html")),type:"text/html"});
@@ -39,11 +39,13 @@ async function main() {
   const profiles = [[320,740],[390,844],[768,1024],[1024,768],[844,390],[1280,800],[1440,1000]];
   try {
   for (const engine of [chromium,firefox,webkit]) {
-    const browser = await engine.launch({headless:true});
-    const report = {name:engine.name(),version:browser.version(),transport:"HTTP loopback",profiles:[],errors:[],externalRequests:[]};
+    let browser;
+    const report = {name:engine.name(),status:"RUNNING",transport:"HTTP loopback",profiles:[],errors:[],externalRequests:[]};
     result.engines.push(report);
     save();
     try {
+      browser = await engine.launch({headless:true});
+      report.version = browser.version();
       const context = await browser.newContext();
       await context.route("**/*",route => {
         const target = route.request().url();
@@ -176,7 +178,7 @@ async function main() {
       await page.waitForFunction(() => !document.querySelector(".help-accordion details").open);
       assert.equal(await page.locator(".help-accordion details[open]").count(),1);
       await help.nth(1).locator("summary").click();
-      const routes = await page.evaluate(() => ["start","vorlesungen","uebung","befehle","lernkonzept","abdeckung",...inhalte.map(item => item.id)]);
+      const routes = await page.evaluate(() => ["start","lernplan","wiederholen","vorlesungen","uebung","befehle","lernkonzept","abdeckung",...inhalte.map(item => item.id)]);
       async function go(id) {
         // Auch den Abschluss der Hash-Navigation abwarten, bevor WebKit die nächste startet.
         const navigation = page.waitForURL(`${url}#${id}`);
@@ -186,7 +188,7 @@ async function main() {
           throw new Error(`${engine.name()} #${id}: ${error.message}; ${JSON.stringify(current)}`);
         });
         await page.waitForFunction(id => {
-          const title = byId.get(id)?.title || {start:"Dein erster Schritt ins Programmieren.",vorlesungen:"Eine Idee nach der anderen.",uebung:"Deine Übung: Messdaten verstehen.",befehle:"Welcher Befehl passt wozu?",lernkonzept:"So lernst du hier programmieren.",abdeckung:"Was ist bereits abgedeckt?"}[id];
+          const title = byId.get(id)?.title || {start:"Dein erster Schritt ins Programmieren.",lernplan:"Heute ein Stück weiter.",wiederholen:"Heute wiederholen.",vorlesungen:"Eine Idee nach der anderen.",uebung:"Deine Übung: Messdaten verstehen.",befehle:"Welcher Befehl passt wozu?",lernkonzept:"So lernst du hier programmieren.",abdeckung:"Was ist bereits abgedeckt?"}[id];
           return document.querySelector("#inhalt h1")?.textContent === title;
         },id,{polling:50}).catch(async error => {
           const current = await page.evaluate(() => ({hash:location.hash,title:document.querySelector("#inhalt h1")?.textContent}));
@@ -381,17 +383,22 @@ async function main() {
       assert.deepEqual(report.errors,[]);
       assert.deepEqual(report.externalRequests,[]);
       report.regressions = "navigation, escape, focus, modifier keys, history, operators, keyboard code, reduced motion including button press, unknown route, local font and GSAP, hero line count, learning carousel wrap, exclusive accordion, ScrollTrigger cleanup, 44px controls, prediction selection, quiz feedback reset, progress feedback, missing GSAP and search markup";
+      report.status = "PASS";
+    } catch (error) {
+      report.status = "FAIL";
+      report.error = error.message;
     } finally {
-      await browser.close();
+      await browser?.close();
       save();
     }
   }
   } finally {
     await new Promise(resolve => server.close(resolve));
   }
-  result.status = "PASS";
+  result.status = result.engines.every(report => report.status === "PASS") ? "PASS" : "FAIL";
   save();
   console.log(JSON.stringify(result,null,2));
+  if (result.status === "FAIL") process.exitCode = 1;
 }
 
 main().catch(error => {

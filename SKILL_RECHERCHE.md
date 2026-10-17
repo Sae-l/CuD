@@ -8,6 +8,12 @@ Die lokale Skill-Anleitung wurde gelesen und ihre Browserprüfstrategie angewend
 
 Für den Quellenabgleich zusätzlich den bereits vorhandenen `pdf-seitenweise-sichten` verwendet: vorhandene Seitenindizes und Textabschnitte gelesen, Vorlesung 003, PDF-S. 31, und Übungsblatt, PDF-S. 13, im Originalbild geprüft. [ABDECKUNG.md](Lernwerkzeug/ABDECKUNG.md) dokumentiert das Ergebnis, [ERWEITERN.md](Lernwerkzeug/ERWEITERN.md) den Ausbauvertrag.
 
+## Ergänzung: Lernplan am 17.10.2026
+
+`find-skills` erneut anhand der aktuellen [Bestenliste](https://skills.sh/) geprüft. Passend und bereits lokal vorhanden: [frontend-design von anthropics/skills](https://skills.sh/anthropics/skills/frontend-design), rund 998.000 Installationen. Das offizielle [Quellrepository](https://github.com/anthropics/skills) zeigt rund 181.700 Sterne. Momentaufnahme, keine Qualitätsgarantie. Optional: `npx skills add https://github.com/anthropics/skills --skill frontend-design`. Keine Installation und keine zusätzliche CLI-Recherche nötig, weil der passende Skill bereits verfügbar ist.
+
+Verwendet: vorhandener `frontend-design` für die Gestaltung sowie ECC `coding-standards`, `browser-qa` und Chrome DevTools für Lesbarkeit, minimale Änderungen und Browserprüfung. ECC `blueprint` wurde geprüft, aber wegen der direkt beauftragten Umsetzung nicht angewendet. [Entwicklungsplan](ENTWICKLUNGSPLAN.md) hält Design, Methoden, Datenvertrag und begrenzten Ausbau fest.
+
 ## Ergänzung: Anfänger-Lernraum und Design
 
 Am 15.10.2026 erneut mit dem ausdrücklich gewünschten `find-skills` recherchiert. Die [Skills-Bestenliste](https://skills.sh/) und die [Skill-Seite frontend-design](https://skills.sh/anthropics/skills/frontend-design) wurden geprüft: rund 989.000 Installationen. Das offizielle [Anthropic-Repository](https://github.com/anthropics/skills) wurde gegengeprüft: rund 181.000 Sterne. Zahlen sind Momentaufnahmen und keine Qualitätsgarantie.

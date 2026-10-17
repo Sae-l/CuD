@@ -10,6 +10,7 @@ Das Lernwerkzeug ist eine statische Webseite ohne Buildschritt. Für Text- und L
 | Grundgerüst und Navigation des Lernraums | `Lernwerkzeug/index.html` |
 | Layout, Fokus und Animationen des Lernraums | `Lernwerkzeug/styles.css` |
 | Suche, Seitenwechsel und Darstellung | `Lernwerkzeug/app.js` |
+| Validierung gespeicherter Wiederholungen und Terminregel | `Lernwerkzeug/lernstand.js` |
 | CSV-Aufgaben, Befehle und Fehlerhilfen | `Lernwerkzeug/inhalte.js` |
 | Vorlesungsetappen, Einrichtung und weitere Befehle | `Lernwerkzeug/kurs.js` |
 | Inhalts-, Python- und Browserprüfungen | `Lernwerkzeug/pruefen.cjs` |

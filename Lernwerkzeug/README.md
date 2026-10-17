@@ -2,6 +2,12 @@
 
 Die Startseite bietet **Vorlesungen**, **Übungen & Begleitung**, **Befehle nachschlagen**, **Python einrichten** und **VS Code einrichten**. Beginne mit der Einrichtung, bearbeite die erste Lektion und probiere die Beispiele selbst aus. Suche und Filter helfen dir, später einen bestimmten Befehl oder Fehler wiederzufinden.
 
+**Mein Lernplan** zeigt die erste noch nicht selbst als bearbeitet markierte Etappe, deinen Bearbeitungsstand und fällige Wiederholungen. Richte beim ersten Besuch zunächst Python und VS Code ein. In Lektionen springen **Beispiel**, **Selbst schreiben** und **Verständnischeck** direkt zum jeweiligen Abschnitt.
+
+**Wiederholen** fordert zuerst eine Erklärung und eine kleine selbst geschriebene Aufgabe. Die Selbstkontrolle bleibt geschlossen. Die anschließende Auswahlfrage gibt begründete Rückmeldung: Fehler bleiben fällig, richtige Antworten planen 1, 3, 7 und 14 Tage Abstand, danach weiterhin 14 Tage. Ein Tag entspricht 24 Stunden; wiederholtes Prüfen vor dem Termin verlängert nicht. Bereits vorhandene Bearbeitungsmarken ohne Wiederholungstermin erscheinen sofort in der Wiederholung. Nach einer falschen Antwort kannst du die Runde fortsetzen und die Idee später erneut üben. Eigener Code wird nicht automatisch bewertet.
+
+Wiederholungstermine liegen separat unter `cud-wiederholung-v1` im selben Browser. Bei gesperrter Speicherung bleiben sie nur für die Sitzung. Es gibt keine automatische Benachrichtigung. [Plan, Designregeln und Lernmethoden](../ENTWICKLUNGSPLAN.md).
+
 Das Projekt hat zwei Einstiege: [index.html im Projektordner](../index.html) stellt den Lernraum vor; [Lernwerkzeug/index.html](index.html) öffnet ihn direkt. Im Lernraum wechseln Links wie [Vorlesungen](index.html#vorlesungen) oder [Übungen](index.html#uebung) den Inhalt innerhalb derselben Seite. Du kannst diese Adressen als Lesezeichen speichern. Mit **Zurück** und **Vorwärts** im Browser wechselst du zwischen besuchten Bereichen. Die getrennte Projektstartseite und der Lernraum gehören gemeinsam zum Offline-Paket.
 
 ## Auf deinem Gerät öffnen
@@ -28,7 +34,7 @@ Auf iPad und Android ist die Desktop-Version von VS Code nicht auf dieselbe Weis
 
 [Browserergebnisse](pruefung/kompatibilitaet.json) und [Prüfbericht](pruefung/PRUEFBERICHT.md) dokumentieren die automatisierten Prüfungen mit Chromium, Firefox und WebKit auf dem Prüfrechner sowie emulierten Handy- und Tabletgrößen. Das ist kein Nachweis für echte iOS-/Android-Geräte oder Safari auf macOS/iPadOS. Screenreader und tatsächliche Installationen bleiben offen. Ein gespeicherter Bericht gilt nur für den darin dokumentierten Stand.
 
-Der zusätzliche [CI-Nachweis](pruefung/CI_NACHWEIS.json) hält die bestandene vollständige Windows-/Linux-Matrix am Verhaltensstand `74ba715` fest. Eine lokale Windows-Signatursperre betrifft die dort verwendete WebKit-Testkomponente; sie wird nicht durch Abschalten von Schutzregeln umgangen. Für die jeweilige Releaseversion gelten zusätzlich ihre konkreten GitHub-Actions-Läufe.
+Der zusätzliche [CI-Nachweis](pruefung/CI_NACHWEIS.json) hält die frühere bestandene vollständige Windows-/Linux-Matrix am Verhaltensstand `74ba715` fest. Im lokalen Lernplan-Ausbau vom 17.10.2026 bestehen Chromium und WebKit; Firefox scheitert bereits beim Browserstart. Der lokale Gesamtbericht bleibt deshalb FAIL. Für diesen neuen Stand sind eigene aktuelle CI-Läufe erforderlich; der frühere Nachweis bestätigt ihn nicht.
 
 ## Eine Übung bearbeiten
 

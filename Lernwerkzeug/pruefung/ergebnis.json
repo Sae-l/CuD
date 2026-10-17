@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-17T08:07:20.250Z",
+  "date": "2026-10-17T15:49:48.124Z",
   "status": "PASS",
   "originalHashes": 8,
   "python": {
@@ -18,13 +18,17 @@
   },
   "browser": {
     "searchCases": 18,
-    "views": 76,
+    "views": 78,
     "commandRows": 49,
     "learningQuizzes": 10,
     "progressPersistence": true,
+    "learningPlan": true,
+    "reviewScheduling": true,
+    "reviewStorageFallback": true,
+    "lessonJumps": true,
     "offlineLanding": true,
     "originalTasks": 31,
-    "localLinks": 118,
+    "localLinks": 120,
     "externalRequests": 0
   }
 }

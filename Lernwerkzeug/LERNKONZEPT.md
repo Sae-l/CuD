@@ -2,6 +2,8 @@
 
 Stand: 15.10.2026. Umsetzung auf Basis des bestehenden Werkzeugs; Originalquellen unverändert.
 
+Ergänzung 17.10.2026: Der lokale Ausbau ergänzt einen persönlichen Lernplan und eine Wiederholungsansicht. Die vollständigen aktuellen [Design- und Lernregeln](../ENTWICKLUNGSPLAN.md) beschreiben Umsetzung und Grenzen. Die folgenden Abschnitte dokumentieren den bisherigen Aufbau; die damalige Aussage ohne automatische Wiederholungsplanung gilt für den alten Stand.
+
 ## Ziel und Gestaltung
 
 Studierende ohne Programmierkenntnisse beginnen mit einer Willkommensseite und Zugängen zu Vorlesungen, aktueller Übung, Befehlen, Einrichtung, eigenem Transferprojekt und Abdeckungsplan. Die erste kleine Vorhersageaufgabe gibt direkt Rückmeldung. Der aktuelle Übungszugang bezeichnet den aufbereiteten Block 6.1–6.3; es gibt keine Anbindung an einen Stundenplan.
