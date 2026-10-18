@@ -15,6 +15,7 @@ Nutze für Fehler und Vorschläge die [Issue-Vorlagen](https://github.com/Sae-l/
 | Validierung gespeicherter Wiederholungen und Terminregel | `Lernwerkzeug/lernstand.js` |
 | CSV-Aufgaben, Befehle und Fehlerhilfen | `Lernwerkzeug/inhalte.js` |
 | Vorlesungsetappen, Einrichtung und weitere Befehle | `Lernwerkzeug/kurs.js` |
+| Übersetzungen von Bedienung und Erklärungen (en, ar, tr, fa, uk); Lerntexte bleiben Deutsch | `Lernwerkzeug/sprachen.js` |
 | Inhalts-, Python- und Browserprüfungen | `Lernwerkzeug/pruefen.cjs` |
 | Browser- und Ansichtsgrößenprüfung | `Lernwerkzeug/kompatibilitaet.cjs` |
 | Integritätsmanifest prüfen/erneuern | `scripts/manifest.py` |

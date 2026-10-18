@@ -1,5 +1,14 @@
 # Prüfbericht und Nachweisverlauf
 
+## v0.4.0 Schritt 1: Übersetzungsvertrag, Design A und Englisch, 18.10.2026
+
+Unveröffentlichter Entwicklungsstand. Übersetzungen liegen je Sprache in `uebersetzung-<code>.js` (deutscher Text → Übersetzung); `uebersetzbar.cjs` legt fest, welche Texte übersetzbar sind.
+
+- PASS: `pruefen.cjs` mit neuen Übersetzungsprüfungen: Englisch vollständig (1052 Einträge), keine verwaisten Einträge, identische Platzhalter in allen fünf Sprachen, Glossarklammern für Englisch. Zusätzlich im Browser: alle 78 Ansichten auf Englisch ohne sichtbaren übersetzbaren deutschen Text; Titel, Auftragstexte und Code bleiben Deutsch.
+- Rückübersetzung: 53 zufällige englische Texte (5 %) ohne Blick auf das Original ins Deutsche zurückübersetzt. 22 wortgleich, 30 nur stilistisch abweichend, 1 Sinnabweichung („Gestaltung & Weiterentwicklung“ → „Design & development“), korrigiert zu „Design & further development“.
+- Sichtprüfung: Lernplan, Lektion 1, Übung 6.1 und Befehle auf Englisch bei 390 px hell und dunkel angesehen. 320 px: Kopfleiste nach Anpassung ohne Überlauf, auch mit dem längsten Sprachnamen.
+- Offen: Arabisch, Türkisch, Persisch und Ukrainisch enthalten nur die übernommenen Einträge aus v4 und zeigen fehlende Texte auf Deutsch. Gegenlesen durch Muttersprachler steht aus.
+
 ## Lokaler Lernplan-Ausbau vom 17.10.2026
 
 Der neue Entwicklungsstand ergänzt `#lernplan`, `#wiederholen`, Lektionssprünge und eine unabhängig prüfbare Terminregel in `lernstand.js`. Kein neuer Release, keine Veröffentlichung. Die gesicherten Ausgangsbytes von `app.js`, `index.html`, `styles.css`, `pruefen.cjs` und `kompatibilitaet.cjs` stimmen mit den am 17.10.2026 über die GitHub-Verbindung gelesenen Blob-SHAs von `Sae-l/CuD/main` überein. Im Arbeitsordner fehlt `.git`. [Entwicklungsplan](../../ENTWICKLUNGSPLAN.md).
