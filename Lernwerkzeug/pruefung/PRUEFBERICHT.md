@@ -1,5 +1,11 @@
 # Prüfbericht und Nachweisverlauf
 
+## v0.4.0 Schritt 3b: Persisch, 19.10.2026
+
+- PASS: `npm test` mit Persisch als vollständiger Sprache (1052 Einträge, Glossarklammern, 78 Ansichten ohne sichtbaren übersetzbaren deutschen Text; Chromium, Firefox, WebKit). Die RTL-Inseln für Code und Titel greifen wie bei Arabisch.
+- Rückübersetzung: 53 zufällige persische Texte, 30 wortgleich, 23 stilistisch abweichend, keine Sinnabweichung.
+- Sichtprüfung: Lernplan, Lektion 1, Übung 6.1 und Befehle bei 390 px hell/dunkel.
+
 ## v0.4.0 Schritt 3a: Türkisch, 19.10.2026
 
 - PASS: `npm test` mit Türkisch als vollständiger Sprache (1052 Einträge, Glossarklammern, 78 Ansichten ohne sichtbaren übersetzbaren deutschen Text; Chromium, Firefox, WebKit).
