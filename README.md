@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://sae-l.github.io/CuD/Lernwerkzeug/index.html"><img alt="Online starten" src="https://img.shields.io/badge/Lernraum-online%20starten-7c3aed?style=for-the-badge"></a>
-  <a href="https://github.com/Sae-l/CuD/releases/tag/v0.4.1"><img alt="Release v0.4.1" src="https://img.shields.io/badge/Release-v0.4.1-0369a1?style=for-the-badge"></a>
+  <a href="https://github.com/Sae-l/CuD/releases/latest"><img alt="Neuestes Release" src="https://img.shields.io/github/v/release/Sae-l/CuD?style=for-the-badge&color=0369a1&label=Release"></a>
   <img alt="Offline, ohne Konto" src="https://img.shields.io/badge/offline-ohne%20Konto-15803d?style=for-the-badge">
 </p>
 

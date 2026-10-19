@@ -738,9 +738,9 @@
     },
     {
       "path": "README.md",
-      "bytes": 13398,
-      "sha256": "24b70934cf510d9c7c1e63360625d9d87da4531e788a2ae05920d00f3d6e1894",
-      "git_blob_sha1": "12c26ae1073ac54927be7ad93d5d1242c02829d0"
+      "bytes": 13422,
+      "sha256": "28f15877f97c26313e6850cfea78782fdb7f0d6a307236d07f8e3f4bc60c1916",
+      "git_blob_sha1": "bfb578d796dc668daa78c50a9985b77ddb8e37b2"
     },
     {
       "path": "RECHTE.md",
