@@ -7,38 +7,45 @@
   <meta name="description" content="Dein lokaler Lernraum für Coding und Digitalisierung: Python verstehen, Befehle nachschlagen und CSV-Aufgaben selbst lösen.">
   <title>Coding · Lernwerkzeug</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%231f2a1d'/%3E%3Ctext x='12' y='43' font-family='sans-serif' font-size='30' fill='%23d5f58b'%3Epy%3C/text%3E%3C/svg%3E">
+  <!-- Design vor dem ersten Zeichnen setzen, damit dunkle Ansichten nicht hell aufblitzen. -->
+  <script>try{const s=localStorage.getItem("cud-design-v1");document.documentElement.dataset.theme=s==="dark"||s==="light"?s:matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}catch{document.documentElement.dataset.theme=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}</script>
   <link rel="stylesheet" href="styles.css">
   <script src="assets/gsap.min.js" defer></script>
   <script src="assets/ScrollTrigger.min.js" defer></script>
   <script src="inhalte.js" defer></script>
   <script src="kurs.js" defer></script>
   <script src="lernstand.js" defer></script>
+  <script src="sprachen.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
-  <a class="skip" href="#inhalt">Zum Lerninhalt</a>
+  <a class="skip" href="#inhalt" data-i18n>Zum Lerninhalt</a>
   <header class="topbar">
-    <a class="brand" href="#start"><span class="brand-icon" aria-hidden="true">c/d.</span><span>Coding <span class="brand-sub">Dein Lernraum fürs Studium</span></span></a>
-    <span class="local"><span aria-hidden="true">●</span> Dein Tempo. Dein Code. <strong>Lokal & offline</strong></span>
+    <a class="brand" href="#start"><span class="brand-icon" aria-hidden="true">c/d.</span><span>Coding <span class="brand-sub" data-i18n>Dein Lernraum fürs Studium</span></span></a>
+    <div class="topbar-tools">
+      <span class="local"><span aria-hidden="true">●</span> <span data-i18n>Dein Tempo. Dein Code.</span> <strong data-i18n>Lokal & offline</strong></span>
+      <label class="language-pick"><span class="visually-hidden" data-i18n>Sprache</span><select id="sprache"></select></label>
+      <button id="design" class="theme-toggle" type="button" aria-pressed="false"><span class="theme-icon" aria-hidden="true"></span><span class="visually-hidden" data-i18n>Dunkles Design</span></button>
+    </div>
   </header>
   <div class="workspace">
     <aside class="sidebar" aria-label="Lernnavigation">
       <button id="nav-toggle" type="button" aria-controls="lernnavigation" aria-expanded="false">Lernnavigation öffnen</button>
       <div id="lernnavigation">
       <p class="module-label">Coding und Digitalisierung</p>
-      <h2>Dein Lernraum</h2>
+      <h2 data-i18n>Dein Lernraum</h2>
       <nav class="main-nav" aria-label="Hauptnavigation">
-        <a href="#start">Willkommen</a>
-        <a href="#lernplan">Mein Lernplan</a>
-        <a href="#wiederholen">Wiederholen</a>
-        <a href="#vorlesungen">Vorlesungen</a>
-        <a href="#uebung">Übungen & Begleitung</a>
-        <a href="#befehle">Befehle nachschlagen</a>
-        <a href="#python-setup">Python einrichten</a>
-        <a href="#vscode-setup">VS Code einrichten</a>
+        <a href="#start" data-i18n>Willkommen</a>
+        <a href="#lernplan" data-i18n>Mein Lernplan</a>
+        <a href="#wiederholen" data-i18n>Wiederholen</a>
+        <a href="#vorlesungen" data-i18n>Vorlesungen</a>
+        <a href="#uebung" data-i18n>Übungen & Begleitung</a>
+        <a href="#befehle" data-i18n>Befehle nachschlagen</a>
+        <a href="#python-setup" data-i18n>Python einrichten</a>
+        <a href="#vscode-setup" data-i18n>VS Code einrichten</a>
       </nav>
       <hr>
-      <p class="module-label">Übungsblock 6</p>
+      <p class="module-label" data-i18n>Übungsblock 6</p>
       <nav aria-label="Übungen">
         <a class="task-link" href="#aufgabe-6-1"><span>6.1</span> CSV einlesen</a>
         <a class="task-link" href="#aufgabe-6-2"><span>6.2</span> Daten filtern</a>
@@ -46,20 +53,22 @@
       </nav>
       <hr>
       <nav class="secondary" aria-label="Bereiche">
-        <a href="#praxis-zeitreihe">Eigenes Mini-Projekt</a>
-        <a href="#abdeckung">Abdeckung & nächste Schritte</a>
-        <a href="#ablauf">Der ganze Arbeitsablauf</a>
-        <a href="#quellen">Quellen & Prüfstand</a>
+        <a href="#praxis-zeitreihe" data-i18n>Eigenes Mini-Projekt</a>
+        <a href="#abdeckung" data-i18n>Abdeckung & nächste Schritte</a>
+        <a href="#ablauf" data-i18n>Der ganze Arbeitsablauf</a>
+        <a href="#quellen" data-i18n>Quellen & Prüfstand</a>
+        <a class="external-link" href="https://ilu.th-koeln.de/goto.php/crs/872821" target="_blank" rel="noopener noreferrer" data-i18n>Originalkurs in ILU</a>
       </nav>
-      <div class="scope-note"><strong>Du brauchst kein Vorwissen.</strong><p>Beginne mit der Einrichtung. Lerne anschließend in kleinen Schritten und probiere jeden Schritt selbst aus.</p><a href="#lernkonzept">So lernst du hier</a></div>
+      <div class="scope-note"><strong data-i18n>Du brauchst kein Vorwissen.</strong><p data-i18n>Beginne mit der Einrichtung. Lerne anschließend in kleinen Schritten und probiere jeden Schritt selbst aus.</p><a href="#lernkonzept" data-i18n>So lernst du hier</a></div>
       </div>
     </aside>
     <main id="hauptbereich">
       <section class="search-area" aria-label="Inhalte suchen">
-        <label for="suche">Wobei brauchst du Hilfe?</label>
-        <div class="search-row"><input id="suche" type="search" placeholder="CSV einlesen, Durchschnitt, 6.2 …" autocomplete="off" spellcheck="false"><button id="reset" type="button">Zurücksetzen</button></div>
-        <div class="filters"><label>Inhaltsart<select id="art"><option value="">Alle Inhaltsarten</option><option>Vorlesung</option><option>Einrichtung</option><option>Übung</option><option>Befehl & Begriff</option><option>Arbeitsablauf</option><option>Fehlerhilfe</option><option>Quellen</option></select></label><label>Thema<select id="thema"><option value="">Alle Themen</option></select></label></div>
-        <p class="search-tip">Zum Beispiel: <button type="button" data-query="CSV einlesen">CSV einlesen</button><button type="button" data-query="Durchschnitt">Durchschnitt</button><button type="button" data-query="ValueError">ValueError</button></p>
+        <label for="suche" data-i18n>Wobei brauchst du Hilfe?</label>
+        <div class="search-row"><input id="suche" type="search" placeholder="CSV einlesen, Durchschnitt, 6.2 …" autocomplete="off" spellcheck="false"><button id="reset" type="button" data-i18n>Zurücksetzen</button></div>
+        <div class="filters"><label><span data-i18n>Inhaltsart</span><select id="art"><option value="" data-i18n>Alle Inhaltsarten</option><option>Vorlesung</option><option>Einrichtung</option><option>Übung</option><option>Befehl & Begriff</option><option>Arbeitsablauf</option><option>Fehlerhilfe</option><option>Quellen</option></select></label><label><span data-i18n>Thema</span><select id="thema"><option value="" data-i18n>Alle Themen</option></select></label></div>
+        <p class="search-tip"><span data-i18n>Zum Beispiel:</span> <button type="button" data-query="CSV einlesen">CSV einlesen</button><button type="button" data-query="Durchschnitt">Durchschnitt</button><button type="button" data-query="ValueError">ValueError</button></p>
+        <p id="sprachhinweis" class="language-note" hidden data-i18n>Aufgaben, Lerntexte und Beispiele bleiben auf Deutsch wie in deinem Kurs. Übersetzt sind die Bedienung und die Erklärungen.</p>
       </section>
       <div class="learning-area">
         <section class="results" aria-label="Suchtreffer"><p id="trefferzahl" role="status" aria-live="polite"></p><div id="treffer"></div></section>
@@ -68,6 +77,15 @@
       <noscript>Bitte JavaScript aktivieren. Es läuft ausschließlich lokal. Die Originalaufgaben stehen in ../Referenz/Pflicht Übungen/CuD_Uebung 01.pdf, PDF-Seiten 10–11.</noscript>
     </main>
   </div>
-  <footer>Die Lernseite funktioniert lokal und offline. Deinen Python-Code führst du im Editor aus. Verlinkte Downloads und Browser-Notebooks benötigen Internet.<p>Gestaltung & Weiterentwicklung · <strong>Mohamed Saeed Alhalak</strong> · <a href="../index.html">CuD Startseite</a></p></footer>
+  <footer>
+    <p data-i18n>Die Lernseite funktioniert lokal und offline. Deinen Python-Code führst du im Editor aus. Verlinkte Downloads und Browser-Notebooks benötigen Internet.</p>
+    <nav class="footer-links" aria-label="Kurs, Rückmeldung und Kontakt">
+      <a href="https://ilu.th-koeln.de/goto.php/crs/872821" target="_blank" rel="noopener noreferrer" data-i18n>Originalkurs in ILU</a>
+      <a href="https://github.com/Sae-l/CuD/issues/new/choose" target="_blank" rel="noopener noreferrer" data-i18n>Feedback, Problem oder Wunsch melden</a>
+      <a href="https://www.instagram.com/s.hlllk/" target="_blank" rel="noopener noreferrer me">Instagram</a>
+      <a href="https://www.linkedin.com/in/saeed-alhalak/" target="_blank" rel="noopener noreferrer me">LinkedIn</a>
+    </nav>
+    <p>© 2026 <strong>Mohamed Saeed Alhalak</strong> · <span data-i18n>Gestaltung & Weiterentwicklung</span> · <a href="../index.html" data-i18n>CuD Startseite</a></p>
+  </footer>
 </body>
 </html>

@@ -1,566 +1,655 @@
 {
-  "nodes": [
-    {
-      "id": "start",
-      "type": "file",
-      "file": "00 Start.md",
-      "x": 640,
-      "y": 0,
-      "width": 540,
-      "height": 340,
-      "color": "4"
-    },
-    {
-      "id": "ziel",
-      "type": "file",
-      "file": "10 Konzept/10 Ziel und Umfang.md",
-      "x": 0,
-      "y": 440,
-      "width": 540,
-      "height": 340,
-      "color": "4"
-    },
-    {
-      "id": "lernen",
-      "type": "file",
-      "file": "10 Konzept/11 Lernmodell und Arbeitsweise.md",
-      "x": 640,
-      "y": 440,
-      "width": 540,
-      "height": 340,
-      "color": "4"
-    },
-    {
-      "id": "studien",
-      "type": "file",
-      "file": "10 Konzept/12 Wissenschaftliche Grundlagen.md",
-      "x": 1280,
-      "y": 440,
-      "width": 540,
-      "height": 340,
-      "color": "4"
-    },
-    {
-      "id": "arch",
-      "type": "file",
-      "file": "20 Umsetzung/20 Technische Architektur.md",
-      "x": 0,
-      "y": 900,
-      "width": 540,
-      "height": 340,
-      "color": "5"
-    },
-    {
-      "id": "weg",
-      "type": "file",
-      "file": "20 Umsetzung/21 Entstehung und Umsetzung.md",
-      "x": 640,
-      "y": 900,
-      "width": 540,
-      "height": 340,
-      "color": "5"
-    },
-    {
-      "id": "tools",
-      "type": "file",
-      "file": "20 Umsetzung/22 Fähigkeiten Skills und Werkzeuge.md",
-      "x": 1280,
-      "y": 900,
-      "width": 540,
-      "height": 340,
-      "color": "5"
-    },
-    {
-      "id": "vorlesung",
-      "type": "file",
-      "file": "30 Weiterentwicklung/30 Neue Vorlesung hinzufügen.md",
-      "x": 0,
-      "y": 1360,
-      "width": 540,
-      "height": 340,
-      "color": "3"
-    },
-    {
-      "id": "uebung",
-      "type": "file",
-      "file": "30 Weiterentwicklung/31 Neue Übung hinzufügen.md",
-      "x": 640,
-      "y": 1360,
-      "width": 540,
-      "height": 340,
-      "color": "3"
-    },
-    {
-      "id": "release",
-      "type": "file",
-      "file": "30 Weiterentwicklung/32 Entwicklung und Release.md",
-      "x": 1280,
-      "y": 1360,
-      "width": 540,
-      "height": 340,
-      "color": "3"
-    },
-    {
-      "id": "kompat",
-      "type": "file",
-      "file": "40 Betrieb/40 Windows macOS und Android.md",
-      "x": 0,
-      "y": 1820,
-      "width": 540,
-      "height": 340,
-      "color": "2"
-    },
-    {
-      "id": "cloud",
-      "type": "file",
-      "file": "40 Betrieb/41 Lokal Cloud und Synchronisation.md",
-      "x": 640,
-      "y": 1820,
-      "width": 540,
-      "height": 340,
-      "color": "2"
-    },
-    {
-      "id": "repo",
-      "type": "file",
-      "file": "40 Betrieb/42 GitHub Repositoryplan.md",
-      "x": 1280,
-      "y": 1820,
-      "width": 540,
-      "height": 340,
-      "color": "2"
-    },
-    {
-      "id": "sicht",
-      "type": "file",
-      "file": "40 Betrieb/43 Sichtbarkeit für Besucher.md",
-      "x": 0,
-      "y": 2280,
-      "width": 540,
-      "height": 340,
-      "color": "1"
-    },
-    {
-      "id": "sicher",
-      "type": "file",
-      "file": "40 Betrieb/44 Sicherheit und Datenschutz.md",
-      "x": 640,
-      "y": 2280,
-      "width": 540,
-      "height": 340,
-      "color": "1"
-    },
-    {
-      "id": "qa",
-      "type": "file",
-      "file": "20 Umsetzung/23 Qualität und Prüfungen.md",
-      "x": 1280,
-      "y": 2280,
-      "width": 540,
-      "height": 340,
-      "color": "1"
-    },
-    {
-      "id": "landing",
-      "type": "file",
-      "file": "50 Websites/50 Die Vorstellungswebsite.md",
-      "x": 0,
-      "y": 2740,
-      "width": 540,
-      "height": 340,
-      "color": "6"
-    },
-    {
-      "id": "app",
-      "type": "file",
-      "file": "50 Websites/51 Das Lernwerkzeug.md",
-      "x": 640,
-      "y": 2740,
-      "width": 540,
-      "height": 340,
-      "color": "6"
-    },
-    {
-      "id": "ux",
-      "type": "file",
-      "file": "50 Websites/52 Gestaltung und Barrierearmut.md",
-      "x": 1280,
-      "y": 2740,
-      "width": 540,
-      "height": 340,
-      "color": "6"
-    },
-    {
-      "id": "plan",
-      "type": "file",
-      "file": "30 Weiterentwicklung/33 Entwicklungsplan.md",
-      "x": 0,
-      "y": 3200,
-      "width": 540,
-      "height": 340,
-      "color": "4"
-    },
-    {
-      "id": "nachweise",
-      "type": "file",
-      "file": "90 Nachweise/90 Stand und Nachweise.md",
-      "x": 640,
-      "y": 3200,
-      "width": 540,
-      "height": 340,
-      "color": "4"
-    },
-    {
-      "id": "quellen",
-      "type": "file",
-      "file": "90 Nachweise/91 Quellenverzeichnis.md",
-      "x": 1280,
-      "y": 3200,
-      "width": 540,
-      "height": 340,
-      "color": "4"
-    },
-    {
-      "id": "wartung-1",
-      "type": "file",
-      "file": "03 Projektleitfaden.md",
-      "x": 0,
-      "y": 3940,
-      "width": 540,
-      "height": 340,
-      "color": "5"
-    },
-    {
-      "id": "wartung-2",
-      "type": "file",
-      "file": "20 Umsetzung/24 Laufzeit und Datenflüsse.md",
-      "x": 640,
-      "y": 3940,
-      "width": 540,
-      "height": 340,
-      "color": "5"
-    },
-    {
-      "id": "wartung-3",
-      "type": "file",
-      "file": "20 Umsetzung/25 Diagnose und Reparatur.md",
-      "x": 1280,
-      "y": 3940,
-      "width": 540,
-      "height": 340,
-      "color": "5"
-    },
-    {
-      "id": "wartung-4",
-      "type": "file",
-      "file": "20 Umsetzung/26 Wiederaufbau und Arbeitsumgebung.md",
-      "x": 0,
-      "y": 4400,
-      "width": 540,
-      "height": 340,
-      "color": "5"
-    },
-    {
-      "id": "wartung-5",
-      "type": "file",
-      "file": "20 Umsetzung/27 Entscheidungen und Baugeschichte.md",
-      "x": 640,
-      "y": 4400,
-      "width": 540,
-      "height": 340,
-      "color": "5"
-    },
-    {
-      "id": "wartung-6",
-      "type": "file",
-      "file": "90 Nachweise/94 Gesprächs- und Quellenabgleich.md",
-      "x": 1280,
-      "y": 4400,
-      "width": 540,
-      "height": 340,
-      "color": "5"
-    },
-    {
-      "id": "wartung-7",
-      "type": "file",
-      "file": "20 Umsetzung/28 Komponenten und Einstiegspunkte.md",
-      "x": 0,
-      "y": 4860,
-      "width": 540,
-      "height": 340,
-      "color": "5"
-    }
-  ],
-  "edges": [
-    {
-      "id": "e00",
-      "fromNode": "start",
-      "fromSide": "bottom",
-      "toNode": "ziel",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Zweck"
-    },
-    {
-      "id": "e01",
-      "fromNode": "start",
-      "fromSide": "bottom",
-      "toNode": "lernen",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Lernweg"
-    },
-    {
-      "id": "e02",
-      "fromNode": "start",
-      "fromSide": "bottom",
-      "toNode": "studien",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Forschung"
-    },
-    {
-      "id": "e03",
-      "fromNode": "ziel",
-      "fromSide": "bottom",
-      "toNode": "arch",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Umsetzung"
-    },
-    {
-      "id": "e04",
-      "fromNode": "lernen",
-      "fromSide": "bottom",
-      "toNode": "weg",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Entwicklung"
-    },
-    {
-      "id": "e05",
-      "fromNode": "studien",
-      "fromSide": "bottom",
-      "toNode": "tools",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Methoden"
-    },
-    {
-      "id": "e06",
-      "fromNode": "arch",
-      "fromSide": "bottom",
-      "toNode": "vorlesung",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Datenvertrag"
-    },
-    {
-      "id": "e07",
-      "fromNode": "weg",
-      "fromSide": "bottom",
-      "toNode": "uebung",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Erweitern"
-    },
-    {
-      "id": "e08",
-      "fromNode": "tools",
-      "fromSide": "bottom",
-      "toNode": "release",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Prüfen"
-    },
-    {
-      "id": "e09",
-      "fromNode": "vorlesung",
-      "fromSide": "bottom",
-      "toNode": "kompat",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Geräte"
-    },
-    {
-      "id": "e10",
-      "fromNode": "uebung",
-      "fromSide": "bottom",
-      "toNode": "cloud",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Ausführen"
-    },
-    {
-      "id": "e11",
-      "fromNode": "release",
-      "fromSide": "bottom",
-      "toNode": "repo",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Versionieren"
-    },
-    {
-      "id": "e12",
-      "fromNode": "kompat",
-      "fromSide": "bottom",
-      "toNode": "sicht",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Zugang"
-    },
-    {
-      "id": "e13",
-      "fromNode": "cloud",
-      "fromSide": "bottom",
-      "toNode": "sicher",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Datenfluss"
-    },
-    {
-      "id": "e14",
-      "fromNode": "repo",
-      "fromSide": "bottom",
-      "toNode": "qa",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Nachweise"
-    },
-    {
-      "id": "e15",
-      "fromNode": "sicht",
-      "fromSide": "bottom",
-      "toNode": "landing",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Einstieg"
-    },
-    {
-      "id": "e16",
-      "fromNode": "sicher",
-      "fromSide": "bottom",
-      "toNode": "app",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Betrieb"
-    },
-    {
-      "id": "e17",
-      "fromNode": "qa",
-      "fromSide": "bottom",
-      "toNode": "ux",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Bedienung"
-    },
-    {
-      "id": "e18",
-      "fromNode": "landing",
-      "fromSide": "bottom",
-      "toNode": "plan",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Verbessern"
-    },
-    {
-      "id": "e19",
-      "fromNode": "app",
-      "fromSide": "bottom",
-      "toNode": "nachweise",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Einordnen"
-    },
-    {
-      "id": "e20",
-      "fromNode": "ux",
-      "fromSide": "bottom",
-      "toNode": "quellen",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Belegen"
-    },
-    {
-      "id": "e21",
-      "fromNode": "plan",
-      "fromSide": "right",
-      "toNode": "nachweise",
-      "toSide": "left",
-      "toEnd": "arrow",
-      "label": "Abnahmekriterien"
-    },
-    {
-      "id": "e22",
-      "fromNode": "nachweise",
-      "fromSide": "right",
-      "toNode": "quellen",
-      "toSide": "left",
-      "toEnd": "arrow",
-      "label": "Herkunft"
-    },
-    {
-      "id": "wartung-kante-1",
-      "fromNode": "start",
-      "fromSide": "bottom",
-      "toNode": "wartung-1",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Projektreferenz"
-    },
-    {
-      "id": "wartung-kante-2",
-      "fromNode": "wartung-1",
-      "fromSide": "bottom",
-      "toNode": "wartung-2",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Laufzeit und Datenflüsse"
-    },
-    {
-      "id": "wartung-kante-3",
-      "fromNode": "wartung-1",
-      "fromSide": "bottom",
-      "toNode": "wartung-3",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Diagnose und Reparatur"
-    },
-    {
-      "id": "wartung-kante-4",
-      "fromNode": "wartung-1",
-      "fromSide": "bottom",
-      "toNode": "wartung-4",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Wiederaufbau und Arbeitsumgebung"
-    },
-    {
-      "id": "wartung-kante-5",
-      "fromNode": "wartung-1",
-      "fromSide": "bottom",
-      "toNode": "wartung-5",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Entscheidungen und Baugeschichte"
-    },
-    {
-      "id": "wartung-kante-6",
-      "fromNode": "wartung-1",
-      "fromSide": "bottom",
-      "toNode": "wartung-6",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Gesprächs- und Quellenabgleich"
-    },
-    {
-      "id": "wartung-kante-7",
-      "fromNode": "wartung-1",
-      "fromSide": "bottom",
-      "toNode": "wartung-7",
-      "toSide": "top",
-      "toEnd": "arrow",
-      "label": "Komponenten und Einstiegspunkte"
-    }
-  ]
+	"nodes": [
+		{
+			"id": "titel",
+			"type": "text",
+			"x": 0,
+			"y": 0,
+			"width": 1680,
+			"height": 320,
+			"color": "4",
+			"text": "# CuD · Gesamtkarte\n\nLernraum **Coding und Digitalisierung** — von der Idee über Umsetzung und Betrieb bis zu den Nachweisen.\n\n**Lesart:** oben beginnen, Pfeile folgen. Farben = Themenbereich · Pfeiltext = Beziehung."
+		},
+		{
+			"id": "start",
+			"type": "file",
+			"file": "00 Start.md",
+			"x": 600,
+			"y": 380,
+			"width": 480,
+			"height": 300,
+			"color": "4"
+		},
+		{
+			"id": "g-ziel",
+			"type": "group",
+			"label": "① Konzept · Warum es CuD gibt",
+			"color": "4",
+			"x": 0,
+			"y": 760,
+			"width": 1680,
+			"height": 460
+		},
+		{
+			"id": "ziel",
+			"type": "file",
+			"file": "10 Konzept/10 Ziel und Umfang.md",
+			"x": 60,
+			"y": 860,
+			"width": 480,
+			"height": 300,
+			"color": "4"
+		},
+		{
+			"id": "lernen",
+			"type": "file",
+			"file": "10 Konzept/11 Lernmodell und Arbeitsweise.md",
+			"x": 600,
+			"y": 860,
+			"width": 480,
+			"height": 300,
+			"color": "4"
+		},
+		{
+			"id": "studien",
+			"type": "file",
+			"file": "10 Konzept/12 Wissenschaftliche Grundlagen.md",
+			"x": 1140,
+			"y": 860,
+			"width": 480,
+			"height": 300,
+			"color": "4"
+		},
+		{
+			"id": "g-arch",
+			"type": "group",
+			"label": "② Umsetzung · Wie es gebaut ist",
+			"color": "5",
+			"x": 0,
+			"y": 1340,
+			"width": 1680,
+			"height": 820
+		},
+		{
+			"id": "arch",
+			"type": "file",
+			"file": "20 Umsetzung/20 Technische Architektur.md",
+			"x": 60,
+			"y": 1440,
+			"width": 480,
+			"height": 300,
+			"color": "5"
+		},
+		{
+			"id": "weg",
+			"type": "file",
+			"file": "20 Umsetzung/21 Entstehung und Umsetzung.md",
+			"x": 600,
+			"y": 1440,
+			"width": 480,
+			"height": 300,
+			"color": "5"
+		},
+		{
+			"id": "tools",
+			"type": "file",
+			"file": "20 Umsetzung/22 Fähigkeiten Skills und Werkzeuge.md",
+			"x": 1140,
+			"y": 1440,
+			"width": 480,
+			"height": 300,
+			"color": "5"
+		},
+		{
+			"id": "qa",
+			"type": "file",
+			"file": "20 Umsetzung/23 Qualität und Prüfungen.md",
+			"x": 60,
+			"y": 1800,
+			"width": 480,
+			"height": 300,
+			"color": "5"
+		},
+		{
+			"id": "g-wartung-1",
+			"type": "group",
+			"label": "③ Wartung · Verstehen, reparieren, wiederaufbauen",
+			"color": "5",
+			"x": 0,
+			"y": 2280,
+			"width": 1680,
+			"height": 1180
+		},
+		{
+			"id": "wartung-1",
+			"type": "file",
+			"file": "03 Projektleitfaden.md",
+			"x": 60,
+			"y": 2380,
+			"width": 480,
+			"height": 300,
+			"color": "5"
+		},
+		{
+			"id": "wartung-2",
+			"type": "file",
+			"file": "20 Umsetzung/24 Laufzeit und Datenflüsse.md",
+			"x": 600,
+			"y": 2380,
+			"width": 480,
+			"height": 300,
+			"color": "5"
+		},
+		{
+			"id": "wartung-3",
+			"type": "file",
+			"file": "20 Umsetzung/25 Diagnose und Reparatur.md",
+			"x": 1140,
+			"y": 2380,
+			"width": 480,
+			"height": 300,
+			"color": "5"
+		},
+		{
+			"id": "wartung-4",
+			"type": "file",
+			"file": "20 Umsetzung/26 Wiederaufbau und Arbeitsumgebung.md",
+			"x": 60,
+			"y": 2740,
+			"width": 480,
+			"height": 300,
+			"color": "5"
+		},
+		{
+			"id": "wartung-5",
+			"type": "file",
+			"file": "20 Umsetzung/27 Entscheidungen und Baugeschichte.md",
+			"x": 600,
+			"y": 2740,
+			"width": 480,
+			"height": 300,
+			"color": "5"
+		},
+		{
+			"id": "wartung-6",
+			"type": "file",
+			"file": "90 Nachweise/94 Gesprächs- und Quellenabgleich.md",
+			"x": 1140,
+			"y": 2740,
+			"width": 480,
+			"height": 300,
+			"color": "5"
+		},
+		{
+			"id": "wartung-7",
+			"type": "file",
+			"file": "20 Umsetzung/28 Komponenten und Einstiegspunkte.md",
+			"x": 60,
+			"y": 3100,
+			"width": 480,
+			"height": 300,
+			"color": "5"
+		},
+		{
+			"id": "g-vorlesung",
+			"type": "group",
+			"label": "④ Weiterentwicklung · Inhalte ergänzen",
+			"color": "3",
+			"x": 0,
+			"y": 3580,
+			"width": 1680,
+			"height": 820
+		},
+		{
+			"id": "vorlesung",
+			"type": "file",
+			"file": "30 Weiterentwicklung/30 Neue Vorlesung hinzufügen.md",
+			"x": 60,
+			"y": 3680,
+			"width": 480,
+			"height": 300,
+			"color": "3"
+		},
+		{
+			"id": "uebung",
+			"type": "file",
+			"file": "30 Weiterentwicklung/31 Neue Übung hinzufügen.md",
+			"x": 600,
+			"y": 3680,
+			"width": 480,
+			"height": 300,
+			"color": "3"
+		},
+		{
+			"id": "release",
+			"type": "file",
+			"file": "30 Weiterentwicklung/32 Entwicklung und Release.md",
+			"x": 1140,
+			"y": 3680,
+			"width": 480,
+			"height": 300,
+			"color": "3"
+		},
+		{
+			"id": "plan",
+			"type": "file",
+			"file": "30 Weiterentwicklung/33 Entwicklungsplan.md",
+			"x": 60,
+			"y": 4040,
+			"width": 480,
+			"height": 300,
+			"color": "3"
+		},
+		{
+			"id": "g-kompat",
+			"type": "group",
+			"label": "⑤ Betrieb · Geräte, Daten, Sicherheit",
+			"color": "2",
+			"x": 0,
+			"y": 4520,
+			"width": 1680,
+			"height": 820
+		},
+		{
+			"id": "kompat",
+			"type": "file",
+			"file": "40 Betrieb/40 Windows macOS und Android.md",
+			"x": 60,
+			"y": 4620,
+			"width": 480,
+			"height": 300,
+			"color": "2"
+		},
+		{
+			"id": "cloud",
+			"type": "file",
+			"file": "40 Betrieb/41 Lokal Cloud und Synchronisation.md",
+			"x": 600,
+			"y": 4620,
+			"width": 480,
+			"height": 300,
+			"color": "2"
+		},
+		{
+			"id": "repo",
+			"type": "file",
+			"file": "40 Betrieb/42 GitHub Repositoryplan.md",
+			"x": 1140,
+			"y": 4620,
+			"width": 480,
+			"height": 300,
+			"color": "2"
+		},
+		{
+			"id": "sicht",
+			"type": "file",
+			"file": "40 Betrieb/43 Sichtbarkeit für Besucher.md",
+			"x": 60,
+			"y": 4980,
+			"width": 480,
+			"height": 300,
+			"color": "2"
+		},
+		{
+			"id": "sicher",
+			"type": "file",
+			"file": "40 Betrieb/44 Sicherheit und Datenschutz.md",
+			"x": 600,
+			"y": 4980,
+			"width": 480,
+			"height": 300,
+			"color": "2"
+		},
+		{
+			"id": "g-landing",
+			"type": "group",
+			"label": "⑥ Websites · Was Besucher sehen",
+			"color": "6",
+			"x": 0,
+			"y": 5460,
+			"width": 1680,
+			"height": 460
+		},
+		{
+			"id": "landing",
+			"type": "file",
+			"file": "50 Websites/50 Die Vorstellungswebsite.md",
+			"x": 60,
+			"y": 5560,
+			"width": 480,
+			"height": 300,
+			"color": "6"
+		},
+		{
+			"id": "app",
+			"type": "file",
+			"file": "50 Websites/51 Das Lernwerkzeug.md",
+			"x": 600,
+			"y": 5560,
+			"width": 480,
+			"height": 300,
+			"color": "6"
+		},
+		{
+			"id": "ux",
+			"type": "file",
+			"file": "50 Websites/52 Gestaltung und Barrierearmut.md",
+			"x": 1140,
+			"y": 5560,
+			"width": 480,
+			"height": 300,
+			"color": "6"
+		},
+		{
+			"id": "g-nachweise",
+			"type": "group",
+			"label": "⑦ Nachweise · Belege und Quellen",
+			"color": "1",
+			"x": 0,
+			"y": 6040,
+			"width": 1680,
+			"height": 460
+		},
+		{
+			"id": "nachweise",
+			"type": "file",
+			"file": "90 Nachweise/90 Stand und Nachweise.md",
+			"x": 60,
+			"y": 6140,
+			"width": 480,
+			"height": 300,
+			"color": "1"
+		},
+		{
+			"id": "quellen",
+			"type": "file",
+			"file": "90 Nachweise/91 Quellenverzeichnis.md",
+			"x": 600,
+			"y": 6140,
+			"width": 480,
+			"height": 300,
+			"color": "1"
+		},
+		{
+			"id": "legende",
+			"type": "text",
+			"x": 1800,
+			"y": 760,
+			"width": 420,
+			"height": 520,
+			"text": "## Legende\n\n- 🟩 Konzept\n- 🟦 Umsetzung & Wartung\n- 🟨 Weiterentwicklung\n- 🟧 Betrieb\n- 🟩 Websites\n- 🟥 Nachweise\n\n**Schnellstart:** [[00 Start]] → [[03 Projektleitfaden]] → [[10 Ziel und Umfang]]"
+		}
+	],
+	"edges": [
+		{
+			"id": "e00",
+			"fromNode": "start",
+			"fromSide": "bottom",
+			"toNode": "ziel",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Zweck"
+		},
+		{
+			"id": "e01",
+			"fromNode": "start",
+			"fromSide": "bottom",
+			"toNode": "lernen",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Lernweg"
+		},
+		{
+			"id": "e02",
+			"fromNode": "start",
+			"fromSide": "bottom",
+			"toNode": "studien",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Forschung"
+		},
+		{
+			"id": "e03",
+			"fromNode": "ziel",
+			"fromSide": "bottom",
+			"toNode": "arch",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Umsetzung"
+		},
+		{
+			"id": "e04",
+			"fromNode": "lernen",
+			"fromSide": "bottom",
+			"toNode": "weg",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Entwicklung"
+		},
+		{
+			"id": "e05",
+			"fromNode": "studien",
+			"fromSide": "bottom",
+			"toNode": "tools",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Methoden"
+		},
+		{
+			"id": "e06",
+			"fromNode": "arch",
+			"fromSide": "bottom",
+			"toNode": "vorlesung",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Datenvertrag"
+		},
+		{
+			"id": "e07",
+			"fromNode": "weg",
+			"fromSide": "bottom",
+			"toNode": "uebung",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Erweitern"
+		},
+		{
+			"id": "e08",
+			"fromNode": "tools",
+			"fromSide": "bottom",
+			"toNode": "release",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Prüfen"
+		},
+		{
+			"id": "e09",
+			"fromNode": "vorlesung",
+			"fromSide": "bottom",
+			"toNode": "kompat",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Geräte"
+		},
+		{
+			"id": "e10",
+			"fromNode": "uebung",
+			"fromSide": "bottom",
+			"toNode": "cloud",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Ausführen"
+		},
+		{
+			"id": "e11",
+			"fromNode": "release",
+			"fromSide": "bottom",
+			"toNode": "repo",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Versionieren"
+		},
+		{
+			"id": "e12",
+			"fromNode": "kompat",
+			"fromSide": "bottom",
+			"toNode": "sicht",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Zugang"
+		},
+		{
+			"id": "e13",
+			"fromNode": "cloud",
+			"fromSide": "bottom",
+			"toNode": "sicher",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Datenfluss"
+		},
+		{
+			"id": "e14",
+			"fromNode": "repo",
+			"fromSide": "bottom",
+			"toNode": "qa",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Nachweise"
+		},
+		{
+			"id": "e15",
+			"fromNode": "sicht",
+			"fromSide": "bottom",
+			"toNode": "landing",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Einstieg"
+		},
+		{
+			"id": "e16",
+			"fromNode": "sicher",
+			"fromSide": "bottom",
+			"toNode": "app",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Betrieb"
+		},
+		{
+			"id": "e17",
+			"fromNode": "qa",
+			"fromSide": "bottom",
+			"toNode": "ux",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Bedienung"
+		},
+		{
+			"id": "e18",
+			"fromNode": "landing",
+			"fromSide": "bottom",
+			"toNode": "plan",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Verbessern"
+		},
+		{
+			"id": "e19",
+			"fromNode": "app",
+			"fromSide": "bottom",
+			"toNode": "nachweise",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Einordnen"
+		},
+		{
+			"id": "e20",
+			"fromNode": "ux",
+			"fromSide": "bottom",
+			"toNode": "quellen",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Belegen"
+		},
+		{
+			"id": "e21",
+			"fromNode": "plan",
+			"fromSide": "right",
+			"toNode": "nachweise",
+			"toSide": "left",
+			"toEnd": "arrow",
+			"label": "Abnahmekriterien"
+		},
+		{
+			"id": "e22",
+			"fromNode": "nachweise",
+			"fromSide": "right",
+			"toNode": "quellen",
+			"toSide": "left",
+			"toEnd": "arrow",
+			"label": "Herkunft"
+		},
+		{
+			"id": "wartung-kante-1",
+			"fromNode": "start",
+			"fromSide": "bottom",
+			"toNode": "wartung-1",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Projektreferenz"
+		},
+		{
+			"id": "wartung-kante-2",
+			"fromNode": "wartung-1",
+			"fromSide": "bottom",
+			"toNode": "wartung-2",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Laufzeit und Datenflüsse"
+		},
+		{
+			"id": "wartung-kante-3",
+			"fromNode": "wartung-1",
+			"fromSide": "bottom",
+			"toNode": "wartung-3",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Diagnose und Reparatur"
+		},
+		{
+			"id": "wartung-kante-4",
+			"fromNode": "wartung-1",
+			"fromSide": "bottom",
+			"toNode": "wartung-4",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Wiederaufbau und Arbeitsumgebung"
+		},
+		{
+			"id": "wartung-kante-5",
+			"fromNode": "wartung-1",
+			"fromSide": "bottom",
+			"toNode": "wartung-5",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Entscheidungen und Baugeschichte"
+		},
+		{
+			"id": "wartung-kante-6",
+			"fromNode": "wartung-1",
+			"fromSide": "bottom",
+			"toNode": "wartung-6",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Gesprächs- und Quellenabgleich"
+		},
+		{
+			"id": "wartung-kante-7",
+			"fromNode": "wartung-1",
+			"fromSide": "bottom",
+			"toNode": "wartung-7",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "Komponenten und Einstiegspunkte"
+		}
+	]
 }

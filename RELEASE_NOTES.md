@@ -1,3 +1,17 @@
+# CuD v0.4.0
+
+Mehrsprachige Ausgabe (noch nicht veröffentlicht).
+
+- **Sprachen:** Deutsch (Standard), Englisch, Arabisch, Türkisch, Persisch und Ukrainisch. Übersetzt sind Bedienung und die Erklärung jedes Inhalts; Titel, Aufgaben, Lerntexte und Python-Beispiele bleiben Deutsch wie im Kurs. Arabisch und Persisch werden von rechts nach links gesetzt. Die Wahl bleibt in diesem Browser gespeichert.
+- **Helles und dunkles Design:** Umschalter in der Kopfzeile; ohne eigene Wahl folgt der Lernraum der Systemeinstellung. Das helle Design bleibt unverändert.
+- **Kopieren:** Jedes Python-Beispiel, jede Musterlösung und jede Zeile der Befehlsübersicht hat einen Kopieren-Knopf. Bei lokal geöffneten Dateien markiert der Lernraum den Code, falls der Browser das direkte Kopieren sperrt.
+- **Originalkurs in ILU** in Seitenleiste und Fußzeile.
+- **Rückmeldung über GitHub:** Feedback, Probleme und Wünsche; jede Inhaltsseite verlinkt ein vorausgefülltes Fehler-Issue. Neue Issue-Vorlage „Feedback oder Wunsch“.
+- Fußzeile mit Instagram, LinkedIn und Namensnennung.
+- Neue Prüfungen: vollständige Übersetzungen je Sprache, Sprachwechsel mit deutsch bleibendem Code, gespeichertes Design, Kopieren-Knopf und Fußzeilenlinks.
+
+---
+
 # CuD v0.3.0
 
 Lernplan-Ausgabe vom 17.10.2026 für Studienanfänger ohne Programmiererfahrung.

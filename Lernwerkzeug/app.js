@@ -10,6 +10,20 @@ const motionQuery = matchMedia("(prefers-reduced-motion: reduce)");
 function syncMotion() { document.documentElement.classList.toggle("reduce-motion",motionQuery.matches); }
 motionQuery.addEventListener("change",syncMotion);
 syncMotion();
+const languageKey = "cud-sprache-v1";
+const themeKey = "cud-design-v1";
+const issuesURL = "https://github.com/Sae-l/CuD/issues";
+let language = (() => {
+  try { const saved = localStorage.getItem(languageKey); return Object.hasOwn(sprachen,saved) ? saved : "de"; }
+  catch { return "de"; }
+})();
+function translation(entry) { return language === "de" ? undefined : entry?.[uebersetzungsSprachen.indexOf(language)]; }
+function t(text) { return translation(ui[text]) || text; }
+// Nur übersetzte Knoten erhalten Sprache und Schreibrichtung; Lerninhalte bleiben Deutsch.
+function markLanguage(node,translated) {
+  if (translated) { node.lang = language; node.dir = rtlSprachen.has(language) ? "rtl" : "ltr"; }
+  else { node.removeAttribute("lang"); node.removeAttribute("dir"); }
+}
 const progressKey = "cud-lernfortschritt-v1";
 let progressPersistent = true;
 const completed = (() => {
@@ -63,7 +77,11 @@ function findItems(query, kind = "", topic = "") {
 
 function el(tag, text, className) {
   const node = document.createElement(tag);
-  if (text !== undefined) node.textContent = text;
+  if (text !== undefined) {
+    const translated = translation(ui[text]);
+    node.textContent = translated || text;
+    if (translated) markLanguage(node,true);
+  }
   if (className) node.className = className;
   return node;
 }
@@ -97,12 +115,32 @@ function itemLinks(title, ids) {
   article.append(list);
 }
 
-function codeBlock(code, parent = article) {
-  parent.append(el("p","Python · selbst erstelltes Beispiel","code-label"));
+function codeBox(code, label) {
+  const box = el("div",undefined,"code-box");
+  const tools = el("div",undefined,"code-tools");
+  if (label) tools.append(el("p",label,"code-label"));
+  const copy = el("button","Kopieren","copy-code"); copy.type = "button";
+  const status = el("span",undefined,"visually-hidden"); status.setAttribute("role","status");
+  tools.append(copy,status);
   const pre = el("pre");
   pre.tabIndex = 0;
   pre.append(el("code",code));
-  parent.append(pre);
+  box.append(tools,pre);
+  return box;
+}
+
+function codeBlock(code, parent = article) {
+  parent.append(codeBox(code,"Python · selbst erstelltes Beispiel"));
+}
+
+function explanationNode(item) {
+  const node = el("p",item.explanation);
+  const translated = translation(erklaerungen[item.id]);
+  if (!translated) return node;
+  const shared = ui["Die Begleitung und Musterlösung sind selbst verfasst; maßgeblich bleibt die verlinkte Originalaufgabe."];
+  node.textContent = item.explanation.endsWith("maßgeblich bleibt die verlinkte Originalaufgabe.") ? `${translated} ${translation(shared)}` : translated;
+  markLanguage(node,true);
+  return node;
 }
 
 function renderQuiz(item) {
@@ -189,11 +227,15 @@ function sourceLinks(item) {
       box.append(p);
     }
   }
+  const report = el("a","Problem mit dieser Seite melden");
+  report.href = `${issuesURL}/new?template=fehler.md&title=${encodeURIComponent(`[Fehler] ${item.title}`)}`;
+  report.target = "_blank"; report.rel = "noopener noreferrer";
+  const reportLine = el("p"); reportLine.append(report); box.append(reportLine);
   article.append(box);
 }
 
 function renderItem(item) {
-  article.replaceChildren(el("p",`${item.kind} / ${item.topic}`,"kind"),el("h1",item.title),el("p",item.summary,"intro"),el("p",item.explanation));
+  article.replaceChildren(el("p",`${item.kind} / ${item.topic}`,"kind"),el("h1",item.title),el("p",item.summary,"intro"),explanationNode(item));
   if (item.kind === "Vorlesung" || item.kind === "Einrichtung") {
     if (item.kind === "Vorlesung") {
       const back = el("a","Alle Vorlesungen ansehen");
@@ -284,7 +326,7 @@ function renderItem(item) {
     section("Hinweise, wenn du festhängst");
     item.hints.forEach((hint,index) => {
       const detail = el("details");
-      detail.append(el("summary",`Hinweis ${index + 1}`),el("p",hint));
+      detail.append(el("summary",`${t("Hinweis")} ${index + 1}`),el("p",hint));
       article.append(detail);
     });
   }
@@ -300,7 +342,7 @@ function renderItem(item) {
   itemLinks("Hier brauchst du das",exercises);
   itemLinks("Passt dazu",item.related);
   if (item.next) {
-    const link = el("a",`Weiter: ${byId.get(item.next).title}`,"primary-link");
+    const link = el("a",`${t("Weiter")}: ${byId.get(item.next).title}`,"primary-link");
     link.href = `#${item.next}`;
     article.append(link);
   }
@@ -423,10 +465,7 @@ function renderStart() {
   controls.prepend(counter); rhythm.append(tip,controls); invitation.append(rhythm);
   const demo = el("div",undefined,"first-code");
   demo.append(el("p","Ein kleines Programm. Dein Anfang."));
-  const pre = el("pre");
-  pre.tabIndex = 0;
-  pre.append(el("code",'name = "Du"\nprint(f"{name} kannst Python lernen!")'));
-  demo.append(pre,el("p","Was erscheint in der Ausgabe?"));
+  demo.append(codeBox('name = "Du"\nprint(f"{name} kannst Python lernen!")'),el("p","Was erscheint in der Ausgabe?"));
   const feedback = el("p","Wähle deine Vermutung.","quiz-feedback");
   feedback.setAttribute("role","status");
   feedback.setAttribute("aria-atomic","true");
@@ -561,7 +600,7 @@ function renderCommands() {
   const wrap = el("div",undefined,"table-scroll"); wrap.tabIndex = 0; wrap.setAttribute("role","region"); wrap.setAttribute("aria-label","Befehlsübersicht, bei Bedarf seitlich scrollen");
   const table = el("table"); table.append(el("caption","Python-Befehle, Methoden und Sprachbausteine"));
   const head = el("thead"); const tr = el("tr");
-  for (const text of ["Befehl / Baustein","Beschreibung","Beispiel","Passt zu / Voraussetzungen"]) { const th = el("th",text); th.scope = "col"; tr.append(th); }
+  for (const text of ["Befehl / Baustein","Beschreibung","Beispiel","Passt zu / Voraussetzungen"]) { const th = el("th"); th.textContent = text; th.scope = "col"; tr.append(th); }
   head.append(tr); const body = el("tbody"); table.append(head,body); wrap.append(table);
   const rows = [
     ...inhalte.filter(item => item.kind === "Befehl & Begriff").map(item => [item.title,item.summary,item.code,befehlsKontexte[item.id],item.id]),
@@ -575,7 +614,7 @@ function renderCommands() {
     for (const [title,description,code,context,id] of matches) {
       const row = el("tr");
       const cell = el("td"); cell.append(actionLink(title,`#${id}`));
-      const example = el("td"); const pre = el("pre"); pre.append(el("code",code)); example.append(pre);
+      const example = el("td"); example.append(codeBox(code));
       row.append(cell,el("td",description),example,el("td",context)); body.append(row);
     }
   }
@@ -631,7 +670,7 @@ function route(focus = false) {
   else article.replaceChildren(el("h1","Inhalt nicht gefunden"),el("p","Wähle eine Übung oder suche oben nach einem Befehl."));
   document.querySelector(".learning-area").classList.toggle("overview",!item || item.kind === "Vorlesung" || item.kind === "Einrichtung");
   document.title = `${article.querySelector("h1").textContent} · Lernwerkzeug`;
-  document.querySelectorAll("nav a").forEach(link => {
+  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     if (link.hash === location.hash || ((!id || id === "start") && link.hash === "#start")) link.setAttribute("aria-current","page");
     else link.removeAttribute("aria-current");
   });
@@ -648,8 +687,61 @@ function setNavigation(open) {
   document.querySelector(".sidebar").classList.toggle("nav-open",open);
   const button = document.querySelector("#nav-toggle");
   button.setAttribute("aria-expanded",String(open));
-  button.textContent = open ? "Lernnavigation schließen" : "Lernnavigation öffnen";
+  const label = open ? "Lernnavigation schließen" : "Lernnavigation öffnen";
+  button.textContent = t(label);
+  markLanguage(button,t(label) !== label);
 }
+
+function applyLanguage() {
+  for (const node of document.querySelectorAll("[data-i18n]")) {
+    node.dataset.i18n ||= node.textContent;
+    const translated = translation(ui[node.dataset.i18n]);
+    node.textContent = translated || node.dataset.i18n;
+    markLanguage(node,Boolean(translated));
+  }
+  document.querySelector("#sprachhinweis").hidden = language === "de";
+  setNavigation(document.querySelector("#nav-toggle").getAttribute("aria-expanded") === "true");
+}
+
+const languageSelect = document.querySelector("#sprache");
+for (const [code,name] of Object.entries(sprachen)) {
+  const option = el("option",name); option.value = code; option.lang = code; languageSelect.append(option);
+}
+languageSelect.value = language;
+languageSelect.addEventListener("change",() => {
+  language = languageSelect.value;
+  try { localStorage.setItem(languageKey,language); } catch { /* Auswahl gilt dann nur für diese Sitzung. */ }
+  applyLanguage();
+  route();
+});
+
+const themeButton = document.querySelector("#design");
+function syncThemeButton() { themeButton.setAttribute("aria-pressed",String(document.documentElement.dataset.theme === "dark")); }
+themeButton.addEventListener("click",() => {
+  const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = theme;
+  try { localStorage.setItem(themeKey,theme); } catch { /* Design gilt dann nur für diese Sitzung. */ }
+  syncThemeButton();
+});
+syncThemeButton();
+
+document.addEventListener("click",async event => {
+  const button = event.target.closest(".copy-code");
+  if (!button) return;
+  const code = button.closest(".code-box").querySelector("code");
+  let message = "Kopiert";
+  try { await navigator.clipboard.writeText(code.textContent); }
+  catch {
+    // Datei-Aufrufe erlauben die Clipboard-API nicht überall; dann markieren und klassisch kopieren.
+    const range = document.createRange(); range.selectNodeContents(code);
+    getSelection().removeAllRanges(); getSelection().addRange(range);
+    if (!document.execCommand("copy")) message = "Markiert – mit Strg+C kopieren";
+  }
+  button.textContent = t(message);
+  button.parentElement.querySelector("[role=status]").textContent = t(message);
+  clearTimeout(button.resetTimer);
+  button.resetTimer = setTimeout(() => { button.textContent = t("Kopieren"); },2000);
+});
 
 document.querySelector("#nav-toggle").addEventListener("click",() => {
   setNavigation(document.querySelector("#nav-toggle").getAttribute("aria-expanded") !== "true");
@@ -682,4 +774,5 @@ document.addEventListener("click",event => {
   if (link.hash === location.hash) route(true);
 });
 window.addEventListener("hashchange",() => route(true));
+applyLanguage();
 route();

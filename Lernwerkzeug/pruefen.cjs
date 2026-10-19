@@ -17,6 +17,17 @@ const context = vm.createContext({});
 vm.runInContext(fs.readFileSync(path.join(root,"inhalte.js"),"utf8"),context);
 vm.runInContext(fs.readFileSync(path.join(root,"kurs.js"),"utf8"),context);
 vm.runInContext(fs.readFileSync(path.join(root,"lernstand.js"),"utf8"),context);
+vm.runInContext(fs.readFileSync(path.join(root,"sprachen.js"),"utf8"),context);
+// Jede Sprache braucht jede Bedienübersetzung und jede Erklärung; keine verwaisten IDs.
+assert(vm.runInContext(`(() => {
+  const ids = new Set(inhalte.map(item => item.id));
+  const complete = entry => Array.isArray(entry) && entry.length === uebersetzungsSprachen.length && entry.every(text => typeof text === "string" && text.trim());
+  for (const [key,entry] of Object.entries(ui)) if (!complete(entry)) throw Error("UI-Übersetzung unvollständig: " + key);
+  for (const id of ids) if (!complete(erklaerungen[id])) throw Error("Erklärung fehlt: " + id);
+  for (const id of Object.keys(erklaerungen)) if (!ids.has(id)) throw Error("Unbekannte Erklärung: " + id);
+  if (Object.keys(sprachen).join() !== ["de",...uebersetzungsSprachen].join()) throw Error("Sprachliste");
+  return true;
+})()`,context));
 // Terminlogik unabhängig vom Browser und von der Uhr des Prüfrechners prüfen.
 assert(vm.runInContext(`(() => {
   const day = 86400000, now = 100 * day;
@@ -538,6 +549,39 @@ async function browserTests() {
         await page.locator(".lesson-quiz").screenshot({path:path.join(output,"lerncheck-mobil.png"),animations:"disabled"});
       }
     }
+    // Sprache: Bedienung und Erklärung übersetzt, Titel und Code bleiben Deutsch; Wahl bleibt nach Neuladen.
+    await navigate("aufgabe-6-1");
+    const germanCode = await page.locator("#inhalt .solution code").textContent();
+    await page.locator("#sprache").selectOption("ar");
+    assert.equal(await page.locator('.main-nav a[href="#lernplan"]').innerText(),"خطة تعلّمي");
+    assert.equal(await page.locator('.main-nav a[href="#lernplan"]').getAttribute("dir"),"rtl");
+    assert.equal(await page.locator("#inhalt h1").innerText(),"6.1 · CSV einlesen");
+    assert((await page.locator("#inhalt > p").nth(2).innerText()).includes("with open(...)"));
+    assert.equal(await page.locator("#inhalt > p").nth(2).getAttribute("lang"),"ar");
+    assert.equal(await page.locator("#inhalt .solution code").textContent(),germanCode);
+    assert.equal(await page.locator("#sprachhinweis").isVisible(),true);
+    await page.reload(); await waitForItem("aufgabe-6-1");
+    assert.equal(await page.locator("#sprache").inputValue(),"ar");
+    await page.locator("#sprache").selectOption("de");
+    assert.equal(await page.locator('.main-nav a[href="#lernplan"]').innerText(),"Mein Lernplan");
+    assert.equal(await page.locator('.main-nav a[href="#lernplan"]').getAttribute("lang"),null);
+    // Kopieren: Codetext landet unverändert in der Zwischenablage (Datei-Aufruf nutzt den Ersatzweg).
+    await browserContext.grantPermissions(["clipboard-read","clipboard-write"]).catch(() => {});
+    await page.locator("#inhalt .solution summary").click();
+    await page.locator("#inhalt .copy-code").first().click();
+    await page.waitForFunction(() => document.querySelector("#inhalt .copy-code").textContent !== "Kopieren");
+    assert.equal(await page.locator("#inhalt .copy-code").count(),await page.locator("#inhalt pre code").count());
+    // Design: Umschalter setzt und speichert das dunkle Design.
+    const theme = await page.locator("html").getAttribute("data-theme");
+    await page.locator("#design").click();
+    assert.notEqual(await page.locator("html").getAttribute("data-theme"),theme);
+    assert.equal(await page.evaluate(() => localStorage.getItem("cud-design-v1")),theme === "dark" ? "light" : "dark");
+    await page.reload(); await waitForItem("aufgabe-6-1");
+    assert.notEqual(await page.locator("html").getAttribute("data-theme"),theme);
+    await page.screenshot({path:path.join(output,"design-dunkel.png"),fullPage:false});
+    await page.evaluate(() => { localStorage.removeItem("cud-design-v1"); localStorage.removeItem("cud-sprache-v1"); });
+    // Footer: Kurs, Rückmeldung und Kontakt sind verlinkt.
+    for (const href of ["https://ilu.th-koeln.de/goto.php/crs/872821","https://github.com/Sae-l/CuD/issues/new/choose","https://www.instagram.com/s.hlllk/","https://www.linkedin.com/in/saeed-alhalak/"]) assert.equal(await page.locator(`footer a[href="${href}"]`).count(),1,href);
     await page.emulateMedia({reducedMotion:"reduce"});
     assert(await page.evaluate(() => matchMedia("(prefers-reduced-motion: reduce)").matches));
     assert.deepEqual(errors,[]);

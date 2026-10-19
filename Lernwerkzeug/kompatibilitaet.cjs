@@ -23,7 +23,7 @@ save();
 async function main() {
   const {chromium,firefox,webkit} = require("playwright");
   const types = {".html":"text/html",".css":"text/css",".js":"text/javascript",".ttf":"font/ttf",".jpg":"image/jpeg"};
-  const files = new Map(["index.html","styles.css","inhalte.js","kurs.js","lernstand.js","app.js","assets/gsap.min.js","assets/ScrollTrigger.min.js","assets/Outfit.ttf","assets/lernraum.jpg"].map(name => [
+  const files = new Map(["index.html","styles.css","inhalte.js","kurs.js","lernstand.js","sprachen.js","app.js","assets/gsap.min.js","assets/ScrollTrigger.min.js","assets/Outfit.ttf","assets/lernraum.jpg"].map(name => [
     `/CuD/Lernwerkzeug/${name}`,{bytes:fs.readFileSync(path.join(__dirname,name)),type:types[path.extname(name)]}
   ]));
   files.set("/CuD/index.html",{bytes:fs.readFileSync(path.join(__dirname,"../index.html")),type:"text/html"});
