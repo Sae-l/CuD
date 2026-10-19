@@ -1,3 +1,15 @@
+# CuD v0.4.1
+
+Startseiten-Ausgabe vom 19.10.2026: die Neuerungen des Lernraums auch auf der Projektstartseite.
+
+- **Sechs Sprachen auf der Startseite:** dieselbe Globus-Auswahl und dieselben Übersetzungsdateien wie im Lernraum; die gewählte Sprache gilt auf beiden Seiten. Arabisch und Persisch laufen von rechts nach links, Codebeispiele bleiben links ausgerichtet. Bei übersetzter Ansicht erscheint der Hinweis „Maschinell übersetzt … Fehler melden“.
+- **Helles und dunkles Design auf der Startseite:** Umschalter in der Navigationspille, ohne Aufblitzen beim Laden; die Wahl gilt auch im Lernraum.
+- **Neue Fußzeile:** Karte wie im Lernraum mit Originalkurs in ILU, Quellcode, Feedback, Instagram, LinkedIn, Namensnennung und Herkunft der Gestaltung.
+- **Korrektur:** Schritt 3 von „Lokal starten“ nennt den aktuellen Knopf „Meinen Lernplan öffnen“.
+- **Prüfungen:** Die Übersetzungsprüfung umfasst jetzt auch die Startseite (Vollständigkeit, Platzhalter, Glossarbegriffe). Lokal bestehen Inhalts-/Offline-Test, Chromium und WebKit; Firefox startet unter Windows Smart App Control nicht und wird nur in der CI geprüft.
+
+---
+
 # CuD v0.4.0
 
 Mehrsprachige Ausgabe vom 19.10.2026: der Lernraum vollständig in sechs Sprachen.

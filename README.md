@@ -2,17 +2,17 @@
 
 Ein lokales Lernwerkzeug für Studierende im Kurs **Coding und Digitalisierung**, auch ohne Programmierkenntnisse: verständliche Vorlesungsetappen, eine Befehlsübersicht, Einrichtungsanleitungen und Begleitung zu allen 31 Aufgaben des vorhandenen Übungsskripts.
 
-Mit Version **0.4.0** gibt es den Lernraum vollständig auf Deutsch, Englisch, Arabisch, Türkisch, Persisch und Ukrainisch; Fachbegriffe und Aufgabenstellungen bleiben Deutsch wie in der Prüfung. Dazu kommen ein dunkles Design, Kopieren-Knöpfe an allen Codebeispielen sowie Links zum Originalkurs in ILU und zu GitHub-Feedback. Lernplan, Wiederholungsrunden und Lektionssprünge aus 0.3.0 bleiben erhalten. Alle 31 Aufgaben des vorhandenen Übungsskripts, vier Live-Übungen und zehn Lernetappen einschließlich FFT bleiben enthalten. Lernkontrollen, lokale Bearbeitungsmarken und ein eigenes Transferprojekt helfen beim Üben.
+Mit Version **0.4.1** gibt es den Lernraum und die Startseite vollständig auf Deutsch, Englisch, Arabisch, Türkisch, Persisch und Ukrainisch; Fachbegriffe und Aufgabenstellungen bleiben Deutsch wie in der Prüfung. Dazu kommen auf beiden Seiten ein dunkles Design, Kopieren-Knöpfe an allen Codebeispielen sowie Links zum Originalkurs in ILU und zu GitHub-Feedback. Lernplan, Wiederholungsrunden und Lektionssprünge aus 0.3.0 bleiben erhalten. Alle 31 Aufgaben des vorhandenen Übungsskripts, vier Live-Übungen und zehn Lernetappen einschließlich FFT bleiben enthalten. Lernkontrollen, lokale Bearbeitungsmarken und ein eigenes Transferprojekt helfen beim Üben.
 
 **Aufgabe → benötigtes Wissen → passender Befehl → selbst ausprobieren → Ergebnis prüfen**
 
-**[Online im Lernraum starten](https://sae-l.github.io/CuD/Lernwerkzeug/index.html)** · [Projekt kennenlernen](https://sae-l.github.io/CuD/) · [Offline-Paket v0.4.0](https://github.com/Sae-l/CuD/releases/tag/v0.4.0)
+**[Online im Lernraum starten](https://sae-l.github.io/CuD/Lernwerkzeug/index.html)** · [Projekt kennenlernen](https://sae-l.github.io/CuD/) · [Offline-Paket v0.4.1](https://github.com/Sae-l/CuD/releases/tag/v0.4.1)
 
 Online öffnest du **Meinen Lernplan**, richtest bei Bedarf Python ein und beginnst mit der ersten Lektion. Die Lernseite benötigt kein Konto. Zum Online-Aufruf brauchst du Internet; die Offline-Nutzung beginnt mit dem vollständigen Download.
 
 ## Offline in drei Schritten starten
 
-1. Lade beim [Release v0.4.0](https://github.com/Sae-l/CuD/releases/tag/v0.4.0) das vollständige ZIP und `SHA256SUMS` herunter und entpacke das ZIP vollständig. Für den jeweils veränderlichen Entwicklungsstand gibt es [main als ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) oder `git clone https://github.com/Sae-l/CuD.git`. **„Seite speichern“ im Browser reicht nicht aus.**
+1. Lade beim [Release v0.4.1](https://github.com/Sae-l/CuD/releases/tag/v0.4.1) das vollständige ZIP und `SHA256SUMS` herunter und entpacke das ZIP vollständig. Für den jeweils veränderlichen Entwicklungsstand gibt es [main als ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) oder `git clone https://github.com/Sae-l/CuD.git`. **„Seite speichern“ im Browser reicht nicht aus.**
 2. Öffne [index.html](index.html) aus dem entpackten Projektordner und wähle **Lernraum öffnen**. Alternativ öffne [Lernwerkzeug/index.html](Lernwerkzeug/index.html) direkt. Die GitHub-Dateiansicht zeigt nur den Quelltext.
 3. Wähle **Meinen Lernplan öffnen**, richte deine Python-Umgebung ein und beginne mit der ersten Vorlesung. **Übungen & Begleitung** führt zu allen Aufgaben; der Block 6.1–6.3 bleibt hervorgehoben.
 

@@ -74,8 +74,9 @@ function appTexte() {
   });
 }
 
+// Lernraum und Startseite nutzen dieselben Übersetzungsdateien.
 function htmlTexte() {
-  const html = fs.readFileSync(path.join(root,"index.html"),"utf8");
+  const html = ["index.html","../index.html"].map(file => fs.readFileSync(path.join(root,file),"utf8")).join("\n");
   return [
     ...[...html.matchAll(/<[^>]*\sdata-i18n(?=[\s>])[^>]*>([^<]+)(?=<)/g)].map(match => match[1]),
     ...[...html.matchAll(/data-i18n-label="([^"]+)"/g)].map(match => match[1])
