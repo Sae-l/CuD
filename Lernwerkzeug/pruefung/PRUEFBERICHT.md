@@ -1,5 +1,40 @@
 # Prüfbericht und Nachweisverlauf
 
+## v0.4.0 Schritt 3c: Ukrainisch und alle Sprachen vollständig, 19.10.2026
+
+- PASS: `npm test` mit allen fünf Übersetzungssprachen in `vollstaendigeSprachen` (je 1052 Einträge, Glossarklammern, je 78 Ansichten ohne sichtbaren übersetzbaren deutschen Text; Chromium, Firefox, WebKit).
+- Rückübersetzung: 53 zufällige ukrainische Texte, eine Abweichung (Untertitel „Твій навчальний простір для навчання“ war doppelt), korrigiert zu „… для студій“.
+- Layout: Bei 390 px schob der längere ukrainische Untertitel den Dunkel-Schalter 2 px hinaus. Unter 420 px behalten die Werkzeuge der Kopfleiste ihre Breite, Marke und Untertitel brechen um. Nachgemessen: kein Überlauf in allen sechs Sprachen bei 320, 360, 390, 420 und 768 px. In RTL hat der Text der Weiter-Schaltfläche jetzt den vollen Innenabstand.
+- Sichtprüfung: Lernplan, Lektion 1, Übung 6.1 und Befehle bei 390 px hell/dunkel.
+
+## v0.4.0 Schritt 3b: Persisch, 19.10.2026
+
+- PASS: `npm test` mit Persisch als vollständiger Sprache (1052 Einträge, Glossarklammern, 78 Ansichten ohne sichtbaren übersetzbaren deutschen Text; Chromium, Firefox, WebKit). Die RTL-Inseln für Code und Titel greifen wie bei Arabisch.
+- Rückübersetzung: 53 zufällige persische Texte, 30 wortgleich, 23 stilistisch abweichend, keine Sinnabweichung.
+- Sichtprüfung: Lernplan, Lektion 1, Übung 6.1 und Befehle bei 390 px hell/dunkel.
+
+## v0.4.0 Schritt 3a: Türkisch, 19.10.2026
+
+- PASS: `npm test` mit Türkisch als vollständiger Sprache (1052 Einträge, Glossarklammern, 78 Ansichten ohne sichtbaren übersetzbaren deutschen Text; Chromium, Firefox, WebKit).
+- Rückübersetzung: 53 zufällige türkische Texte, 23 wortgleich, 30 stilistisch abweichend, keine Sinnabweichung.
+- Sichtprüfung: Lernplan, Lektion 1, Übung 6.1 und Befehle bei 390 px hell/dunkel. Lehnwörter stehen unverändert mit Apostroph-Endung (z. B. „Terminal'de“).
+
+## v0.4.0 Schritt 2: Arabisch, 19.10.2026
+
+- PASS: `npm test` mit Arabisch als vollständiger Sprache: 1052 Einträge, Glossarklammern, alle 78 Ansichten auf Arabisch ohne sichtbaren übersetzbaren deutschen Text; Chromium, Firefox und WebKit.
+- RTL-Prüfpunkt: Einzelne Bezeichner wie `gute_daten` standen korrekt, gemischte Läufe (z. B. „التالي: 6.3 · Mittelwert, Minimum und Maximum“) verrutschten. Lösung: In RTL-Sprachen wird jeder lateinische Code- oder Titellauf als `<bdi dir="ltr">` ausgezeichnet; eine Browserprüfung sichert das ab.
+- Rückübersetzung: 53 zufällige arabische Texte ins Deutsche, 18 wortgleich, 34 stilistisch abweichend, 1 kleine Abweichung („Lernnavigation“ → „Navigationsmenü“), korrigiert.
+- Sichtprüfung: Lernplan, Lektion 1, Übung 6.1 und Befehle bei 390 px hell/dunkel. Der Seitenrahmen bleibt links ausgerichtet; nur die Texte laufen von rechts nach links.
+
+## v0.4.0 Schritt 1: Übersetzungsvertrag, Design A und Englisch, 18.10.2026
+
+Unveröffentlichter Entwicklungsstand. Übersetzungen liegen je Sprache in `uebersetzung-<code>.js` (deutscher Text → Übersetzung); `uebersetzbar.cjs` legt fest, welche Texte übersetzbar sind.
+
+- PASS: `pruefen.cjs` mit neuen Übersetzungsprüfungen: Englisch vollständig (1052 Einträge), keine verwaisten Einträge, identische Platzhalter in allen fünf Sprachen, Glossarklammern für Englisch. Zusätzlich im Browser: alle 78 Ansichten auf Englisch ohne sichtbaren übersetzbaren deutschen Text; Titel, Auftragstexte und Code bleiben Deutsch.
+- Rückübersetzung: 53 zufällige englische Texte (5 %) ohne Blick auf das Original ins Deutsche zurückübersetzt. 22 wortgleich, 30 nur stilistisch abweichend, 1 Sinnabweichung („Gestaltung & Weiterentwicklung“ → „Design & development“), korrigiert zu „Design & further development“.
+- Sichtprüfung: Lernplan, Lektion 1, Übung 6.1 und Befehle auf Englisch bei 390 px hell und dunkel angesehen. 320 px: Kopfleiste nach Anpassung ohne Überlauf, auch mit dem längsten Sprachnamen.
+- Offen: Arabisch, Türkisch, Persisch und Ukrainisch enthalten nur die übernommenen Einträge aus v4 und zeigen fehlende Texte auf Deutsch. Gegenlesen durch Muttersprachler steht aus.
+
 ## Lokaler Lernplan-Ausbau vom 17.10.2026
 
 Der neue Entwicklungsstand ergänzt `#lernplan`, `#wiederholen`, Lektionssprünge und eine unabhängig prüfbare Terminregel in `lernstand.js`. Kein neuer Release, keine Veröffentlichung. Die gesicherten Ausgangsbytes von `app.js`, `index.html`, `styles.css`, `pruefen.cjs` und `kompatibilitaet.cjs` stimmen mit den am 17.10.2026 über die GitHub-Verbindung gelesenen Blob-SHAs von `Sae-l/CuD/main` überein. Im Arbeitsordner fehlt `.git`. [Entwicklungsplan](../../ENTWICKLUNGSPLAN.md).

@@ -33,6 +33,8 @@ jobs:
       # Tests aktualisieren Nachweise. Das Release enthält die geprüften Commit-Bytes.
       - run: git restore -- Lernwerkzeug/pruefung
       - run: python scripts/release.py "$RELEASE_TAG"
-      - run: gh release create "$RELEASE_TAG" ".upload-work/releases/$RELEASE_TAG/CuD-1-$RELEASE_TAG.zip" ".upload-work/releases/$RELEASE_TAG/SHA256SUMS" --verify-tag --title "CuD-1 $RELEASE_TAG" --notes-file RELEASE_NOTES.md
+      # Nur der neueste Abschnitt gehört auf die Release-Seite.
+      - run: awk '/^---$/{exit}1' RELEASE_NOTES.md > .upload-work/release-notes.md
+      - run: gh release create "$RELEASE_TAG" ".upload-work/releases/$RELEASE_TAG/CuD-1-$RELEASE_TAG.zip" ".upload-work/releases/$RELEASE_TAG/SHA256SUMS" --verify-tag --title "CuD-1 $RELEASE_TAG" --notes-file .upload-work/release-notes.md
         env:
           GH_TOKEN: ${{ github.token }}

@@ -2,17 +2,17 @@
 
 Ein lokales Lernwerkzeug für Studierende im Kurs **Coding und Digitalisierung**, auch ohne Programmierkenntnisse: verständliche Vorlesungsetappen, eine Befehlsübersicht, Einrichtungsanleitungen und Begleitung zu allen 31 Aufgaben des vorhandenen Übungsskripts.
 
-Version **0.3.0** ergänzt einen persönlichen Lernplan, Wiederholungsrunden und direkte Sprünge innerhalb der Lektionen. Alle 31 Aufgaben des vorhandenen Übungsskripts, vier Live-Übungen und zehn Lernetappen einschließlich FFT bleiben enthalten. Lernkontrollen, lokale Bearbeitungsmarken und ein eigenes Transferprojekt helfen beim Üben.
+Mit Version **0.4.0** gibt es den Lernraum vollständig auf Deutsch, Englisch, Arabisch, Türkisch, Persisch und Ukrainisch; Fachbegriffe und Aufgabenstellungen bleiben Deutsch wie in der Prüfung. Dazu kommen ein dunkles Design, Kopieren-Knöpfe an allen Codebeispielen sowie Links zum Originalkurs in ILU und zu GitHub-Feedback. Lernplan, Wiederholungsrunden und Lektionssprünge aus 0.3.0 bleiben erhalten. Alle 31 Aufgaben des vorhandenen Übungsskripts, vier Live-Übungen und zehn Lernetappen einschließlich FFT bleiben enthalten. Lernkontrollen, lokale Bearbeitungsmarken und ein eigenes Transferprojekt helfen beim Üben.
 
 **Aufgabe → benötigtes Wissen → passender Befehl → selbst ausprobieren → Ergebnis prüfen**
 
-**[Online im Lernraum starten](https://sae-l.github.io/CuD/Lernwerkzeug/index.html)** · [Projekt kennenlernen](https://sae-l.github.io/CuD/) · [Offline-Paket v0.3.0](https://github.com/Sae-l/CuD/releases/tag/v0.3.0)
+**[Online im Lernraum starten](https://sae-l.github.io/CuD/Lernwerkzeug/index.html)** · [Projekt kennenlernen](https://sae-l.github.io/CuD/) · [Offline-Paket v0.4.0](https://github.com/Sae-l/CuD/releases/tag/v0.4.0)
 
 Online öffnest du **Meinen Lernplan**, richtest bei Bedarf Python ein und beginnst mit der ersten Lektion. Die Lernseite benötigt kein Konto. Zum Online-Aufruf brauchst du Internet; die Offline-Nutzung beginnt mit dem vollständigen Download.
 
 ## Offline in drei Schritten starten
 
-1. Lade beim [Release v0.3.0](https://github.com/Sae-l/CuD/releases/tag/v0.3.0) das vollständige ZIP und `SHA256SUMS` herunter und entpacke das ZIP vollständig. Für den jeweils veränderlichen Entwicklungsstand gibt es [main als ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) oder `git clone https://github.com/Sae-l/CuD.git`. **„Seite speichern“ im Browser reicht nicht aus.**
+1. Lade beim [Release v0.4.0](https://github.com/Sae-l/CuD/releases/tag/v0.4.0) das vollständige ZIP und `SHA256SUMS` herunter und entpacke das ZIP vollständig. Für den jeweils veränderlichen Entwicklungsstand gibt es [main als ZIP](https://github.com/Sae-l/CuD/archive/refs/heads/main.zip) oder `git clone https://github.com/Sae-l/CuD.git`. **„Seite speichern“ im Browser reicht nicht aus.**
 2. Öffne [index.html](index.html) aus dem entpackten Projektordner und wähle **Lernraum öffnen**. Alternativ öffne [Lernwerkzeug/index.html](Lernwerkzeug/index.html) direkt. Die GitHub-Dateiansicht zeigt nur den Quelltext.
 3. Wähle **Meinen Lernplan öffnen**, richte deine Python-Umgebung ein und beginne mit der ersten Vorlesung. **Übungen & Begleitung** führt zu allen Aufgaben; der Block 6.1–6.3 bleibt hervorgehoben.
 
@@ -26,7 +26,7 @@ Das Layout passt sich der Fensterbreite an. Auf Handy und Tablet ist der [Online
 
 Die automatisierten Browserprüfungen sind in [kompatibilitaet.json](Lernwerkzeug/pruefung/kompatibilitaet.json) dokumentiert: Chromium, Firefox und WebKit auf dem Prüfrechner sowie emulierte Handy- und Tabletgrößen. WebKit auf Windows ersetzt keinen Safari-Test auf einem Mac oder iPad. Echte Geräte, Screenreader und Betriebssysteminstallationen bleiben gesondert zu prüfen. Maßgeblich sind die gespeicherten Ergebnisse und der [Prüfbericht](Lernwerkzeug/pruefung/PRUEFBERICHT.md).
 
-Der veröffentlichte Stand **v0.3.0**, Commit `b296826`, bestand am 17.10.2026 die [Windows-/Linux-Projektprüfung](https://github.com/Sae-l/CuD/actions/runs/39047674536), den [Release-Workflow](https://github.com/Sae-l/CuD/actions/runs/39047712894) und das [Pages-Deployment](https://github.com/Sae-l/CuD/actions/runs/39047673571). Der gespeicherte lokale Gesamtbericht bleibt wegen eines Firefox-Startfehlers FAIL. Der [CI-Nachweis als JSON](Lernwerkzeug/pruefung/CI_NACHWEIS.json) gehört weiterhin zum früheren Verhaltensstand `74ba715`; er wurde nicht als neuer Testlauf umgeschrieben. Spätere Änderungen benötigen eigene aktuelle Prüfungen.
+Der zuvor veröffentlichte Stand **v0.3.0**, Commit `b296826`, bestand am 17.10.2026 die [Windows-/Linux-Projektprüfung](https://github.com/Sae-l/CuD/actions/runs/39047674536), den [Release-Workflow](https://github.com/Sae-l/CuD/actions/runs/39047712894) und das [Pages-Deployment](https://github.com/Sae-l/CuD/actions/runs/39047673571). Der gespeicherte lokale Gesamtbericht bleibt wegen eines Firefox-Startfehlers FAIL. Der [CI-Nachweis als JSON](Lernwerkzeug/pruefung/CI_NACHWEIS.json) gehört weiterhin zum früheren Verhaltensstand `74ba715`; er wurde nicht als neuer Testlauf umgeschrieben. Spätere Änderungen benötigen eigene aktuelle Prüfungen.
 
 ## Wissensbasis in Obsidian
 

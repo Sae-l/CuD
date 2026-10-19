@@ -10,6 +10,47 @@ const motionQuery = matchMedia("(prefers-reduced-motion: reduce)");
 function syncMotion() { document.documentElement.classList.toggle("reduce-motion",motionQuery.matches); }
 motionQuery.addEventListener("change",syncMotion);
 syncMotion();
+const languageKey = "cud-sprache-v1";
+const themeKey = "cud-design-v1";
+const issuesURL = "https://github.com/Sae-l/CuD/issues";
+let language = (() => {
+  try { const saved = localStorage.getItem(languageKey); return Object.hasOwn(sprachen,saved) ? saved : "de"; }
+  catch { return "de"; }
+})();
+// Schlüssel ist der deutsche Text; fehlt ein Eintrag, bleibt der deutsche Text sichtbar.
+function translation(text) { return language === "de" ? undefined : uebersetzungen[language]?.[text]; }
+function fill(text,values = {}) { return text.replace(/\{(\w+)\}/g,(match,key) => Object.hasOwn(values,key) ? values[key] : match); }
+function t(text,values) { return fill(translation(text) ?? text,values); }
+function locale() { return language === "de" ? "de-DE" : language; }
+// Nur übersetzte Knoten erhalten Sprache und Schreibrichtung; Titel, Code und Aufgabenstellungen bleiben Deutsch.
+function markLanguage(node,translated) {
+  if (translated) { node.lang = language; node.dir = rtlSprachen.has(language) ? "rtl" : "ltr"; }
+  else { node.removeAttribute("lang"); node.removeAttribute("dir"); }
+}
+const glossaryPattern = new RegExp(`\\((${Object.keys(glossar).join("|")})\\)`);
+// Deutsche Fachbegriffe in Klammern werden als eigene Sprachinsel ausgezeichnet (RTL-sicher).
+function setText(node,text,translated) {
+  markLanguage(node,translated);
+  if (!translated) { node.textContent = text; return; }
+  node.replaceChildren(...text.split(glossaryPattern).flatMap((part,index) => {
+    if (index % 2 === 0) return part ? isolateLatin(part) : [];
+    const term = document.createElement("bdi"); term.lang = "de"; term.textContent = part;
+    return ["(",term,")"];
+  }));
+}
+// In RTL-Sätzen bleiben Code, Dateinamen und deutsche Titel als eigene LTR-Insel zusammen.
+const latinRun = /(?:[A-Za-z0-9_\[({"'#+*/<>=!&|‎]|[.\-](?=[A-Za-z0-9_]))(?:[^֐-ࣿﭐ-﻿،؛؟]*[A-Za-z0-9_)\]}"'%°*])?/g;
+function isolateLatin(text) {
+  if (!rtlSprachen.has(language)) return [text];
+  const parts = []; let last = 0;
+  for (const match of text.matchAll(latinRun)) {
+    if (match.index > last) parts.push(text.slice(last,match.index));
+    const run = document.createElement("bdi"); run.dir = "ltr"; run.textContent = match[0]; parts.push(run);
+    last = match.index + match[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts;
+}
 const progressKey = "cud-lernfortschritt-v1";
 let progressPersistent = true;
 const completed = (() => {
@@ -33,10 +74,11 @@ function dueReviews(now = Date.now()) {
 }
 
 function reviewStorageNote() {
-  return reviewPersistent ? "Wiederholungen werden nur in diesem Browser gespeichert." : "Wiederholungen gelten nur für diese Sitzung; der Speicher ist nicht verfügbar oder die gespeicherten Daten waren unlesbar.";
+  return reviewPersistent ? t("Wiederholungen werden nur in diesem Browser gespeichert.") : t("Wiederholungen gelten nur für diese Sitzung; der Speicher ist nicht verfügbar oder die gespeicherten Daten waren unlesbar.");
 }
+function formatDate(time) { return new Date(time).toLocaleString(locale(),{dateStyle:"medium",timeStyle:"short"}); }
 const stopwords = new Set(["wie","ich","die","der","das","den","dem","ein","eine","einen","einer","mit","von","zu","zum","zur","und","ist","kann","man","was","mache"]);
-for (const topic of [...new Set(inhalte.map(item => item.topic))]) topicInput.append(el("option",topic));
+for (const topic of new Set(inhalte.map(item => item.topic))) { const option = de("option",topic); option.value = topic; topicInput.append(option); }
 for (const command of weitereBefehle) {
   const lesson = byId.get(command[4]);
   (lesson.aliases ||= []).push(command[0],command[1]);
@@ -61,10 +103,29 @@ function findItems(query, kind = "", topic = "") {
   }).filter(Boolean).sort((a,b) => b.score - a.score).map(result => result.item);
 }
 
-function el(tag, text, className) {
+// Übersetzt den deutschen Schlüssel; values füllt Platzhalter wie {anzahl}.
+function el(tag, text, className, values) {
+  const node = document.createElement(tag);
+  if (text !== undefined) {
+    const translated = translation(text);
+    setText(node,fill(translated ?? text,values),translated !== undefined);
+  }
+  if (className) node.className = className;
+  return node;
+}
+
+// Bleibt Deutsch: Titel, Aufgabenstellungen, Code, Ausgaben und Dateinamen.
+function de(tag, text, className) {
   const node = document.createElement(tag);
   if (text !== undefined) node.textContent = text;
   if (className) node.className = className;
+  return node;
+}
+
+// Bereits übersetzter, zusammengesetzter Text.
+function shown(tag, text, className) {
+  const node = de(tag,undefined,className);
+  setText(node,text,language !== "de");
   return node;
 }
 
@@ -74,22 +135,22 @@ function section(title, parent = article) {
   return heading;
 }
 
-function textList(title, texts, ordered = false) {
+function textList(title, texts, ordered = false, make = el) {
   if (!texts?.length) return;
   const heading = section(title);
   const list = el(ordered ? "ol" : "ul");
-  texts.forEach(text => list.append(el("li",text)));
+  texts.forEach(text => list.append(make("li",text)));
   article.append(list);
   return heading;
 }
 
 function itemLinks(title, ids) {
   if (!ids?.length) return;
-  section(title);
+  if (title) section(title);
   const list = el("ul",undefined,"links");
   [...new Set(ids)].forEach(id => {
     const li = el("li");
-    const link = el("a",byId.get(id).title);
+    const link = de("a",byId.get(id).title);
     link.href = `#${id}`;
     li.append(link);
     list.append(li);
@@ -97,12 +158,32 @@ function itemLinks(title, ids) {
   article.append(list);
 }
 
-function codeBlock(code, parent = article) {
-  parent.append(el("p","Python · selbst erstelltes Beispiel","code-label"));
+function codeBox(code, label) {
+  const box = el("div",undefined,"code-box");
+  if (label) box.append(el("p",label,"code-label"));
+  const frame = el("div",undefined,"code-frame");
   const pre = el("pre");
   pre.tabIndex = 0;
-  pre.append(el("code",code));
-  parent.append(pre);
+  pre.append(de("code",code));
+  const copy = el("button",undefined,"copy-code"); copy.type = "button";
+  copy.setAttribute("aria-label",t("Code kopieren")); copy.title = t("Code kopieren");
+  const status = el("span",undefined,"visually-hidden"); status.setAttribute("role","status");
+  frame.append(pre,copy,status);
+  box.append(frame);
+  return box;
+}
+
+function codeBlock(code, parent = article) {
+  parent.append(codeBox(code,"Python · selbst erstelltes Beispiel"));
+}
+
+// Übungstitel und Auftragstext (summary) bleiben Deutsch wie im Kurs.
+function summaryNode(item, className) {
+  return item.kind === "Übung" ? de("p",item.summary,className) : el("p",item.summary,className);
+}
+
+function kindLabel(item, tag, className) {
+  return shown(tag,`${t(item.kind)} / ${t(item.topic)}`,className);
 }
 
 function renderQuiz(item) {
@@ -117,7 +198,7 @@ function renderQuiz(item) {
     const label = el("label");
     const radio = el("input");
     radio.type = "radio"; radio.name = `quiz-${item.id}`; radio.value = String(index); radio.required = true;
-    label.append(radio,document.createTextNode(option)); fieldset.append(label);
+    label.append(radio,el("span",option)); fieldset.append(label);
   });
   const button = el("button","Antwort prüfen","secondary-link"); button.type = "submit";
   const feedback = el("p",undefined,"quiz-feedback"); feedback.setAttribute("role","status");
@@ -127,14 +208,13 @@ function renderQuiz(item) {
   form.addEventListener("submit",event => {
     event.preventDefault();
     const correct = Number(new FormData(form).get(`quiz-${item.id}`)) === quiz.correct;
-    feedback.textContent = `${correct ? "Richtig." : "Noch nicht."} ${quiz.explanation}`;
     feedback.dataset.result = correct ? "correct" : "retry";
     const planned = planReview(reviews.get(item.id),correct);
     reviews.set(item.id,planned);
     try { localStorage.setItem(reviewKey,JSON.stringify(Object.fromEntries(reviews))); reviewPersistent = true; }
     catch { reviewPersistent = false; }
-    feedback.textContent += correct ? ` Wiederholen ab ${new Date(planned.due).toLocaleString("de-DE",{dateStyle:"medium",timeStyle:"short"})}.` : " Diese Idee bleibt zum Wiederholen vorgemerkt.";
-    feedback.textContent += ` ${reviewStorageNote()}`;
+    const next = correct ? t("Wiederholen ab {datum}.",{datum:formatDate(planned.due)}) : t("Diese Idee bleibt zum Wiederholen vorgemerkt.");
+    setText(feedback,`${t(correct ? "Richtig." : "Noch nicht.")} ${t(quiz.explanation)} ${next} ${reviewStorageNote()}`,language !== "de");
   });
   article.append(form);
   return form;
@@ -145,9 +225,9 @@ function renderProgress(item) {
   const label = el("label",undefined,"completion");
   const checkbox = el("input"); checkbox.type = "checkbox"; checkbox.id = "lektion-bearbeitet";
   checkbox.checked = completed.has(item.id);
-  label.append(checkbox,document.createTextNode("Ich habe die Miniübung selbst geschrieben und geprüft."));
+  label.append(checkbox,el("span","Ich habe die Miniübung selbst geschrieben und geprüft."));
   const note = el("p",undefined,"example-note"); note.setAttribute("role","status");
-  const update = () => { note.textContent = `${checkbox.checked ? "Als bearbeitet markiert." : "Nicht als bearbeitet markiert."} ${progressPersistent ? "Deine Selbsteinschätzung wird nur in diesem Browser gespeichert. Kein Testnachweis und keine Synchronisation. Zum Entfernen das Häkchen lösen." : "Speicherung ist hier nicht verfügbar. Deine Marken gelten nur für diese Sitzung. Sie sind eine Selbsteinschätzung, kein Testnachweis."}`; };
+  const update = () => { setText(note,`${t(checkbox.checked ? "Als bearbeitet markiert." : "Nicht als bearbeitet markiert.")} ${t(progressPersistent ? "Deine Selbsteinschätzung wird nur in diesem Browser gespeichert. Kein Testnachweis und keine Synchronisation. Zum Entfernen das Häkchen lösen." : "Speicherung ist hier nicht verfügbar. Deine Marken gelten nur für diese Sitzung. Sie sind eine Selbsteinschätzung, kein Testnachweis.")}`,language !== "de"); };
   checkbox.addEventListener("change",() => {
     if (checkbox.checked) completed.add(item.id); else completed.delete(item.id);
     try { localStorage.setItem(progressKey,JSON.stringify([...completed])); progressPersistent = true; }
@@ -164,7 +244,8 @@ function sourceLinks(item) {
   item.sources.forEach(id => {
     const source = quellen[id];
     const p = el("p");
-    const link = el("a",source.title);
+    // Quellentitel bleiben Deutsch wie die Originaldateien.
+    const link = de("a",source.title);
     link.href = source.href.replace(/\\/g,"/");
     link.target = "_blank";
     link.rel = "noopener";
@@ -189,11 +270,15 @@ function sourceLinks(item) {
       box.append(p);
     }
   }
+  const report = el("a","Problem mit dieser Seite melden");
+  report.href = `${issuesURL}/new?template=fehler.md&title=${encodeURIComponent(fill("[Fehler] {titel}",{titel:item.title}))}`;
+  report.target = "_blank"; report.rel = "noopener noreferrer";
+  const reportLine = el("p"); reportLine.append(report); box.append(reportLine);
   article.append(box);
 }
 
 function renderItem(item) {
-  article.replaceChildren(el("p",`${item.kind} / ${item.topic}`,"kind"),el("h1",item.title),el("p",item.summary,"intro"),el("p",item.explanation));
+  article.replaceChildren(kindLabel(item,"p","kind"),de("h1",item.title),summaryNode(item,"intro"),el("p",item.explanation));
   if (item.kind === "Vorlesung" || item.kind === "Einrichtung") {
     if (item.kind === "Vorlesung") {
       const back = el("a","Alle Vorlesungen ansehen");
@@ -202,7 +287,7 @@ function renderItem(item) {
       section("Das kannst du danach");
       article.append(el("p",item.goal,"learning-goal"));
       const jumps = el("nav",undefined,"lesson-jumps");
-      jumps.setAttribute("aria-label","In dieser Lektion");
+      jumps.setAttribute("aria-label",t("In dieser Lektion"));
       for (const [label,target] of [["Beispiel","lektion-beispiel"],["Selbst schreiben","lektion-praxis"],["Verständnischeck","lektion-check"]]) {
         const button = el("button",label);
         button.type = "button";
@@ -238,13 +323,13 @@ function renderItem(item) {
     codeBlock(item.code);
     if (item.output !== undefined) {
       const detail = el("details");
-      const output = el("pre",item.output.trimEnd());
+      const output = de("pre",item.output.trimEnd());
       output.tabIndex = 0;
       detail.append(el("summary","Beispielausgabe zeigen"),output);
       article.append(detail);
     }
-    const note = "Selbst erstelltes Beispiel; Ausführung siehe Prüfbericht." + (item.code.includes("mini.csv") ? " Für mini.csv werden die synthetischen Zeilen Temperatur, 10.0 und 20.0 verwendet." : "");
-    article.append(el("p",note,"example-note"));
+    const note = t("Selbst erstelltes Beispiel; Ausführung siehe Prüfbericht.") + (item.code.includes("mini.csv") ? ` ${t("Für mini.csv werden die synthetischen Zeilen Temperatur, 10.0 und 20.0 verwendet.")}` : "");
+    article.append(shown("p",note,"example-note"));
     if (item.code.includes("mini.csv")) {
       const download = el("a","Selbst erstellte mini.csv speichern");
       download.href = "beispiele/mini.csv";
@@ -254,12 +339,12 @@ function renderItem(item) {
   }
   if (item.kind === "Vorlesung") {
     const practiceHeading = textList("Jetzt bist du dran",[
-      "Vorhersagen: Lies das Beispiel und notiere die erwartete Ausgabe, bevor du sie öffnest.",
-      "Ausführen: Schreibe den Code in deine Python-Datei und vergleiche die Ausgabe mit deiner Vermutung.",
-      `Untersuchen: ${item.investigate}`,
-      `Verändern: ${item.modify}`,
-      `Selbst schreiben: ${item.make}`
-    ],true);
+      t("Vorhersagen: Lies das Beispiel und notiere die erwartete Ausgabe, bevor du sie öffnest."),
+      t("Ausführen: Schreibe den Code in deine Python-Datei und vergleiche die Ausgabe mit deiner Vermutung."),
+      t("Untersuchen: {aufgabe}",{aufgabe:t(item.investigate)}),
+      t("Verändern: {aufgabe}",{aufgabe:t(item.modify)}),
+      t("Selbst schreiben: {aufgabe}",{aufgabe:t(item.make)})
+    ],true,shown);
     practiceHeading.id = "lektion-praxis"; practiceHeading.tabIndex = -1;
     const answer = el("details");
     answer.append(el("summary","Selbstkontrolle zur Miniübung öffnen"),el("p",item.answer));
@@ -284,7 +369,7 @@ function renderItem(item) {
     section("Hinweise, wenn du festhängst");
     item.hints.forEach((hint,index) => {
       const detail = el("details");
-      detail.append(el("summary",`Hinweis ${index + 1}`),el("p",hint));
+      detail.append(el("summary","Hinweis {nummer}",undefined,{nummer:index + 1}),el("p",hint));
       article.append(detail);
     });
   }
@@ -300,7 +385,7 @@ function renderItem(item) {
   itemLinks("Hier brauchst du das",exercises);
   itemLinks("Passt dazu",item.related);
   if (item.next) {
-    const link = el("a",`Weiter: ${byId.get(item.next).title}`,"primary-link");
+    const link = el("a","Weiter: {titel}","primary-link",{titel:byId.get(item.next).title});
     link.href = `#${item.next}`;
     article.append(link);
   }
@@ -314,17 +399,18 @@ function renderLearningPlan() {
   const grid = el("div",undefined,"plan-grid");
   const current = el("section",undefined,"plan-current");
   if (next) {
-    current.append(el("p",`Etappe ${String(vorlesungen.indexOf(next) + 1).padStart(2,"0")} / ${vorlesungen.length} · ${next.topic}`,"plan-meta"),el("h2",next.title),el("p",next.goal),actionLink(completed.size ? "Etappe fortsetzen" : "Erste Etappe öffnen",`#${next.id}`,"primary-link"));
+    current.append(el("p","Etappe {nummer} / {gesamt} · {thema}","plan-meta",{nummer:String(vorlesungen.indexOf(next) + 1).padStart(2,"0"),gesamt:vorlesungen.length,thema:t(next.topic)}),de("h2",next.title),el("p",next.goal),actionLink(completed.size ? "Etappe fortsetzen" : "Erste Etappe öffnen",`#${next.id}`,"primary-link"));
     const source = quellen[next.sources[0]];
-    current.append(actionLink(source.title,source.href,"plan-source"));
+    const sourceLink = de("a",source.title,"plan-source"); sourceLink.href = source.href;
+    current.append(sourceLink);
   } else {
     current.append(el("p","Alle Etappen selbst bearbeitet","plan-meta"),el("h2","Jetzt kommt dein eigener Code."),el("p","Wende die Ideen im Mini-Projekt auf neue Daten an. Die Bearbeitungsmarken sind deine Selbsteinschätzung."),actionLink("Mini-Projekt öffnen","#praxis-zeitreihe","primary-link"));
   }
   const overview = el("section",undefined,"plan-overview");
-  overview.append(el("h2","Dein Lernrhythmus"),el("p",`${completed.size} von ${vorlesungen.length} Etappen selbst bearbeitet.`));
+  overview.append(el("h2","Dein Lernrhythmus"),el("p","{fertig} von {gesamt} Etappen selbst bearbeitet.",undefined,{fertig:completed.size,gesamt:vorlesungen.length}));
   const progress = el("progress"); progress.max = vorlesungen.length; progress.value = completed.size;
-  progress.setAttribute("aria-label","Als selbst bearbeitet markierte Etappen");
-  overview.append(progress,el("p",due.length ? `${due.length} ${due.length === 1 ? "Idee ist" : "Ideen sind"} zum Wiederholen vorgemerkt.` : "Heute ist keine Wiederholung fällig.","review-count"),actionLink(due.length ? "Wiederholung starten" : "Wiederholungsplan ansehen","#wiederholen","secondary-link"),el("p","Eine richtige Auswahl plant eine Wiederholung ein. Das Häkchen setzt du nach dem eigenen Programmieren selbst.","example-note"));
+  progress.setAttribute("aria-label",t("Als selbst bearbeitet markierte Etappen"));
+  overview.append(progress,el("p",due.length ? due.length === 1 ? "{anzahl} Idee ist zum Wiederholen vorgemerkt." : "{anzahl} Ideen sind zum Wiederholen vorgemerkt." : "Heute ist keine Wiederholung fällig.","review-count",{anzahl:due.length}),actionLink(due.length ? "Wiederholung starten" : "Wiederholungsplan ansehen","#wiederholen","secondary-link"),el("p","Eine richtige Auswahl plant eine Wiederholung ein. Das Häkchen setzt du nach dem eigenen Programmieren selbst.","example-note"));
   grid.append(current,overview); article.append(grid);
   const setup = el("div",undefined,"plan-setup");
   setup.append(el("strong","Zum ersten Mal hier?"),el("p","Richte zuerst deine Werkzeuge ein. Danach beginnst du mit Etappe 1."),actionLink("Python einrichten","#python-setup"),actionLink("VS Code einrichten","#vscode-setup"));
@@ -333,12 +419,12 @@ function renderLearningPlan() {
   const path = el("ol",undefined,"plan-path");
   for (const [index,lesson] of vorlesungen.entries()) {
     const row = el("li");
-    const link = actionLink("",`#${lesson.id}`);
-    link.append(el("span",String(index + 1).padStart(2,"0"),"plan-number"),el("span",lesson.title),el("small",completed.has(lesson.id) ? "Selbst bearbeitet" : lesson === next ? "Nächste Etappe" : "Offen"));
+    const link = actionLink(undefined,`#${lesson.id}`);
+    link.append(de("span",String(index + 1).padStart(2,"0"),"plan-number"),de("span",lesson.title),el("small",completed.has(lesson.id) ? "Selbst bearbeitet" : lesson === next ? "Nächste Etappe" : "Offen"));
     if (lesson === next) link.classList.add("plan-next");
     row.append(link); path.append(row);
   }
-  article.append(path,actionLink("Vorlesungsdetails und Originale ansehen","#vorlesungen"),el("p",`${reviewStorageNote()} ${progressPersistent ? "Bearbeitungsmarken bleiben in diesem Browser." : "Bearbeitungsmarken gelten nur für diese Sitzung."} Keine Synchronisation und keine Kompetenzmessung.`,"example-note"));
+  article.append(path,actionLink("Vorlesungsdetails und Originale ansehen","#vorlesungen"),shown("p",`${reviewStorageNote()} ${t(progressPersistent ? "Bearbeitungsmarken bleiben in diesem Browser." : "Bearbeitungsmarken gelten nur für diese Sitzung.")} ${t("Keine Synchronisation und keine Kompetenzmessung.")}`,"example-note"));
 }
 
 function renderReview(queue = dueReviews(), index = 0) {
@@ -347,10 +433,10 @@ function renderReview(queue = dueReviews(), index = 0) {
   if (!lesson) {
     article.append(el("p",queue.length ? "Deine Runde ist beendet. Ideen mit falscher Antwort bleiben fällig; du kannst sie später noch einmal üben." : "Gerade ist nichts fällig. Bearbeite eine Etappe und prüfe deine Idee. Eine richtige Antwort plant die nächste Wiederholung ein.","intro"));
     const upcoming = vorlesungen.filter(item => reviews.get(item.id)?.due > Date.now()).sort((a,b) => reviews.get(a.id).due - reviews.get(b.id).due);
-    if (upcoming.length) article.append(el("p",`Nächster Termin: ${new Date(reviews.get(upcoming[0].id).due).toLocaleString("de-DE",{dateStyle:"medium",timeStyle:"short"})} · ${upcoming[0].title}`));
+    if (upcoming.length) article.append(el("p","Nächster Termin: {datum} · {titel}",undefined,{datum:formatDate(reviews.get(upcoming[0].id).due),titel:upcoming[0].title}));
     article.append(actionLink("Zum Lernplan","#lernplan","primary-link"));
   } else {
-    article.append(el("p",`Idee ${index + 1} von ${queue.length} · ${lesson.title}`,"intro"),el("p","Schreibe zuerst deine Erklärung und die Miniübung in deinen Editor oder auf Papier. Öffne die Selbstkontrolle erst nach deinem Versuch."));
+    article.append(el("p","Idee {nummer} von {gesamt} · {titel}","intro",{nummer:index + 1,gesamt:queue.length,titel:lesson.title}),el("p","Schreibe zuerst deine Erklärung und die Miniübung in deinen Editor oder auf Papier. Öffne die Selbstkontrolle erst nach deinem Versuch."));
     const prompt = el("section",undefined,"recall-prompt");
     prompt.append(el("h2","Erklären und selbst schreiben"),el("p",lesson.investigate),el("p",lesson.make));
     const check = el("details");
@@ -363,7 +449,7 @@ function renderReview(queue = dueReviews(), index = 0) {
     next.addEventListener("click",() => { renderReview(queue,index + 1); article.focus({preventScroll:true}); article.scrollIntoView({block:"start"}); });
     article.append(next,actionLink("Lektion nachlesen",`#${lesson.id}`,"secondary-link"));
   }
-  article.append(el("p",`Die Auswahlfrage plant den Termin; deine selbst geschriebene Lösung wird hier nicht bewertet. Richtige Antworten verlängern fällige Abstände auf ${reviewIntervals.join(", ")} Tage. Fehler bleiben fällig. ${reviewStorageNote()}`,"example-note"));
+  article.append(shown("p",`${t("Die Auswahlfrage plant den Termin; deine selbst geschriebene Lösung wird hier nicht bewertet. Richtige Antworten verlängern fällige Abstände auf {tage} Tage. Fehler bleiben fällig.",{tage:reviewIntervals.join(", ")})} ${reviewStorageNote()}`,"example-note"));
 }
 
 function renderStart() {
@@ -372,7 +458,7 @@ function renderStart() {
   image.src = "assets/lernraum.jpg"; image.alt = ""; image.width = 1600; image.height = 900;
   const intro = el("div",undefined,"hero-copy");
   const title = el("h1");
-  title.append(document.createTextNode("Dein erster Schritt "),el("span","ins Programmieren."));
+  title.append(el("span","Dein erster Schritt","hero-lead"),document.createTextNode(" "),el("span","ins Programmieren."));
   intro.append(el("p","Willkommen in deinem Lernraum","kind"),title,el("p","Du musst noch nichts können. Entdecke Python, verstehe deine Vorlesung und schreibe Schritt für Schritt deinen eigenen Code.","intro"));
   const actions = el("div",undefined,"hero-actions");
   actions.append(actionLink("Meinen Lernplan öffnen","#lernplan","primary-link"),actionLink("Zur aktuellen Übung","#uebung","secondary-link"));
@@ -388,20 +474,20 @@ function renderStart() {
   const entries = el("section",undefined,"home-section");
   const entryTitle = el("h2");
   const inline = el("span",undefined,"inline-image"); inline.setAttribute("aria-hidden","true");
-  entryTitle.append(document.createTextNode("Dein Studium. "),inline,document.createTextNode(" Dein Einstieg."));
+  entryTitle.append(el("span","Dein Studium."),document.createTextNode(" "),inline,document.createTextNode(" "),el("span","Dein Einstieg."));
   entries.append(entryTitle,el("p","Eine Frage nachschlagen oder ganz von vorne beginnen. Hier findest du deinen nächsten Schritt.","section-intro"));
   const cards = el("div",undefined,"entry-grid");
   for (const [title,description,href,visual] of [
-    ["Vorlesungen verstehen",`${vorlesungen.length} übersichtliche Etappen in der Reihenfolge deiner Unterlagen.`,"#vorlesungen","Python → NumPy → Pandas"],
-    ["Aktuelle Übung bearbeiten","CSV einlesen, Daten filtern und auswerten – mit Erklärungen und gestuften Lösungen.","#uebung","Datei. Daten. Durchblick."],
-    ["Befehle nachschlagen","Beschreibung, Beispiel und passende Datentypen auf einen Blick.","#befehle","print(\"Jetzt verstehe ich’s.\")"],
-    ["Python einrichten","Die passende Anleitung für deinen PC oder dein Tablet.","#python-setup",".py"],
-    ["VS Code einrichten","Editor installieren, Python auswählen und die erste Datei starten.","#vscode-setup","{ }" ]
+    ["Vorlesungen verstehen",t("{anzahl} übersichtliche Etappen in der Reihenfolge deiner Unterlagen.",{anzahl:vorlesungen.length}),"#vorlesungen","Python → NumPy → Pandas"],
+    ["Aktuelle Übung bearbeiten",t("CSV einlesen, Daten filtern und auswerten – mit Erklärungen und gestuften Lösungen."),"#uebung",t("Datei. Daten. Durchblick.")],
+    ["Befehle nachschlagen",t("Beschreibung, Beispiel und passende Datentypen auf einen Blick."),"#befehle","print(\"Jetzt verstehe ich’s.\")"],
+    ["Python einrichten",t("Die passende Anleitung für deinen PC oder dein Tablet."),"#python-setup",".py"],
+    ["VS Code einrichten",t("Editor installieren, Python auswählen und die erste Datei starten."),"#vscode-setup","{ }" ]
   ]) {
-    const link = actionLink("",href,"entry-card");
-    const arrow = el("span","↗","card-arrow"); arrow.setAttribute("aria-hidden","true");
-    const art = el("span",visual,"card-visual"); art.setAttribute("aria-hidden","true");
-    link.append(art,el("h3",title),el("p",description),arrow); cards.append(link);
+    const link = actionLink(undefined,href,"entry-card");
+    const arrow = de("span","↗","card-arrow"); arrow.setAttribute("aria-hidden","true");
+    const art = de("span",visual,"card-visual"); art.setAttribute("aria-hidden","true");
+    link.append(art,el("h3",title),shown("p",description),arrow); cards.append(link);
   }
   entries.append(cards); article.append(entries);
   const tryout = el("section",undefined,"home-section tryout");
@@ -409,34 +495,32 @@ function renderStart() {
   invitation.append(el("p","Lernen beginnt mit Neugier.","kind"),el("h2","Du kannst mehr, als du gerade denkst."),el("p","Du brauchst kein Vorwissen für deinen ersten Versuch. Lies diese zwei Zeilen und entscheide: Was gibt das Programm aus?"));
   const rhythm = el("div",undefined,"learning-rhythm");
   rhythm.append(el("h3","Kleine Schritte. Echtes Verstehen."));
-  const tip = el("p"); tip.setAttribute("role","status"); tip.setAttribute("aria-live","polite");
   const tips = ["Vorhersagen: Formuliere zuerst deine eigene Vermutung. Eine falsche Idee ist ein guter Anfang.","Ausprobieren: Starte das Beispiel in deinem Editor. Vergleiche das Ergebnis mit deiner Vermutung.","Verändern: Ändere einen Wert. Erkläre, warum sich die Ausgabe verändert, und schreibe dann selbst Code."];
   let tipIndex = 0;
-  tip.textContent = tips[0];
+  const tip = el("p",tips[0]); tip.setAttribute("role","status"); tip.setAttribute("aria-live","polite");
   const controls = el("div",undefined,"rhythm-controls");
-  const counter = el("span","1 / 3");
+  const counter = de("span","1 / 3");
   for (const [label,direction,symbol] of [["Vorheriger Lerntipp",-1,"←"],["Nächster Lerntipp",1,"→"]]) {
-    const button = el("button",symbol); button.type = "button"; button.setAttribute("aria-label",label);
-    button.addEventListener("click",() => { tipIndex = (tipIndex + direction + tips.length) % tips.length; tip.textContent = tips[tipIndex]; counter.textContent = `${tipIndex + 1} / ${tips.length}`; });
+    const button = de("button",symbol); button.type = "button"; button.setAttribute("aria-label",t(label));
+    button.addEventListener("click",() => { tipIndex = (tipIndex + direction + tips.length) % tips.length; setText(tip,t(tips[tipIndex]),language !== "de"); counter.textContent = `${tipIndex + 1} / ${tips.length}`; });
     controls.append(button);
   }
   controls.prepend(counter); rhythm.append(tip,controls); invitation.append(rhythm);
   const demo = el("div",undefined,"first-code");
   demo.append(el("p","Ein kleines Programm. Dein Anfang."));
-  const pre = el("pre");
-  pre.tabIndex = 0;
-  pre.append(el("code",'name = "Du"\nprint(f"{name} kannst Python lernen!")'));
-  demo.append(pre,el("p","Was erscheint in der Ausgabe?"));
+  demo.append(codeBox('name = "Du"\nprint(f"{name} kannst Python lernen!")'),el("p","Was erscheint in der Ausgabe?"));
   const feedback = el("p","Wähle deine Vermutung.","quiz-feedback");
   feedback.setAttribute("role","status");
   feedback.setAttribute("aria-atomic","true");
+  // Die Antwortmöglichkeiten sind Programmausgaben und bleiben deshalb Deutsch.
   for (const [label,correct] of [["Du kannst Python lernen!",true],["{name} kannst Python lernen!",false]]) {
-    const button = el("button",label,"prediction");
+    const button = de("button",label,"prediction");
     button.type = "button";
     button.setAttribute("aria-pressed","false");
     button.addEventListener("click",() => {
       demo.querySelectorAll(".prediction").forEach(option => option.setAttribute("aria-pressed",String(option === button)));
-      feedback.textContent = correct ? "Richtig! Der f-String setzt den Wert von name ein: Du." : "Fast! Das f vor dem Text ersetzt {name} durch den gespeicherten Wert. Versuche es noch einmal.";
+      const message = correct ? "Richtig! Der f-String setzt den Wert von name ein: Du." : "Fast! Das f vor dem Text ersetzt {name} durch den gespeicherten Wert. Versuche es noch einmal.";
+      setText(feedback,translation(message) ?? message,translation(message) !== undefined);
       feedback.dataset.result = correct ? "correct" : "retry";
     });
     demo.append(button);
@@ -489,46 +573,47 @@ function animateStart() {
   });
 }
 
-function actionLink(title,href,className) {
-  const link = el("a",title,className); link.href = href; return link;
+function actionLink(title,href,className,values) {
+  const link = el("a",title,className,values); link.href = href; return link;
 }
 
 function renderLectures() {
   article.replaceChildren(el("p","Dein Kursweg","kind"),el("h1","Eine Idee nach der anderen."),el("p","Beginne oben. Jede Etappe erklärt die Begriffe, zeigt ein kleines Beispiel und endet mit einer eigenen Aufgabe.","intro"));
   article.append(actionLink("Zuerst Python und VS Code einrichten","#python-setup","secondary-link"));
-  article.append(el("p",`${completed.size} von ${vorlesungen.length} Etappen als selbst bearbeitet markiert. Die Marken sind deine Selbsteinschätzung.`,"learning-goal"));
+  article.append(el("p","{fertig} von {gesamt} Etappen als selbst bearbeitet markiert. Die Marken sind deine Selbsteinschätzung.","learning-goal",{fertig:completed.size,gesamt:vorlesungen.length}));
   const list = el("ol",undefined,"course-list");
   for (const [index,lesson] of vorlesungen.entries()) {
     const li = el("li");
-    const link = actionLink("",`#${lesson.id}`,"course-link");
+    const link = actionLink(undefined,`#${lesson.id}`,"course-link");
     const text = el("div");
-    text.append(el("small",lesson.sourceTitle || `Vorlesung ${lesson.origin} · PDF-S. ${lesson.pages}`),el("h2",lesson.title),el("p",lesson.summary));
+    text.append(de("small",quellen[lesson.sources[0]].title),de("h2",lesson.title),el("p",lesson.summary));
     if (completed.has(lesson.id)) text.append(el("strong","Als bearbeitet markiert","completion-status"));
-    link.append(el("span",String(index + 1).padStart(2,"0"),"lesson-number"),text); li.append(link); list.append(li);
+    link.append(de("span",String(index + 1).padStart(2,"0"),"lesson-number"),text); li.append(link); list.append(li);
   }
   article.append(list);
   article.append(actionLink("Jetzt das eigene Mini-Projekt bearbeiten","#praxis-zeitreihe","primary-link"),el("p","Die Lerntexte sind eine Begleitung. Prüfe im Abdeckungsplan, welche Originalaufgaben noch selbst zu bearbeiten sind."),actionLink("Abdeckungsplan öffnen","#abdeckung"));
   section("Deine vollständigen Vorlesungsunterlagen");
   article.append(el("p","Die Lerntexte fassen die fachlichen Themen zusammen. Organisation, Prüfungsinformationen und die vollständigen Originalbeispiele findest du in den PDFs. Die beiden Analyse-PDFs enthalten denselben Inhalt und werden hier einmal geführt."));
+  // Quellentitel bleiben Deutsch wie die Originaldateien.
   const originals = new Map(vorlesungen.map(lesson => [quellen[lesson.sources[0]].href.split("#")[0],lesson.sourceTitle || `Vorlesung ${lesson.origin} · vollständiges PDF`]));
   originals.set(quellen.analyse.href.split("#")[0],"Analysebeispiel · vollständiges PDF");
   for (const [href,title] of originals) {
-    const p = el("p"); p.append(actionLink(title,href)); article.append(p);
+    const p = el("p"); const link = de("a",title); link.href = href; p.append(link); article.append(p);
   }
 }
 
 function renderCoverage() {
   const total = abdeckung.reduce((sum,row) => sum + row.tasks.length,0);
   const guided = inhalte.filter(item => item.kind === "Übung" && abdeckung.some(row => row.tasks.includes(item.number))).length;
-  article.replaceChildren(el("p","Lerntexte und Originalaufgaben unterscheiden","kind"),el("h1","Was ist bereits abgedeckt?"),el("p",`${guided} von ${total} Originalaufgaben im Übungsskript sind mit gestuften Hinweisen und Musterlösung begleitet. Erklärte Begriffe und kleine Beispiele sind noch kein Nachweis, dass du alle Originalaufgaben selbst lösen kannst.`,"intro"));
+  article.replaceChildren(el("p","Lerntexte und Originalaufgaben unterscheiden","kind"),el("h1","Was ist bereits abgedeckt?"),el("p","{begleitet} von {gesamt} Originalaufgaben im Übungsskript sind mit gestuften Hinweisen und Musterlösung begleitet. Erklärte Begriffe und kleine Beispiele sind noch kein Nachweis, dass du alle Originalaufgaben selbst lösen kannst.","intro",{begleitet:guided,gesamt:total}));
   article.append(el("p","Lies den passenden Lerntext, löse danach die Originalaufgabe ohne Vorlage und prüfe deinen Code. Die Bearbeitungsmarken messen keine Kompetenz. Das eigene Mini-Projekt ist eine Ergänzung mit synthetischen Daten."));
   for (const row of abdeckung) {
     const detail = el("details");
     const count = inhalte.filter(item => item.kind === "Übung" && row.tasks.includes(item.number)).length;
-    detail.append(el("summary",`${row.title} · ${count}/${row.tasks.length} Aufgaben geführt`),el("p",`Originalaufgaben: ${row.tasks.join(", ")}. ${row.gap}`));
+    detail.append(el("summary","{titel} · {anzahl}/{gesamt} Aufgaben geführt",undefined,{titel:row.title,anzahl:count,gesamt:row.tasks.length}),el("p","Originalaufgaben: {nummern}. {luecke}",undefined,{nummern:row.tasks.join(", "),luecke:t(row.gap)}));
     const links = el("ul",undefined,"links");
-    row.lessons.forEach(id => { const li = el("li"); li.append(actionLink(byId.get(id).title,`#${id}`)); links.append(li); });
-    detail.append(links,actionLink(`Original öffnen · PDF-S. ${row.page}`,`../Referenz/Pflicht Übungen/${row.sourceFile || "CuD_Uebung 01.pdf"}#page=${row.page}`));
+    row.lessons.forEach(id => { const li = el("li"); const link = de("a",byId.get(id).title); link.href = `#${id}`; li.append(link); links.append(li); });
+    detail.append(links,actionLink("Original öffnen · PDF-S. {seite}",`../Referenz/Pflicht Übungen/${row.sourceFile || "CuD_Uebung 01.pdf"}#page=${row.page}`,undefined,{seite:row.page}));
     article.append(detail);
   }
   section("Vorlesungen und weitere Referenzdateien");
@@ -546,7 +631,9 @@ function renderExercise() {
   textList("So nutzt du die Begleitung",["Lies das Ziel und öffne die benötigten Befehle.","Arbeite einen Schritt ab und führe deinen Code selbst aus.","Öffne bei Bedarf zuerst Hinweis 1, dann den nächsten Hinweis.","Prüfe das Ergebnis. Die erklärte Musterlösung kannst du getrennt öffnen.","Schließe die Lösung und schreibe den Ablauf mit eigenen Worten auf."],true);
   section("Alle Aufgaben des Übungsskripts");
   for (const row of abdeckung) {
-    itemLinks(row.title,row.tasks.map(number => `aufgabe-${number.replace(".","-")}`));
+    // Abschnittstitel des Übungsskripts bleiben Deutsch.
+    article.append(de("h2",row.title));
+    itemLinks(undefined,row.tasks.map(number => `aufgabe-${number.replace(".","-")}`));
   }
   itemLinks("Live-Übungen aus Vorlesung 003",["live-003-10","live-003-18","live-003-26","live-003-31"]);
   article.append(el("div","Alle 31 Aufgaben des vorhandenen Übungsskripts sind begleitet. Drei Live-Übungen kannst du mit der herunterladbaren live-mini.csv bearbeiten. Für Originalergebnisse bleibt bb12024.csv erforderlich.","notice"));
@@ -556,9 +643,9 @@ function renderCommands() {
   article.replaceChildren(el("p","Dein Nachschlagewerk","kind"),el("h1","Welcher Befehl passt wozu?"),el("p","Alle Befehlsbausteine und die ergänzten Werkzeuge der Lektionen: mit Beschreibung, Python-Beispiel und Hinweisen zum Zusammenspiel.","intro"));
   const label = el("label","Befehl, Beschreibung oder Kontext suchen","table-label");
   label.htmlFor = "befehl-suche";
-  const input = el("input"); input.id = "befehl-suche"; input.type = "search"; input.placeholder = "Zum Beispiel: Liste, mean, Zeitindex …";
+  const input = el("input"); input.id = "befehl-suche"; input.type = "search"; input.placeholder = t("Zum Beispiel: {beispiele}",{beispiele:"Liste, mean, Zeitindex …"});
   const count = el("p",undefined,"example-note"); count.setAttribute("role","status");
-  const wrap = el("div",undefined,"table-scroll"); wrap.tabIndex = 0; wrap.setAttribute("role","region"); wrap.setAttribute("aria-label","Befehlsübersicht, bei Bedarf seitlich scrollen");
+  const wrap = el("div",undefined,"table-scroll"); wrap.tabIndex = 0; wrap.setAttribute("role","region"); wrap.setAttribute("aria-label",t("Befehlsübersicht, bei Bedarf seitlich scrollen"));
   const table = el("table"); table.append(el("caption","Python-Befehle, Methoden und Sprachbausteine"));
   const head = el("thead"); const tr = el("tr");
   for (const text of ["Befehl / Baustein","Beschreibung","Beispiel","Passt zu / Voraussetzungen"]) { const th = el("th",text); th.scope = "col"; tr.append(th); }
@@ -567,15 +654,16 @@ function renderCommands() {
     ...inhalte.filter(item => item.kind === "Befehl & Begriff").map(item => [item.title,item.summary,item.code,befehlsKontexte[item.id],item.id]),
     ...weitereBefehle
   ];
+  // Die Suche bleibt Deutsch und durchsucht die deutschen Originaltexte.
   function filter() {
     const tokens = normalize(input.value).split(/\s+/).filter(Boolean);
     const matches = rows.filter(row => tokens.every(token => normalize(row.slice(0,4).join(" ")).includes(token)));
-    count.textContent = `${matches.length} von ${rows.length} Einträgen${matches.length ? "" : ". Versuche Liste, CSV oder Pandas."}`;
+    setText(count,t(matches.length ? "{treffer} von {gesamt} Einträgen" : "{treffer} von {gesamt} Einträgen. Versuche Liste, CSV oder Pandas.",{treffer:matches.length,gesamt:rows.length}),language !== "de");
     body.replaceChildren();
     for (const [title,description,code,context,id] of matches) {
       const row = el("tr");
-      const cell = el("td"); cell.append(actionLink(title,`#${id}`));
-      const example = el("td"); const pre = el("pre"); pre.append(el("code",code)); example.append(pre);
+      const cell = el("td"); const link = de("a",title); link.href = `#${id}`; cell.append(link);
+      const example = el("td"); example.append(codeBox(code));
       row.append(cell,el("td",description),example,el("td",context)); body.append(row);
     }
   }
@@ -591,8 +679,8 @@ function renderConcept() {
   section("Mit Abstand wiederholen");
   article.append(el("p","Erkläre am nächsten Tag ohne Vorlage, was du gelernt hast. Schreibe die Miniübung erneut. Prüfe nach einer Woche, ob du die Idee auch bei anderen Daten anwenden kannst. Nur eine Lösung gelesen zu haben ist noch kein Nachweis, dass du sie selbst schreiben kannst."));
   section("Warum dieser Aufbau?");
-  const p = el("p","Die fünf Schritte folgen PRIMM: Predict, Run, Investigate, Modify, Make. Für dieses Werkzeug kombinieren wir sie mit kleinen Lernetappen, gestuften Hilfen und Wiederholung. ");
-  p.append(actionLink("PRIMM bei der Raspberry Pi Foundation","https://www.raspberrypi.org/blog/using-primm-to-teach-programming-a-new-short-course-for-educators/"));
+  const p = el("p");
+  p.append(el("span","Die fünf Schritte folgen PRIMM: Predict, Run, Investigate, Modify, Make. Für dieses Werkzeug kombinieren wir sie mit kleinen Lernetappen, gestuften Hilfen und Wiederholung."),document.createTextNode(" "),actionLink("PRIMM bei der Raspberry Pi Foundation","https://www.raspberrypi.org/blog/using-primm-to-teach-programming-a-new-short-course-for-educators/"));
   article.append(p,el("p","Die Auswahl ist ein begründetes Lernkonzept. Ein Gebrauchstest mit Studienanfängern und der Nachweis des Lernnutzens stehen noch aus.","example-note"),actionLink("Mit der ersten Lektion anfangen","#lektion-1","primary-link"));
 }
 
@@ -600,13 +688,14 @@ function selectedId() { return location.hash.slice(1); }
 
 function renderResults() {
   const matches = findItems(searchInput.value,typeInput.value,topicInput.value);
-  document.querySelector("#trefferzahl").textContent = `${matches.length} ${matches.length === 1 ? "Inhalt" : "Inhalte"}${searchInput.value ? ` für „${searchInput.value}“` : " im Übungsblock"}`;
+  const count = searchInput.value ? matches.length === 1 ? "{anzahl} Inhalt für „{suche}“" : "{anzahl} Inhalte für „{suche}“" : matches.length === 1 ? "{anzahl} Inhalt im Übungsblock" : "{anzahl} Inhalte im Übungsblock";
+  setText(document.querySelector("#trefferzahl"),t(count,{anzahl:matches.length,suche:searchInput.value}),translation(count) !== undefined);
   results.replaceChildren();
   matches.forEach(item => {
     const link = el("a",undefined,"result");
     link.href = `#${item.id}`;
     if (selectedId() === item.id) link.setAttribute("aria-current","page");
-    link.append(el("small",`${item.kind} / ${item.topic}`),el("strong",item.title),el("p",item.summary));
+    link.append(kindLabel(item,"small"),de("strong",item.title),summaryNode(item));
     results.append(link);
   });
   if (!matches.length) results.append(el("p","Kein Treffer. Versuche CSV, Mittelwert, 6.2, Pandas oder ValueError. Setze auch die Filter zurück.","empty"));
@@ -631,7 +720,7 @@ function route(focus = false) {
   else article.replaceChildren(el("h1","Inhalt nicht gefunden"),el("p","Wähle eine Übung oder suche oben nach einem Befehl."));
   document.querySelector(".learning-area").classList.toggle("overview",!item || item.kind === "Vorlesung" || item.kind === "Einrichtung");
   document.title = `${article.querySelector("h1").textContent} · Lernwerkzeug`;
-  document.querySelectorAll("nav a").forEach(link => {
+  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     if (link.hash === location.hash || ((!id || id === "start") && link.hash === "#start")) link.setAttribute("aria-current","page");
     else link.removeAttribute("aria-current");
   });
@@ -648,8 +737,75 @@ function setNavigation(open) {
   document.querySelector(".sidebar").classList.toggle("nav-open",open);
   const button = document.querySelector("#nav-toggle");
   button.setAttribute("aria-expanded",String(open));
-  button.textContent = open ? "Lernnavigation schließen" : "Lernnavigation öffnen";
+  const label = open ? "Lernnavigation schließen" : "Lernnavigation öffnen";
+  setText(button,t(label),translation(label) !== undefined);
 }
+
+function applyLanguage() {
+  for (const node of document.querySelectorAll("[data-i18n]")) {
+    node.dataset.i18n ||= node.textContent;
+    const translated = translation(node.dataset.i18n);
+    setText(node,translated ?? node.dataset.i18n,translated !== undefined);
+  }
+  for (const node of document.querySelectorAll("[data-i18n-label]")) node.setAttribute("aria-label",t(node.dataset.i18nLabel));
+  [...topicInput.options].slice(1).forEach(option => setText(option,t(option.value),translation(option.value) !== undefined));
+  document.querySelector("#sprachhinweis").hidden = language === "de";
+  setNavigation(document.querySelector("#nav-toggle").getAttribute("aria-expanded") === "true");
+}
+
+// Übersetzungen werden erst bei Bedarf als Skript nachgeladen; das funktioniert auch über file://.
+function loadLanguage(code) {
+  if (code === "de" || uebersetzungen[code]) return Promise.resolve();
+  return new Promise(resolve => {
+    const script = document.createElement("script");
+    script.src = `uebersetzung-${code}.js`;
+    script.onload = script.onerror = resolve;
+    document.head.append(script);
+  });
+}
+
+const languageSelect = document.querySelector("#sprache");
+for (const [code,name] of Object.entries(sprachen)) {
+  const option = de("option",name); option.value = code; option.lang = code; languageSelect.append(option);
+}
+languageSelect.value = language;
+languageSelect.addEventListener("change",async () => {
+  const chosen = languageSelect.value;
+  try { localStorage.setItem(languageKey,chosen); } catch { /* Auswahl gilt dann nur für diese Sitzung. */ }
+  await loadLanguage(chosen);
+  if (languageSelect.value !== chosen) return;
+  language = chosen;
+  applyLanguage();
+  route();
+});
+
+const themeButton = document.querySelector("#design");
+function syncThemeButton() { themeButton.setAttribute("aria-pressed",String(document.documentElement.dataset.theme === "dark")); }
+themeButton.addEventListener("click",() => {
+  const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = theme;
+  try { localStorage.setItem(themeKey,theme); } catch { /* Design gilt dann nur für diese Sitzung. */ }
+  syncThemeButton();
+});
+syncThemeButton();
+
+document.addEventListener("click",async event => {
+  const button = event.target.closest(".copy-code");
+  if (!button) return;
+  const code = button.closest(".code-box").querySelector("code");
+  let message = "Kopiert";
+  try { await navigator.clipboard.writeText(code.textContent); }
+  catch {
+    // Datei-Aufrufe erlauben die Clipboard-API nicht überall; dann markieren und klassisch kopieren.
+    const range = document.createRange(); range.selectNodeContents(code);
+    getSelection().removeAllRanges(); getSelection().addRange(range);
+    if (!document.execCommand("copy")) message = "Markiert – mit Strg+C kopieren";
+  }
+  button.classList.add("copied"); button.title = t(message);
+  button.parentElement.querySelector("[role=status]").textContent = t(message);
+  clearTimeout(button.resetTimer);
+  button.resetTimer = setTimeout(() => { button.classList.remove("copied"); button.title = t("Code kopieren"); },2000);
+});
 
 document.querySelector("#nav-toggle").addEventListener("click",() => {
   setNavigation(document.querySelector("#nav-toggle").getAttribute("aria-expanded") !== "true");
@@ -682,4 +838,4 @@ document.addEventListener("click",event => {
   if (link.hash === location.hash) route(true);
 });
 window.addEventListener("hashchange",() => route(true));
-route();
+loadLanguage(language).then(() => { applyLanguage(); route(); });

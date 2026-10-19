@@ -7,6 +7,7 @@ const vm = require("node:vm");
 const crypto = require("node:crypto");
 const {spawnSync} = require("node:child_process");
 const {pathToFileURL,fileURLToPath} = require("node:url");
+const {uebersetzbareTexte} = require("./uebersetzbar.cjs");
 const root = __dirname;
 const output = path.join(root,"pruefung");
 const testCache = path.join(root,"../.upload-work/matplotlib");
@@ -17,6 +18,33 @@ const context = vm.createContext({});
 vm.runInContext(fs.readFileSync(path.join(root,"inhalte.js"),"utf8"),context);
 vm.runInContext(fs.readFileSync(path.join(root,"kurs.js"),"utf8"),context);
 vm.runInContext(fs.readFileSync(path.join(root,"lernstand.js"),"utf8"),context);
+vm.runInContext(fs.readFileSync(path.join(root,"sprachen.js"),"utf8"),context);
+// Übersetzungen: Schlüssel ist der deutsche Text. Geänderter deutscher Text verwaist seinen Eintrag und fällt hier auf.
+const translatable = uebersetzbareTexte();
+const languages = JSON.parse(vm.runInContext("JSON.stringify({codes:uebersetzungsSprachen,complete:vollstaendigeSprachen,glossary:Object.keys(glossar),loanwords:lehnwoerter,names:Object.keys(sprachen)})",context));
+assert.deepEqual(languages.names,["de",...languages.codes],"Sprachliste");
+const placeholders = text => [...text.matchAll(/\{(\w+)\}/g)].map(match => match[1]).sort().join();
+// Glossarbegriff im deutschen Abschnitt, auch gebeugt (Liste/Listen, Ausreißer/Ausreißern); Komposita zählen nicht.
+// „Vergleiche“ am Satzanfang ist meist der Imperativ, daher dort nur die Genitivform.
+const glossaryUse = languages.glossary.map(term => [term,new RegExp(`(?<![\\p{L}-])${term.replace(/^(\p{Lu})(\S*) /u,(match,first,rest) => `[${first}${first.toLowerCase()}]${rest}n? `)}${term === "Vergleich" ? "s?" : "(?:e|en|n|s|es)?"}(?![\\p{L}])`,"u")]);
+for (const code of languages.codes) {
+  const file = path.join(root,`uebersetzung-${code}.js`);
+  assert(fs.existsSync(file),`uebersetzung-${code}.js fehlt`);
+  vm.runInContext(fs.readFileSync(file,"utf8"),context);
+  const entries = JSON.parse(vm.runInContext(`JSON.stringify(uebersetzungen[${JSON.stringify(code)}])`,context));
+  for (const [german,text] of Object.entries(entries)) {
+    assert(translatable.has(german),`${code}: verwaister Eintrag ohne deutschen Ausgangstext: ${german}`);
+    assert(typeof text === "string" && text.trim(),`${code}: leere Übersetzung: ${german}`);
+    assert.equal(placeholders(text),placeholders(german),`${code}: Platzhalter weichen ab: ${german}`);
+  }
+  // Vollständigkeit und Glossarregel gelten für fertig übersetzte Sprachen; die übrigen zeigen fehlende Texte auf Deutsch.
+  if (!languages.complete.includes(code)) continue;
+  for (const german of translatable.keys()) {
+    assert(Object.hasOwn(entries,german),`${code}: Übersetzung fehlt: ${german}`);
+    for (const [term,pattern] of glossaryUse) if (pattern.test(german)) assert(entries[german].includes(`(${term})`),`${code}: Glossarbegriff „${term}“ fehlt in Klammern: ${german}`);
+    for (const word of languages.loanwords) assert(!entries[german].includes(`(${word})`),`${code}: Lehnwort „${word}“ ohne Klammer schreiben: ${german}`);
+  }
+}
 // Terminlogik unabhängig vom Browser und von der Uhr des Prüfrechners prüfen.
 assert(vm.runInContext(`(() => {
   const day = 86400000, now = 100 * day;
@@ -538,6 +566,75 @@ async function browserTests() {
         await page.locator(".lesson-quiz").screenshot({path:path.join(output,"lerncheck-mobil.png"),animations:"disabled"});
       }
     }
+    // Sprache: alles außer Titeln, Aufgabenstellungen und Code übersetzt; Fachbegriffe als deutsche Sprachinsel; Wahl bleibt nach Neuladen.
+    await navigate("aufgabe-6-1");
+    const germanCode = await page.locator("#inhalt .solution code").textContent();
+    const germanSummary = await page.locator("#inhalt .intro").innerText();
+    await page.locator("#sprache").selectOption("en");
+    await page.waitForFunction(() => document.querySelector('.main-nav a[href="#lernplan"]').textContent === "My learning plan");
+    assert.equal(await page.locator('.main-nav a[href="#lernplan"]').getAttribute("lang"),"en");
+    assert.equal(await page.locator("#inhalt h1").innerText(),"6.1 · CSV einlesen");
+    assert.equal(await page.locator("#inhalt .intro").innerText(),germanSummary,"Auftragstext bleibt Deutsch");
+    assert.equal(await page.locator("#inhalt > p").nth(2).getAttribute("lang"),"en");
+    assert(await page.locator('#inhalt bdi[lang="de"]').count() > 0,"Glossarbegriffe als deutsche Sprachinsel");
+    assert.equal(await page.locator("#inhalt .solution code").textContent(),germanCode);
+    assert.equal(await page.locator("#sprachhinweis").isVisible(),true);
+    assert.equal(await page.locator("#sprachhinweis a").getAttribute("href"),"https://github.com/Sae-l/CuD/issues/new?template=feedback.md");
+    assert.equal(await page.locator("#inhalt .copy-code").first().getAttribute("aria-label"),"Copy code");
+    await page.reload(); await waitForItem("aufgabe-6-1");
+    assert.equal(await page.locator("#sprache").inputValue(),"en");
+    assert.equal(await page.locator('.main-nav a[href="#lernplan"]').innerText(),"My learning plan");
+    // In jeder vollständigen Sprache darf kein übersetzbarer deutscher Text mehr sichtbar sein.
+    const germanTexts = [...translatable.keys()];
+    for (const code of languages.complete) {
+      // Reiner Hash-Wechsel lädt nicht neu; die gespeicherte Sprache greift erst nach einem Neuladen.
+      await page.evaluate(code => localStorage.setItem("cud-sprache-v1",code),code);
+      await page.reload();
+      for (const id of ["","lernplan","wiederholen","vorlesungen","uebung","befehle","lernkonzept","abdeckung",...items.map(item => item.id)]) {
+        await page.goto(`${url}#${id}`);
+        // Die Übersetzung wird vor dem ersten Zeichnen geladen; sobald eine Überschrift steht, ist die Seite übersetzt.
+        await page.waitForFunction(code => document.querySelector("#inhalt h1") && document.querySelector('.main-nav a[href="#lernplan"]').lang === code,code);
+        const visible = await page.evaluate(([texts,code]) => {
+          const keys = new Set(texts);
+          // Glossarbegriffe und LTR-Inseln in RTL-Sätzen stehen absichtlich als <bdi> in der Übersetzung.
+          return [...document.querySelectorAll("body *:not(bdi)")].filter(node => node.closest("[lang]:not(html)")?.lang !== code && [...node.childNodes].some(child => child.nodeType === 3 && keys.has(child.textContent.trim()))).map(node => node.textContent.trim());
+        },[germanTexts,code]);
+        assert.deepEqual(visible,[],`${code}: unübersetzt sichtbar auf #${id}`);
+      }
+    }
+    // RTL: Code und deutsche Titel bleiben als LTR-Insel zusammen.
+    await page.evaluate(() => localStorage.setItem("cud-sprache-v1","ar"));
+    await page.goto(`${url}#aufgabe-6-2`);
+    await page.reload();
+    await page.waitForFunction(() => document.querySelector('.main-nav a[href="#lernplan"]').lang === "ar");
+    assert.equal(await page.locator('#inhalt .primary-link bdi[dir="ltr"]').first().textContent(),"6.3 · Mittelwert, Minimum und Maximum");
+    await page.evaluate(() => localStorage.setItem("cud-sprache-v1","en"));
+    await page.locator("#sprache").selectOption("ar");
+    await page.waitForFunction(() => document.querySelector('.main-nav a[href="#lernplan"]').textContent === "خطة تعلّمي");
+    assert.equal(await page.locator('.main-nav a[href="#lernplan"]').getAttribute("dir"),"rtl");
+    await page.locator("#sprache").selectOption("de");
+    assert.equal(await page.locator('.main-nav a[href="#lernplan"]').innerText(),"Mein Lernplan");
+    assert.equal(await page.locator('.main-nav a[href="#lernplan"]').getAttribute("lang"),null);
+    // Kopieren: Symbolknopf mit Namen und Statusmeldung; Codetext landet unverändert in der Zwischenablage.
+    await navigate("aufgabe-6-1");
+    await browserContext.grantPermissions(["clipboard-read","clipboard-write"]).catch(() => {});
+    await page.locator("#inhalt .solution summary").click();
+    const copyButton = page.locator("#inhalt .solution .copy-code");
+    assert.equal(await copyButton.getAttribute("aria-label"),"Code kopieren");
+    await copyButton.click();
+    await page.waitForFunction(() => /^(Kopiert|Markiert)/.test(document.querySelector("#inhalt .solution [role=status]").textContent));
+    assert.equal(await page.locator("#inhalt .copy-code").count(),await page.locator("#inhalt pre code").count());
+    // Design: Umschalter setzt und speichert das dunkle Design.
+    const theme = await page.locator("html").getAttribute("data-theme");
+    await page.locator("#design").click();
+    assert.notEqual(await page.locator("html").getAttribute("data-theme"),theme);
+    assert.equal(await page.evaluate(() => localStorage.getItem("cud-design-v1")),theme === "dark" ? "light" : "dark");
+    await page.reload(); await waitForItem("aufgabe-6-1");
+    assert.notEqual(await page.locator("html").getAttribute("data-theme"),theme);
+    await page.screenshot({path:path.join(output,"design-dunkel.png"),fullPage:false});
+    await page.evaluate(() => { localStorage.removeItem("cud-design-v1"); localStorage.removeItem("cud-sprache-v1"); });
+    // Footer: Kurs, Rückmeldung und Kontakt sind verlinkt.
+    for (const href of ["https://ilu.th-koeln.de/goto.php/crs/872821","https://github.com/Sae-l/CuD/issues/new/choose","https://www.instagram.com/s.hlllk/","https://www.linkedin.com/in/saeed-alhalak/"]) assert.equal(await page.locator(`footer a[href="${href}"]`).count(),1,href);
     await page.emulateMedia({reducedMotion:"reduce"});
     assert(await page.evaluate(() => matchMedia("(prefers-reduced-motion: reduce)").matches));
     assert.deepEqual(errors,[]);

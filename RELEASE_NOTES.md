@@ -1,3 +1,16 @@
+# CuD v0.4.0
+
+Mehrsprachige Ausgabe vom 19.10.2026: der Lernraum vollständig in sechs Sprachen.
+
+- **Sechs Sprachen:** Deutsch (Standard), Englisch, Arabisch, Türkisch, Persisch und Ukrainisch. Vollständig übersetzt sind Bedienung, Lektionstexte, Arbeitsschritte, Hinweise, Prüfpunkte, Quizfragen, Musterlösungs-Erklärungen, Fehlerhilfen und Übersichtsseiten. Fachbegriffe stehen mit dem deutschen Prüfungsbegriff in Klammern, etwa „loop (Schleife)“. Aufgabenstellungen, Code, Ausgaben und Dateinamen bleiben Deutsch wie in der Prüfung. Arabisch und Persisch laufen von rechts nach links. Die Suche bleibt deutsch.
+- **Maschinell übersetzt und gekennzeichnet:** Fehler bitte über die Issue-Vorlage „Feedback oder Wunsch“ melden. Stichproben-Rückübersetzungen stehen im Prüfbericht; eine Prüfung durch Muttersprachler steht noch aus.
+- **Helles und dunkles Design:** Umschalter in der Kopfzeile; ohne eigene Wahl folgt der Lernraum der Systemeinstellung. Das helle Design bleibt unverändert.
+- **Kopieren-Knopf** in der Ecke jedes Python-Beispiels, jeder Musterlösung und der Befehlsübersicht.
+- **Originalkurs in ILU**, **Feedback, Probleme und Wünsche** über GitHub-Issues und eine Fußzeile mit Instagram, LinkedIn und Namensnennung.
+- **Prüfungen:** Jede Übersetzung muss zum aktuellen deutschen Text passen; Platzhalter und Glossarbegriffe werden geprüft. Die Projektstartseite ist weiterhin nur deutsch.
+
+---
+
 # CuD v0.3.0
 
 Lernplan-Ausgabe vom 17.10.2026 für Studienanfänger ohne Programmiererfahrung.
