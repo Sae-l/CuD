@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" role="img" aria-labelledby="t d">
+  <title id="t">CuD · Programmieren lernen</title>
+  <desc id="d">Lernweg: Aufgabe, Wissen, Befehl, Ausprobieren, Ergebnis prüfen</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="ln" x1="0" x2="1">
+      <stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .h{font:700 46px system-ui,-apple-system,Segoe UI,sans-serif;fill:#f8fafc}
+    .s{font:400 20px system-ui,-apple-system,Segoe UI,sans-serif;fill:#cbd5e1}
+    .l{font:600 17px system-ui,-apple-system,Segoe UI,sans-serif;fill:#e2e8f0;text-anchor:middle}
+    .n{fill:#1e293b;stroke:url(#ln);stroke-width:2.5}
+    .p{fill:none;stroke:url(#ln);stroke-width:3;stroke-dasharray:10 10;animation:flow 1.4s linear 3}
+    .dot{fill:#f0abfc;animation:move 4s ease-in-out 1 forwards}
+    .g{opacity:0;animation:in .8s ease-out forwards}
+    .g2{animation-delay:.2s}.g3{animation-delay:.4s}.g4{animation-delay:.6s}.g5{animation-delay:.8s}
+    @keyframes flow{to{stroke-dashoffset:-20}}
+    @keyframes move{0%{transform:translateX(0)}100%{transform:translateX(880px)}}
+    @keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion:reduce){.p,.dot,.g{animation:none;opacity:1}}
+  </style>
+  <rect width="1200" height="340" rx="24" fill="url(#bg)"/>
+  <text class="h" x="60" y="90">CuD · Programmieren lernen</text>
+  <text class="s" x="60" y="128">Lernraum für Coding und Digitalisierung · offline · ohne Konto · 31 Aufgaben · 10 Etappen</text>
+  <path class="p" d="M160 245 H1040"/>
+  <circle class="dot" cx="160" cy="245" r="7"/>
+  <g class="g"><rect class="n" x="70" y="210" width="180" height="70" rx="14"/><text class="l" x="160" y="251">📋 Aufgabe</text></g>
+  <g class="g g2"><rect class="n" x="290" y="210" width="180" height="70" rx="14"/><text class="l" x="380" y="251">💡 Wissen</text></g>
+  <g class="g g3"><rect class="n" x="510" y="210" width="180" height="70" rx="14"/><text class="l" x="600" y="251">⌨️ Befehl</text></g>
+  <g class="g g4"><rect class="n" x="730" y="210" width="180" height="70" rx="14"/><text class="l" x="820" y="251">🧪 Ausprobieren</text></g>
+  <g class="g g5"><rect class="n" x="950" y="210" width="180" height="70" rx="14"/><text class="l" x="1040" y="251">✅ Prüfen</text></g>
+</svg>

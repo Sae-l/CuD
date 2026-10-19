@@ -1,10 +1,36 @@
+<p align="center"><img src=".github/banner.svg" alt="CuD · Programmieren lernen – Lernweg von der Aufgabe bis zur Prüfung" width="100%"></p>
+
 # CuD-1 · Programmieren lernen
+
+<p align="center">
+  <a href="https://sae-l.github.io/CuD/Lernwerkzeug/index.html"><img alt="Online starten" src="https://img.shields.io/badge/Lernraum-online%20starten-7c3aed?style=for-the-badge"></a>
+  <a href="https://github.com/Sae-l/CuD/releases/latest"><img alt="Neuestes Release" src="https://img.shields.io/github/v/release/Sae-l/CuD?style=for-the-badge&color=0369a1&label=Release"></a>
+  <img alt="Offline, ohne Konto" src="https://img.shields.io/badge/offline-ohne%20Konto-15803d?style=for-the-badge">
+</p>
 
 Ein lokales Lernwerkzeug für Studierende im Kurs **Coding und Digitalisierung**, auch ohne Programmierkenntnisse: verständliche Vorlesungsetappen, eine Befehlsübersicht, Einrichtungsanleitungen und Begleitung zu allen 31 Aufgaben des vorhandenen Übungsskripts.
 
 Mit Version **0.4.1** gibt es den Lernraum und die Startseite vollständig auf Deutsch, Englisch, Arabisch, Türkisch, Persisch und Ukrainisch; Fachbegriffe und Aufgabenstellungen bleiben Deutsch wie in der Prüfung. Dazu kommen auf beiden Seiten ein dunkles Design, Kopieren-Knöpfe an allen Codebeispielen sowie Links zum Originalkurs in ILU und zu GitHub-Feedback. Lernplan, Wiederholungsrunden und Lektionssprünge aus 0.3.0 bleiben erhalten. Alle 31 Aufgaben des vorhandenen Übungsskripts, vier Live-Übungen und zehn Lernetappen einschließlich FFT bleiben enthalten. Lernkontrollen, lokale Bearbeitungsmarken und ein eigenes Transferprojekt helfen beim Üben.
 
 **Aufgabe → benötigtes Wissen → passender Befehl → selbst ausprobieren → Ergebnis prüfen**
+
+```mermaid
+flowchart LR
+    A["📋 Aufgabe<br/>31 Originalaufgaben"] --> B["💡 Wissen<br/>10 Lernetappen"]
+    B --> C["⌨️ Befehl<br/>Befehlsübersicht"]
+    C --> D["🧪 Ausprobieren<br/>eigener Python-Code"]
+    D --> M["🏷️ Bearbeitungsmarke<br/>selbst gesetzt"]
+    D --> E{"✅ Verständnisfrage<br/>richtig?"}
+    E -- ja --> F["🔁 Wiederholung<br/>eingeplant"]
+    E -- nein --> G["📌 bleibt zum<br/>Wiederholen vorgemerkt"]
+    F & G & M --> P["🗓️ Mein Lernplan<br/>nächste Etappe"] --> A
+    classDef step fill:#1e293b,stroke:#38bdf8,color:#f8fafc
+    classDef ok fill:#14532d,stroke:#4ade80,color:#f0fdf4
+    class A,B,C,D,G,M step
+    class F,P ok
+```
+
+Deinen Python-Code prüfst du selbst; danach setzt du bei Bedarf die Bearbeitungsmarke als eigene Einschätzung. Eine richtige Antwort auf die Verständnisfrage plant eine Wiederholung ein, eine falsche bleibt zum Wiederholen vorgemerkt. **Mein Lernplan** zeigt beides zusammen mit der nächsten Etappe.
 
 **[Online im Lernraum starten](https://sae-l.github.io/CuD/Lernwerkzeug/index.html)** · [Projekt kennenlernen](https://sae-l.github.io/CuD/) · [Offline-Paket v0.4.1](https://github.com/Sae-l/CuD/releases/tag/v0.4.1)
 
@@ -33,6 +59,24 @@ Der zuvor veröffentlichte Stand **v0.3.0**, Commit `b296826`, bestand am 17.10.
 Die [deutsche CuD-Hauptreferenz](Obsidian-CuD/03%20Projektleitfaden.md) erklärt Zweck, Baugeschichte, wissenschaftliche Grundlagen, Laufzeit und Inhaltserweiterung. Sie verbindet Fehlersymptome mit Codeorten, Reparaturprüfungen und dem Wiederaufbau der Arbeitsumgebung. Ein dokumentierter Abgleich von GitHub, Projektdateien und fünf Projektchats begrenzt die Aussagen nachvollziehbar. Öffne den Unterordner `Obsidian-CuD` als Vault in Obsidian; Community-Plugins sind nicht erforderlich. Die Canvas-Datei enthält die verknüpfte Gesamtkarte. Prüfungen: `python Obsidian-CuD/Pruefung/vault_pruefen.py`.
 
 ## Was liegt wo?
+
+```mermaid
+flowchart TB
+    V(["👤 Besucher"]) --> L["🌐 index.html<br/>Projektseite · GitHub Pages"]
+    L --> W["📚 Lernwerkzeug/<br/>index.html · app.js · styles.css"]
+    W --> I["🧩 inhalte.js · kurs.js<br/>Lektionen und Aufgaben"]
+    I -. belegt durch .-> R["📄 Referenz/ + Referenz_Sichtung/<br/>Originalunterlagen"]
+    W --> S[("💾 localStorage<br/>nur im eigenen Browser")]
+    O["🧠 Obsidian-CuD/<br/>Wissensbasis + Canvas"] -. erklärt .-> W
+    T["🧪 pruefen.cjs · kompatibilitaet.cjs<br/>CI auf Windows + Linux"] -. prüft .-> W
+    M["🔐 PROJEKT_MANIFEST.json"] -. sichert .-> R
+    classDef web fill:#312e81,stroke:#a78bfa,color:#eef2ff
+    classDef doc fill:#1e293b,stroke:#38bdf8,color:#f8fafc
+    class L,W,I web
+    class R,O,T,M doc
+```
+
+Die Projektseite führt zum Lernwerkzeug. Seine Inhalte stützen sich auf die Originalunterlagen, der Lernstand bleibt im eigenen Browser. Die Obsidian-Wissensbasis erklärt den Aufbau, automatische Prüfungen testen ihn, und das Manifest sichert die Dateiintegrität.
 
 | Pfad | Inhalt |
 | --- | --- |

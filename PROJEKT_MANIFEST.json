@@ -35,6 +35,12 @@
       "git_blob_sha1": "8ccf5d81b0ab2de9662ed4a01f6eaf744029b2a6"
     },
     {
+      "path": ".github/banner.svg",
+      "bytes": 2571,
+      "sha256": "6b4bc6d0636c7d22e6a197b1b65b298d1aea3570ba31067309b6e2105f3e3c69",
+      "git_blob_sha1": "0b38fd9af3f1500c49233e2b8b8f5fae492b383c"
+    },
+    {
       "path": ".github/dependabot.yml",
       "bytes": 370,
       "sha256": "a08e7645a963ecc6776fc1f08c15e263c6ddb1f4ae6c2eeaa1e5d3f171dc303e",
@@ -666,9 +672,9 @@
     },
     {
       "path": "Obsidian-CuD/CuD Gesamtkarte.canvas",
-      "bytes": 12541,
-      "sha256": "b412a55d4804ddf079ecab3701dd2de6c55a015772ba529055b84af50fc53e4f",
-      "git_blob_sha1": "5cd48d32871e955e4c2ef30914849aaaeb1c00c4"
+      "bytes": 12403,
+      "sha256": "1c230704c5494f453df6a36f95cab0020a2b307d5866785762675fb75ec0107a",
+      "git_blob_sha1": "033e236b64a5bbe7924f07799325db14aa911454"
     },
     {
       "path": "Obsidian-CuD/Pruefung/Bestandsaufnahme.json",
@@ -691,8 +697,8 @@
     {
       "path": "Obsidian-CuD/Pruefung/VAULT_MANIFEST.json",
       "bytes": 8670,
-      "sha256": "b0ae34be2f67b99b409b35d75e7297477d5955d7ebc604fa4ae912a5c3e0d82a",
-      "git_blob_sha1": "1484868388ddd4408836f9e6523e11c8fb3835db"
+      "sha256": "642f85557b19ccca9a623d8930f90a93259c8b4fd1a9650438db7254415a77ab",
+      "git_blob_sha1": "ba2a0f7c7a58943a1547e67d69cd617a339d955e"
     },
     {
       "path": "Obsidian-CuD/Pruefung/beispiel_pruefen.cjs",
@@ -732,9 +738,9 @@
     },
     {
       "path": "README.md",
-      "bytes": 10714,
-      "sha256": "ead8ca6022546b87cb79081fdb1b1d9ceab64a5c2118663fb220e968cd297e43",
-      "git_blob_sha1": "56ec95505bd91ef82157f1c7d031c455c5946230"
+      "bytes": 13422,
+      "sha256": "28f15877f97c26313e6850cfea78782fdb7f0d6a307236d07f8e3f4bc60c1916",
+      "git_blob_sha1": "bfb578d796dc668daa78c50a9985b77ddb8e37b2"
     },
     {
       "path": "RECHTE.md",
