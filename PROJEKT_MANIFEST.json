@@ -54,9 +54,9 @@
     },
     {
       "path": ".github/workflows/release.yml",
-      "bytes": 1526,
-      "sha256": "9273ea67d0792b8715de73c716e69aab960436619a8e54bfd199196ce821e629",
-      "git_blob_sha1": "10c37b1a92e44d778853ffd595b7cd936d00e00c"
+      "bytes": 1687,
+      "sha256": "7b44f16664d5f29207d7b2ca0389456e99d185b74ea047d5c17e81c42ecc9cec",
+      "git_blob_sha1": "38f38f014c4567c43c942643f6e3fb5b87a59c12"
     },
     {
       "path": ".gitignore",
@@ -264,9 +264,9 @@
     },
     {
       "path": "Lernwerkzeug/pruefung/audit-1440.png",
-      "bytes": 574328,
-      "sha256": "3848be6afb47c76c9a10728cdb42b055c8744311e19ddc8a30c80168dbdccb32",
-      "git_blob_sha1": "7e8f4532299362412211fc86a667e127cc761a73"
+      "bytes": 574013,
+      "sha256": "bcfbc82c655598ddb001cb64558e2fdd623889f722a7248fc663bdcaf0121266",
+      "git_blob_sha1": "136252aa26d56fab910ff4fdd3426092b6a964e0"
     },
     {
       "path": "Lernwerkzeug/pruefung/audit-390.png",
@@ -276,9 +276,9 @@
     },
     {
       "path": "Lernwerkzeug/pruefung/audit-768.png",
-      "bytes": 321910,
-      "sha256": "1ed7708e7365a9af663f3bf916b19211879aa403893d25464657a39508dcb3e9",
-      "git_blob_sha1": "b70a454eedb6297407ef2ef1fa4385b4d35fc36e"
+      "bytes": 322338,
+      "sha256": "699d5eb79863a230822884b0774aa07990e463ef0f7d5c3301d6471ebf3886e6",
+      "git_blob_sha1": "8ee0db728c71961e301885aec8e944bce0215611"
     },
     {
       "path": "Lernwerkzeug/pruefung/aufgabe-desktop.png",
@@ -288,9 +288,9 @@
     },
     {
       "path": "Lernwerkzeug/pruefung/befehle-desktop.png",
-      "bytes": 163892,
-      "sha256": "451897941bdb25c18fdaf449586814890300001707da42ea3087677802baee18",
-      "git_blob_sha1": "141ef6ce74284cf042d547057053f2437b9d2d8a"
+      "bytes": 165012,
+      "sha256": "074719d500d5bbf9a3d4751d3b590afa4135752afce9552e26f736def8db633a",
+      "git_blob_sha1": "9c122376b6fb4175e54bb0552f154a1202cef283"
     },
     {
       "path": "Lernwerkzeug/pruefung/design-dunkel.png",
@@ -307,8 +307,8 @@
     {
       "path": "Lernwerkzeug/pruefung/ergebnis.json",
       "bytes": 761,
-      "sha256": "5b1e6674c62b6f8484bd02f5d918570846101827f021742a8e362c2c1aa99ccb",
-      "git_blob_sha1": "bfaddd447f678f8f9b35737dcda4460d914b34c4"
+      "sha256": "e4ef2090b1869299f28b783ca5d2e2afad2b7d5cb30b3d736f87366097367b48",
+      "git_blob_sha1": "b029e1cbcc1932bf650848a80ff891a3293af0a7"
     },
     {
       "path": "Lernwerkzeug/pruefung/erweiterung.json",
@@ -325,8 +325,8 @@
     {
       "path": "Lernwerkzeug/pruefung/kompatibilitaet.json",
       "bytes": 6145,
-      "sha256": "5a39f56e00e04b35ba15693c8a0310bd577ba46ba25746e42aeeee121dd7ff3a",
-      "git_blob_sha1": "fc72dd01faea207df9d3d3867c08cb677a006ab9"
+      "sha256": "74e482da0829fc508513cfee96a9f0101a3c266791b8e06e116a92f51c6ef70b",
+      "git_blob_sha1": "6190bfaba58df4a3f39ff28f83f9dce5b2af7b47"
     },
     {
       "path": "Lernwerkzeug/pruefung/lerncheck-desktop.png",
@@ -378,9 +378,9 @@
     },
     {
       "path": "Lernwerkzeug/pruefung/vorlesungen-desktop.png",
-      "bytes": 401969,
-      "sha256": "ba0a64e811993af8ccc7ab8ea78aa87ff4c59865f5e5148ab3a65e372d692ddb",
-      "git_blob_sha1": "659748c7e56e1d173bd2b0b880e5c9cf0e7ffceb"
+      "bytes": 400645,
+      "sha256": "5a0c969fbe0a56b08ae62d81e32d7bdc0b1facf252439b21dc39ccc264ae7f7b",
+      "git_blob_sha1": "f6796c34af6eb38be09323f4987c7d09fe0d4177"
     },
     {
       "path": "Lernwerkzeug/sprachen.js",
@@ -732,9 +732,9 @@
     },
     {
       "path": "README.md",
-      "bytes": 10389,
-      "sha256": "e9f8f5df0609f7ae2ea6c2e5a89bd17c2179f72a38c568cf80e249782f1a833d",
-      "git_blob_sha1": "897d4fbb85ffa6931aa9f5a3026a4d5a2299346e"
+      "bytes": 10677,
+      "sha256": "8749dd827713e15cd5af41c76969482b1c1d18d327d624c01723184390098eb3",
+      "git_blob_sha1": "9ce748ef08959e174d4a5564deb4f5cdf165ad44"
     },
     {
       "path": "RECHTE.md",
@@ -744,9 +744,9 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 8418,
-      "sha256": "f9864081ff781eb81d638291d695b3eb53371fe7f98b0a957a0dff3c3cef4d74",
-      "git_blob_sha1": "4eb957f111174a1719821356d9dcaf42833f5ab9"
+      "bytes": 8619,
+      "sha256": "65de6bfdaae8a1cef52ea0343014336c43dfb7f573e618fff2f3a9bd779b7e84",
+      "git_blob_sha1": "25bf95c8734bb5aca694269c4fa17cd961048151"
     },
     {
       "path": "REPOSITORY_SETTINGS.md",
@@ -991,8 +991,8 @@
     {
       "path": "index.html",
       "bytes": 28768,
-      "sha256": "5676b21c91f23b49fe07f132ec37677bf7dc08b28c7bfcdee00587c88856e230",
-      "git_blob_sha1": "8ba072493368f147e4e427d3e2dd5fe5c39e453b"
+      "sha256": "24d7ed4e0418a1f36a4b341f30f44c3d775f0d41d875108956aecd02d442ca8e",
+      "git_blob_sha1": "4b64a945196b1878b098722595cf830b24bf1b7d"
     },
     {
       "path": "package-lock.json",

@@ -1,14 +1,13 @@
 # CuD v0.4.0
 
-Mehrsprachige Ausgabe (noch nicht veröffentlicht).
+Mehrsprachige Ausgabe vom 19.10.2026: der Lernraum vollständig in sechs Sprachen.
 
-- **Sprachen:** Deutsch (Standard), Englisch, Arabisch, Türkisch, Persisch und Ukrainisch. Übersetzt sind Bedienung und die Erklärung jedes Inhalts; Titel, Aufgaben, Lerntexte und Python-Beispiele bleiben Deutsch wie im Kurs. Arabisch und Persisch werden von rechts nach links gesetzt. Die Wahl bleibt in diesem Browser gespeichert.
+- **Sechs Sprachen:** Deutsch (Standard), Englisch, Arabisch, Türkisch, Persisch und Ukrainisch. Vollständig übersetzt sind Bedienung, Lektionstexte, Arbeitsschritte, Hinweise, Prüfpunkte, Quizfragen, Musterlösungs-Erklärungen, Fehlerhilfen und Übersichtsseiten. Fachbegriffe stehen mit dem deutschen Prüfungsbegriff in Klammern, etwa „loop (Schleife)“. Aufgabenstellungen, Code, Ausgaben und Dateinamen bleiben Deutsch wie in der Prüfung. Arabisch und Persisch laufen von rechts nach links. Die Suche bleibt deutsch.
+- **Maschinell übersetzt und gekennzeichnet:** Fehler bitte über die Issue-Vorlage „Feedback oder Wunsch“ melden. Stichproben-Rückübersetzungen stehen im Prüfbericht; eine Prüfung durch Muttersprachler steht noch aus.
 - **Helles und dunkles Design:** Umschalter in der Kopfzeile; ohne eigene Wahl folgt der Lernraum der Systemeinstellung. Das helle Design bleibt unverändert.
-- **Kopieren:** Jedes Python-Beispiel, jede Musterlösung und jede Zeile der Befehlsübersicht hat einen Kopieren-Knopf. Bei lokal geöffneten Dateien markiert der Lernraum den Code, falls der Browser das direkte Kopieren sperrt.
-- **Originalkurs in ILU** in Seitenleiste und Fußzeile.
-- **Rückmeldung über GitHub:** Feedback, Probleme und Wünsche; jede Inhaltsseite verlinkt ein vorausgefülltes Fehler-Issue. Neue Issue-Vorlage „Feedback oder Wunsch“.
-- Fußzeile mit Instagram, LinkedIn und Namensnennung.
-- Neue Prüfungen: vollständige Übersetzungen je Sprache, Sprachwechsel mit deutsch bleibendem Code, gespeichertes Design, Kopieren-Knopf und Fußzeilenlinks.
+- **Kopieren-Knopf** in der Ecke jedes Python-Beispiels, jeder Musterlösung und der Befehlsübersicht.
+- **Originalkurs in ILU**, **Feedback, Probleme und Wünsche** über GitHub-Issues und eine Fußzeile mit Instagram, LinkedIn und Namensnennung.
+- **Prüfungen:** Jede Übersetzung muss zum aktuellen deutschen Text passen; Platzhalter und Glossarbegriffe werden geprüft. Die Projektstartseite ist weiterhin nur deutsch.
 
 ---
 
