@@ -1,5 +1,12 @@
 # Prüfbericht und Nachweisverlauf
 
+## v0.4.0 Schritt 3c: Ukrainisch und alle Sprachen vollständig, 19.10.2026
+
+- PASS: `npm test` mit allen fünf Übersetzungssprachen in `vollstaendigeSprachen` (je 1052 Einträge, Glossarklammern, je 78 Ansichten ohne sichtbaren übersetzbaren deutschen Text; Chromium, Firefox, WebKit).
+- Rückübersetzung: 53 zufällige ukrainische Texte, eine Abweichung (Untertitel „Твій навчальний простір для навчання“ war doppelt), korrigiert zu „… для студій“.
+- Layout: Bei 390 px schob der längere ukrainische Untertitel den Dunkel-Schalter 2 px hinaus. Unter 420 px behalten die Werkzeuge der Kopfleiste ihre Breite, Marke und Untertitel brechen um. Nachgemessen: kein Überlauf in allen sechs Sprachen bei 320, 360, 390, 420 und 768 px. In RTL hat der Text der Weiter-Schaltfläche jetzt den vollen Innenabstand.
+- Sichtprüfung: Lernplan, Lektion 1, Übung 6.1 und Befehle bei 390 px hell/dunkel.
+
 ## v0.4.0 Schritt 3b: Persisch, 19.10.2026
 
 - PASS: `npm test` mit Persisch als vollständiger Sprache (1052 Einträge, Glossarklammern, 78 Ansichten ohne sichtbaren übersetzbaren deutschen Text; Chromium, Firefox, WebKit). Die RTL-Inseln für Code und Titel greifen wie bei Arabisch.

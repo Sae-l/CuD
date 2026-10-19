@@ -258,27 +258,27 @@
     },
     {
       "path": "Lernwerkzeug/pruefung/PRUEFBERICHT.md",
-      "bytes": 23444,
-      "sha256": "5b59c9d8a9f986702ddb12436801bf09f0e2b41fa8db021e2fdebe84de65b08e",
-      "git_blob_sha1": "1a242703f03da680bd5800d31b07548607f1813a"
+      "bytes": 24392,
+      "sha256": "aef49bd13be433b51355481614736fcd68dc5e7f6701b8c2c7f7c769ea178718",
+      "git_blob_sha1": "0c90eb38b8a811ded37af9897a35fdf836847b96"
     },
     {
       "path": "Lernwerkzeug/pruefung/audit-1440.png",
-      "bytes": 574013,
-      "sha256": "bcfbc82c655598ddb001cb64558e2fdd623889f722a7248fc663bdcaf0121266",
-      "git_blob_sha1": "136252aa26d56fab910ff4fdd3426092b6a964e0"
+      "bytes": 574328,
+      "sha256": "3848be6afb47c76c9a10728cdb42b055c8744311e19ddc8a30c80168dbdccb32",
+      "git_blob_sha1": "7e8f4532299362412211fc86a667e127cc761a73"
     },
     {
       "path": "Lernwerkzeug/pruefung/audit-390.png",
-      "bytes": 160825,
-      "sha256": "df6082f9ccd104bbf71030317563ab80817a3d5a81b61743bfdb55a67a618a95",
-      "git_blob_sha1": "a25369b6e2f6c77095082bdf38ec34585e536a26"
+      "bytes": 160816,
+      "sha256": "fd8b3a7efb30a2d1b39f5714402873e8f898e1b81939243d78e36d976b3676fd",
+      "git_blob_sha1": "ad4397aaf0580a2b11cfc0947b56c1a44c2d4c6f"
     },
     {
       "path": "Lernwerkzeug/pruefung/audit-768.png",
-      "bytes": 322340,
-      "sha256": "86977c47c91819adcae80ccfde2b5524c442b9702ca94435cf3b1de523b1e1a2",
-      "git_blob_sha1": "81a7c931e0ca16d340c1731f862877a0f87f51df"
+      "bytes": 321910,
+      "sha256": "1ed7708e7365a9af663f3bf916b19211879aa403893d25464657a39508dcb3e9",
+      "git_blob_sha1": "b70a454eedb6297407ef2ef1fa4385b4d35fc36e"
     },
     {
       "path": "Lernwerkzeug/pruefung/aufgabe-desktop.png",
@@ -288,9 +288,9 @@
     },
     {
       "path": "Lernwerkzeug/pruefung/befehle-desktop.png",
-      "bytes": 163895,
-      "sha256": "0efe8539ae4372e4c8fb52742ffc59b8b2a0d1499ad255399304ee7b8260647f",
-      "git_blob_sha1": "b25e6ca16fee5ef7e1e2099204f722ffdf65d226"
+      "bytes": 163892,
+      "sha256": "451897941bdb25c18fdaf449586814890300001707da42ea3087677802baee18",
+      "git_blob_sha1": "141ef6ce74284cf042d547057053f2437b9d2d8a"
     },
     {
       "path": "Lernwerkzeug/pruefung/design-dunkel.png",
@@ -307,8 +307,8 @@
     {
       "path": "Lernwerkzeug/pruefung/ergebnis.json",
       "bytes": 761,
-      "sha256": "6f4f544e3bde22f077ffae10c5f9d1831c4dc30fc294d549fbf28e26af617902",
-      "git_blob_sha1": "5fabd9ac4402720cd9eea7fd5454197f1a5ef354"
+      "sha256": "5b1e6674c62b6f8484bd02f5d918570846101827f021742a8e362c2c1aa99ccb",
+      "git_blob_sha1": "bfaddd447f678f8f9b35737dcda4460d914b34c4"
     },
     {
       "path": "Lernwerkzeug/pruefung/erweiterung.json",
@@ -325,8 +325,8 @@
     {
       "path": "Lernwerkzeug/pruefung/kompatibilitaet.json",
       "bytes": 6145,
-      "sha256": "84a23d297a0ccc39459cf6e829171a5b8c5f3bf577b269aaf0306ffde7e28b4c",
-      "git_blob_sha1": "033354f69d6bf12e47cb87bd4d576a4dd38f766d"
+      "sha256": "5a39f56e00e04b35ba15693c8a0310bd577ba46ba25746e42aeeee121dd7ff3a",
+      "git_blob_sha1": "fc72dd01faea207df9d3d3867c08cb677a006ab9"
     },
     {
       "path": "Lernwerkzeug/pruefung/lerncheck-desktop.png",
@@ -342,9 +342,9 @@
     },
     {
       "path": "Lernwerkzeug/pruefung/mobil.png",
-      "bytes": 286276,
-      "sha256": "ced81aba00125fb35d38416a8c49962aead1ae7c1bd93fb35b287ef01b37a661",
-      "git_blob_sha1": "6ed0bebedef7a361f194a7c951cb42e05e6da7b8"
+      "bytes": 286272,
+      "sha256": "556c31bb598c9c05d7fc2a1207ab030c7e423177e037758df23d828e1fbfaacc",
+      "git_blob_sha1": "1c6a66f7489f32febe924e1e53114a0e892c357f"
     },
     {
       "path": "Lernwerkzeug/pruefung/pruefer-regression.json",
@@ -366,9 +366,9 @@
     },
     {
       "path": "Lernwerkzeug/pruefung/start-mobil.png",
-      "bytes": 572552,
-      "sha256": "915ee122fb284a52655b6396238540c82b5321dcb552ff9b85915854573d8ea9",
-      "git_blob_sha1": "ce696baf549f3a055fdf941956476f4b715112d0"
+      "bytes": 572546,
+      "sha256": "feceffba92c16f55e7e98c9fbb1686ffa4ce30144ec2bf375687af531c71daca",
+      "git_blob_sha1": "1cd06098612ee369a28c37339e4a9a8c68fbc8f8"
     },
     {
       "path": "Lernwerkzeug/pruefung/vergleich-originalaufgabe.png",
@@ -378,21 +378,21 @@
     },
     {
       "path": "Lernwerkzeug/pruefung/vorlesungen-desktop.png",
-      "bytes": 401958,
-      "sha256": "0f7714463caeeb80e83dc1ea281aca61ac2ae771c29f12cc1469659a2ea90cb7",
-      "git_blob_sha1": "992b85cdcc59ade4c4aa6a76863a9dd86b6f9e26"
+      "bytes": 401969,
+      "sha256": "ba0a64e811993af8ccc7ab8ea78aa87ff4c59865f5e5148ab3a65e372d692ddb",
+      "git_blob_sha1": "659748c7e56e1d173bd2b0b880e5c9cf0e7ffceb"
     },
     {
       "path": "Lernwerkzeug/sprachen.js",
-      "bytes": 5680,
-      "sha256": "b20a68aadbc5e5b6cb9b8db6a391ee69fdbd9543169ec256126a57180349af4a",
-      "git_blob_sha1": "10cb915c3e642c3ab99d5f7cda6f54d1f8a4ce4f"
+      "bytes": 5685,
+      "sha256": "f81a38abf9e05a339aa9e2c46e3894054a5b67f0320219526b3784581a528bae",
+      "git_blob_sha1": "fcf6609e1d9b588c3f9ea914ef2ee627b0b127e5"
     },
     {
       "path": "Lernwerkzeug/styles.css",
-      "bytes": 37768,
-      "sha256": "612b5abbf517e46ed3fa66e69f843cdea92a7e2b62985523df5fd4447736da80",
-      "git_blob_sha1": "9f284e7deedfd377f2693b3f8628db318a651f2c"
+      "bytes": 38152,
+      "sha256": "d5adcc96052510ef8d16eac3c99a58fd6433c42dcac4cbffd66f0365329e3559",
+      "git_blob_sha1": "5ff5f28f05b681011b28094e5c4b9a278d196091"
     },
     {
       "path": "Lernwerkzeug/uebersetzbar.cjs",
@@ -426,9 +426,9 @@
     },
     {
       "path": "Lernwerkzeug/uebersetzung-uk.js",
-      "bytes": 37235,
-      "sha256": "f03a325aee5465efea0d4d9894e694ad36838e2388ba85a42f06adc30c769144",
-      "git_blob_sha1": "3a227177c9d4dc8354d201ff6a10498633a007e3"
+      "bytes": 238481,
+      "sha256": "93f1db17b6f17d5f9ae59c35a0b8b24df1e7ffe9268826c110f15c545afcd6d3",
+      "git_blob_sha1": "f0b9d6ee6252bf05e9a60c3b412224aecfdfdd15"
     },
     {
       "path": "Obsidian-CuD/.gitignore",

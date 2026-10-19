@@ -407,6 +407,10 @@ footer { padding:28px 32px 40px; font-size:12px; color:var(--muted); }
 @media (max-width:420px) {
   /* Die Pille ist so breit wie der längste Sprachname; rechts symmetrisch einrücken, damit der Dunkel-Schalter bei 320 px passt. */
   .topbar { padding-right:8px; gap:8px; }
+  /* Lange Untertitel (z. B. Ukrainisch) umbrechen, statt den Dunkel-Schalter hinauszuschieben. */
+  .brand { min-width:0; }
+  .topbar-tools { flex:none; }
+  .brand > span:last-child { min-width:0; overflow-wrap:anywhere; }
   .language-pick select { min-width:0; padding:0 26px 0 34px; }
   .language-pick::before { left:11px; }
   .language-pick::after { right:8px; }
@@ -425,3 +429,5 @@ footer { padding:28px 32px 40px; font-size:12px; color:var(--muted); }
   .brand-sub { display:none; }
 }
 @media print { .topbar-tools,.copy-code { display:none!important; } }
+/* RTL: Der Pfeilknopf steht links, also bekommt der Text rechts den vollen Innenabstand. */
+.primary-link[dir="rtl"] { padding-right:22px; padding-left:6px; }
