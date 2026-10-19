@@ -1,5 +1,11 @@
 # Prüfbericht und Nachweisverlauf
 
+## v0.4.0 Schritt 3a: Türkisch, 19.10.2026
+
+- PASS: `npm test` mit Türkisch als vollständiger Sprache (1052 Einträge, Glossarklammern, 78 Ansichten ohne sichtbaren übersetzbaren deutschen Text; Chromium, Firefox, WebKit).
+- Rückübersetzung: 53 zufällige türkische Texte, 23 wortgleich, 30 stilistisch abweichend, keine Sinnabweichung.
+- Sichtprüfung: Lernplan, Lektion 1, Übung 6.1 und Befehle bei 390 px hell/dunkel. Lehnwörter stehen unverändert mit Apostroph-Endung (z. B. „Terminal'de“).
+
 ## v0.4.0 Schritt 2: Arabisch, 19.10.2026
 
 - PASS: `npm test` mit Arabisch als vollständiger Sprache: 1052 Einträge, Glossarklammern, alle 78 Ansichten auf Arabisch ohne sichtbaren übersetzbaren deutschen Text; Chromium, Firefox und WebKit.
