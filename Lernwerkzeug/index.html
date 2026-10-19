@@ -29,12 +29,12 @@
     </div>
   </header>
   <div class="workspace">
-    <aside class="sidebar" aria-label="Lernnavigation">
+    <aside class="sidebar" aria-label="Lernnavigation" data-i18n-label="Lernnavigation">
       <button id="nav-toggle" type="button" aria-controls="lernnavigation" aria-expanded="false">Lernnavigation öffnen</button>
       <div id="lernnavigation">
       <p class="module-label">Coding und Digitalisierung</p>
       <h2 data-i18n>Dein Lernraum</h2>
-      <nav class="main-nav" aria-label="Hauptnavigation">
+      <nav class="main-nav" aria-label="Hauptnavigation" data-i18n-label="Hauptnavigation">
         <a href="#start" data-i18n>Willkommen</a>
         <a href="#lernplan" data-i18n>Mein Lernplan</a>
         <a href="#wiederholen" data-i18n>Wiederholen</a>
@@ -46,13 +46,13 @@
       </nav>
       <hr>
       <p class="module-label" data-i18n>Übungsblock 6</p>
-      <nav aria-label="Übungen">
+      <nav aria-label="Übungen" data-i18n-label="Übungen">
         <a class="task-link" href="#aufgabe-6-1"><span>6.1</span> CSV einlesen</a>
         <a class="task-link" href="#aufgabe-6-2"><span>6.2</span> Daten filtern</a>
         <a class="task-link" href="#aufgabe-6-3"><span>6.3</span> Daten auswerten</a>
       </nav>
       <hr>
-      <nav class="secondary" aria-label="Bereiche">
+      <nav class="secondary" aria-label="Bereiche" data-i18n-label="Bereiche">
         <a href="#praxis-zeitreihe" data-i18n>Eigenes Mini-Projekt</a>
         <a href="#abdeckung" data-i18n>Abdeckung & nächste Schritte</a>
         <a href="#ablauf" data-i18n>Der ganze Arbeitsablauf</a>
@@ -63,29 +63,30 @@
       </div>
     </aside>
     <main id="hauptbereich">
-      <section class="search-area" aria-label="Inhalte suchen">
+      <section class="search-area" aria-label="Inhalte suchen" data-i18n-label="Inhalte suchen">
         <label for="suche" data-i18n>Wobei brauchst du Hilfe?</label>
         <div class="search-row"><input id="suche" type="search" placeholder="CSV einlesen, Durchschnitt, 6.2 …" autocomplete="off" spellcheck="false"><button id="reset" type="button" data-i18n>Zurücksetzen</button></div>
-        <div class="filters"><label><span data-i18n>Inhaltsart</span><select id="art"><option value="" data-i18n>Alle Inhaltsarten</option><option>Vorlesung</option><option>Einrichtung</option><option>Übung</option><option>Befehl & Begriff</option><option>Arbeitsablauf</option><option>Fehlerhilfe</option><option>Quellen</option></select></label><label><span data-i18n>Thema</span><select id="thema"><option value="" data-i18n>Alle Themen</option></select></label></div>
+        <div class="filters"><label><span data-i18n>Inhaltsart</span><select id="art"><option value="" data-i18n>Alle Inhaltsarten</option><option value="Vorlesung" data-i18n>Vorlesung</option><option value="Einrichtung" data-i18n>Einrichtung</option><option value="Übung" data-i18n>Übung</option><option value="Befehl &amp; Begriff" data-i18n>Befehl &amp; Begriff</option><option value="Arbeitsablauf" data-i18n>Arbeitsablauf</option><option value="Fehlerhilfe" data-i18n>Fehlerhilfe</option><option value="Quellen" data-i18n>Quellen</option></select></label><label><span data-i18n>Thema</span><select id="thema"><option value="" data-i18n>Alle Themen</option></select></label></div>
         <p class="search-tip"><span data-i18n>Zum Beispiel:</span> <button type="button" data-query="CSV einlesen">CSV einlesen</button><button type="button" data-query="Durchschnitt">Durchschnitt</button><button type="button" data-query="ValueError">ValueError</button></p>
-        <p id="sprachhinweis" class="language-note" hidden data-i18n>Aufgaben, Lerntexte und Beispiele bleiben auf Deutsch wie in deinem Kurs. Übersetzt sind die Bedienung und die Erklärungen.</p>
+        <p id="sprachhinweis" class="language-note" hidden><span data-i18n>Maschinell übersetzt. Fachbegriffe und Aufgabenstellungen bleiben Deutsch.</span> <a href="https://github.com/Sae-l/CuD/issues/new?template=feedback.md" target="_blank" rel="noopener noreferrer"><span data-i18n>Fehler melden</span> ↗</a></p>
       </section>
       <div class="learning-area">
-        <section class="results" aria-label="Suchtreffer"><p id="trefferzahl" role="status" aria-live="polite"></p><div id="treffer"></div></section>
-        <article id="inhalt" tabindex="-1" aria-label="Lerninhalt"></article>
+        <section class="results" aria-label="Suchtreffer" data-i18n-label="Suchtreffer"><p id="trefferzahl" role="status" aria-live="polite"></p><div id="treffer"></div></section>
+        <article id="inhalt" tabindex="-1" aria-label="Lerninhalt" data-i18n-label="Lerninhalt"></article>
       </div>
       <noscript>Bitte JavaScript aktivieren. Es läuft ausschließlich lokal. Die Originalaufgaben stehen in ../Referenz/Pflicht Übungen/CuD_Uebung 01.pdf, PDF-Seiten 10–11.</noscript>
     </main>
   </div>
   <footer>
-    <p data-i18n>Die Lernseite funktioniert lokal und offline. Deinen Python-Code führst du im Editor aus. Verlinkte Downloads und Browser-Notebooks benötigen Internet.</p>
-    <nav class="footer-links" aria-label="Kurs, Rückmeldung und Kontakt">
-      <a href="https://ilu.th-koeln.de/goto.php/crs/872821" target="_blank" rel="noopener noreferrer" data-i18n>Originalkurs in ILU</a>
-      <a href="https://github.com/Sae-l/CuD/issues/new/choose" target="_blank" rel="noopener noreferrer" data-i18n>Feedback, Problem oder Wunsch melden</a>
-      <a href="https://www.instagram.com/s.hlllk/" target="_blank" rel="noopener noreferrer me">Instagram</a>
-      <a href="https://www.linkedin.com/in/saeed-alhalak/" target="_blank" rel="noopener noreferrer me">LinkedIn</a>
-    </nav>
-    <p>© 2026 <strong>Mohamed Saeed Alhalak</strong> · <span data-i18n>Gestaltung & Weiterentwicklung</span> · <a href="../index.html" data-i18n>CuD Startseite</a></p>
+    <div class="foot-card">
+      <div class="foot-brand"><span class="foot-mark" aria-hidden="true">c/d.</span><strong>Coding · <span data-i18n>Dein Lernraum</span></strong><p data-i18n>Die Lernseite funktioniert lokal und offline. Deinen Python-Code führst du im Editor aus. Verlinkte Downloads und Browser-Notebooks benötigen Internet.</p></div>
+      <nav class="foot-nav" aria-label="Kurs, Rückmeldung und Kontakt" data-i18n-label="Kurs, Rückmeldung und Kontakt">
+        <div class="foot-col"><h2 data-i18n>Kurs</h2><a href="https://ilu.th-koeln.de/goto.php/crs/872821" target="_blank" rel="noopener noreferrer"><span class="foot-icon icon-arrow" aria-hidden="true"></span><span data-i18n>Originalkurs in ILU</span></a><a href="../index.html"><span class="foot-icon icon-home" aria-hidden="true"></span><span data-i18n>CuD Startseite</span></a></div>
+        <div class="foot-col"><h2 data-i18n>Mitmachen</h2><a href="https://github.com/Sae-l/CuD/issues/new/choose" target="_blank" rel="noopener noreferrer"><span class="foot-icon icon-arrow" aria-hidden="true"></span><span data-i18n>Feedback, Problem oder Wunsch melden</span></a></div>
+        <div class="foot-col"><h2 data-i18n>Kontakt</h2><a href="https://www.instagram.com/s.hlllk/" target="_blank" rel="noopener noreferrer me"><span class="foot-icon icon-instagram" aria-hidden="true"></span>Instagram</a><a href="https://www.linkedin.com/in/saeed-alhalak/" target="_blank" rel="noopener noreferrer me"><span class="foot-icon icon-linkedin" aria-hidden="true"></span>LinkedIn</a></div>
+      </nav>
+      <div class="foot-legal"><span>© 2026 <strong>Mohamed Saeed Alhalak</strong> · <span data-i18n>Gestaltung & Weiterentwicklung</span></span><span data-i18n>Lokal & offline</span></div>
+    </div>
   </footer>
 </body>
 </html>

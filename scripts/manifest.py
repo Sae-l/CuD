@@ -21,7 +21,8 @@ def entries(root):
             # Obsidian speichert hier persönliche, von Git ignorierte Fensterzustände.
             if ".obsidian" in file.parts and name.startswith("workspace"):
                 continue
-            if relative in {"PROJEKT_MANIFEST.json", "debug.log"} or name.startswith(".env") or file.suffix in {".pyc", ".pyo"}:
+            # In einem Git-Worktree ist .git eine Datei statt eines Ordners.
+            if relative in {"PROJEKT_MANIFEST.json", "debug.log", ".git"} or name.startswith(".env") or file.suffix in {".pyc", ".pyo"}:
                 continue
             data = file.read_bytes()
             records.append({"path": relative, "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest(),

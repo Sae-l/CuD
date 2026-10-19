@@ -1,5 +1,34 @@
 {
-  "date": "2026-10-19T16:19:20.070Z",
-  "status": "FAIL",
-  "error": "<Lernbeispiel>:27: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown\r\n<Lernbeispiel>:8: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown\r\nTraceback (most recent call last):\r\n  File \"<string>\", line 23, in <module>\r\n    execute(command[2], {\"input\": lambda prompt=\"\": \"Test\"})\r\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"<string>\", line 10, in execute\r\n    exec(compile(code, \"<Lernbeispiel>\", \"exec\"), scope)\r\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"<Lernbeispiel>\", line 1, in <module>\r\nModuleNotFoundError: No module named 'seaborn'\r\n\n\n1 !== 0\n"
+  "date": "2026-10-19T07:55:45.267Z",
+  "status": "PASS",
+  "originalHashes": 8,
+  "python": {
+    "examples": 27,
+    "command_examples": 34,
+    "pipeline": true,
+    "edge_cases": true,
+    "transfer_project": true,
+    "extended": {
+      "original_exercises": 28,
+      "live_exercises": 4,
+      "fft": true,
+      "original_dataset_available": false,
+      "demo_entrypoints": 3
+    }
+  },
+  "browser": {
+    "searchCases": 18,
+    "views": 78,
+    "commandRows": 49,
+    "learningQuizzes": 10,
+    "progressPersistence": true,
+    "learningPlan": true,
+    "reviewScheduling": true,
+    "reviewStorageFallback": true,
+    "lessonJumps": true,
+    "offlineLanding": true,
+    "originalTasks": 31,
+    "localLinks": 120,
+    "externalRequests": 0
+  }
 }
