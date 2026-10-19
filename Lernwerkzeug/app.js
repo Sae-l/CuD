@@ -33,10 +33,23 @@ function setText(node,text,translated) {
   markLanguage(node,translated);
   if (!translated) { node.textContent = text; return; }
   node.replaceChildren(...text.split(glossaryPattern).flatMap((part,index) => {
-    if (index % 2 === 0) return part ? [part] : [];
+    if (index % 2 === 0) return part ? isolateLatin(part) : [];
     const term = document.createElement("bdi"); term.lang = "de"; term.textContent = part;
     return ["(",term,")"];
   }));
+}
+// In RTL-Sätzen bleiben Code, Dateinamen und deutsche Titel als eigene LTR-Insel zusammen.
+const latinRun = /(?:[A-Za-z0-9_\[({"'#+*/<>=!&|‎]|[.\-](?=[A-Za-z0-9_]))(?:[^֐-ࣿﭐ-﻿،؛؟]*[A-Za-z0-9_)\]}"'%°*])?/g;
+function isolateLatin(text) {
+  if (!rtlSprachen.has(language)) return [text];
+  const parts = []; let last = 0;
+  for (const match of text.matchAll(latinRun)) {
+    if (match.index > last) parts.push(text.slice(last,match.index));
+    const run = document.createElement("bdi"); run.dir = "ltr"; run.textContent = match[0]; parts.push(run);
+    last = match.index + match[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts;
 }
 const progressKey = "cud-lernfortschritt-v1";
 let progressPersistent = true;

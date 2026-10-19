@@ -4,7 +4,7 @@ const sprachen = {de:"Deutsch",en:"English",ar:"العربية",tr:"Türkçe",fa
 const uebersetzungsSprachen = ["en","ar","tr","fa","uk"];
 const rtlSprachen = new Set(["ar","fa"]);
 // Vollständig übersetzte Sprachen; nur für sie verlangt die Prüfung jeden Eintrag.
-const vollstaendigeSprachen = ["en"];
+const vollstaendigeSprachen = ["en","ar"];
 // Wird von uebersetzung-<code>.js befüllt: deutscher Text → Übersetzung.
 const uebersetzungen = {};
 // Fachbegriffe bleiben Deutsch und erscheinen als „Übersetzung (Begriff)“ bei der ersten Nennung je Abschnitt.

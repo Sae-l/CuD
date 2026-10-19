@@ -584,19 +584,31 @@ async function browserTests() {
     await page.reload(); await waitForItem("aufgabe-6-1");
     assert.equal(await page.locator("#sprache").inputValue(),"en");
     assert.equal(await page.locator('.main-nav a[href="#lernplan"]').innerText(),"My learning plan");
-    // Auf Englisch darf kein übersetzbarer deutscher Text mehr sichtbar sein.
+    // In jeder vollständigen Sprache darf kein übersetzbarer deutscher Text mehr sichtbar sein.
     const germanTexts = [...translatable.keys()];
-    for (const id of ["","lernplan","wiederholen","vorlesungen","uebung","befehle","lernkonzept","abdeckung",...items.map(item => item.id)]) {
-      await page.goto(`${url}#${id}`);
-      // Die Übersetzung wird vor dem ersten Zeichnen geladen; sobald eine Überschrift steht, ist die Seite übersetzt.
-      await page.waitForFunction(() => document.querySelector("#inhalt h1") && document.querySelector('.main-nav a[href="#lernplan"]').lang === "en");
-      const visible = await page.evaluate(texts => {
-        const keys = new Set(texts);
-        // Glossarbegriffe stehen absichtlich als deutsche <bdi> in der Übersetzung.
-        return [...document.querySelectorAll("body *:not(bdi)")].filter(node => node.closest("[lang]:not(html)")?.lang !== "en" && [...node.childNodes].some(child => child.nodeType === 3 && keys.has(child.textContent.trim()))).map(node => node.textContent.trim());
-      },germanTexts);
-      assert.deepEqual(visible,[],`Unübersetzt sichtbar auf #${id}`);
+    for (const code of languages.complete) {
+      // Reiner Hash-Wechsel lädt nicht neu; die gespeicherte Sprache greift erst nach einem Neuladen.
+      await page.evaluate(code => localStorage.setItem("cud-sprache-v1",code),code);
+      await page.reload();
+      for (const id of ["","lernplan","wiederholen","vorlesungen","uebung","befehle","lernkonzept","abdeckung",...items.map(item => item.id)]) {
+        await page.goto(`${url}#${id}`);
+        // Die Übersetzung wird vor dem ersten Zeichnen geladen; sobald eine Überschrift steht, ist die Seite übersetzt.
+        await page.waitForFunction(code => document.querySelector("#inhalt h1") && document.querySelector('.main-nav a[href="#lernplan"]').lang === code,code);
+        const visible = await page.evaluate(([texts,code]) => {
+          const keys = new Set(texts);
+          // Glossarbegriffe und LTR-Inseln in RTL-Sätzen stehen absichtlich als <bdi> in der Übersetzung.
+          return [...document.querySelectorAll("body *:not(bdi)")].filter(node => node.closest("[lang]:not(html)")?.lang !== code && [...node.childNodes].some(child => child.nodeType === 3 && keys.has(child.textContent.trim()))).map(node => node.textContent.trim());
+        },[germanTexts,code]);
+        assert.deepEqual(visible,[],`${code}: unübersetzt sichtbar auf #${id}`);
+      }
     }
+    // RTL: Code und deutsche Titel bleiben als LTR-Insel zusammen.
+    await page.evaluate(() => localStorage.setItem("cud-sprache-v1","ar"));
+    await page.goto(`${url}#aufgabe-6-2`);
+    await page.reload();
+    await page.waitForFunction(() => document.querySelector('.main-nav a[href="#lernplan"]').lang === "ar");
+    assert.equal(await page.locator('#inhalt .primary-link bdi[dir="ltr"]').first().textContent(),"6.3 · Mittelwert, Minimum und Maximum");
+    await page.evaluate(() => localStorage.setItem("cud-sprache-v1","en"));
     await page.locator("#sprache").selectOption("ar");
     await page.waitForFunction(() => document.querySelector('.main-nav a[href="#lernplan"]').textContent === "خطة تعلّمي");
     assert.equal(await page.locator('.main-nav a[href="#lernplan"]').getAttribute("dir"),"rtl");

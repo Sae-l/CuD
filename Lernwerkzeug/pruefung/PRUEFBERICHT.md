@@ -1,5 +1,12 @@
 # Prüfbericht und Nachweisverlauf
 
+## v0.4.0 Schritt 2: Arabisch, 19.10.2026
+
+- PASS: `npm test` mit Arabisch als vollständiger Sprache: 1052 Einträge, Glossarklammern, alle 78 Ansichten auf Arabisch ohne sichtbaren übersetzbaren deutschen Text; Chromium, Firefox und WebKit.
+- RTL-Prüfpunkt: Einzelne Bezeichner wie `gute_daten` standen korrekt, gemischte Läufe (z. B. „التالي: 6.3 · Mittelwert, Minimum und Maximum“) verrutschten. Lösung: In RTL-Sprachen wird jeder lateinische Code- oder Titellauf als `<bdi dir="ltr">` ausgezeichnet; eine Browserprüfung sichert das ab.
+- Rückübersetzung: 53 zufällige arabische Texte ins Deutsche, 18 wortgleich, 34 stilistisch abweichend, 1 kleine Abweichung („Lernnavigation“ → „Navigationsmenü“), korrigiert.
+- Sichtprüfung: Lernplan, Lektion 1, Übung 6.1 und Befehle bei 390 px hell/dunkel. Der Seitenrahmen bleibt links ausgerichtet; nur die Texte laufen von rechts nach links.
+
 ## v0.4.0 Schritt 1: Übersetzungsvertrag, Design A und Englisch, 18.10.2026
 
 Unveröffentlichter Entwicklungsstand. Übersetzungen liegen je Sprache in `uebersetzung-<code>.js` (deutscher Text → Übersetzung); `uebersetzbar.cjs` legt fest, welche Texte übersetzbar sind.
