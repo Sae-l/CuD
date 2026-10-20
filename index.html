@@ -165,7 +165,7 @@
     /* Footer-Karte wie im Lernraum */
     footer { padding:0 0 40px; font-size:13px; color:var(--muted); }
     .foot-card { display:grid; grid-template-columns:minmax(0,1fr); gap:28px; padding:30px; border-radius:2rem; background:var(--card); box-shadow:0 0 0 6px var(--shell),0 0 0 7px var(--hair),var(--shadow); }
-    .foot-brand { display:grid; gap:12px; align-content:start; }
+    .foot-brand { display:grid; gap:12px; }
     .foot-brand strong { color:var(--ink); font-size:15px; font-weight:550; }
     .foot-brand p { margin:0; max-width:42ch; }
     /* Marke oben, darunter vier gleich breite Spalten; mobil als 2×2-Raster. */
@@ -176,9 +176,8 @@
     .foot-col a:hover { color:var(--accent); text-decoration:underline; text-underline-offset:4px; }
     .foot-icon { flex:none; width:17px; height:17px; margin-top:2.5px; background:var(--accent); -webkit-mask:var(--icon) center/contain no-repeat; mask:var(--icon) center/contain no-repeat; }
     .icon-arrow { --icon:var(--icon-arrow); } .icon-instagram { --icon:var(--icon-instagram); } .icon-linkedin { --icon:var(--icon-linkedin); } .icon-heart { --icon:var(--icon-heart); }
-    /* Einladung steht direkt unter dem PayPal-Link; der Link beginnt auf Höhe der ersten Links der Nachbarspalten. */
     .foot-col p { margin:0; max-width:30ch; }
-    .foot-legal { grid-column:1/-1; display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 24px; padding-top:18px; border-top:1px solid var(--hair); }
+    .foot-legal { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 24px; padding-top:18px; border-top:1px solid var(--hair); }
     .foot-legal strong { color:var(--ink); font-weight:550; }
     .foot-legal a { text-underline-offset:3px; }
     .language-note { margin:0; color:var(--ink); }
