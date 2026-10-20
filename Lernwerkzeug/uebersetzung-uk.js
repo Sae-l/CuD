@@ -48,6 +48,8 @@ uebersetzungen.uk = {
   "CuD Startseite": "Головна сторінка CuD",
   "Mitmachen": "Долучитися",
   "Feedback, Problem oder Wunsch melden": "Надіслати відгук, проблему чи побажання",
+  "CuD ist kostenlos und werbefrei. Hilft es dir? Ein kleiner Beitrag hält es am Laufen.": "CuD безкоштовний і без реклами. Він тобі допомагає? Невеликий внесок підтримує його роботу.",
+  "Mit PayPal unterstützen": "Підтримати через PayPal",
   "Kontakt": "Контакт",
   "Gestaltung & Weiterentwicklung": "Дизайн і подальший розвиток",
   "Zum Inhalt": "Перейти до вмісту",

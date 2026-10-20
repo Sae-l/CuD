@@ -48,6 +48,8 @@ uebersetzungen.ar = {
   "CuD Startseite": "الصفحة الرئيسية لـ CuD",
   "Mitmachen": "شارك",
   "Feedback, Problem oder Wunsch melden": "أرسل ملاحظة أو مشكلة أو اقتراحًا",
+  "CuD ist kostenlos und werbefrei. Hilft es dir? Ein kleiner Beitrag hält es am Laufen.": "CuD مجاني وبلا إعلانات. هل يفيدك؟ مساهمة صغيرة تُبقيه مستمرًا.",
+  "Mit PayPal unterstützen": "ادعم عبر PayPal",
   "Kontakt": "تواصل",
   "Gestaltung & Weiterentwicklung": "التصميم ومواصلة التطوير",
   "Zum Inhalt": "انتقل إلى المحتوى",
