@@ -396,9 +396,9 @@
     },
     {
       "path": "Lernwerkzeug/styles.css",
-      "bytes": 38651,
-      "sha256": "19617d473c5399fabeb31bf5b10e27a32b1d66fd71954fb1bbac3cddcb36108c",
-      "git_blob_sha1": "6673788ed41ebe8a8ef1997741792f24e1559be9"
+      "bytes": 39220,
+      "sha256": "e2a8758d81697cc8bcfa31932f99a81450ab5045277fb0b41f183414b4c360be",
+      "git_blob_sha1": "08bab9d41e2f2ae5a1741dad7c34a945d0de9cb0"
     },
     {
       "path": "Lernwerkzeug/uebersetzbar.cjs",
@@ -996,9 +996,9 @@
     },
     {
       "path": "index.html",
-      "bytes": 41907,
-      "sha256": "4f1f2deae82cb9f430d0ac0a9a8929eef8a43408741eca9fbb959b9062e2440f",
-      "git_blob_sha1": "033bc32243fec0f8e9856f60529086a11cdad01c"
+      "bytes": 42327,
+      "sha256": "2882eb799930997375ef48aad219309803b72d8947fb0c77f27d46dadb6ab250",
+      "git_blob_sha1": "92171db3b3e106c31ac5683e4f12cb193e1e2fa9"
     },
     {
       "path": "package-lock.json",

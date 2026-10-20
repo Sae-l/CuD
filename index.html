@@ -170,11 +170,14 @@
     .foot-brand p { margin:0; max-width:42ch; }
     .foot-nav { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; }
     .foot-col h2 { margin:0 0 10px; font-size:12px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; }
-    .foot-col a { display:flex; align-items:center; gap:8px; min-height:44px; text-decoration:none; color:var(--ink); font-size:14px; }
+    /* Icons stehen an der ersten Zeile, auch wenn der Linktext umbricht. */
+    .foot-col a { display:flex; align-items:flex-start; gap:8px; min-height:44px; padding-block:11px; line-height:22px; text-decoration:none; color:var(--ink); font-size:14px; }
     .foot-col a:hover { color:var(--accent); text-decoration:underline; text-underline-offset:4px; }
-    .foot-icon { flex:none; width:17px; height:17px; background:var(--accent); -webkit-mask:var(--icon) center/contain no-repeat; mask:var(--icon) center/contain no-repeat; }
+    .foot-icon { flex:none; width:17px; height:17px; margin-top:2.5px; background:var(--accent); -webkit-mask:var(--icon) center/contain no-repeat; mask:var(--icon) center/contain no-repeat; }
     .icon-arrow { --icon:var(--icon-arrow); } .icon-instagram { --icon:var(--icon-instagram); } .icon-linkedin { --icon:var(--icon-linkedin); } .icon-heart { --icon:var(--icon-heart); }
-    .foot-col p { margin:14px 0 0; max-width:30ch; }
+    /* Einladung rückt vom Feedback ab und gehört sichtbar zum PayPal-Link darunter. */
+    .foot-col p { margin:16px 0 0; max-width:30ch; }
+    .foot-col p + a { padding-top:2px; }
     .foot-legal { grid-column:1/-1; display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 24px; padding-top:18px; border-top:1px solid var(--hair); }
     .foot-legal strong { color:var(--ink); font-weight:550; }
     .foot-legal a { text-underline-offset:3px; }
@@ -235,6 +238,8 @@
       .btn { width:100%; justify-content:space-between; }
       .foot-card { padding:22px; gap:20px; }
       .foot-nav { grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+      /* Mitmachen ist die längste Spalte: über zwei Zeilen, damit Kontakt unter Kurs aufrückt. */
+      .foot-col:nth-child(2) { grid-row:span 2; }
       .language-pick select { width:116px; padding-inline:32px 24px; text-overflow:ellipsis; }
       .language-pick::before { inset-inline-start:11px; }
       .language-pick::after { inset-inline-end:7px; }
