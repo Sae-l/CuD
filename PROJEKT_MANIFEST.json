@@ -222,9 +222,9 @@
     },
     {
       "path": "Lernwerkzeug/index.html",
-      "bytes": 8817,
-      "sha256": "16088d8448b23e023ca4ecdc173e3cbdec82f7ccb416511c5172b0adc0bcfcb9",
-      "git_blob_sha1": "37827d193df8f56930c02ad61916741cce9e8c9c"
+      "bytes": 8918,
+      "sha256": "7962e38519dd0d3a43895fc16847001d63cb2ea12373fe38fc05cb2f6ac397ff",
+      "git_blob_sha1": "d417c65e0fa2f6ac67eb53ff733cb942215fcab2"
     },
     {
       "path": "Lernwerkzeug/inhalte.js",
@@ -396,9 +396,9 @@
     },
     {
       "path": "Lernwerkzeug/styles.css",
-      "bytes": 39220,
-      "sha256": "e2a8758d81697cc8bcfa31932f99a81450ab5045277fb0b41f183414b4c360be",
-      "git_blob_sha1": "08bab9d41e2f2ae5a1741dad7c34a945d0de9cb0"
+      "bytes": 38945,
+      "sha256": "03a405d12f9753c14add34b10663a68cde52c2afd5bb8c28a02e216d6190fc64",
+      "git_blob_sha1": "deb49e046155729681dc79e1ef0096e9c4226f80"
     },
     {
       "path": "Lernwerkzeug/uebersetzbar.cjs",
@@ -408,33 +408,33 @@
     },
     {
       "path": "Lernwerkzeug/uebersetzung-ar.js",
-      "bytes": 223597,
-      "sha256": "55cf4162faa25f320c05b258e3c4a6233393e5aac569c0aa78842025a6ec4968",
-      "git_blob_sha1": "ac0c3b298ef76fb70896d2f86b261d46d434d857"
+      "bytes": 223659,
+      "sha256": "8839d980c2e1f3c72dd4704230b18d6e5a45cfc07a368acdc9635f21bdc14b66",
+      "git_blob_sha1": "03c6d9022d8a8c68b6e96bf9c9f62878e123ab30"
     },
     {
       "path": "Lernwerkzeug/uebersetzung-en.js",
-      "bytes": 189345,
-      "sha256": "50ef9b443b05dc5797e2edbe9080d1f5fcdf09e9e0dc57927f404de927a8beb2",
-      "git_blob_sha1": "d98a2433ac40bba7d05bb0f05f822e5238979d77"
+      "bytes": 189400,
+      "sha256": "faf195ff7d71b69292c40dbcf2bc32d44afa7b7976a73ecd39384c4ace3b0255",
+      "git_blob_sha1": "05b0813cd293be1e340c9efbfd316a8154ff3b39"
     },
     {
       "path": "Lernwerkzeug/uebersetzung-fa.js",
-      "bytes": 238177,
-      "sha256": "9c3477bef409b87d114701f5c55fa07191f27198c69587ed0454a8c39d3c19bb",
-      "git_blob_sha1": "7854a9545ea6286759bedb79a671a689c1ab97f2"
+      "bytes": 238239,
+      "sha256": "6d1ac1f717ef975e6471ca9d13bf1b1d0192e9c30a47c3a7a48b816fe8fc6cc6",
+      "git_blob_sha1": "4b0fead9d2887ad6b3536d7d727e20277cb24cfe"
     },
     {
       "path": "Lernwerkzeug/uebersetzung-tr.js",
-      "bytes": 195712,
-      "sha256": "755a859565a2d66afce397e679e60c6de39d972539bc80bfd21b1545525c8f28",
-      "git_blob_sha1": "1a82f685d9ac55990d0b5781cb90dd8f229647e3"
+      "bytes": 195768,
+      "sha256": "c5b509ce3e9093023e176b05eef8691ad58df699901e7be6d838766b6db42fe4",
+      "git_blob_sha1": "7ef5d6756b1a587386e436ba854dcd2436d1c369"
     },
     {
       "path": "Lernwerkzeug/uebersetzung-uk.js",
-      "bytes": 247045,
-      "sha256": "aa4cc8714c50b3779c2a2d8aa38cea1903c3879db405a756ec7667188559ebb8",
-      "git_blob_sha1": "3548ba63f63cc36205298469ca052cc8b4d78b81"
+      "bytes": 247122,
+      "sha256": "d4360ddd5d526d7a9ae8676e3422ecce69de4ecc2ba5d64ab30f1b12c4c7cec7",
+      "git_blob_sha1": "86d33c6bc2a55a9bdf36789463b4dc0cc21309f2"
     },
     {
       "path": "Obsidian-CuD/.gitignore",
@@ -996,9 +996,9 @@
     },
     {
       "path": "index.html",
-      "bytes": 42327,
-      "sha256": "2882eb799930997375ef48aad219309803b72d8947fb0c77f27d46dadb6ab250",
-      "git_blob_sha1": "92171db3b3e106c31ac5683e4f12cb193e1e2fa9"
+      "bytes": 42266,
+      "sha256": "6cd65ee70339830bbd55e362be1bdf9d9f9c4ad3b8ff3d01b243e11f52814334",
+      "git_blob_sha1": "67db5c66fd2982f423b75eaaac19168f480802af"
     },
     {
       "path": "package-lock.json",

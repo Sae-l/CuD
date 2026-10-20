@@ -164,20 +164,20 @@
     .cta .actions { justify-content:center; }
     /* Footer-Karte wie im Lernraum */
     footer { padding:0 0 40px; font-size:13px; color:var(--muted); }
-    .foot-card { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,3fr); gap:28px; padding:30px; border-radius:2rem; background:var(--card); box-shadow:0 0 0 6px var(--shell),0 0 0 7px var(--hair),var(--shadow); }
+    .foot-card { display:grid; grid-template-columns:minmax(0,1fr); gap:28px; padding:30px; border-radius:2rem; background:var(--card); box-shadow:0 0 0 6px var(--shell),0 0 0 7px var(--hair),var(--shadow); }
     .foot-brand { display:grid; gap:12px; align-content:start; }
     .foot-brand strong { color:var(--ink); font-size:15px; font-weight:550; }
     .foot-brand p { margin:0; max-width:42ch; }
-    .foot-nav { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; }
+    /* Marke oben, darunter vier gleich breite Spalten; mobil als 2×2-Raster. */
+    .foot-nav { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:28px; }
     .foot-col h2 { margin:0 0 10px; font-size:12px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; }
     /* Icons stehen an der ersten Zeile, auch wenn der Linktext umbricht. */
     .foot-col a { display:flex; align-items:flex-start; gap:8px; min-height:44px; padding-block:11px; line-height:22px; text-decoration:none; color:var(--ink); font-size:14px; }
     .foot-col a:hover { color:var(--accent); text-decoration:underline; text-underline-offset:4px; }
     .foot-icon { flex:none; width:17px; height:17px; margin-top:2.5px; background:var(--accent); -webkit-mask:var(--icon) center/contain no-repeat; mask:var(--icon) center/contain no-repeat; }
     .icon-arrow { --icon:var(--icon-arrow); } .icon-instagram { --icon:var(--icon-instagram); } .icon-linkedin { --icon:var(--icon-linkedin); } .icon-heart { --icon:var(--icon-heart); }
-    /* Einladung rückt vom Feedback ab und gehört sichtbar zum PayPal-Link darunter. */
-    .foot-col p { margin:16px 0 0; max-width:30ch; }
-    .foot-col p + a { padding-top:2px; }
+    /* Einladung steht direkt unter dem PayPal-Link; der Link beginnt auf Höhe der ersten Links der Nachbarspalten. */
+    .foot-col p { margin:0; max-width:30ch; }
     .foot-legal { grid-column:1/-1; display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 24px; padding-top:18px; border-top:1px solid var(--hair); }
     .foot-legal strong { color:var(--ink); font-weight:550; }
     .foot-legal a { text-underline-offset:3px; }
@@ -206,7 +206,6 @@
       .flow { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .flow li:nth-child(even) { margin-top:0; }
       .limits ul { grid-template-columns:minmax(0,1fr); }
-      .foot-card { grid-template-columns:minmax(0,1fr); }
     }
     /* Tablet: Sprache und Design brauchen den Platz; der Hero zeigt denselben Knopf direkt darunter. */
     @media (min-width:768px) and (max-width:1100px) { .island > .btn { display:none; } }
@@ -238,8 +237,6 @@
       .btn { width:100%; justify-content:space-between; }
       .foot-card { padding:22px; gap:20px; }
       .foot-nav { grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
-      /* Mitmachen ist die längste Spalte: über zwei Zeilen, damit Kontakt unter Kurs aufrückt. */
-      .foot-col:nth-child(2) { grid-row:span 2; }
       .language-pick select { width:116px; padding-inline:32px 24px; text-overflow:ellipsis; }
       .language-pick::before { inset-inline-start:11px; }
       .language-pick::after { inset-inline-end:7px; }
@@ -425,10 +422,11 @@ Lernwerkzeug/index.html</pre>
         <p data-i18n>Die Startseite und der Lernraum funktionieren lokal und offline. Originalunterlagen behalten ihre Herkunft und Rechte.</p>
         <p id="sprachhinweis" class="language-note" hidden><span data-i18n>Maschinell übersetzt. Fachbegriffe und Aufgabenstellungen bleiben Deutsch.</span> <a href="https://github.com/Sae-l/CuD/issues/new?template=feedback.md" target="_blank" rel="noopener noreferrer"><span data-i18n>Fehler melden</span> ↗</a></p>
       </div>
-      <nav class="foot-nav" aria-label="Kurs, Rückmeldung und Kontakt" data-i18n-label="Kurs, Rückmeldung und Kontakt">
+      <nav class="foot-nav" aria-label="Kurs, Rückmeldung, Kontakt und Unterstützung" data-i18n-label="Kurs, Rückmeldung, Kontakt und Unterstützung">
         <div class="foot-col"><h2 data-i18n>Kurs</h2><a href="https://ilu.th-koeln.de/goto.php/crs/872821" target="_blank" rel="noopener noreferrer"><span class="foot-icon icon-arrow" aria-hidden="true"></span><span data-i18n>Originalkurs in ILU</span></a><a href="https://github.com/Sae-l/CuD" target="_blank" rel="noopener noreferrer"><span class="foot-icon icon-arrow" aria-hidden="true"></span><span data-i18n>Quellcode auf GitHub</span></a></div>
-        <div class="foot-col"><h2 data-i18n>Mitmachen</h2><a href="https://github.com/Sae-l/CuD/issues/new/choose" target="_blank" rel="noopener noreferrer"><span class="foot-icon icon-arrow" aria-hidden="true"></span><span data-i18n>Feedback, Problem oder Wunsch melden</span></a><p data-i18n>CuD ist kostenlos und werbefrei. Hilft es dir? Ein kleiner Beitrag hält es am Laufen.</p><a href="https://www.paypal.me/saaidalhallak" target="_blank" rel="noopener noreferrer"><span class="foot-icon icon-heart" aria-hidden="true"></span><span data-i18n>Mit PayPal unterstützen</span></a></div>
+        <div class="foot-col"><h2 data-i18n>Mitmachen</h2><a href="https://github.com/Sae-l/CuD/issues/new/choose" target="_blank" rel="noopener noreferrer"><span class="foot-icon icon-arrow" aria-hidden="true"></span><span data-i18n>Feedback, Problem oder Wunsch melden</span></a></div>
         <div class="foot-col"><h2 data-i18n>Kontakt</h2><a href="https://www.instagram.com/s.hlllk/" target="_blank" rel="noopener noreferrer me"><span class="foot-icon icon-instagram" aria-hidden="true"></span>Instagram</a><a href="https://www.linkedin.com/in/saeed-alhalak/" target="_blank" rel="noopener noreferrer me"><span class="foot-icon icon-linkedin" aria-hidden="true"></span>LinkedIn</a></div>
+        <div class="foot-col"><h2 data-i18n>Unterstützen</h2><a href="https://www.paypal.me/saaidalhallak" target="_blank" rel="noopener noreferrer"><span class="foot-icon icon-heart" aria-hidden="true"></span><span data-i18n>Mit PayPal unterstützen</span></a><p data-i18n>CuD ist kostenlos und werbefrei. Hilft es dir? Ein kleiner Beitrag hält es am Laufen.</p></div>
       </nav>
       <div class="foot-legal">
         <span>© 2026 <strong>Mohamed Saeed Alhalak</strong> · <span data-i18n>Gestaltung & Weiterentwicklung</span></span>
