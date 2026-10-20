@@ -48,6 +48,8 @@ uebersetzungen.fa = {
   "CuD Startseite": "صفحهٔ اصلی CuD",
   "Mitmachen": "مشارکت",
   "Feedback, Problem oder Wunsch melden": "ارسال بازخورد، مشکل یا درخواست",
+  "CuD ist kostenlos und werbefrei. Hilft es dir? Ein kleiner Beitrag hält es am Laufen.": "CuD رایگان و بدون تبلیغات است. به کارت می‌آید؟ یک کمک کوچک آن را سرپا نگه می‌دارد.",
+  "Mit PayPal unterstützen": "حمایت با PayPal",
   "Kontakt": "تماس",
   "Gestaltung & Weiterentwicklung": "طراحی و ادامهٔ توسعه",
   "Zum Inhalt": "رفتن به محتوا",

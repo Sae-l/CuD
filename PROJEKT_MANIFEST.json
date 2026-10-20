@@ -222,9 +222,9 @@
     },
     {
       "path": "Lernwerkzeug/index.html",
-      "bytes": 8514,
-      "sha256": "7e0eb9e09ac44e9a21f40317c981f61070f536029bed72a63a4ffa5e8be8e378",
-      "git_blob_sha1": "9379ea2f93d4987555bb3fed04b31668fcdd5fef"
+      "bytes": 8817,
+      "sha256": "16088d8448b23e023ca4ecdc173e3cbdec82f7ccb416511c5172b0adc0bcfcb9",
+      "git_blob_sha1": "37827d193df8f56930c02ad61916741cce9e8c9c"
     },
     {
       "path": "Lernwerkzeug/inhalte.js",
@@ -252,9 +252,9 @@
     },
     {
       "path": "Lernwerkzeug/pruefen.cjs",
-      "bytes": 43943,
-      "sha256": "2822ff6b00ea2161a194ba3c55104dac0ad36f9b0561c3548c348837b531d31c",
-      "git_blob_sha1": "ee184055d44acb8c03a2fc376daf6e28a8bca509"
+      "bytes": 43997,
+      "sha256": "7a90f915c394572bfee7ad043bc61f3f7a90483e98f66ebcc78c9fb89cd4976d",
+      "git_blob_sha1": "6e720930b05cf065e391de86a52489d2dc5954eb"
     },
     {
       "path": "Lernwerkzeug/pruefung/CI_NACHWEIS.json",
@@ -396,9 +396,9 @@
     },
     {
       "path": "Lernwerkzeug/styles.css",
-      "bytes": 38152,
-      "sha256": "d5adcc96052510ef8d16eac3c99a58fd6433c42dcac4cbffd66f0365329e3559",
-      "git_blob_sha1": "5ff5f28f05b681011b28094e5c4b9a278d196091"
+      "bytes": 38651,
+      "sha256": "19617d473c5399fabeb31bf5b10e27a32b1d66fd71954fb1bbac3cddcb36108c",
+      "git_blob_sha1": "6673788ed41ebe8a8ef1997741792f24e1559be9"
     },
     {
       "path": "Lernwerkzeug/uebersetzbar.cjs",
@@ -408,33 +408,33 @@
     },
     {
       "path": "Lernwerkzeug/uebersetzung-ar.js",
-      "bytes": 223335,
-      "sha256": "fca86e5bcaae01f5aef46dedf20974fdfa041c02c5a759ba1b8a18c5bca70238",
-      "git_blob_sha1": "b119865a944798191077cd59c9e51709a39154e6"
+      "bytes": 223597,
+      "sha256": "55cf4162faa25f320c05b258e3c4a6233393e5aac569c0aa78842025a6ec4968",
+      "git_blob_sha1": "ac0c3b298ef76fb70896d2f86b261d46d434d857"
     },
     {
       "path": "Lernwerkzeug/uebersetzung-en.js",
-      "bytes": 189117,
-      "sha256": "fcee2e5abe820c44da86a659dc29a9ca7245003e0ae58a45992c2615e11cde14",
-      "git_blob_sha1": "158c48acbb92c6214964cb043e2be7a4d7f8c314"
+      "bytes": 189345,
+      "sha256": "50ef9b443b05dc5797e2edbe9080d1f5fcdf09e9e0dc57927f404de927a8beb2",
+      "git_blob_sha1": "d98a2433ac40bba7d05bb0f05f822e5238979d77"
     },
     {
       "path": "Lernwerkzeug/uebersetzung-fa.js",
-      "bytes": 237880,
-      "sha256": "92b6e8f93d1c86650bc7da952ba6d88e925d4b713e2966122100fbb10e1af045",
-      "git_blob_sha1": "9c2bf358acc7ea1310ee45a7ef18abbb95e99da6"
+      "bytes": 238177,
+      "sha256": "9c3477bef409b87d114701f5c55fa07191f27198c69587ed0454a8c39d3c19bb",
+      "git_blob_sha1": "7854a9545ea6286759bedb79a671a689c1ab97f2"
     },
     {
       "path": "Lernwerkzeug/uebersetzung-tr.js",
-      "bytes": 195476,
-      "sha256": "39a1a3e797e9d647a3b12938002470208d6d705a8a9881afc6a45cb6d2f0c64a",
-      "git_blob_sha1": "b9d7bf13e0a760db7a68e08a94a23de133644bc0"
+      "bytes": 195712,
+      "sha256": "755a859565a2d66afce397e679e60c6de39d972539bc80bfd21b1545525c8f28",
+      "git_blob_sha1": "1a82f685d9ac55990d0b5781cb90dd8f229647e3"
     },
     {
       "path": "Lernwerkzeug/uebersetzung-uk.js",
-      "bytes": 246713,
-      "sha256": "9fbd3a5ee72e13d96f342bec1334eaace247942dca1ba4c2b2b381020d72edf8",
-      "git_blob_sha1": "e65893d5c7873060afa313b1a520278b9e44eefa"
+      "bytes": 247045,
+      "sha256": "aa4cc8714c50b3779c2a2d8aa38cea1903c3879db405a756ec7667188559ebb8",
+      "git_blob_sha1": "3548ba63f63cc36205298469ca052cc8b4d78b81"
     },
     {
       "path": "Obsidian-CuD/.gitignore",
@@ -996,9 +996,9 @@
     },
     {
       "path": "index.html",
-      "bytes": 41216,
-      "sha256": "be4f275f2a138cb0b9ada659046c8bb5fb937629e7957dc96e09222182cb545c",
-      "git_blob_sha1": "8947ebc2a47c3a5374e2edd41531172242b0fd51"
+      "bytes": 41907,
+      "sha256": "4f1f2deae82cb9f430d0ac0a9a8929eef8a43408741eca9fbb959b9062e2440f",
+      "git_blob_sha1": "033bc32243fec0f8e9856f60529086a11cdad01c"
     },
     {
       "path": "package-lock.json",

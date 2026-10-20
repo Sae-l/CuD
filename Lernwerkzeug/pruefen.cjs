@@ -633,8 +633,8 @@ async function browserTests() {
     assert.notEqual(await page.locator("html").getAttribute("data-theme"),theme);
     await page.screenshot({path:path.join(output,"design-dunkel.png"),fullPage:false});
     await page.evaluate(() => { localStorage.removeItem("cud-design-v1"); localStorage.removeItem("cud-sprache-v1"); });
-    // Footer: Kurs, Rückmeldung und Kontakt sind verlinkt.
-    for (const href of ["https://ilu.th-koeln.de/goto.php/crs/872821","https://github.com/Sae-l/CuD/issues/new/choose","https://www.instagram.com/s.hlllk/","https://www.linkedin.com/in/saeed-alhalak/"]) assert.equal(await page.locator(`footer a[href="${href}"]`).count(),1,href);
+    // Footer: Kurs, Rückmeldung, Unterstützung und Kontakt sind verlinkt.
+    for (const href of ["https://ilu.th-koeln.de/goto.php/crs/872821","https://github.com/Sae-l/CuD/issues/new/choose","https://www.paypal.me/saaidalhallak","https://www.instagram.com/s.hlllk/","https://www.linkedin.com/in/saeed-alhalak/"]) assert.equal(await page.locator(`footer a[href="${href}"]`).count(),1,href);
     await page.emulateMedia({reducedMotion:"reduce"});
     assert(await page.evaluate(() => matchMedia("(prefers-reduced-motion: reduce)").matches));
     assert.deepEqual(errors,[]);

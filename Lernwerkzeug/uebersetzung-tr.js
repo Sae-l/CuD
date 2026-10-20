@@ -48,6 +48,8 @@ uebersetzungen.tr = {
   "CuD Startseite": "CuD ana sayfası",
   "Mitmachen": "Katıl",
   "Feedback, Problem oder Wunsch melden": "Geri bildirim, sorun veya istek bildir",
+  "CuD ist kostenlos und werbefrei. Hilft es dir? Ein kleiner Beitrag hält es am Laufen.": "CuD ücretsiz ve reklamsız. İşine yarıyor mu? Küçük bir katkı onu ayakta tutar.",
+  "Mit PayPal unterstützen": "PayPal ile destekle",
   "Kontakt": "İletişim",
   "Gestaltung & Weiterentwicklung": "Tasarım ve geliştirmenin sürdürülmesi",
   "Zum Inhalt": "İçeriğe geç",

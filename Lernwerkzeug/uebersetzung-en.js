@@ -48,6 +48,8 @@ uebersetzungen.en = {
   "CuD Startseite": "CuD home page",
   "Mitmachen": "Get involved",
   "Feedback, Problem oder Wunsch melden": "Send feedback, a problem or a wish",
+  "CuD ist kostenlos und werbefrei. Hilft es dir? Ein kleiner Beitrag hält es am Laufen.": "CuD is free and ad-free. Does it help you? A small contribution keeps it going.",
+  "Mit PayPal unterstützen": "Support with PayPal",
   "Kontakt": "Contact",
   "Gestaltung & Weiterentwicklung": "Design & further development",
   "Zum Inhalt": "Skip to content",
