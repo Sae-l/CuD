@@ -379,14 +379,15 @@ tbody tr:nth-child(even) { background:var(--row,#f0f3e9); }
 .copy-code:hover { background:var(--wash); }
 td .code-frame { margin:0; }
 .first-code .code-frame { margin:22px 0 26px; }
-/* Footer: Karte mit Marke und den Gruppen Kurs, Mitmachen, Kontakt. */
+/* Footer: Karte mit Marke und den Gruppen Kurs, Mitmachen, Kontakt, Unterstützen. */
 footer { padding:28px 32px 40px; font-size:12px; color:var(--muted); }
-.foot-card { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,3fr); gap:28px; padding:30px; border-radius:28px; background:var(--card); box-shadow:var(--bezel); }
+.foot-card { display:grid; grid-template-columns:1fr; gap:28px; padding:30px; border-radius:28px; background:var(--card); box-shadow:var(--bezel); }
 .foot-brand { display:grid; gap:12px; align-content:start; }
 .foot-brand strong { color:var(--ink); font-size:15px; font-weight:550; }
 .foot-brand p { margin:0; font-size:13px; max-width:42ch; }
 .foot-mark { display:grid; place-items:center; width:48px; height:48px; border-radius:50%; background:#20271f; color:var(--lime); font-weight:650; font-size:22px; letter-spacing:-1.5px; }
-.foot-nav { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; }
+/* Marke oben, darunter vier gleich breite Spalten; mobil als 2×2-Raster. */
+.foot-nav { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:28px; }
 .foot-col h2 { margin:0 0 10px; font-size:12px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
 /* Icons stehen an der ersten Zeile, auch wenn der Linktext umbricht. */
 .foot-col a { display:flex; align-items:flex-start; gap:8px; min-height:44px; padding:11px 0; line-height:22px; color:var(--ink); text-decoration:none; font-size:14px; }
@@ -397,21 +398,16 @@ footer { padding:28px 32px 40px; font-size:12px; color:var(--muted); }
 .icon-instagram { -webkit-mask:var(--icon-instagram) center/contain no-repeat; mask:var(--icon-instagram) center/contain no-repeat; background:currentColor; }
 .icon-linkedin { -webkit-mask:var(--icon-linkedin) center/contain no-repeat; mask:var(--icon-linkedin) center/contain no-repeat; background:currentColor; }
 .icon-heart { -webkit-mask:var(--icon-heart) center/contain no-repeat; mask:var(--icon-heart) center/contain no-repeat; background:currentColor; }
-/* Einladung rückt vom Feedback ab und gehört sichtbar zum PayPal-Link darunter. */
-.foot-col p { margin:16px 0 0; font-size:13px; max-width:30ch; }
-.foot-col p + a { padding-top:2px; }
+/* Einladung steht direkt unter dem PayPal-Link; der Link beginnt auf Höhe der ersten Links der Nachbarspalten. */
+.foot-col p { margin:0; font-size:13px; max-width:30ch; }
 .foot-legal { grid-column:1/-1; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding-top:18px; border-top:1px solid var(--line); }
 .foot-legal strong { color:var(--ink); font-weight:550; }
 .external-link::after { content:" ↗"; }
-/* Tablet: Marke über die Spalten stellen wie auf der Startseite, sonst bleiben den Linkspalten nur ~120 px. */
-@media (max-width:980px) { .foot-card { grid-template-columns:1fr; } }
 @media (max-width:760px) {
   .topbar-tools { gap:6px; }
   .topbar-tools .local { display:none; }
   .foot-card { grid-template-columns:1fr; padding:22px; gap:20px; }
   .foot-nav { grid-template-columns:1fr 1fr; gap:20px; }
-  /* Mitmachen ist die längste Spalte: über zwei Zeilen, damit Kontakt unter Kurs aufrückt. */
-  .foot-col:nth-child(2) { grid-row:span 2; }
 }
 @media (max-width:420px) {
   /* Die Pille ist so breit wie der längste Sprachname; rechts symmetrisch einrücken, damit der Dunkel-Schalter bei 320 px passt. */
