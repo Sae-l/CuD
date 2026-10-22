@@ -102,8 +102,7 @@ for wert in becken_2:
 summe_2 += wert
 mw_2
 = summe_2
-/ len(becken_1)
-# BUG: becken_1 statt 2!
+/ len(becken_2)
 # ... bei 50 Sensoren wird das Skript unwartbar!
 ```
 

@@ -966,9 +966,9 @@
     },
     {
       "path": "Referenz_Sichtung/Vorlesungen/md/003_Coding und Digitalisierung.md",
-      "bytes": 46618,
-      "sha256": "f43090cf72442b7af7f08689dd8816ca1954ba45529b9eca62c1593ffc63e8d1",
-      "git_blob_sha1": "38bb0fb01d07672cccaab32b140102de1961da9f"
+      "bytes": 46591,
+      "sha256": "62c2dba056a5de35f125995463169e613c8615e2bd8a3011f543fe460cf2c231",
+      "git_blob_sha1": "7cb6666f2b21ab0da3f9238a1dd5beb0ac653a51"
     },
     {
       "path": "Referenz_Sichtung/Vorlesungen/md/code 002_Beispiel Datenstrukturen - Analyse.md",
