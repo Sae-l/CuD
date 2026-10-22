@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXCLUDED = {".git", ".claude", ".upload-work", ".test-packages", ".test-env", ".venv", "__pycache__", "node_modules"}
+EXCLUDED = {".git", ".claude", ".upload-work", ".test-packages", ".test-env", ".venv", "__pycache__", "node_modules", ".pytest_cache"}
 
 
 def entries(root):
