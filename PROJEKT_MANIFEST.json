@@ -83,10 +83,28 @@
       "git_blob_sha1": "e4fba2183587225f216eeada4c78dfab6b2e65f5"
     },
     {
+      "path": ".ruff_cache/.gitignore",
+      "bytes": 35,
+      "sha256": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316",
+      "git_blob_sha1": "b100327770759f0efb7859fe78aca4801d69ed61"
+    },
+    {
+      "path": ".ruff_cache/CACHEDIR.TAG",
+      "bytes": 43,
+      "sha256": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae",
+      "git_blob_sha1": "bc1ecb967a482524e7736038de0df6e08f9ee452"
+    },
+    {
       "path": "ACCESSIBILITY.md",
       "bytes": 1363,
       "sha256": "25dfd5b674da73536efd692b8807b82b2b0d3c8b22d315ea6f6d6d14d31d764a",
       "git_blob_sha1": "0769d12c241e25afa867974fca2ea02d035bf161"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 2320,
+      "sha256": "0edbcd27197f9d578752788d29c9100a891b8fe3e5296ad83d8683a37340ecb0",
+      "git_blob_sha1": "0095227cf4e6c76c1e3ba54caa07d994945a37e1"
     },
     {
       "path": "ARBEITSPLAN_Lernwerkzeug.md",
@@ -99,6 +117,12 @@
       "bytes": 20311,
       "sha256": "cd768d6fcc9a2ba1cf0ddac8a6de5eb131f261cc8a1b47ae48fd1fe52b4d102a",
       "git_blob_sha1": "91d8970d8e6cfd04bcee530ad20b5e518986034e"
+    },
+    {
+      "path": "CLAUDE.md",
+      "bytes": 11,
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "git_blob_sha1": "43c994c2d3617f947bcb5adf1933e21dabe46bb5"
     },
     {
       "path": "CODE_OF_CONDUCT.md",
