@@ -90,9 +90,9 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 2320,
-      "sha256": "0edbcd27197f9d578752788d29c9100a891b8fe3e5296ad83d8683a37340ecb0",
-      "git_blob_sha1": "0095227cf4e6c76c1e3ba54caa07d994945a37e1"
+      "bytes": 2961,
+      "sha256": "becc88fb37c7b5a6a49b181874d7e4bde625e93de6815376a28dc457bcf319b3",
+      "git_blob_sha1": "0d95af37cbbb17fc5665adffb5815f5ce3f4efd8"
     },
     {
       "path": "ARBEITSPLAN_Lernwerkzeug.md",

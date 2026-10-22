@@ -27,6 +27,17 @@ python <skill>/scripts/sichtung.py check .upload-work/Sichtung_neu/Vorlesungen
 - Danach ergänzen: Dokumentübersicht in `Referenz_Sichtung/Seitenindex.md`, `source_sha256` in `Referenz_Sichtung/manifest.json`, Eintrag im `Sichtungsbericht.md`.
 - Abschluss: `python scripts/manifest.py --write`, dann die Prüfungen aus `.github/workflows/check.yml` lokal ausführen.
 
+## Projektmanifest nur aus sauberem Stand schreiben
+
+`scripts/manifest.py --write` erfasst alle Dateien im Ordner, auch ungetrackte (z. B. `.ruff_cache/`, Testausgaben). Die CI kennt nur Git-Dateien und schlägt dann fehl. Deshalb vorher `git status --short --ignored` prüfen und ungetrackte Reste entfernen, oder das Manifest in einem frischen Worktree schreiben:
+
+```text
+git worktree add --detach ../cud-sauber HEAD
+cd ../cud-sauber && python scripts/manifest.py --write
+```
+
+Testausgaben unter `Lernwerkzeug/pruefung/` nach `npm test` mit `git restore -- Lernwerkzeug/pruefung` zurücksetzen, sofern sie nicht bewusst erneuert werden.
+
 ## Prüfungen vor jedem Pull Request
 
 ```text
