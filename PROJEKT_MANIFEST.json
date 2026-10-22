@@ -66,9 +66,9 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 277,
-      "sha256": "f8f504918e9ea834c5ba7aa30f20cd1d509635497710d44a7825fb5a6a86e0b7",
-      "git_blob_sha1": "2b2c46a8ddadebf7821a0fd7348e774a1add3dd3"
+      "bytes": 144,
+      "sha256": "e2e2c117380640101ac26a60452af848edf6b608f55e33fa4c913e320211ee4c",
+      "git_blob_sha1": "13a9b03ee2f8f65821effdbeb422dd1ce5a814f4"
     },
     {
       "path": ".node-version",
@@ -744,9 +744,9 @@
     },
     {
       "path": "RECHTE.md",
-      "bytes": 2117,
-      "sha256": "27e4d654626db8bb5da3fd9e0b7c17186f4a710379d0a47a0922a174a9e73e99",
-      "git_blob_sha1": "b572ec13d4b414f786a34a31d6fc1eec98bb592f"
+      "bytes": 2490,
+      "sha256": "7035db6c31cd32031c04f7b7eaf83e9e2fdfe5cd023fb9ba97cab76aa2067f1e",
+      "git_blob_sha1": "1acd9ca9c6d24462887938fb86af9de2213626aa"
     },
     {
       "path": "RELEASE_NOTES.md",
@@ -756,9 +756,9 @@
     },
     {
       "path": "REPOSITORY_SETTINGS.md",
-      "bytes": 5568,
-      "sha256": "2293121dfb759fb3a1ca13d0106c41791d6c6828710a7fd9f2e6b89ee4f988d6",
-      "git_blob_sha1": "3167409477b53ef7519e84b2eecd7fa8279dae82"
+      "bytes": 5591,
+      "sha256": "5eb19bbe909a4d7a8f4fadfb4f575ed705303fb30c5b1ef1095f1350fc4d8c42",
+      "git_blob_sha1": "b138ff16258d7c00a80d2e4c29a5961b04aafc89"
     },
     {
       "path": "Referenz/Code/002_fftpy.sec",
@@ -993,6 +993,12 @@
       "bytes": 5350,
       "sha256": "3111dc9d5142ed2d5e40fa15bdd4b821eaaf30611296f64b2137dad9b5614b92",
       "git_blob_sha1": "23c4bf2e2312a2eb0cedecc23f717114e0353050"
+    },
+    {
+      "path": "UEBERGABE_CuD-Erweiterung.md",
+      "bytes": 4629,
+      "sha256": "641b889cdebe190c4637c03b12da9e09a993899da05b44e518803bd62451cae3",
+      "git_blob_sha1": "7844d000566012d451a4bae7fca94fd5b93a7ba9"
     },
     {
       "path": "index.html",

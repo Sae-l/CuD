@@ -11,5 +11,3 @@ node_modules/
 .env
 .env.*
 !.env.example
-# Neue Kursunterlagen mit ungeklärten Veröffentlichungsrechten (siehe RECHTE.md, Issue #26)
-/Referenz/Coding und Digitalisierung*/

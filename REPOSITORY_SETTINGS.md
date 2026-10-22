@@ -28,7 +28,7 @@ Aktueller Abgleich: 22.10.2026, `Sae-l/CuD`, öffentlich, Standardbranch `main`.
 
 Die README führt zuerst zum Online-Lernraum und danach zum versionierten Offline-Paket. Fehler und Verbesserungsvorschläge haben Vorlagen unter `.github/ISSUE_TEMPLATE/`; `.github/pull_request_template.md` fragt Prüfung und Risiken ab. [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), [SECURITY.md](SECURITY.md) und [ACCESSIBILITY.md](ACCESSIBILITY.md) beschreiben Umgang, Meldeweg und bekannte Grenzen. Diese Dateien werden in GitHubs Community-Profil erst nach Übernahme in den Standardbranch berücksichtigt.
 
-Eine allgemeine Projektlizenz bleibt eine offene Inhaberentscheidung. [RECHTE.md](RECHTE.md) trennt eigenen Code, eigene Lerninhalte, fremde Kursmaterialien und Assetlizenzen. Private Vulnerability Reporting ist seit dem 22.10.2026 aktiviert; SECURITY.md verweist darauf. Neue Kursunterlagen mit ungeklärten Rechten (Ordner `Referenz/Coding und Digitalisierung*/`) sind per `.gitignore` von Git ausgeschlossen, bis die Veröffentlichung geklärt ist ([Issue #26](https://github.com/Sae-l/CuD/issues/26)).
+Eine allgemeine Projektlizenz bleibt eine offene Inhaberentscheidung. [RECHTE.md](RECHTE.md) trennt eigenen Code, eigene Lerninhalte, fremde Kursmaterialien und Assetlizenzen. Private Vulnerability Reporting ist seit dem 22.10.2026 aktiviert; SECURITY.md verweist darauf. Der Inhaber hat am 22.10.2026 entschieden, dass die Kurs-PDFs vorerst öffentlich im Repository, auf Pages und im Release-ZIP liegen dürfen; später sollen sie nur noch über die Website abrufbar sein ([Issue #26](https://github.com/Sae-l/CuD/issues/26)).
 
 ## Tests und Releases
 
