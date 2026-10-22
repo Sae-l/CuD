@@ -83,18 +83,6 @@
       "git_blob_sha1": "e4fba2183587225f216eeada4c78dfab6b2e65f5"
     },
     {
-      "path": ".ruff_cache/.gitignore",
-      "bytes": 35,
-      "sha256": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316",
-      "git_blob_sha1": "b100327770759f0efb7859fe78aca4801d69ed61"
-    },
-    {
-      "path": ".ruff_cache/CACHEDIR.TAG",
-      "bytes": 43,
-      "sha256": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae",
-      "git_blob_sha1": "bc1ecb967a482524e7736038de0df6e08f9ee452"
-    },
-    {
       "path": "ACCESSIBILITY.md",
       "bytes": 1363,
       "sha256": "25dfd5b674da73536efd692b8807b82b2b0d3c8b22d315ea6f6d6d14d31d764a",
