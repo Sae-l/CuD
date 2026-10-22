@@ -1026,9 +1026,9 @@
     },
     {
       "path": "scripts/manifest.py",
-      "bytes": 2790,
-      "sha256": "0dccc73f46cac52c61839b75fe4b631b6cb7aaa22ff3ebbb52f2a4da54e287fa",
-      "git_blob_sha1": "480fb7e51d248a9fa6d9c0331c4fc139932068bb"
+      "bytes": 2807,
+      "sha256": "ef9ac5da98921c7e696aacc6dd2736780b6aef97fcdea534d653cd01b1f386f8",
+      "git_blob_sha1": "56970b2ec54734707d21eb59648026f420152267"
     },
     {
       "path": "scripts/release.py",
@@ -1044,9 +1044,9 @@
     },
     {
       "path": "scripts/test_release.py",
-      "bytes": 1987,
-      "sha256": "d0608795624c3cf14b3e54884fd11af98bc27e64c6c3ecfad415ef290f97f94d",
-      "git_blob_sha1": "24007524be068bf6bd03302edec55c667bd444c1"
+      "bytes": 2121,
+      "sha256": "19fbbba0f49e2dee79bd748dc7d36ce2a6d87632bf6a6a182823c5f2760ef5c3",
+      "git_blob_sha1": "42ea858650bc158b62d2c331a12b4a836fdf1016"
     },
     {
       "path": "scripts/uebungen_pruefen.py",
