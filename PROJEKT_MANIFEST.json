@@ -5,12 +5,6 @@
   "scope": "All project files; excludes this manifest, debug.log, .env files, .claude, root .obsidian and local dependencies/environments/caches",
   "files": [
     {
-      "path": ".claude-flow/aqe-mod/status.json",
-      "bytes": 414,
-      "sha256": "d01b09d31c1c4f6524f4cffbc0b9040b1f84798f203ec65fcbdd48bd2e431a99",
-      "git_blob_sha1": "baa5fffbafa0c8f4ac30052fed85ec594b4cbae2"
-    },
-    {
       "path": ".editorconfig",
       "bytes": 310,
       "sha256": "d9157f6118e6bf6d7dc274cfae2bc2c1f6281e5c65ac7f9e861703565b741567",
