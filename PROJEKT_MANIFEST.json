@@ -89,6 +89,12 @@
       "git_blob_sha1": "0769d12c241e25afa867974fca2ea02d035bf161"
     },
     {
+      "path": "AGENTS.md",
+      "bytes": 2961,
+      "sha256": "becc88fb37c7b5a6a49b181874d7e4bde625e93de6815376a28dc457bcf319b3",
+      "git_blob_sha1": "0d95af37cbbb17fc5665adffb5815f5ce3f4efd8"
+    },
+    {
       "path": "ARBEITSPLAN_Lernwerkzeug.md",
       "bytes": 17048,
       "sha256": "61c641cd8ab698683aa286814600a933ead82d345aa63d09da5fc2a3cb82ba84",
@@ -99,6 +105,12 @@
       "bytes": 20311,
       "sha256": "cd768d6fcc9a2ba1cf0ddac8a6de5eb131f261cc8a1b47ae48fd1fe52b4d102a",
       "git_blob_sha1": "91d8970d8e6cfd04bcee530ad20b5e518986034e"
+    },
+    {
+      "path": "CLAUDE.md",
+      "bytes": 11,
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "git_blob_sha1": "43c994c2d3617f947bcb5adf1933e21dabe46bb5"
     },
     {
       "path": "CODE_OF_CONDUCT.md",
