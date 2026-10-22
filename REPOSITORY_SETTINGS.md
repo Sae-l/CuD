@@ -1,8 +1,6 @@
 # Repository-Konfiguration
 
-Aktueller Metadatenabgleich: 17.10.2026, `Sae-l/CuD`, öffentlich, Standardbranch `main`. Sichtbarkeit und Branch wurden über den GitHub-Connector zurückgelesen. Geheimnisse und Anmeldedaten werden nicht im Repository gespeichert. Die übrigen administrativen Einstellungen der Tabelle stammen aus dem datierten API-Abgleich vom 15.10.2026 und sind vor Änderungen erneut zu prüfen.
-
-Die öffentliche Branch-API bestätigt am 17.10.2026 `protected: true`. Die Detailregeln und Actions-Administration waren über den verwendeten öffentlichen API-Zugang nicht lesbar; die entsprechenden Tabellenzeilen sind der historische Stand vom 15.10.2026, keine neue Bestätigung. Die folgenden Dateivorgaben sind im aktuellen Checkout prüfbar.
+Aktueller Abgleich: 22.10.2026, `Sae-l/CuD`, öffentlich, Standardbranch `main`. Alle administrativen Zeilen der Tabelle wurden an diesem Tag mit der authentifizierten GitHub-API (`gh api`) zurückgelesen: Repository, Branch-Schutz von `main`, Actions-Rechte, Sicherheitsfunktionen und Pages. Geheimnisse und Anmeldedaten werden nicht im Repository gespeichert. Vor späteren Änderungen erneut prüfen.
 
 | Bereich | Einstellung |
 | --- | --- |
@@ -12,11 +10,14 @@ Die öffentliche Branch-API bestätigt am 17.10.2026 `protected: true`. Die Deta
 | Erforderliche Prüfungen | Prüfen (ubuntu-latest), Prüfen (windows-latest); Branch muss vor dem Merge aktuell sein |
 | Schutz von main | Gilt auch für Administratoren; keine Force-Pushes und kein Löschen; Diskussionen vor Merge auflösen |
 | Einzelpersonenprojekt | Keine fremde Genehmigung erzwungen: 0 erforderliche Reviewfreigaben, technische Prüfungen bleiben verbindlich |
+| Merge-Methoden | Nur Squash-Merge; Merge-Commit und Rebase-Merge deaktiviert; Auto-Merge erlaubt (seit 22.10.2026) |
 | Branchpflege | Gemergte Branches automatisch löschen; Update-Branch-Schaltfläche aktiviert |
+| Wiki und Projects | Deaktiviert (seit 22.10.2026); Planung läuft über Issues |
 | Actions | Aktiv; nur GitHub-eigene Actions/Workflows zugelassen; SHA-Pinning erforderlich |
 | Standard-Workflow-Rechte | contents: read; Workflows dürfen keine PR-Reviews genehmigen |
 | Release-Workflow | Ausschließlich der Release-Job hat contents: write; keine zusätzlichen Kontoschlüssel nötig |
-| Sicherheitswarnungen | Dependabot-Warnungen und automatische Sicherheitskorrektur-PRs aktiviert |
+| Sicherheitswarnungen | Dependabot-Warnungen und automatische Sicherheitskorrektur-PRs aktiviert; Secret Scanning mit Push-Schutz aktiv; Private Vulnerability Reporting aktiviert (seit 22.10.2026) |
+| GitHub Pages | Klassischer Build aus `main`, Wurzelordner. Damit ist jede Datei in `main` öffentlich abrufbar, auch `Referenz/` |
 | Abhängigkeitspflege | Wöchentlich npm, pip und GitHub Actions; Änderungen kommen als PR, kein automatischer Merge |
 | Laufzeiten | Node 24, Python 3.12; festgelegt in .node-version und .python-version |
 | Testpakete | npm-Lockdatei mit Integrität; Python-Abhängigkeiten einschließlich transitiver Pakete exakt versioniert |
@@ -27,7 +28,7 @@ Die öffentliche Branch-API bestätigt am 17.10.2026 `protected: true`. Die Deta
 
 Die README führt zuerst zum Online-Lernraum und danach zum versionierten Offline-Paket. Fehler und Verbesserungsvorschläge haben Vorlagen unter `.github/ISSUE_TEMPLATE/`; `.github/pull_request_template.md` fragt Prüfung und Risiken ab. [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), [SECURITY.md](SECURITY.md) und [ACCESSIBILITY.md](ACCESSIBILITY.md) beschreiben Umgang, Meldeweg und bekannte Grenzen. Diese Dateien werden in GitHubs Community-Profil erst nach Übernahme in den Standardbranch berücksichtigt.
 
-Eine allgemeine Projektlizenz bleibt eine offene Inhaberentscheidung. [RECHTE.md](RECHTE.md) trennt eigenen Code, eigene Lerninhalte, fremde Kursmaterialien und Assetlizenzen. Private Vulnerability Reporting ist nicht als aktiviert bestätigt; SECURITY.md beschreibt diesen Fall ausdrücklich. Keine administrative Einstellung wurde für diese Dateikorrektur geändert.
+Eine allgemeine Projektlizenz bleibt eine offene Inhaberentscheidung. [RECHTE.md](RECHTE.md) trennt eigenen Code, eigene Lerninhalte, fremde Kursmaterialien und Assetlizenzen. Private Vulnerability Reporting ist seit dem 22.10.2026 aktiviert; SECURITY.md verweist darauf. Neue Kursunterlagen mit ungeklärten Rechten (Ordner `Referenz/Coding und Digitalisierung*/`) sind per `.gitignore` von Git ausgeschlossen, bis die Veröffentlichung geklärt ist ([Issue #26](https://github.com/Sae-l/CuD/issues/26)).
 
 ## Tests und Releases
 

@@ -5,6 +5,12 @@
   "scope": "All project files; excludes this manifest, debug.log, .env files, .claude, root .obsidian and local dependencies/environments/caches",
   "files": [
     {
+      "path": ".claude-flow/aqe-mod/status.json",
+      "bytes": 414,
+      "sha256": "d01b09d31c1c4f6524f4cffbc0b9040b1f84798f203ec65fcbdd48bd2e431a99",
+      "git_blob_sha1": "baa5fffbafa0c8f4ac30052fed85ec594b4cbae2"
+    },
+    {
       "path": ".editorconfig",
       "bytes": 310,
       "sha256": "d9157f6118e6bf6d7dc274cfae2bc2c1f6281e5c65ac7f9e861703565b741567",
@@ -66,9 +72,9 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 144,
-      "sha256": "e2e2c117380640101ac26a60452af848edf6b608f55e33fa4c913e320211ee4c",
-      "git_blob_sha1": "13a9b03ee2f8f65821effdbeb422dd1ce5a814f4"
+      "bytes": 277,
+      "sha256": "f8f504918e9ea834c5ba7aa30f20cd1d509635497710d44a7825fb5a6a86e0b7",
+      "git_blob_sha1": "2b2c46a8ddadebf7821a0fd7348e774a1add3dd3"
     },
     {
       "path": ".node-version",
@@ -756,9 +762,9 @@
     },
     {
       "path": "REPOSITORY_SETTINGS.md",
-      "bytes": 5329,
-      "sha256": "13e542c43b85b02c09b1e51d4e382ac069208b3c5afd297dbc8772825c827fc6",
-      "git_blob_sha1": "0b9eeec5a3150c7da6027b030e910c65caba9ee7"
+      "bytes": 5568,
+      "sha256": "2293121dfb759fb3a1ca13d0106c41791d6c6828710a7fd9f2e6b89ee4f988d6",
+      "git_blob_sha1": "3167409477b53ef7519e84b2eecd7fa8279dae82"
     },
     {
       "path": "Referenz/Code/002_fftpy.sec",
@@ -984,9 +990,9 @@
     },
     {
       "path": "SECURITY.md",
-      "bytes": 1464,
-      "sha256": "0657d52aad220076ab53fd3f98aa36de4755d2334ac8dd1ff5d2bd239c4f2875",
-      "git_blob_sha1": "1e29571abf2ef7c66c180fd0628ae799b7ec8367"
+      "bytes": 1368,
+      "sha256": "7681206ead3bb168bfc761f9139c7b3123d9b9752e0c25051799b4d09b850c44",
+      "git_blob_sha1": "dba5bf2d42f1cf29fdf44b8f09128d9db9ae3af5"
     },
     {
       "path": "SKILL_RECHERCHE.md",
