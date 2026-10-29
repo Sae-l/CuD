@@ -1,0 +1,22 @@
+{
+  "name": "pdf-seitenweise-sichten",
+  "version": "1.5.0",
+  "date": "2026-10-24",
+  "owner": "Sae-l",
+  "source": "Installed Codex skill, created in the Formelsammlung project",
+  "skill_sha256": "973553c4015609e612a41a4a7967f593b27e9978c014a023b0540addb7209b10",
+  "checks": {
+    "formal_validation": "PASS (root and GitHub entry, quick_validate.py with isolated PyYAML 6.0.3, 2026-10-24)",
+    "installed_copy_byte_equality": "NOT_PERFORMED (release does not modify local skill installations)",
+    "independent_comprehensive_behavior_test": "NOT_PERFORMED",
+    "complete_formula_verification": "NOT_PERFORMED",
+    "archive_line_endings": "Automatic Git text conversion disabled via .gitattributes",
+    "bundled_script_selftest": "PASS (2026-10-24; isolated integrity mutations, source page count, solution filtering, bounded/task-number search, read continuation, prepared content, render reuse, raster/vector pages)",
+    "real_document_test_1_3_0": "PASS (CuD Referenz 6 PDFs/83 S. via Obsidian-Plan/Pruefung/messen.py; Fersch 244 S. + FOSA 40 S. extract)",
+    "real_document_test_current_worktree": "PASS (2026-10-24; fresh MPG1 27 PDFs/218 pages, four group checks, five fixed search tasks, source hashes unchanged; docs/umsetzung-pdf-werkzeug-2026-10-24.md)",
+    "platform_provisioning": "PARTIAL (2026-10-24; 3/6 tests PASS including both portable copies and new commands; 3 skipped by Windows execution policy/sandbox Junction denial; CI still rejects skipped tests)",
+    "native_agent_acceptance": "PARTIAL (Codex Desktop manual and Claude Code 2.1.300 read-only synthetic smoke tests; full five-agent acceptance remains open; docs/plattformabnahme-v1.4.0.md)",
+    "observed_workflow_1_4_0": "P2 PDF page 9 and eight selected pages in five example documents",
+    "local_agent_sample": "PARTIAL (2026-10-24; actual text/image inspection of M1 page 5 and MPG1_M2 page 4; selected formula preparation and reuse; no full corpus or five-agent acceptance)"
+  }
+}
