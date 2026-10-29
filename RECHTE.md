@@ -9,6 +9,8 @@ Das Repository, GitHub Pages und die Releasepakete sind öffentlich. Daraus folg
 | `Referenz/` und davon abgeleitete Auszüge oder Seitenbilder in `Referenz_Sichtung/` | Fremde Kursmaterialien. Herkunftsnachweise und unveränderte Bytes belegen keine Erlaubnis zur öffentlichen Weitergabe. Der Inhaber muss den zulässigen Umfang mit den Rechteinhabern klären. |
 | Mitgelieferte Schrift, Foto und Animationsdateien | Die jeweiligen Quellen und Lizenzhinweise stehen in [Lernwerkzeug/assets/README.md](Lernwerkzeug/assets/README.md) und [sources.json](Lernwerkzeug/assets/sources.json). Diese Hinweise bleiben erhalten. |
 
+**Inhaberentscheidung vom 22.10.2026:** Die Kurs-PDFs unter `Referenz/` (einschließlich der Unterlagen WiSe 26/27) bleiben vorerst öffentlich im Repository, auf Pages und im Release-ZIP. Eine Erlaubnis der Rechteinhaber ist damit nicht belegt. Geplant ist, sie später nur noch über die Website abrufbar zu machen ([Issue #26](https://github.com/Sae-l/CuD/issues/26)).
+
 Es wird deshalb keine allgemeine `LICENSE` ergänzt, die fremde Unterlagen einschließt oder eine noch nicht getroffene Eigentümerentscheidung vorwegnimmt.
 
 ## Vor einer Änderung des Veröffentlichungsumfangs
