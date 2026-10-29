@@ -1,0 +1,16 @@
+SensorID,Standort,Temperatur,Luftfeuchtigkeit,IstAktiv
+1,Nordpark,22.5,45.2,True
+2,Suedpark,23.1,44.1,True
+3,Ostplatz,105.0,12.0,True
+4,Westplatz,21.8,46.5,False
+5,Zentrum,-5.0,99.9,True
+6,Rathaus,24.0,43.2,True
+7,Bahnhof,22.9,45.0,True
+8,Flughafen,110.5,10.1,True
+9,Messe,23.5,44.8,False
+10,Stadion,22.1,46.0,True
+11,Campus_Sued,23.8,44.5,True
+12,Campus_Nord,22.0,45.8,False
+13,Bibliothek,24.5,42.1,True
+14,Labor_A,108.2,15.5,True
+15,Labor_B,23.0,45.5,True

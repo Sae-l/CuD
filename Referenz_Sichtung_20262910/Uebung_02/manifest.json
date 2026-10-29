@@ -1,0 +1,390 @@
+[
+  {
+    "pdf": "CuD_Uebung 02.pdf",
+    "sha256": "a813db407e67a106fa2bcffc3a1949c5904bdd04e6602a15b6c23c9326e6b94b",
+    "markdown_sha256": "d052db63380c367b40cbad67016caf405b905ceebc0612449161f9e3e709e7d4",
+    "pages": 36,
+    "markdown": "md/CuD_Uebung 02.md",
+    "answer_start_page": null,
+    "page_index": [
+      {
+        "page": 1,
+        "characters": 2141,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 2,
+        "characters": 2738,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 3,
+        "characters": 342,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 4,
+        "characters": 2355,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 5,
+        "characters": 130,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 6,
+        "characters": 2639,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 7,
+        "characters": 136,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 8,
+        "characters": 2086,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 9,
+        "characters": 1671,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 10,
+        "characters": 878,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 11,
+        "characters": 1992,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 12,
+        "characters": 1972,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 13,
+        "characters": 432,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 14,
+        "characters": 2100,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 15,
+        "characters": 2066,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 16,
+        "characters": 406,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 17,
+        "characters": 2263,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 18,
+        "characters": 1791,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 19,
+        "characters": 330,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 20,
+        "characters": 1938,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 21,
+        "characters": 1579,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 22,
+        "characters": 377,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 23,
+        "characters": 1965,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 24,
+        "characters": 822,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 25,
+        "characters": 1553,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 26,
+        "characters": 2101,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 27,
+        "characters": 1835,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 28,
+        "characters": 1886,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 29,
+        "characters": 497,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 30,
+        "characters": 1981,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 31,
+        "characters": 1746,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 32,
+        "characters": 312,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 33,
+        "characters": 2270,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 34,
+        "characters": 2160,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 35,
+        "characters": 1291,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 36,
+        "characters": 199,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      }
+    ]
+  }
+]
