@@ -1,0 +1,888 @@
+[
+  {
+    "pdf": "001_Coding und Digitalisierung.pdf",
+    "sha256": "61716558d3486abd47299a4c1a3112f75b868616569f06ae787ddc3d3a235740",
+    "markdown_sha256": "5737635299220b7584200a4555a5ed460252573eedbd76867d5d2a60c7357bcf",
+    "pages": 21,
+    "markdown": "md/001_Coding und Digitalisierung.md",
+    "answer_start_page": null,
+    "page_index": [
+      {
+        "page": 1,
+        "characters": 37,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/001_Coding und Digitalisierung-S001.png",
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 2,
+        "characters": 585,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 3,
+        "characters": 215,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 4,
+        "characters": 455,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 5,
+        "characters": 664,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 6,
+        "characters": 675,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 7,
+        "characters": 536,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 8,
+        "characters": 499,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 9,
+        "characters": 444,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 10,
+        "characters": 387,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 11,
+        "characters": 498,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 12,
+        "characters": 508,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 13,
+        "characters": 531,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 14,
+        "characters": 437,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 15,
+        "characters": 445,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 16,
+        "characters": 407,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 17,
+        "characters": 323,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 18,
+        "characters": 455,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 19,
+        "characters": 49,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/001_Coding und Digitalisierung-S019.png",
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 20,
+        "characters": 358,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 21,
+        "characters": 11,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/001_Coding und Digitalisierung-S021.png",
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      }
+    ]
+  },
+  {
+    "pdf": "002_Coding und Digitalisierung.pdf",
+    "sha256": "8952c6bfb3498e249a2ccd5d65bae5eb09afbfa6b8ca3cbb9ec718640776e1ad",
+    "markdown_sha256": "2a7d26b7d9862c75c6ede170000b77ea8f1a549684ebaee1d3f4de139faa8dc3",
+    "pages": 7,
+    "markdown": "md/002_Coding und Digitalisierung.md",
+    "answer_start_page": null,
+    "page_index": [
+      {
+        "page": 1,
+        "characters": 44,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/002_Coding und Digitalisierung-S001.png",
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 2,
+        "characters": 242,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 3,
+        "characters": 244,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 4,
+        "characters": 745,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 5,
+        "characters": 178,
+        "flags": [
+          "Zeichen prüfen"
+        ],
+        "image": "bilder/002_Coding und Digitalisierung-S005.png",
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 6,
+        "characters": 92,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 7,
+        "characters": 11,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/002_Coding und Digitalisierung-S007.png",
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      }
+    ]
+  },
+  {
+    "pdf": "003_Coding und Digitalisierung.pdf",
+    "sha256": "460cd6d4c8bb434f42f72d22f5177510ca64e38d2530c1f8e8b0b76cf6e524d7",
+    "markdown_sha256": "f1da1baa5d7bdd1a922c8be8511c1ea9e56aabdf0313d4557cb68b6e8e59cd5a",
+    "pages": 33,
+    "markdown": "md/003_Coding und Digitalisierung.md",
+    "answer_start_page": null,
+    "page_index": [
+      {
+        "page": 1,
+        "characters": 95,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 2,
+        "characters": 1525,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 3,
+        "characters": 718,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 4,
+        "characters": 1385,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 5,
+        "characters": 1244,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 6,
+        "characters": 1483,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 7,
+        "characters": 1450,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 8,
+        "characters": 1443,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 9,
+        "characters": 1494,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 10,
+        "characters": 1556,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 11,
+        "characters": 728,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 12,
+        "characters": 1612,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 13,
+        "characters": 1234,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 14,
+        "characters": 1515,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 15,
+        "characters": 1435,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 16,
+        "characters": 1373,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 17,
+        "characters": 1302,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 18,
+        "characters": 1597,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 19,
+        "characters": 775,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 20,
+        "characters": 1333,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 21,
+        "characters": 1365,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 22,
+        "characters": 1432,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 23,
+        "characters": 1465,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 24,
+        "characters": 1507,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 25,
+        "characters": 1635,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 26,
+        "characters": 1723,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 27,
+        "characters": 785,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 28,
+        "characters": 1451,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 29,
+        "characters": 1625,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 30,
+        "characters": 1616,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 31,
+        "characters": 1718,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 32,
+        "characters": 1639,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 33,
+        "characters": 7,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/003_Coding und Digitalisierung-S033.png",
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      }
+    ]
+  },
+  {
+    "pdf": "004_Git Versionsverwaltung.pdf",
+    "sha256": "f92eacb7712317284dccfe94fb5b1070bd775af3df151309a276bb0d98e67857",
+    "markdown_sha256": "e978f254c7118b0ba0135ade68c49e1c894034fe91682f508e59e2853f415e0c",
+    "pages": 20,
+    "markdown": "md/004_Git Versionsverwaltung.md",
+    "answer_start_page": null,
+    "page_index": [
+      {
+        "page": 1,
+        "characters": 1373,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 2,
+        "characters": 2065,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 3,
+        "characters": 2093,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 4,
+        "characters": 1817,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 5,
+        "characters": 1612,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 6,
+        "characters": 1480,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 7,
+        "characters": 1871,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 8,
+        "characters": 1834,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 9,
+        "characters": 1804,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 10,
+        "characters": 1828,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 11,
+        "characters": 1547,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 12,
+        "characters": 1406,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 13,
+        "characters": 1500,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 14,
+        "characters": 1344,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 15,
+        "characters": 1875,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 16,
+        "characters": 1477,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 17,
+        "characters": 1489,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 18,
+        "characters": 1294,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 19,
+        "characters": 1700,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 20,
+        "characters": 2094,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      }
+    ]
+  },
+  {
+    "pdf": "004b_Vererbung.pdf",
+    "sha256": "f92eacb7712317284dccfe94fb5b1070bd775af3df151309a276bb0d98e67857",
+    "duplicate_of": "004_Git Versionsverwaltung.pdf"
+  },
+  {
+    "pdf": "004b_Vererbung_Python.pdf",
+    "sha256": "4ea9c5daf564b499b1416073bf3d8d99845bded933679948f132a174ad6d7ca9",
+    "markdown_sha256": "ecb183d3ddc76bcc2c6bb3a4bc73bdfcbd708172a6250823ac351b07136f3728",
+    "pages": 3,
+    "markdown": "md/004b_Vererbung_Python.md",
+    "answer_start_page": null,
+    "page_index": [
+      {
+        "page": 1,
+        "characters": 2052,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 2,
+        "characters": 1856,
+        "flags": [
+          "Aufgabe/Beispiel"
+        ],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 3,
+        "characters": 2841,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      }
+    ]
+  },
+  {
+    "pdf": "code 002_Beispiel Datenstrukturen - Analyse.pdf",
+    "sha256": "755b7918d50aa8af56f95dfee2054505bd0d589135d8979c835f8af87e84be42",
+    "markdown_sha256": "ae30af0a8c025d07fd5ab56abff12c5cd8efa7793ec62373486d5b1dafe2c0a7",
+    "pages": 3,
+    "markdown": "md/code 002_Beispiel Datenstrukturen - Analyse.md",
+    "answer_start_page": null,
+    "page_index": [
+      {
+        "page": 1,
+        "characters": 1499,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 2,
+        "characters": 1950,
+        "flags": [],
+        "image": null,
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      },
+      {
+        "page": 3,
+        "characters": 89,
+        "flags": [
+          "wenig Text"
+        ],
+        "image": "bilder/code 002_Beispiel Datenstrukturen - Analyse-S003.png",
+        "text_read": false,
+        "original_image_viewed": false,
+        "subject_review": "offen"
+      }
+    ]
+  }
+]
